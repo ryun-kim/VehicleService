@@ -1,0 +1,99 @@
+/* 헤더 --------------------------------------------------------- [start] */
+header {
+    background-color: rgb(113, 216, 253);
+    /* position: sticky;  */
+    top: 0;
+    display: grid; grid-template-columns: 1fr 8fr 1fr;
+    height: 100px;
+    width: 100%;
+}
+
+nav {
+    width: 100%;
+}
+
+ul {
+    list-style: none; padding-left: 0px;
+}
+
+header > div {
+    /* background-color: pink; */
+    grid-column: 2/3;
+    display: grid; grid-template-columns: 1fr 4fr 1fr;
+}
+/* 헤더>로고 ---------------------------------------------------- [start] */
+header #image_logo_home {
+    /* background-color: purple; */
+    display: flex;  align-items: center;
+}
+
+header #image_logo_home > img {
+    width: 190px; height: 70px;
+}
+
+/* 헤더>메뉴바 -------------------------------------------------- [start] */
+#menubar_header {
+    /* background-color: rgb(160, 28, 160); */
+    display: flex;  align-items: center;
+}
+
+#menubar_header > nav {
+    /* background-color: brown; */
+    /* line-height: 80px; */
+}
+
+#menubar_header > nav > ul {
+    /* background-color: orange; */
+    display: flex; justify-content: space-around;
+    margin-bottom: 0;
+}
+
+#menubar_header > nav > ul > li {
+    /* background-color: rgb(195, 235, 250); */
+    font-size: 150%;
+}
+
+#menubar_header > nav > ul > li > a {
+    color: white; font-weight: 800;
+    text-decoration: none;
+}
+
+#menubar_header > nav > ul > li > a:focus {
+    color: rgb(45, 45, 161);
+}
+
+/* 헤더>로그인바 ------------------------------------------------ [start] */
+#loginbar_header {
+    /* background-color: rgb(212, 40, 212); */
+    display: flex;  align-items: flex-end;
+}
+
+#loginbar_header > nav {
+    /* background-color: brown; */
+}
+
+#loginbar_header > nav > ul {
+    /* background-color: orange; */
+    display: flex; justify-content: space-around;
+}
+
+#loginbar_header > nav > ul > li {
+    /* background-color: rgb(195, 235, 250); */
+    font-size: 100%;
+}
+
+#loginbar_header > nav > ul > li > a {
+    color: white;
+    text-decoration: none;
+}
+
+#loginbar_header > nav > ul > li > a:focus {
+    color: rgb(45, 45, 161);
+}
+/* 헤더 --------------------------------------------------------- [end] */
+footer{
+    text-align: center;
+    height: 200px;
+    width: 100%;
+    background-color: gray;
+}

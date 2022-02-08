@@ -1,0 +1,38 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="header">
+    <header>
+        <div>
+            <div id="image_logo_home">
+                <img th:src="@{/img/chacha_logo1.png}" alt="Logo">
+            </div>
+            <div id="menubar_header">
+                <nav>
+                    <ul>
+                        <li><a href="#">국산</a></li>
+                        <li><a href="#">수입</a></li>
+                        <li><a href="#">내차팔기</a></li>
+                        <li><a href="/html/index.html">고객센터</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="loginbar_header">
+                <nav>
+                    <ul>
+                        <li><a href="/html/login.html">로그인</a></li>
+                        <li><a href="/html/join.html">회원가입</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+</th:block>
+<th:block th:fragment="footer">
+    <footer>
+        footer
+    </footer>
+</th:block>
+
+
+</html>

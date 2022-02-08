@@ -1,0 +1,135 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Jua', sans-serif;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.container{
+    height: 700px;
+}
+
+.main{
+    height: 100%;
+    width: 100%;
+}
+
+form{
+    height: 55%;
+    margin-top: 10px;
+    width: 70%;
+    margin-left: 15%;
+}
+
+h1{
+    color: #bfdada;
+    text-align: center;
+    margin-top: 60px;
+}
+
+a:link {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #bfdada;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.input-group{
+    height: 60px;
+    margin-bottom: 10px;
+    border: 1px solid #bfdada;
+    background-color: #bfdada;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.find{
+    text-align: center;
+    color: #4a7c7c;
+    margin-bottom: 10px;
+}
+
+.input-group-text{
+    border: 1px solid #bfdada;
+    background-color: #bfdada;
+}
+
+.form-control{
+    border-left: 1px solid #bfdada;
+}
+
+.btn{
+    width: 30%;
+    background-color: #bfdada;
+    border: 1px solid white;
+}
+
+.logjoin{
+    margin-bottom: 60px;
+    margin-left: 28%;
+}
+
+.line{
+    border-top: 2px solid #bfdada;
+    width: 50%;
+    height: 10%;
+    margin-left: 25%;
+}
+
+.btn-warning{
+    border: 1px solid white;
+    width: 30%;
+    height: 65px;
+}
+
+.btn-success{
+    border: 1px solid white;
+    width: 30%;
+    height: 65px;
+}
+
+.kaoBox{
+    text-align: center;
+}
+
+#kaobtn{
+    width: 35%;
+    height: 88px;
+    cursor: pointer;
+}
+
+.naverBox{
+    text-align: center;
+}
+
+#naver_id_login{
+    width: 35%;
+    height: 88px;
+}
