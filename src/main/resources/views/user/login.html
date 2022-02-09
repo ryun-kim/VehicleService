@@ -7,18 +7,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap" rel="stylesheet">
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Bootstrap CSS -->
+<!--     Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/css/user/login.css}">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
     <script defer src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script defer type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
-            charset="utf-8"></script>
-    <script defer type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script defer th:src="@{/js/user/login.js}"></script>
     <script defer th:src="@{/js/user/kakao.js}"></script>
-    <script defer th:src="@{/js/user/naver.js}"></script>
     <title>로그인</title>
 </head>
 
@@ -33,30 +33,30 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-person" viewBox="0 0 16 16">
                                 <path
-                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
                             </svg>
                         </span>
                         <input type="text" class="form-control" name="id" placeholder="아이디를 입력하세요."
-                               aria-label="Username" aria-describedby="addon-wrapping" />
+                               aria-label="Username" aria-describedby="addon-wrapping"/>
                     </div>
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-key" viewBox="0 0 16 16">
                                 <path
-                                        d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
-                                <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                        d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"/>
+                                <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                             </svg>
                         </span>
                         <input type="password" class="form-control" name="pw" placeholder="비밀번호를 입력하세요."
-                               aria-label="Username" aria-describedby="addon-wrapping" />
+                               aria-label="Username" aria-describedby="addon-wrapping"/>
                     </div>
                     <div class="find">
-                        <a href="/html/find.html"><span>아이디 찾기 | 비밀번호 찾기</span></a>
+                        <a th:href="@{/user/find}"><span>아이디 찾기 | 비밀번호 찾기</span></a>
                     </div>
                     <div class="logjoin">
                         <input type="submit" class="btn btn-secondary px-0" value="로그인">
-                        <input type="button" class="btn btn-secondary px-0" value="회원가입">
+                        <a th:href="@{/user/join}"><input type="button" class="btn btn-secondary px-0" value="회원가입"></a>
                     </div>
                     <div class="line"></div>
                 </form>
@@ -73,11 +73,13 @@
             </div>
         </div>
     </div>
-    <script>
-        var naver_id_login = new naver_id_login("FKI5X4pkLPGeuMSpAt6W", "http://localhost:8090/user/login"); //callback url
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+        var naver_id_login = new naver_id_login("FKI5X4pkLPGeuMSpAt6W", "http://127.0.0.1:8090/user/login");
         var state = naver_id_login.getUniqState();
-        naver_id_login.setButton("green", 3, 88);
-        naver_id_login.setDomain("http://localhost:8090/user/login");
+        naver_id_login.setButton("white", 2,40);
+        naver_id_login.setDomain("http://127.0.0.1:8090");
         naver_id_login.setState(state);
         naver_id_login.setPopup();
         naver_id_login.init_naver_id_login();

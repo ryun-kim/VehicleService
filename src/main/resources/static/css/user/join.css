@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Jua', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+h1,h2,h3,h4,h6{
+    margin: 0;
+    padding: 0;
+    color: #bfdada;
+}
+
+h3{
+    padding-top: 20px;
+}
+
+.text_box{
+    border-bottom: 2px solid #bfdada;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.inpControl{
+    display: inline-block;
+    width: 77%;
+    height: 35px;
+    margin-left: 20px;
+}
+
+.lbclass{
+    width: 50px;
+}
+
+.lbclass2{
+    width: 60px;
+}
+
+.lbclass3{
+    width: 90px;
+}
+
+.btnbox{
+    padding-left: 3%;
+}
+
+.common{
+    padding-left: 18%;
+}
+
+.common1{
+    padding-left: 17%;
+}
+
+.common2{
+    padding-left: 19%;
+}
+
+.common3{
+    padding-left: 14%;
+}
+
+.commonbox{
+    height: 38px;
+}
+
+.birthday{
+    text-align: center;
+    line-height: 33px;
+}
+
+.birthdayBox{
+    padding-left: 17%;
+}
+
+.email{
+    width: 32%;
+    height: 35px;
+}
+
+.emailml{
+    margin-left: 5%;
+}
+
+.displayInblock{
+    display: inline-block;
+}
+
+.table{
+    display: inline-block;
+    width: 30%;
+    margin: 0;
+    margin-left: 2%;
+}
+
+.input-group{
+    width: 40%;
+    padding-left: 8px;
+    vertical-align: top;
+    margin-top: 0;
+}
+
+#email_box{
+    margin-top: 30px;
+    margin-left: 13%;
+}
+
+.malabelbox{
+    padding-left: 5%;
+}
+
+.email{
+
+}
+
+.termsBox{
+    overflow-y: auto;
+    height: 300px;
+}
+
+.form-select{
+    height: 40px;
+}
+
+.checkbox{
+    text-align: center;
+}
+
+form > div > h1{
+    padding-top: 10px;
+}

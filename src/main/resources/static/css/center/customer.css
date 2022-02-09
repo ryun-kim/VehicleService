@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+section{
+    height: 700px;
+    padding: 10px;
+}
+
+aside{
+    background-color: rgb(122, 211, 233);
+    text-align: center;
+    padding-top: 50px;
+}
+
+#menu{
+    list-style: none;
+    display: inline-block;
+    margin-top: 80px;
+    padding: 0;
+}
+
+#menu > *{ /*자식들 모두선택*/
+    list-style: none;
+    display: inline-block; /*인라인블록으로 해줘야 정렬이 먹힌다*/
+    color: white;
+    font-size: 25px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+#menu li.selected{
+    background-color: rgb(5, 52, 182);
+
+}
+
+#board:hover{
+    background-color: rgb(5, 52, 182);
+    cursor: pointer;
+}
+
+#service:hover{
+    background-color: rgb(5, 52, 182);
+    cursor: pointer;
+}
+
+#introduction:hover{
+    background-color: rgb(5, 52, 182);
+    cursor: pointer;
+}
+
+#notice:hover{
+    background-color: rgb(5, 52, 182);
+    cursor: pointer;
+}
+
+#customCenter{
+    color: white;
+    font-size: 30px;
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+}
+
+table{
+    width: 100%;
+    border: 1px solid rgb(119, 176, 230);
+    border-collapse: collapse;
+}
+
+th, td{
+    border: 1px solid rgb(119, 176, 230);
+}
+
+tr{
+    height: 60px;
+    text-align: center;
+}
+
+tr:hover{
+    background-color: rgb(217, 229, 235);
+}
+
+th{
+    background-color: #ADD8E6;
+}
+
+td{
+    cursor: pointer;
+}
+
+.boardContainer{
+    height: 100%;
+    padding-top: 40px;
+}
+
+.writeBtn{
+    float: right;
+}
+
+.serviceContainer{
+    height: 100%;
+}
+
+.serviceContainer > div:nth-child(1){
+    border-bottom: 3px solid black;
+    width: 80%;
+    height: 100px;
+    margin-left: 10%;
+    font-size: 30px;
+    padding-top: 40px;
+}
+
+.serviceContainer > div:nth-child(2){
+    width: 100%;
+    height: 80%;
+    overflow-y: auto;
+}
+
+details {
+    margin:5px 0 10px;
+}
+
+details > summary {
+    width: 70%;
+    margin-top: 30px;
+    margin-left: 15%;
+    background:rgb(44, 118, 202);
+    color:#fff;
+    padding:10px;
+    outline:0;
+    border-radius:5px;
+    cursor:pointer;
+    text-align:left;
+    box-shadow: 5px 5px 6px gray;
+}
+
+p{
+    width: 70%;
+    margin-left: 15%;
+    background-color: rgb(190, 218, 236);
+    padding: 10px;
+}
+
+.noticeContainer{
+    height: 100%;
+    padding-top: 40px;
+}

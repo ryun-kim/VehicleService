@@ -10,4 +10,10 @@ public class UserController {
 
     @GetMapping("/login")
     public void login(){}
+
+    @GetMapping("/find")
+    public void find(){}
+
+    @GetMapping("/join")
+    public void join(){}
 }
