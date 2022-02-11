@@ -5,7 +5,7 @@ console.log(Kakao.isInitialized()); // sdk초기화여부판단
 
 kaobtn.addEventListener('click', () => {
     Kakao.Auth.login({
-        scope:'profile_nickname, profile_image, account_email, gender, birthday, age_range', //이범위내에서 정보를 가져온다
+        scope:'profile_nickname, profile_image, account_email, birthday', //이범위내에서 정보를 가져온다
         success: function (response) { //로그인 성공시 callback함수 수행
             Kakao.API.request({
                 url: '/v2/user/me', //이 url로부터 로그인한 사용자의 정보를 가져온다

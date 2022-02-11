@@ -24,7 +24,7 @@ function getLastDay(year, month) {
 }
 
 function set_day() {
-    let year = parseInt(cmbyear.options[cmbyear.selectedIndex].value); //value는 기본이 문자열이라 숫자로 형변환
+    let year = parseInt(cmbyear.options[cmbyear.selectedIndex].value); //value는 기본이 string이라 number로 형변환, number는 콘솔에서 보라색
     let month = parseInt(cmbmonth.options[cmbmonth.selectedIndex].value); //실제값말고 value가져옴
     //날짜간 덧셈, 뺄샘 과정이 일어날 수 있음으로 number로 형변환
     // console.log(year, month); //2022, 1

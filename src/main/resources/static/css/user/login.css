@@ -133,3 +133,13 @@ a:active {
     width: 35%;
     height: 88px;
 }
+
+.googleBox{
+    text-align: center;
+}
+
+#googleBtn{
+    width: 35%;
+    height: 88px;
+    cursor: pointer;
+}
