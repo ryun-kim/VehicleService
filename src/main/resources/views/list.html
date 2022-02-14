@@ -1,0 +1,325 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout"> <!--타임리프를 사용하겠다는말-->
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/list/list.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script defer th:src="@{/js/list/list.js}"></script>
+    <title>검색결과</title>
+</head>
+
+<th:block layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <!--사이드 메뉴-->
+            <nav id="sidebarMenu" class="col-sm col-md-2 g-3">
+                <div class="sidebarMenu_menu">
+                    <!--검색창-->
+                    <form class="form-group" id="search_Result_Frm">
+                        <div class="input-group mb-3">
+                            <input type="text" id="search_area" class="form-control my-sm-1" placeholder="검색하기" aria-label="검색하기" aria-describedby="search_area">
+                            <button class="btn btn-outline-info my-sm-1" type="submit" id="search__area_btn">검색</button>
+                        </div>
+                    </form>
+                    <!--검색창End-->
+                    <hr>
+                    <!-- 셀렉트검색창-->
+                    <form class="">
+                        <div class="accordion accordion-flush" id="search_list">
+                            <div class="accordion-item ">
+                                <h2 class="accordion-header" id="search_list_com">
+                                    <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#select_com" aria-expanded="true" aria-controls="select_com">
+                                        제조사
+                                    </button>
+                                </h2>
+                                <div id="select_com" class="accordion-collapse collapse show" aria-labelledby="search_list_com">
+                                    <div class="accordion-body">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="kia">
+                                            <label class="form-check-label" for="kia">
+                                                기아
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="hyundai">
+                                            <label class="form-check-label" for="hyundai">
+                                                현대
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="ssangyong">
+                                            <label class="form-check-label" for="ssangyong">
+                                                쌍용
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="chevo">
+                                            <label class="form-check-label" for="chevo">
+                                                쉐보레
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="rno">
+                                            <label class="form-check-label" for="rno">
+                                                르노
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="search_list_year">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#select_year" aria-expanded="false" aria-controls="select_year">
+                                        연식
+                                    </button>
+                                </h2>
+                                <div id="select_year" class="accordion-collapse collapse" aria-labelledby="search_list_year">
+                                    <div class="accordion-body">
+                                        <select name="start_Year" class="form-select form-select-sm">
+                                            <option value="1">00년</option>
+                                            <option value="2">10년</option>
+                                            <option value="3">20년</option>
+                                            <option value="4">22년</option>
+                                        </select>~
+
+                                        <select name="end_Year" class="form-select form-select-sm">
+                                            <option value="1">00년</option>
+                                            <option value="2">10년</option>
+                                            <option value="3">20년</option>
+                                            <option value="4">22년</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="search_list_km">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#select_km" aria-expanded="false" aria-controls="select_km">
+                                        주행 거리
+                                    </button>
+                                </h2>
+                                <div id="select_km" class="accordion-collapse collapse" aria-labelledby="search_list_year">
+                                    <div class="accordion-body">
+                                        <select name="start_Year" class="form-select form-select-sm">
+                                            <option value="#">5만미만</option>
+                                            <option value="#">5만</option>
+                                            <option value="#">10만</option>
+                                            <option value="#">20만</option>
+                                        </select>~
+                                        <select name="end_Year" class="form-select form-select-sm">
+                                            <option value="#">5만미만</option>
+                                            <option value="#">5만</option>
+                                            <option value="#">10만</option>
+                                            <option value="#">20만</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="search_list_price">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#select_price" aria-expanded="false" aria-controls="select_price">
+                                        가격
+                                    </button>
+                                </h2>
+                                <div id="select_price" class="accordion-collapse collapse" aria-labelledby="search_list_price">
+                                    <div class="accordion-body">
+                                        <select name="start_price" class="form-select form-select-sm">
+                                            <option value="#">100만</option>
+                                            <option value="#">500만</option>
+                                            <option value="#">1000만</option>
+                                            <option value="#">1000만이상</option>
+                                        </select>~
+                                        <select name="end_price" class="form-select form-select-sm">
+                                            <option value="#">100만</option>
+                                            <option value="#">500만</option>
+                                            <option value="#">1000만</option>
+                                            <option value="#">1000만이상</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="search_list_aria">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#select_aria" aria-expanded="false" aria-controls="select_aria">
+                                        지역
+                                    </button>
+                                </h2>
+                                <div id="select_aria" class="accordion-collapse collapse" aria-labelledby="search_list_aria">
+                                    <div class="accordion-body">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="seoul">
+                                            <label class="form-check-label" for="seoul">
+                                                서울
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="daegu">
+                                            <label class="form-check-label" for="daegu">
+                                                대구
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="busan">
+                                            <label class="form-check-label" for="busan">
+                                                부산
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="gwangju">
+                                            <label class="form-check-label" for="gwangju">
+                                                광주
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="ulsan">
+                                            <label class="form-check-label" for="ulsan">
+                                                울산
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="incheon">
+                                            <label class="form-check-label" for="incheon">
+                                                인천
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!--셀렉트 검색창 End----------------------------------->
+                </div>
+            </nav>
+            <!--컨텐츠 부분------------------------------------------------->
+            <div class="col-sm col-md-10">
+                <h3>검색 결과</h3>
+                <hr>
+                <ul id="list_order" class="nav nav-tabs ">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" th:href="@{#}">최신</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{#}">좋아요순</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{#}">신뢰도순</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{#}">낮은가격순</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{#}">높은가격순</a>
+                    </li>
+                </ul>
+                <div class="album  bg-light">
+                    <div class="d-grid d-md-flex justify-content-md-end">
+                        <button id="jjim_Del_Btn" class="btn-sm btn-primary m-2" type="button">
+                            좋아요 전체 삭제
+                        </button>
+                    </div>
+                    <div id="list_result" class="container">
+                        <div class="row row-cols-1 row-cols-md-3 g-4 card-group">
+                            <div class="col">
+                                <div class="card shadow-sm bg-white h-100" >
+                                    <img class="card-img-top" th:src="@{/img/audi.jpg}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <a th:href="@{#}"><h4 class="card-title">아우디</h4></a>
+                                        <p class="card-text">5000만원</p>
+                                        <p class="card-text">차량 정보</p>
+                                        <p class="card-text">조회수</p>
+                                    </div>
+                                    <div class="g-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <button type="button" class="btn  jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                                            <small class="text-muted">1분전</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm bg-white h-100">
+                                    <img class="card-img-top" th:src="@{/img/colorado.png}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <a th:href="@{#}"><h4 class="card-title">콜로라도</h4></a>
+                                        <p class="card-text">4000만원</p>
+                                        <p class="card-text">차량 정보</p>
+                                        <p class="card-text">조회수</p>
+                                    </div>
+                                    <div class="g-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <button type="button" class="btn  jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                                            <small class="text-muted">10분전</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm bg-white">
+                                    <img class="card-img-top" th:src="@{/img/avante.jpg}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <a th:href="@{#}"><h4 class="card-title">아반떼</h4></a>
+                                        <p class="card-text">1000만원</p>
+                                        <p class="card-text">차량 정보</p>
+                                        <p class="card-text">조회수</p>
+                                    </div>
+                                    <div class="g-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <button type="button" class="btn  jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                                            <small class="text-muted">10분전</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm bg-white">
+                                    <img class="card-img-top" th:src="@{/img/avanten.jpg}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <a th:href="@{#}"><h4 class="card-title">아반떼N</h4></a>
+                                        <p class="card-text">3000만원</p>
+                                        <p class="card-text">차량 정보</p>
+                                        <p class="card-text">조회수</p>
+                                    </div>
+                                    <div class="g-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <button type="button" class="btn  jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                                            <small class="text-muted">10분전</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</html>
