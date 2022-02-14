@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -25,6 +27,14 @@ public class UserController {
     public String Postjoin(UserEntity userEntity){
         int rs = service.joinProc(userEntity);
         System.out.println(rs);
-        return null;
+        return "redirect:/user/login";
+    }
+
+    @GetMapping("/idChk/{uid}")
+    @ResponseBody
+    public Map<String, Integer> idChk(@PathVariable String uid){ //uid에 아이디값이 담긴다
+        Map<String, Integer> res = new HashMap<>(); //암호화
+        res.put("result", service.idChk(uid));
+        return res; //json형태로 변환해서 날림
     }
 }

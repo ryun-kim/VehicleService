@@ -16,4 +16,18 @@ public class UserService {
         userEntity.setUpw(BCrypt.hashpw(userEntity.getUpw(), BCrypt.gensalt()));
         return mapper.insUser(userEntity);
     }
+
+    //아이디가 없으면 리턴1, 있으면 리턴 0
+    public int idChk(String uid){
+        UserEntity entity = new UserEntity();
+        entity.setUid(uid);
+
+        UserEntity result = mapper.selUser(entity);
+
+        if(result == null){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }

@@ -6,6 +6,7 @@ header {
     display: grid; grid-template-columns: 1fr 8fr 1fr;
     height: 100px;
     width: 100%;
+    font-family: 'Jua', sans-serif;
 }
 
 nav {
@@ -96,4 +97,5 @@ footer{
     height: 200px;
     width: 100%;
     background-color: gray;
+    font-family: 'Jua', sans-serif;
 }

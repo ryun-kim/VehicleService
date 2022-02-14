@@ -4,9 +4,9 @@
       layout:decorate="temp/thymeleaf_layout"> <!--타임리프를 사용하겠다는말-->
 
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!--<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap" rel="stylesheet">-->
     <!-- Required meta tags -->
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -35,11 +35,14 @@
                     </div>
                     <div class="col-6">
                         <input type="text" class="form-control form-control-sm inpControl border border-info" name="checkId"
-                               placeholder="아이디를 입력해주세요." th:field="*{uid}">
+                               placeholder="영문자, 숫자 포함 4~15글자입니다." th:field="*{uid}">
                     </div>
                     <div class="col-3 btnbox">
-                        <button type="button" class="btn btn-primary">중복체크</button>
+                        <button type="button" class="btn btn-primary" id="idBtnChk">중복체크</button>
                     </div>
+                </div>
+                <div class="idChkMsgBox">
+                    <span id="idChkMsg"></span>
                 </div>
                 <div class="row mt-3">
                     <div class="col-3 common1">
