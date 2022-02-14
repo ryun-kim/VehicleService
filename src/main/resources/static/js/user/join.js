@@ -8,7 +8,7 @@ for (let i = 1970; i <= 2022; i++) {
 }
 
 for (let i = 0; i < 12; i++) {
-    cmbmonth.options[i] = new Option(i + 1, i);
+    cmbmonth.options[i] = new Option(i + 1, i + 1);
 }
 
 cmbyear.options[new Date().getFullYear() - 1970].selected = "seleted"
@@ -25,7 +25,7 @@ function getLastDay(year, month) {
 
 function set_day() {
     let year = parseInt(cmbyear.options[cmbyear.selectedIndex].value); //value는 기본이 string이라 number로 형변환, number는 콘솔에서 보라색
-    let month = parseInt(cmbmonth.options[cmbmonth.selectedIndex].value); //실제값말고 value가져옴
+    let month = parseInt(cmbmonth.options[cmbmonth.selectedIndex].value - 1); //실제값말고 value가져옴
     //날짜간 덧셈, 뺄샘 과정이 일어날 수 있음으로 number로 형변환
     // console.log(year, month); //2022, 1
     let lastDay = getLastDay(year, month);
@@ -40,6 +40,7 @@ function m_change() {
     cmbday.options.length = 0;
     set_day();
 }
+
 /*---------------------------- 조건 체크 -----------------------------------*/
 const form = document.querySelector('form');
 if (form) {
@@ -47,25 +48,25 @@ if (form) {
     const pwRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/;
     const blank_pattern = /[\s]/g; //공백금지
     form.addEventListener('submit', (e) => {
-        if (form.checkId.value === '' || blank_pattern.test(form.checkId.value) == true) { //공백이있다면 true리턴
+        if (form.uid.value === '' || blank_pattern.test(form.uid.value) === true) { //공백이있다면 true리턴
             e.preventDefault();
             alert('체크된 항목은 필수사항입니다.')
-        } else if (form.passCheck.value === '' || blank_pattern.test(form.passCheck.value) == true) {
+        } else if (form.upw.value === '' || blank_pattern.test(form.upw.value) === true) {
             e.preventDefault();
             alert('체크된 항목은 필수사항입니다.')
-        } else if (form.rePassCheck.value === '' || blank_pattern.test(form.rePassCheck.value) == true) {
+        } else if (form.rePassCheck.value === '' || blank_pattern.test(form.rePassCheck.value) === true) {
             e.preventDefault();
             alert('체크된 항목은 필수사항입니다.')
-        } else if (form.nmCheck.value === '' || blank_pattern.test(form.nmCheck.value) == true) {
+        } else if (form.nm.value === '' || blank_pattern.test(form.nm.value) === true) {
             e.preventDefault();
             alert('체크된 항목은 필수사항입니다.')
-        } else if (form.pNumberCheck.value === '' || blank_pattern.test(form.pNumberCheck.value) == true) {
+        } else if (form.phnum.value === '' || blank_pattern.test(form.phnum.value) === true) {
             e.preventDefault();
             alert('체크된 항목은 필수사항입니다.')
-        } else if (!pwRegex.test(form.passCheck.value)) {
+        } else if (!pwRegex.test(form.upw.value)) {
             e.preventDefault();
             alert('비밀번호는 영문자, 숫자, 특수문자 포함 8~15글자입니다.')
-        } else if (form.passCheck.value !== form.rePassCheck.value) {
+        } else if (form.upw.value !== form.rePassCheck.value) {
             e.preventDefault();
             alert('비밀번호가 서로 다릅니다.')
         } else if (!form.agree.checked) {
