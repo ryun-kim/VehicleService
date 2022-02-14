@@ -42,15 +42,7 @@
     }
 
     if(listorderElem){
-        const listElem = listorderElem.querySelector('.nav-item');
-        nav-item.forEach(item=>{
-            item.addEventListener('click', ()=>{
-                const activeElem = item.firstChild;``
 
-                if(activeElem.classList.contains('active')){
 
-                }
-            })
-        });
     };
 }

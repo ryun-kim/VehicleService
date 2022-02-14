@@ -38,10 +38,10 @@
                     <a class="nav-link" href="#">판매정보</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">채팅목록</a>
+                    <a class="nav-link" th:href="@{/mypage/chat}">채팅목록</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">좋아요</a>
+                    <a class="nav-link active" th:href="@{/mypage/like}">좋아요</a>
                 </li>
             </ul>
         </nav>
@@ -56,7 +56,7 @@
                         <div class="container shadow-sm bg-white">
                             <div class="row">
                                 <picture class="col-sm col-md-3 g-3">
-                                    <a href="#"><img class="img-fluid" src="/static/img/audi.jpg"></a>
+                                    <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/audi.jpg}"></a>
                                 </picture>
                                 <div class="col-sm col-md-9 g-3">
                                     <a href="#"><h2 class="">아우디</h2></a>
@@ -84,7 +84,7 @@
                         <div class="container shadow-sm">
                             <div class="row">
                                 <picture class="col-sm col-md-3 g-3">
-                                    <a href="#"><img class="img-fluid" src="static/img/colorado.png"></a>
+                                    <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/colorado.png}"></a>
                                 </picture>
                                 <div class="col-sm col-md-9 g-3">
                                     <a href="#"><h2 class="">콜로라도</h2></a>
@@ -111,7 +111,7 @@
                         <div class="container shadow-sm">
                             <div class="row">
                                 <picture class="col-sm col-md-3 g-3">
-                                    <a href="#"><img class="img-fluid" src="/static/img/avante.jpg"></a>
+                                    <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/avante.jpg}"></a>
                                 </picture>
                                 <div class="col-sm col-md-9 g-3">
                                     <a href="#"><h2 class="">아반떼</h2></a>
@@ -131,7 +131,7 @@
                         <div class="container shadow-sm">
                             <div class="row">
                                 <picture class="col-sm col-md-3 g-3">
-                                    <a href="#"><img class="img-fluid" src="/static/img/avanten.jpg"></a>
+                                    <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/avanten.jpg}"></a>
                                 </picture>
                                 <div class="col-sm col-md-9 g-3">
                                     <a href="#"><h2 class="">아반떼N</h2></a>

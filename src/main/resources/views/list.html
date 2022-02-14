@@ -205,21 +205,21 @@
             <div class="col-sm col-md-10">
                 <h3>검색 결과</h3>
                 <hr>
-                <ul class="nav nav-tabs ">
+                <ul id="list_order" class="nav nav-tabs ">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="list_result" href="#">최신</a>
+                        <a class="nav-link" aria-current="page" th:href="@{#}">최신</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">좋아요순</a>
+                        <a class="nav-link" th:href="@{#}">좋아요순</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">신뢰도순</a>
+                        <a class="nav-link" th:href="@{#}">신뢰도순</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">낮은가격순</a>
+                        <a class="nav-link" th:href="@{#}">낮은가격순</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">높은가격순</a>
+                        <a class="nav-link" th:href="@{#}">높은가격순</a>
                     </li>
                 </ul>
                 <div class="album  bg-light">
@@ -229,90 +229,94 @@
                         </button>
                     </div>
                     <div id="list_result" class="container">
-                        <div class="row row-cols-1 row-cols-md-1 g-4">
+                        <div class="row row-cols-1 row-cols-md-3 g-4 card-group">
                             <div class="col">
-                                <div class="container shadow-sm bg-white">
-                                    <div class="row">
-                                        <picture class="col-sm col-md-3 g-3">
-                                            <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/audi.jpg}"></a>
-                                        </picture>
-                                        <div class="col-sm col-md-9 g-3">
-                                            <a href="#"><h2 class="">아우디</h2></a>
-                                            <p>5000만원</p>
-                                            <p>차량 정보</p>
-                                            <p>조회수</p>
-                                        </div>
-                                        <div class="g-2">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <button id="jjim" type="button" class="btn  jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
-                                                <small class="text-muted">1분전</small>
-                                            </div>
+                                <div class="card shadow-sm bg-white h-100" >
+                                    <img class="card-img-top" th:src="@{/img/audi.jpg}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <a th:href="@{#}"><h4 class="card-title">아우디</h4></a>
+                                        <p class="card-text">5000만원</p>
+                                        <p class="card-text">차량 정보</p>
+                                        <p class="card-text">조회수</p>
+                                    </div>
+                                    <div class="g-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <button type="button" class="btn  jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                                            <small class="text-muted">1분전</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="container shadow-sm">
-                                    <div class="row">
-                                        <picture class="col-sm col-md-3 g-3">
-                                            <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/colorado.png}"></a>
-                                        </picture>
-                                        <div class="col-sm col-md-9 g-3">
-                                            <a th:href="@{#}"><h2 class="">콜로라도</h2></a>
-                                            <p>4000만원</p>
-                                            <p class="">차량 정보</p>
-                                        </div>
-                                        <div class="g-2">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <button type="button" class="btn btn-outline-secondary jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
-                                                <small class="text-muted">10분전</small>
-                                            </div>
+                                <div class="card shadow-sm bg-white h-100">
+                                    <img class="card-img-top" th:src="@{/img/colorado.png}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <a th:href="@{#}"><h4 class="card-title">콜로라도</h4></a>
+                                        <p class="card-text">4000만원</p>
+                                        <p class="card-text">차량 정보</p>
+                                        <p class="card-text">조회수</p>
+                                    </div>
+                                    <div class="g-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <button type="button" class="btn  jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                                            <small class="text-muted">10분전</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="container shadow-sm">
-                                    <div class="row">
-                                        <picture class="col-sm col-md-3 g-3">
-                                            <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/avante.jpg}"></a>
-                                        </picture>
-                                        <div class="col-sm col-md-9 g-3">
-                                            <a th:href="@{#}"><h2 class="">아반떼</h2></a>
-                                            <p>1000만원</p>
-                                            <p class="">차량 정보</p>
-                                        </div>
-                                        <div class="g-2">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <button type="button" class="btn btn-outline-secondary jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
-                                                <small class="text-muted">1 시간전</small>
-                                            </div>
+                                <div class="card shadow-sm bg-white">
+                                    <img class="card-img-top" th:src="@{/img/avante.jpg}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <a th:href="@{#}"><h4 class="card-title">아반떼</h4></a>
+                                        <p class="card-text">1000만원</p>
+                                        <p class="card-text">차량 정보</p>
+                                        <p class="card-text">조회수</p>
+                                    </div>
+                                    <div class="g-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <button type="button" class="btn  jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                                            <small class="text-muted">10분전</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="container shadow-sm">
-                                    <div class="row">
-                                        <picture class="col-sm col-md-3 g-3">
-                                            <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/avanten.jpg}"></a>
-                                        </picture>
-                                        <div class="col-sm col-md-9 g-3">
-                                            <a th:href="@{#}"><h2 class="">아반떼N</h2></a>
-                                            <p>3000만원</p>
-                                            <p class="">차량 정보</p>
-                                        </div>
-                                        <div class="g-2">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <button type="button" class="btn btn-outline-secondary jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
-                                                <small class="text-muted">하루전</small>
-                                            </div>
+                                <div class="card shadow-sm bg-white">
+                                    <img class="card-img-top" th:src="@{/img/avanten.jpg}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <a th:href="@{#}"><h4 class="card-title">아반떼N</h4></a>
+                                        <p class="card-text">3000만원</p>
+                                        <p class="card-text">차량 정보</p>
+                                        <p class="card-text">조회수</p>
+                                    </div>
+                                    <div class="g-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <button type="button" class="btn  jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                                            <small class="text-muted">10분전</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
