@@ -4,9 +4,9 @@
       layout:decorate="temp/thymeleaf_layout"> <!--타임리프를 사용하겠다는말-->
 
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!--<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap" rel="stylesheet">-->
     <!-- Required meta tags -->
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -16,7 +16,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
-    <script defer th:src="@{/js/user/join.js}"></script>
+    <script th:inline="javascript" defer th:src="@{/js/user/join.js}"></script>
     <title>회원가입</title>
 </head>
 
@@ -24,94 +24,92 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
-            <form class="col-md-8 border" method="post">
+            <form class="col-md-8 border" method="post" th:action="@{/user/join}" th:object="${userEntity}">
                 <div class="row text_box">
                     <h1 class="col-md-4">회원가입</h1>
                     <h3 class="col-md-8">체크된 항목은 필수사항입니다.</h3>
                 </div>
                 <div class="row mt-3">
                     <div class="col-3 common">
-                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm lbclass" id="id_text">아이디
-                            √</label>
+                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm lbclass">아이디 √</label>
                     </div>
                     <div class="col-6">
                         <input type="text" class="form-control form-control-sm inpControl border border-info" name="checkId"
-                               id="colFormLabelSm" placeholder="아이디를 입력해주세요.">
+                               placeholder="영문자, 숫자 포함 4~15글자입니다." th:field="*{uid}">
                     </div>
                     <div class="col-3 btnbox">
-                        <button type="button" class="btn btn-primary">중복체크</button>
+                        <button type="button" class="btn btn-primary" id="idBtnChk">중복체크</button>
                     </div>
+                </div>
+                <div class="idChkMsgBox">
+                    <span id="idChkMsg"></span>
                 </div>
                 <div class="row mt-3">
                     <div class="col-3 common1">
-                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm lbclass2" id="id_text">비밀번호
-                            √</label>
+                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm lbclass2">비밀번호 √</label>
                     </div>
                     <div class="col-6">
                         <input type="password" class="form-control form-control-sm inpControl border border-info" name="passCheck"
-                               id="colFormLabelSm" placeholder="영문자, 숫자, 특수문자 포함 8~15글자입니다.">
+                               placeholder="영문자, 숫자, 특수문자 포함 8~15글자입니다." th:field="*{upw}">
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-3 common3">
-                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm lbclass3" id="id_text">비밀번호확인
-                            √</label>
+                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm lbclass3">비밀번호확인 √</label>
                     </div>
                     <div class="col-6">
                         <input type="password" class="form-control form-control-sm inpControl border border-info" name="rePassCheck"
-                               id="colFormLabelSm" placeholder="영문자, 숫자, 특수문자 포함 8~15글자입니다.">
+                               placeholder="영문자, 숫자, 특수문자 포함 8~15글자입니다.">
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-3 common">
-                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm lbclass2" id="id_text">닉네임
-                            √</label>
+                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm lbclass2">닉네임 √</label>
                     </div>
                     <div class="col-6">
                         <input type="text" class="form-control form-control-sm inpControl border border-info" name="nmCheck"
-                               id="colFormLabelSm" placeholder="닉네임을 입력해주세요.">
+                               placeholder="닉네임을 입력해주세요." th:field="*{nm}">
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-3 common1">
-                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm lbclass2"
-                               id="id_text">생년월일√</label>
+                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm lbclass2">생년월일√</label>
                     </div>
                     <table class="col-6 table">
                         <tr>
                             <td>
-                                <select id="cmbyear" name="year"></select>
+                                <select id="cmbyear" name="year" th:field="*{birthdayYear}"></select>
                             </td>
                             <td>
-                                <select id="cmbmonth" name="month" onchange="m_change();"></select>
+                                <select id="cmbmonth" name="month" onchange="m_change();" th:field="*{birthdayMonth}"></select>
                             </td>
                             <td>
-                                <select id="cmbday" name="day"></select>
+                                <select id="cmbday" name="day" th:field="*{birthdayDay}"></select>
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div class="row mt-3">
                     <div class="col-3 common">
-                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm lbclass" id="id_text">휴대폰 √</label>
+                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm lbclass">휴대폰 √</label>
                     </div>
                     <div class="col-6">
                         <input type="text" class="form-control form-control-sm inpControl border border-info" name="pNumberCheck"
-                               id="colFormLabelSm" placeholder="-없이 번호만 입력해주세요.">
+                               id="colFormLabelSm" placeholder="-없이 번호만 입력해주세요." th:field="*{phnum}">
                     </div>
                 </div>
                 <div class="row mt-3 mb-3">
                     <div class="col-3 common">
-                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm lbclass" id="id_text">이메일</label>
+                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm lbclass">이메일</label>
                     </div>
                     <div class="col-6">
                         <input type="text" class="form-control displayInblock email emailml border border-info" aria-label="Username"
-                               aria-describedby="basic-addon1">
+                               aria-describedby="basic-addon1" th:field="*{frontEmail}">
                         <span class="input-group-text displayInblock" id="basic-addon1">@</span>
-                        <select class="form-select displayInblock email border border-info" aria-label=".form-select-lg example">
-                            <option value="1" selected>naver.com</option>
-                            <option value="2">daum.net</option>
-                            <option value="3">gmail.com</option>
+                        <select class="form-select displayInblock email border border-info" aria-label=".form-select-lg example" th:field="*{backEmail}">
+                            <option th:value="naver.com" selected>naver.com</option>
+                            <option th:value="daum.net">daum.net</option>
+                            <option th:value="gmail.com">gmail.com</option>
                         </select>
                     </div>
                 </div>
@@ -191,7 +189,7 @@
                     <input type="checkbox" name="agree"> 모두 동의합니다.
                 </div>
                 <div class="checkbox mt-3 mb-3">
-                    <input type="submit" class="btn btn-primary w-25" value="회원가입"></input>
+                    <input type="submit" class="btn btn-primary w-25" value="회원가입">
                 </div>
             </form>
             <div class="col-md-2"></div>
