@@ -144,3 +144,8 @@ a:active {
     height: 88px;
     cursor: pointer;
 }
+
+.errMsg{
+    text-align: center;
+    font-size: large;
+}

@@ -46,7 +46,7 @@ aside{
     cursor: pointer;
 }
 
-#service:hover{
+#guide:hover{
     background-color: rgb(5, 52, 182);
     cursor: pointer;
 }

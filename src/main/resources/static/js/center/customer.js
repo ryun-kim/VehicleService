@@ -1,5 +1,5 @@
 const board = document.querySelector('#board');
-const service = document.querySelector('#service');
+const guide = document.querySelector('#guide');
 const introduction = document.querySelector('#introduction');
 const notice = document.querySelector('#notice');
 const menu = document.querySelector('#menu');
@@ -15,8 +15,8 @@ $(document).ready(function () {
         $("section").load("/center/questionboard");
     })
 
-    service.addEventListener('click', () => {
-        $("section").load("/center/service");
+    guide.addEventListener('click', () => {
+        $("section").load("/center/guide");
     })
 
     introduction.addEventListener('click', () => {

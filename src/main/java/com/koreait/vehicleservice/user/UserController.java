@@ -3,8 +3,10 @@ package com.koreait.vehicleservice.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +17,33 @@ public class UserController {
     @Autowired UserService service;
 
     @GetMapping("/login")
-    public void login() {}
+    public void getLogin(@ModelAttribute UserEntity userEntity) {}
+
+    @PostMapping("/login")
+    public String postLogin(UserEntity userEntity, RedirectAttributes rAttr) {
+        int rs = service.login(userEntity);
+        System.out.println(rs); //1: 로그인성공 2: 아이디없음 3: 비밀번호틀림
+        switch (rs) {
+            case 1:
+                return "redirect:/home";
+            case 2:
+                rAttr.addFlashAttribute("idMsg", "아이디를 잘못 입력하였습니다.");
+                rAttr.addFlashAttribute("id", userEntity.getUid());
+                return "redirect:/user/login";
+            //addAttribute는 쿼리스트링 이용 ?뒤에 파라미터보임, addFlashAttribute는 세션이용 ?뒤에 파라미터가 안보인다
+            case 3:
+                rAttr.addFlashAttribute("pwMsg", "비밀번호를 잘못 입력하였습니다.");
+                rAttr.addFlashAttribute("id", userEntity.getUid());
+                return "redirect:/user/login";
+        }
+        return null;
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession hs){
+        hs.invalidate();
+        return "redirect:/home";
+    }
 
     @GetMapping("/find")
     public void find() {}
@@ -24,7 +52,7 @@ public class UserController {
     public void getJoin(@ModelAttribute UserEntity userEntity) {}
 
     @PostMapping("/join")
-    public String Postjoin(UserEntity userEntity){
+    public String postJoin(UserEntity userEntity){
         int rs = service.joinProc(userEntity);
         System.out.println(rs);
         return "redirect:/user/login";

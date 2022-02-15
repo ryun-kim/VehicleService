@@ -14,8 +14,8 @@ public class CenterController {
     @GetMapping("/questionboard")
     public void questionboard(){}
 
-    @GetMapping("/service")
-    public void service(){}
+    @GetMapping("/guide")
+    public void guide(){}
 
     @GetMapping("/introduction")
     public void introduction(){}

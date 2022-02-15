@@ -19,9 +19,13 @@
             </div>
             <div id="loginbar_header">
                 <nav>
-                    <ul>
+                    <ul th:if="${session.loginUser == null}">
                         <li><a th:href="@{/user/login}">로그인</a></li>
                         <li><a th:href="@{/user/join}">회원가입</a></li>
+                    </ul>
+                    <ul th:if="${session.loginUser != null}">
+                        <li><a th:href="@{/mypage/userinfo}">마이페이지</a></li>
+                        <li><a th:href="@{/user/logout}">로그아웃</a></li>
                     </ul>
                 </nav>
             </div>
