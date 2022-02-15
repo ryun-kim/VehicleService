@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/board/detail.css}">
+</head>
+<body>
+
+<div class="header_bar">
+
+    <div>기본정보</div>
+    <div>옵션</div>
+    <div>설명글</div>
+    <div>성능점검</div>
+
+</div>
+<hr>
+<div class="container">
+    <div class="top">
+        <div class="slide_show">
+            <div class="slide">
+                <div class="prev"><span></span> </div>
+                <div class="slider-for">
+                    <div><img src="car1.jpg" alt="1"></div>
+                    <div><img src="car2.jpg" alt="2"></div>
+                    <div><img src="car3.jpg" alt="3"></div>
+                </div>
+                <div class="next">
+                    <span></span>
+                </div>
+            </div>
+            <div class="slider-navbar">
+                <div class="slider-nav">
+                    <div><img src="car1.jpg" alt="1"></div>
+                    <div><img src="car2.jpg" alt="2"></div>
+                    <div><img src="car3.jpg" alt="3"></div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div><span>차량명</span> <span class="icon">찜</span></div>
+            <div>판매자 정보
+                <div>닉네임</div>
+                <div>자기소개</div>
+                <div class="btnbox"><button class="btn">채팅하기</button></div>
+            </div>
+        </div>
+    </div>
+    <div><h1>상세옵션</h1>
+        <div id="infomation">
+            <div>차량 번호 :</div>
+            <div>변속기 타입 :</div>
+            <div>연료 타입 :</div>
+            <div>차량 색상 :</div>
+            <div>거래 지역 :</div>
+        </div>
+    </div>
+    <div><h1>설명글</h1>
+
+        <div id="textarea"></div>
+    </div>
+    <div><h1>성능점검</h1>
+
+
+        <img src="sample.jpg" alt="차량점검표">
+    </div>
+</div>
+</div>
+</body>
+<script defer th:src="@{/js/board/detail.js}"></script>
+</html>

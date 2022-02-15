@@ -1,0 +1,180 @@
+html,body{padding: 0; margin: 0;}
+*{box-sizing: border-box;}
+
+.type label{
+    border: solid 1px black;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+}
+#car_model{
+    display: flex;
+    gap: 5px;
+}
+
+input[type=radio],input[type=checkbox] {
+    display: none;
+}
+
+.hidden{
+    display: none;
+}
+
+.type input[type=radio]:checked+label{
+    background-color: rgb(45, 110, 209);
+    color: white;
+}
+
+
+#color,#area,#options{
+    display: flex;
+    gap: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#area label,.option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#color label,#area label{
+    border: solid 2px black;
+    width: 80px;
+    height: 80px;
+    border-radius: 20% 20% 20% 20%;
+    cursor: pointer;
+}
+
+#color input[type=radio]:checked+label{
+    border: solid 5px orange;
+}
+
+#area input[type=radio]:checked+label{
+    border: solid 5px orange;
+}
+
+
+#options input[type=checkbox]:checked+label>div{
+    border: solid 5px orange;
+}
+.option>img{
+    width: 50px;
+    height: 50px;
+}
+.option{
+    border: solid 2px black;
+    width: 80px;
+    height: 80px;
+    border-radius: 20% 20% 20% 20%;
+    cursor: pointer;
+}
+.imgbox{
+    border: 4px solid red;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+
+    color: red;
+
+    align-items: center;
+}
+
+
+
+.back_red{
+    background-color: red;
+}
+.back_blue{
+    background-color: blue;
+}
+.back_white{
+    background-color: white;
+}
+.back_black{
+    background-color: black;
+}
+.back_gray{
+    background-color: gray;
+}
+
+
+
+.input_color{
+    width: 60px;
+    height: 40px;
+    border-radius: 20% 20% 20% 20%;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+.input_color::-webkit-color-swatch{
+    border-radius: 15px;
+}
+#none:checked ~label .input_color{
+    display: inline-block;
+}
+#photo label{
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    border: 1px solid;
+    cursor: pointer;
+}
+#photo {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+#sub_photo div{
+    margin-bottom: 10px;
+}
+
+#content{
+    padding:0 5%;
+    padding-bottom: 2%;
+    border: solid 1px;
+}
+
+#text {
+    resize: none;
+    overflow: scroll;
+}
+
+.inbtn {
+    float: right;
+    margin: 15px 0;
+}
+.clear
+{
+    clear: both;
+}
+
+.in{
+    margin-top: 15px;
+}
+.in > div{
+    display: inline-block;
+}
+[contenteditable]{ /*글작정 기능 */
+    outline: 0px solid transparent;
+}
+
+#defult_img{
+    width:250px;
+    height:250px;
+    opacity: 0.3;
+    display: block;
+}
+.inbtn {
+    text-align: center;
+}
+
+.inbtn input{
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    font-size: 14px;
+}
