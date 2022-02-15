@@ -1,19 +1,19 @@
 {
     const jjimElemArr = document.querySelectorAll('.jjimBtn');
     const jjimdel = document.querySelector('#jjim_Del_Btn');
+    const titleElem = document.querySelector('#mypage_title');
 
     if(jjimElemArr){
         jjimElemArr.forEach(item=>{
             const jjimHeart = item.firstChild;
 
-
-            jjimdel.addEventListener('click',()=>{
-                jjimHeart.classList.remove('fa-solid');
-                jjimHeart.classList.add('fa-regular');
-                item.classList.remove('btn-outline-danger');
-            });
-
-
+            if(jjimdel){
+                jjimdel.addEventListener('click',()=>{
+                    jjimHeart.classList.remove('fa-solid');
+                    jjimHeart.classList.add('fa-regular');
+                    item.classList.remove('btn-outline-danger');
+                });
+            }
             item.addEventListener('click', ()=>{
                 if(jjimHeart.classList.contains('fa-solid')){
                     jjimHeart.classList.remove('fa-solid');
@@ -26,5 +26,11 @@
                 }
             });
         })
+    }
+
+    if(titleElem){
+        titleElem.addEventListener('click', ()=>{
+            location.href=`/mypage/userinfo`;
+        });
     }
 }

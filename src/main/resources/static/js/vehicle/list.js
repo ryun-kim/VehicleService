@@ -1,8 +1,7 @@
 {
-    const searchFrmElem = document.querySelector('#search_Result_Frm');
-    const jjimElemArr = document.querySelectorAll('.jjimBtn');
-    const listorderElem = document.querySelector('#list_order');
-
+    const searchFrmElem = document.querySelector('#search_Result_Frm'); //검색어입력창
+    const jjimElemArr = document.querySelectorAll('.jjimBtn'); //찜버튼
+    const listorderElem = document.querySelector('#list_order'); // 정렬방법 만들어야함!!!
 
     if(searchFrmElem){
         searchFrmElem.addEventListener('submit', ()=>{
@@ -34,7 +33,7 @@
     }
 
     if(listorderElem){
+        
+    }
 
-
-    };
 }
