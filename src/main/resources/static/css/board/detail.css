@@ -1,0 +1,94 @@
+
+*{box-sizing: border-box;}
+
+html,body{padding: 0; margin: 0;}
+a{text-decoration: none; color: black;}
+ul,li{list-style: none;}
+
+.header_bar{ text-align: center; height:30px; margin-top: 40px;display: grid; grid-template-columns: repeat(4,1fr); }
+.top{display: grid; grid-template-columns: repeat(2,1fr);
+    grid-column-gap: 20px;}
+
+.slider-nav{
+    width: 100px;
+}
+.slider-nav img {
+    width: 30px;
+    height: 30px;
+    border: 1px solid ;
+}
+/* 위에있는이미지 를 감싼 div 크기 */
+.slider-for {
+    display: grid;
+    border: 1px solid ;
+}
+.slider-for img{
+    width: 100%;
+}
+.slide{
+    border: 1px solid ;
+    display: grid;
+    grid-template-columns: 60px 1fr 60px;  /*슬라이드 쇼 너비 크기*/
+}
+
+#textarea{
+    border: 1px solid;
+    width: 80%;
+    height: 300px;}
+
+.prev,.next{
+    border: solid 1px;
+}
+.slider-navbar{display: flex; justify-content: center;}
+
+.header_bar div{cursor: pointer;}
+
+#infomation{
+    font-size: 25px;
+}
+
+
+
+.next.slick-arrow,.prev.slick-arrow{
+    display: grid;
+    background-color: black;
+    justify-items: center;
+    align-items: center;}
+
+
+.next span::after,.prev span::after {
+    content: '';
+    width: 22px; /* 사이즈 */
+    height: 22px; /* 사이즈 */
+    border-top: 8px solid white; /* 선 두께 */
+    border-right: 8px solid white; /* 선 두께 */
+    display: inline-block;
+}
+
+.prev span::after{
+    transform: rotate(225deg); /* 각도 */
+}
+
+.next span::after{
+    transform: rotate(45deg); /* 각도 */
+}
+
+.slick-slide{
+    width: 100px;
+}
+
+.btn {
+    width: 360px;
+    height: 100px;
+    margin: 0 auto;
+    background-color: skyblue;
+    color: white;
+    font-size: 25px;
+    border-radius:1.2em;
+}
+
+.btnbox{
+    text-align: center;
+}
+
+

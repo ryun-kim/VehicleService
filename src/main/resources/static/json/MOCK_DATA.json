@@ -1,0 +1,903 @@
+{
+    "result": [
+      {
+        "country": "국산",
+        "companyList": [ {
+            "company": "르노삼성",
+            "modelList": [
+                {
+                    "model": "SM5",
+                    "detailModelList": [
+                        {
+                            "detailModel": "SM5-노바"
+                        },
+                        {
+                            "detailModel": "뉴SM5 플래티넘"
+                        },
+                        {
+                            "detailModel": "뉴SM5(10년~12년)"
+                        },
+                        {
+                            "detailModel": "뉴SM5(05년~07년)"
+                        },
+                        {
+                            "detailModel": "SM5 뉴 임프레션"
+                        }
+                    ]
+                },
+                {
+                    "model": "SM6",
+                    "detailModelList": [
+                        {
+                            "detailModel": "더 뉴 SM6"
+                        },
+                        {
+                            "detailModel": "SM6"
+                        }
+                    ]
+                },
+                {
+                    "model": "SM7",
+                    "detailModelList": [
+                        {
+                            "detailModel": "SM7-노바"
+                        },
+                        {
+                            "detailModel": "All New SM7"
+                        },
+                        {
+                            "detailModel": "SM7 New Art"
+                        },
+                        {
+                            "detailModel": "SM7"
+                        }
+                    ]
+                },
+                {
+                    "model": "QM5",
+                    "detailModelList": [
+                        {
+                            "detailModel": "QM5 네오"
+                        },
+                        {
+                            "detailModel": "뉴QM5"
+                        },
+                        {
+                            "detailModel": "QM5"
+                        }
+                    ]
+                },
+                {
+                    "model": "QM6",
+                    "detailModelList": [
+                        {
+                            "detailModel": "더 뉴 QM6"
+                        },
+                        {
+                            "detailModel": "QM6"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "company": "쌍용",
+            "modelList": [
+                {
+                    "model": "코란도",
+                    "detailModelList": [
+                        {
+                            "detailModel": "뷰티풀 코란도"
+                        },
+                        {
+                            "detailModel": "뉴 스타일 코란도 C"
+                        },
+                        {
+                            "detailModel": "더 뉴 코란도 스포츠"
+                        },
+                        {
+                            "detailModel": "뉴코란도C"
+                        },
+                        {
+                            "detailModel": "코란도 투리스모"
+                        }
+                    ]
+                },
+                {
+                    "model": "렉스턴",
+                    "detailModelList": [
+                        {
+                            "detailModel": "더 뉴 렉스턴 스포츠"
+                        },
+                        {
+                            "detailModel": "더 뉴 렉스턴 스포츠 칸"
+                        },
+                        {
+                            "detailModel": "올 뉴 렉스턴"
+                        },
+                        {
+                            "detailModel": "렉스턴 스포츠 칸"
+                        },
+                        {
+                            "detailModel": "렉스턴 스포츠"
+                        }
+                    ]
+                },
+                {
+                    "model": "로디우스",
+                    "detailModelList": [
+                        {
+                            "detailModel": "로디우스 유로"
+                        },
+                        {
+                            "detailModel": "뉴로디우스"
+                        },
+                        {
+                            "detailModel": "로디우스"
+                        }
+                    ]
+                },
+                {
+                    "model": "무쏘",
+                    "detailModelList": [
+                        {
+                            "detailModel": "무쏘 스포츠"
+                        },
+                        {
+                            "detailModel": "뉴무쏘"
+                        },
+                        {
+                            "detailModel": "뉴무쏘 밴"
+                        },
+                        {
+                            "detailModel": "무쏘"
+                        }
+                    ]
+                },
+                {
+                    "model": "액티언",
+                    "detailModelList": [
+                        {
+                            "detailModel": "액티언 스포츠"
+                        },
+                        {
+                            "detailModel": "액티언"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "company": "기아",
+            "modelList": [
+                {
+                    "model": "카니발",
+                    "detailModelList": [
+                        {
+                            "detailModel": "카니발 4세대"
+                        },
+                        {
+                            "detailModel": "더 뉴 카니발"
+                        },
+                        {
+                            "detailModel": "올 뉴 카니발"
+                        },
+                        {
+                            "detailModel": "카니발 R"
+                        },
+                        {
+                            "detailModel": "뉴카니발"
+                        }
+                    ]
+                },
+                {
+                    "model": "모닝",
+                    "detailModelList": [
+                        {
+                            "detailModel": "모닝 어반"
+                        },
+                        {
+                            "detailModel": "올 뉴 모닝(17년~20년)"
+                        },
+                        {
+                            "detailModel": "올 뉴 모닝(11년~15년)"
+                        },
+                        {
+                            "detailModel": "더 뉴 모닝"
+                        },
+                        {
+                            "detailModel": "뉴 모닝"
+                        }
+                    ]
+                },
+                {
+                    "model": "K5",
+                    "detailModelList": [
+                        {
+                            "detailModel": "K5 3세대"
+                        },
+                        {
+                            "detailModel": "K5 하이브리드 3세대"
+                        },
+                        {
+                            "detailModel": "더 뉴 K5 하이브리드 2세대"
+                        },
+                        {
+                            "detailModel": "더 뉴 K5 2세대"
+                        },
+                        {
+                            "detailModel": "K5 하이브리드"
+                        }
+                    ]
+                },
+                {
+                    "model": "K7",
+                    "detailModelList": [
+                        {
+                            "detailModel": "K7 프리미어"
+                        },
+                        {
+                            "detailModel": "K7 프리미어 하이브리드"
+                        },
+                        {
+                            "detailModel": "올 뉴 K7 하이브리드"
+                        },
+                        {
+                            "detailModel": "올 뉴 K7"
+                        },
+                        {
+                            "detailModel": "K7하이브리드"
+                        }
+                    ]
+                },
+                {
+                    "model": "K9",
+                    "detailModelList": [
+                        {
+                            "detailModel": "더 뉴 K9 2세대"
+                        },
+                        {
+                            "detailModel": "더 K9"
+                        },
+                        {
+                            "detailModel": "더 뉴K9"
+                        },
+                        {
+                            "detailModel": "K9"
+                        }
+                    ]
+                }
+            ]
+        },
+          {
+            "company": "현대",
+            "modelList": [
+              {
+                "model": "그랜저",
+                "detailModelList": [
+                  {
+                    "detailModel": "더 뉴 그랜저IG"
+                  },
+                  {
+                    "detailModel": "그랜저 IG 하이브리드"
+                  },
+                  {
+                    "detailModel": "더 뉴 그랜저 IG 하이브리드"
+                  },
+                  {
+                    "detailModel": "그랜저IG"
+                  },
+                  {
+                    "detailModel": "그랜저HG"
+                  },
+                  {
+                    "detailModel": "그랜져 뉴 럭셔리"
+                  },
+                  {
+                    "detailModel": "뉴 그랜저 XG"
+                  }
+                ]
+              },
+              {
+                "model": "아반떼",
+                "detailModelList": [
+                  {
+                    "detailModel": "아반떼 하이브리드 (CN7)"
+                  },
+                  {
+                    "detailModel": "아반떼 (CN7)"
+                  },
+                  {
+                    "detailModel": "더 뉴 아반떼 AD"
+                  },
+                  {
+                    "detailModel": "더 뉴 아반떼"
+                  },
+                  {
+                    "detailModel": "아반떼 MD"
+                  },
+                  {
+                    "detailModel": "아반떼 HD"
+                  },
+                  {
+                    "detailModel": "뉴 아반떼 XD"
+                  },
+                  {
+                    "detailModel": "아반떼 쿠페"
+                  }
+                ]
+              },
+              {
+                "model": "투싼",
+                "detailModelList": [
+                  {
+                    "detailModel": "투싼 (NX4)"
+                  },
+                  {
+                    "detailModel": "투싼 하이브리드 (NX4)"
+                  },
+                  {
+                    "detailModel": "뉴 투싼 ix"
+                  },
+                  {
+                    "detailModel": "올 뉴 투싼"
+                  },
+                  {
+                    "detailModel": "투싼"
+                  },
+                  {
+                    "detailModel": "투싼 ix"
+                  }
+                ]
+              },{
+                "model": "쏘나타",
+                "detailModelList": [
+                  {
+                    "detailModel": "쏘나타 (DN8)"
+                  },
+                  {
+                    "detailModel": "쏘나타 뉴 라이즈"
+                  },
+                  {
+                    "detailModel": "쇼나타 뉴 라이즈"
+                  },
+                  {
+                    "detailModel": "LF 쏘나타"
+                  },
+                  {
+                    "detailModel": "쏘나타 하이브리드"
+                  },
+                  {
+                    "detailModel": "NF 쏘나타 트랜스폼"
+                  },
+                  {
+                    "detailModel": "쏘나타 더 브릴리언트"
+                  }
+                ]
+              },{
+                "model": "코나",
+                "detailModelList": [
+                  {
+                    "detailModel": "더 뉴 코나"
+                  },
+                  {
+                    "detailModel": "코나 하이브리드"
+                  },
+                  {
+                    "detailModel": "코나"
+                  },
+                  {
+                    "detailModel": "더 뉴 코나 하이브리드"
+                  },
+                  {
+                    "detailModel": "코나 일렉트릭"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "company": "제네시스",
+            "modelList": [
+              {
+                "model": "G80",
+                "detailModelList": [
+                  {
+                    "detailModel": "일렉트리파이드 G80 (RG3)"
+                  },
+                  {
+                    "detailModel": "G80 (RG3)"
+                  }
+                ]
+              },
+              {
+                "model": "G70",
+                "detailModelList": [
+                  {
+                    "detailModel": "더 뉴 G70"
+                  },
+                  {
+                    "detailModel": "G70"
+                  }
+                ]
+              },
+              {
+                "model": "EQ900",
+                "detailModelList": [
+                  {
+                    "detailModel": "EQ900"
+                  }
+                ]
+              },
+              {
+                "model": "G90",
+                "detailModelList": [
+                  {
+                    "detailModel": "G90"
+                  }
+                ]
+              },
+              {
+                "model": "GV60",
+                "detailModelList": [
+                  {
+                    "detailModel": "GV60"
+                  }
+                ]
+              },
+              {
+                "model": "GV70",
+                "detailModelList": [
+                  {
+                    "detailModel": "GV70"
+                  }
+                ]
+              },
+              {
+                "model": "GV80",
+                "detailModelList": [
+                  {
+                    "detailModel": "GV80"
+                  }
+                ]
+              }
+            ]
+        }
+        ]
+      },
+      {
+        "country": "수입",
+        "companyList": [
+            {
+                "company": "포드",
+                "modelList": [
+                            {
+                                "model": "F-150",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "F-150"
+                                },
+                                {
+                                    "detailModel": "그랜져-10"
+                                }
+                                ]
+                            },
+                            {
+                                "model": "익스플로러",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "익스플로러"
+                                },
+                                {
+                                    "detailModel": "익스플로러6세대"
+                                }
+                                ]
+                            },
+                            {
+                                "model": "머스탱",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "머스탱"
+                                }
+                                ]
+                            },
+                            {
+                                "model": "포커스",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "포커스"
+                                }
+                                ]
+                            },
+                            {
+                                "model": "몬데오",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "몬데오"
+                                },
+                                {
+                                    "detailModel": "몬데오 3세대"
+                                },
+                                {
+                                    "detailModel": "몬데오 4세대"
+                                }
+                                ]
+                            }
+                        ]
+                },
+                {
+                    "company": "랜드로버",
+                    "modelList": [
+                            {
+                                "model": "디스커버리",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "디스커버리5"
+                                },
+                                {
+                                    "detailModel": "디스커버리4"
+                                },
+                                {
+                                    "detailModel": "디스커버리3"
+                                },
+                                {
+                                    "detailModel": "디스커버리2"
+                                },
+                                {
+                                    "detailModel": "디스커버리"
+                                }
+                                ]
+                            },
+                                {
+                                "model": "디스커버리 스포츠",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "디스커버리 스포츠 2세대"
+                                },
+                                {
+                                    "detailModel": "디스커버리 스포츠 "
+                                }
+                                ]
+                            },
+                            {
+                                "model": "디펜더",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "디펜더 (L663)"
+                                },
+                                {
+                                    "detailModel": "디펜더"
+                                }
+                                ]
+                            },
+                            {
+                                "model": "레인지로버",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "레인지로버"
+                                },
+                                {
+                                    "detailModel": "레인지로버 4세대"
+                                }
+                                ]
+                            },
+                            {
+                                "model": "레인지로버 스포츠",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "레인지로버 스포츠"
+                                },
+                                {
+                                    "detailModel": "레인지로버 스포츠 2세대"
+                                }
+                                ]
+                            }
+                    ]
+                },
+                {
+                    "company": "링컨",
+                    "modelList": [
+                            {
+                                "model": "네비게이터",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "네비게이터"
+                                }
+                                ]
+                            },
+                            {
+                                "model": "에비게이터",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "에비게이터 2세대"
+                                },
+                                {
+                                    "detailModel": "에비게이터 "
+                                }
+                                ]
+                            },
+                            {
+                                "model": "컨티넨탈",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "컨티넨탈 10세대"
+                                },
+                                {
+                                    "detailModel": "컨티넨탈"
+                                }
+                                ]
+                            },
+                            {
+                                "model": "MKX",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "MKX"
+                                },
+                                {
+                                    "detailModel": "MKX 2세대"
+                                },
+                                {
+                                    "detailModel": "뉴 MKX"
+                                }
+                                ]
+                            },
+                            {
+                                "model": "MKZ",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "뉴 MKZ"
+                                },
+                                {
+                                    "detailModel": "MKZ"
+                                }
+                                ]
+                            }
+                        ]
+                },
+                {
+                    "company": "람보르기니",
+                    "modelList": [
+                            {
+                                "model": "가야르도",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "가야르도"
+                                }
+                                ]
+                            },
+                            {
+                                "model": "디아블로",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "디아블로"
+                                }
+                                ]
+                            },
+                            {
+                                "model": "무르시엘라고",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "무르시엘라고"
+                                }
+                                ]
+                            },
+                            {
+                                "model": "아벤타도르",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "아벤타도르"
+                                        }
+                                ]
+                            },
+                            {
+                                "model": "우라칸",
+                                "detailModelList": [
+                                {
+                                    "detailModel": "우라칸"
+                                }
+                                ]
+                            }
+                            ]
+                        },
+                        
+                    {
+                        "company": "지프",
+                        "modelList": [
+                                {
+                                    "model": "글래디에이터",
+                                    "detailModelList": [
+                                    {
+                                        "detailModel": "글래디에이터"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "model": "랭글러",
+                                    "detailModelList": [
+                                    {
+                                        "detailModel": "랭글러 (JL)"
+                                    },
+                                    {
+                                        "detailModel": "랭글러 (JK)"
+                                    },
+                                    {
+                                        "detailModel": "랭글러 (TJ)"
+                                    },
+                                    {
+                                        "detailModel": "랭글러 (YJ)"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "model": "레니게이드",
+                                    "detailModelList": [
+                                    {
+                                        "detailModel": "레니게이드"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "model": "체로키",
+                                    "detailModelList": [
+                                    {
+                                        "detailModel": "그랜드 체로키 L"
+                                    },
+                                    {
+                                        "detailModel": "그랜드 체로키 "
+                                    },
+                                    {
+                                        "detailModel": "체로키 (KL)"
+                                    },
+                                    {
+                                        "detailModel": "체로키"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "model": "커맨더",
+                                    "detailModelList": [
+                                    {
+                                        "detailModel": "커맨더"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "model": "컴패스",
+                                    "detailModelList": [
+                                    {
+                                        "detailModel": "컴패스"
+                                    }
+                                    ]
+                                }
+                                ]
+                            },
+          {
+            "company": "BMW",
+            "modelList": [
+              {
+                "model": "X1",
+                "detailModelList": [
+                  {
+                    "detailModel": "X1(F48)(16년~현재)"
+                  },
+                  {
+                    "detailModel": "X1(E84)(10년~15년)"
+                  }
+                ]
+              },
+              {
+                "model": "M2",
+                "detailModelList": [
+                  {
+                    "detailModel": "M2(F87)(16년~현재)"
+                  }
+                ]
+              },
+              {
+                "model": "Z4",
+                "detailModelList": [
+                  {
+                    "detailModel": "Z4(G29)(19년~현재)"
+                  },
+                  {
+                    "detailModel": "Z4(E89)(09년~16sus)"
+                  },
+                  {
+                    "detailModel": "Z4(E85)(02년~08년)"
+                  }
+                ]
+              },
+              {
+                "model": "X5M",
+                "detailModelList": [
+                  {
+                    "detailModel": "X5M(G05)(20년~현재)"
+                  },
+                  {
+                    "detailModel": "X5M(F15)(15년~18년)"
+                  },
+                  {
+                    "detailModel": "X5M(E70)(10년~13년)"
+                  }
+                ]
+              },
+              {
+                "model": "그란투리스모(GT)",
+                "detailModelList": [
+                  {
+                    "detailModel": "6시리즈 GT(G32)(17년~현재)"
+                  },
+                  {
+                    "detailModel": "3시리즈 GT(F34)(13년~현재)"
+                  },
+                  {
+                    "detailModel": "5시리즈 GT(F07)(10년~17년)"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "company": "닛산",
+            "modelList": [
+              {
+                "model": "리프",
+                "detailModelList": [
+                  {
+                    "detailModel": "리프(ZE1)(19년~현재)"
+                  },
+                  {
+                    "detailModel": "리프(10년~18년)"
+                  }
+                ]
+              },
+              {
+                "model": "패스파인더",
+                "detailModelList": [
+                  {
+                    "detailModel": "패스파인더 4세대(13년~현재)"
+                  },
+                  {
+                    "detailModel": "패스파인더(86년~12년)"
+                  }
+                ]
+              },
+              {
+                "model": "알티마",
+                "detailModelList": [
+                  {
+                    "detailModel": "알티마(L34)(19년~현재)"
+                  },
+                  {
+                    "detailModel": "알티마(93년~18년)"
+                  }
+                ]
+              },
+              {
+                "model": "맥시마",
+                "detailModelList": [
+                  {
+                    "detailModel": "맥시마(A36)(15년~현재)"
+                  },
+                  {
+                    "detailModel": "맥시마(76년~14년)"
+                  }
+                ]
+              },
+              {
+                "model": "무라노",
+                "detailModelList": [
+                  {
+                    "detailModel": "무라노(Z52)(15년~현재)"
+                  },
+                  {
+                    "detailModel": "무라노(02년~14년)"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
