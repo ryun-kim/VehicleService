@@ -1,0 +1,33 @@
+/* 마이페이지 > 회원정보수정 */
+
+.userinfo_modify_container > div {
+    margin-bottom: 40px;
+}
+.userinfo_modify_container > div > div {
+    margin-bottom: 10px;
+}
+.userinfo_modify_container > div > div > div {
+    margin-bottom: 10px;
+}
+.userinfo_modify_container > div > div input {
+    border-top: none; border-right: none; border-left: none;
+    border-bottom: 1px solid gray;
+    font-size: 14px;
+}
+/* 회원정보수정 > 이메일 인증 ----------------------------------- [start] */
+#basic_info_container button {
+    border: 1px solid gray;
+    border-radius: 3px; padding: 3px 8px;
+    font-size: 14px;
+}
+/* 회원정보수정 > 이메일 인증 ----------------------------------- [end] */
+
+/* 회원정보수정 > 비밀번호변경 ---------------------------------- [start] */
+/* 회원정보수정 > 비밀번호변경 ---------------------------------- [end] */
+
+/* 회원정보수정 > 수정 버튼 ------------------------------------- [start] */
+.userinfo_modify_container > div > input {
+    width: 100%;
+    padding: 5px;
+}
+/* 회원정보수정 > 수정 버튼 ------------------------------------- [end] */
