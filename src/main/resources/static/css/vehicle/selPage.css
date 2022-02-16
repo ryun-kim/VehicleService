@@ -144,8 +144,14 @@ input[type=radio],input[type=checkbox] {
 }
 
 .inbtn {
-    float: right;
-    margin: 15px 0;
+    text-align: center;
+}
+
+.inbtn input{
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    font-size: 14px;
 }
 .clear
 {
@@ -162,19 +168,9 @@ input[type=radio],input[type=checkbox] {
     outline: 0px solid transparent;
 }
 
-#defult_img{
+#main_image{
     width:250px;
     height:250px;
     opacity: 0.3;
     display: block;
-}
-.inbtn {
-    text-align: center;
-}
-
-.inbtn input{
-    width: 100px;
-    height: 40px;
-    margin: 10px;
-    font-size: 14px;
 }
