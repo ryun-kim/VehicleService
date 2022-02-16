@@ -12,11 +12,11 @@ public class MyUserUtils {
     @Autowired private HttpSession hs;
 
     public void setLoginUser(UserEntity entity){
-        hs.setAttribute("loginuser", entity);
+        hs.setAttribute("loginUser", entity);
     }
 
     public UserEntity getLoginUser(){
-        return (UserEntity) hs.getAttribute("loginuser");
+        return (UserEntity) hs.getAttribute("loginUser");
     }
 
     public int getLoginUserPk(){

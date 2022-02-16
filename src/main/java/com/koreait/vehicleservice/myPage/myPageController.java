@@ -13,4 +13,7 @@ public class myPageController {
 
     @GetMapping("/like")
     public void like(){}
+
+    @GetMapping("/userinfo")
+    public void userinfo(){}
 }

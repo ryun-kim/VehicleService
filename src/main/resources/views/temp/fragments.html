@@ -10,8 +10,8 @@
             <div id="menubar_header">
                 <nav>
                     <ul>
-                        <li><a th:href="@{/list}">국산</a></li>
-                        <li><a th:href="@{/list}">수입</a></li>
+                        <li><a th:href="@{/vehicle/list}">국산</a></li>
+                        <li><a th:href="@{/vehicle/list}">수입</a></li>
                         <li><a href="#">내차팔기</a></li>
                         <li><a th:href="@{/center/customer}">고객센터</a></li>
                     </ul>
@@ -19,9 +19,13 @@
             </div>
             <div id="loginbar_header">
                 <nav>
-                    <ul>
+                    <ul th:if="${session.loginUser == null}">
                         <li><a th:href="@{/user/login}">로그인</a></li>
                         <li><a th:href="@{/user/join}">회원가입</a></li>
+                    </ul>
+                    <ul th:if="${session.loginUser != null}">
+                        <li><a th:href="@{/mypage/userinfo}">마이페이지</a></li>
+                        <li><a th:href="@{/user/logout}">로그아웃</a></li>
                     </ul>
                 </nav>
             </div>
@@ -30,7 +34,19 @@
 </th:block>
 <th:block th:fragment="footer">
     <footer>
-        footer
+        <div>
+            <div id="img_logo_footer">
+<!--                <img th:src="@{/img/chacha_logo1.png}" alt="Logo">-->
+            </div>
+            <div>
+                <div>
+                    명칭 : 내차네차  |  등록연월 : 2021.12.17  |  발행연월 : 2022.03.14<br>
+                    발행인 : 김재륜, 신재완, 이승준, 하승화<br>
+                    전화번호 : 053-710-5890  |  Email : asv@naver.com<br>
+                    발행소 : https://github.com/jaewanjaewan/VehicleService
+                </div>
+            </div>
+        </div>
     </footer>
 </th:block>
 

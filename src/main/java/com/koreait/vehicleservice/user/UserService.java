@@ -1,5 +1,6 @@
 package com.koreait.vehicleservice.user;
 
+import com.koreait.vehicleservice.MyUserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.mindrot.jbcrypt.BCrypt;
@@ -8,6 +9,7 @@ import org.mindrot.jbcrypt.BCrypt;
 public class UserService {
 
     @Autowired UserMapper mapper;
+    @Autowired MyUserUtils userUtils;
 
     public int joinProc(UserEntity userEntity){
         UserEntity entity = new UserEntity();
@@ -29,5 +31,18 @@ public class UserService {
         } else {
             return 0;
         }
+    }
+
+    public int login(UserEntity entity){
+        UserEntity loginUser = null;
+        loginUser = mapper.selUser(entity);
+        if(loginUser == null){
+            return 2; //아이디 없음
+        } else if(BCrypt.checkpw(entity.getUpw(), loginUser.getUpw())){
+            loginUser.setUpw(null);
+            userUtils.setLoginUser(loginUser);
+            return 1; //로그인 성공
+        }
+        return 3; //비밀번호 틀림
     }
 }

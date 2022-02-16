@@ -48,6 +48,8 @@ if (form) {
     const pwRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/;
     //4~15자 영문자, 숫자 포함
     const idRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,15}$/;
+    //길이 11자, 숫자만
+    const phnRegex = /^(?=.*\d)[\d]{11}$/;
     const blank_pattern = /[\s]/g; //공백금지
     const idBtnChk = form.querySelector('#idBtnChk');
     const idChkMsg = form.querySelector('#idChkMsg');
@@ -108,6 +110,9 @@ if (form) {
                 case 2: e.preventDefault(); alert('아이디 중복체크를 해주세요.'); break;
                 case 0: e.preventDefault(); alert('다른 아이디를 사용해주세요.'); break;
             }
+        } else if(!phnRegex.test(form.phnum.value)){
+            e.preventDefault();
+            alert('휴대폰번호는 11자, 숫자만 입력가능합니다.')
         } else if (!form.agree.checked) {
             e.preventDefault();
             alert('약관에 동의해주세요.')
