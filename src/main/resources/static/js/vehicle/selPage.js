@@ -3,6 +3,7 @@
 
     const fm = document.querySelector('#in_form');
     var fileInfoArr=[];
+    const pattern = /\d{2,3}[가-힣]{1}\d{4}$/;
 
     //차량이미지 클릭시 삭제.
     function fileRemove(index) {
@@ -34,6 +35,7 @@
             fileInfoArr.filter(
                 (element) => true
             );
+
         return newArr.length;
         // console.log("전송될 파일목록")
         // console.log(newArr)
@@ -107,21 +109,24 @@
 
 
     function mainImg(input) {  //차량 대표사진
-        if (input.files && input.files[0]) {
+        if (input.files && input.files[0]) { //파일업로드 선택
+            const main_image = document.getElementById('main_image');
             const reader = new FileReader();
 
             reader.onload = (e) => {
-                const main_image = document.getElementById('main_image');
-                const defult_img = document.getElementById('defult_img');
+
                 main_image.style.width="200px";
                 main_image.style.height="200px";
                 main_image.style.margin="25px";
-                main_image.style.display="block"
+                main_image.style.opacity="1";
                 main_image.src = e.target.result;
-                defult_img.style.display="none"
+
 
             }
             reader.readAsDataURL(input.files[0]);
+        }else{  //파일업로드 취소
+            main_image.src = 'main_car.png';
+            main_image.style.opacity="0.3";
         }
     }
 
@@ -130,7 +135,7 @@
     var modelList;   // 모델리스트
     var detailModelList; //세부모델리스트
 
-    fetch("/json/MOCK_DATA.json") //json파일 가져오기
+    fetch("../MOCK_DATA.json") //json파일 가져오기
         .then(response => {
             return response.json();
         }).then(jsondata =>
@@ -194,7 +199,46 @@
         return target;
     }
 
-    function sub_fileBtn(){ //파일추가 버튼 클릭시 폴더열기
+
+    const btnSubmit = document.querySelector('#btnSubmit');
+    btnSubmit.addEventListener('click',input_check)//submit 클릭
+
+
+    function input_check(){ //submit 클릭시 입력체크
+        const car_number= fm.car_number
+        const price= fm.price
+        const street= fm.street
+        const main_img=document.getElementById('file_upload').value;
+        const detailModel = document.getElementById('sel_detailModel').value;
+        var result= pattern.test(car_number.value);
+        if(result===false || car_number.value==''){
+            alert("차량번호를 다시 확인 해 주십시오")
+            car_number.focus();
+            return;
+
+        }else if(detailModel==='세부모델명'){
+            alert("등록할 차량모델을 선택해 주십시오")
+            return;
+
+        }else if(price.value==''){
+            alert("가격을 작성해 주십시오")
+            price.focus();
+            return;
+
+        }else if(street.value==''){
+            alert("주행거리를 작성해 주십시오")
+            street.focus();
+            return;
+        }else if(main_img==''){
+            alert("차량 대표사진을 설정해 주십시오")
+            return;
+        }
+        fm.submit();
+    }
+
+
+
+    function sub_fileBtn(){ //파일추가시 폴더열기
         document.querySelector('#sub_file').click();
     }
 

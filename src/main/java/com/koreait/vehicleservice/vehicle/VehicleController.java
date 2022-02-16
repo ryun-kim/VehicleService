@@ -5,9 +5,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/vehicle")
+@RequestMapping("vehicle")
 public class VehicleController {
 
     @GetMapping("/list")
     public void list() {}
+
+
+    @GetMapping("/detail")
+    public void detail(){
+
+    }
+
+    @GetMapping("/selPage")
+    public void selPage(){
+
+    }
 }
