@@ -28,6 +28,7 @@ header > div {
 header #image_logo_home {
     /* background-color: purple; */
     display: flex;  align-items: center;
+    cursor: pointer;
 }
 
 header #image_logo_home > img {
