@@ -45,4 +45,23 @@ public class UserService {
         }
         return 3; //비밀번호 틀림
     }
+
+    public int emailChk(String email){
+        UserEntity entity = new UserEntity();
+        entity.setEmail(email);
+
+        UserEntity result = mapper.selUser(entity);
+
+        if(result == null){
+            return 0; //이메일 없음
+        } else {
+            return 1; //이메일 있음
+        }
+    }
+
+    public UserEntity getId(String email){
+        UserEntity userEntity = new UserEntity();
+        userEntity.setEmail(email);
+        return mapper.selUser(userEntity);
+    }
 }

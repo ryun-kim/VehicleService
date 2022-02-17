@@ -25,18 +25,29 @@
         <main class="row">
             <div class="col-md-2 side"></div>
             <div class="col-md-8 pt-5 pb-5">
-                <form class="w-100 h-50" id="idFindForm" method="post">
+                <form class="w-100 h-50" id="idFindForm">
                     <div class="row">
                         <h1 class="col-xs-12">아이디 찾기</h1>
                         <div class="col-xs-3 col-sm-3 col-md-2 phbox">
-                            <h4>휴대폰 번호</h4>
+                            <h4>이메일</h4>
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-8 p-0">
                             <input type="text" class="form-control border border-info" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-default" placeholder="-없이 번호만 입력해주세요."
-                                   name="idPhoneInput">
+                                   aria-describedby="inputGroup-sizing-default" placeholder="이메일을 입력해주세요."
+                                   name="idEmailInput">
                         </div>
-                        <input type="submit" class="col-md-2 btn btn-secondary" value="아이디찾기"></input>
+                        <input type="submit" class="col-md-2 btn btn-secondary" value="인증코드발송">
+                    </div>
+                    <div class="row mt-4" id="verifyBox">
+                        <div class="col-xs-3 col-sm-3 col-md-2 phbox" id="verifyLabelBox">
+
+                        </div>
+                        <div class="col-xs-9 col-sm-9 col-md-8 p-0" id="verifyInputBox">
+
+                        </div>
+                    </div>
+                    <div class="idContainer mt-3">
+                        <span id="idText"></span>
                     </div>
                 </form>
                 <form class="w-100 h-50 pt-4" id="pasFindForm" method="post">
@@ -52,12 +63,12 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-xs-3 col-sm-3 col-md-2 phbox">
-                            <h4>휴대폰 번호</h4>
+                            <h4>이메일</h4>
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-8 p-0">
                             <input type="text" class="form-control border border-info" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-default" placeholder="-없이 번호만 입력해주세요."
-                                   name="pasPhoneInput">
+                                   aria-describedby="inputGroup-sizing-default" placeholder="이메일을 입력해주세요."
+                                   name="pasEmailInput">
                         </div>
                         <input type="submit" class="col-md-2 btn btn-secondary" value="비밀번호찾기"></input>
                     </div>
