@@ -1,103 +1,110 @@
+* { box-sizing: border-box; }
+body { margin: 0px; }
+nav { width: 100%; }
+ul { list-style: none; padding: 0px; }
+a { text-decoration: none; }
 
-
+body > div {
+    width: 100%; height: 100%;
+    display: grid;
+    grid-template-rows: 100px auto 200px;
+}
+body > div > div { margin-top: 20px; margin-bottom: 30px; }
 /* 헤더 --------------------------------------------------------- [start] */
 header {
     background-color: rgb(113, 216, 253);
-    /* position: sticky;  */
-    top: 0;
+    position: sticky; top: 0; z-index: 10;
     display: grid; grid-template-columns: 1fr 8fr 1fr;
-    height: 100px;
-    width: 100%;
     font-family: 'Jua', sans-serif;
 }
-
-nav {
-    width: 100%;
-}
-
-ul {
-    list-style: none; padding-left: 0px;
-}
-
 header > div {
-    /* background-color: pink; */
     grid-column: 2/3;
     display: grid; grid-template-columns: 1fr 4fr 1fr;
 }
 /* 헤더>로고 ---------------------------------------------------- [start] */
 header #image_logo_home {
-    /* background-color: purple; */
     display: flex;  align-items: center;
 }
-
 header #image_logo_home > img {
     width: 190px; height: 70px;
 }
-
 /* 헤더>메뉴바 -------------------------------------------------- [start] */
 #menubar_header {
-    /* background-color: rgb(160, 28, 160); */
-    display: flex;  align-items: center;
+    display: flex;  align-items: center; height: 100%;
 }
-
-#menubar_header > nav {
-    /* background-color: brown; */
-    /* line-height: 80px; */
-}
-
 #menubar_header > nav > ul {
-    /* background-color: orange; */
+    height: 100%;
     display: flex; justify-content: space-around;
-    margin-bottom: 0;
 }
-
 #menubar_header > nav > ul > li {
-    /* background-color: rgb(195, 235, 250); */
-    font-size: 150%;
+    display: flex; align-items: center;
+    font-size: 180%;
 }
-
 #menubar_header > nav > ul > li > a {
     color: white; font-weight: 800;
-    text-decoration: none;
 }
-
 #menubar_header > nav > ul > li > a:focus {
     color: rgb(45, 45, 161);
 }
 
 /* 헤더>로그인바 ------------------------------------------------ [start] */
 #loginbar_header {
-    /* background-color: rgb(212, 40, 212); */
     display: flex;  align-items: flex-end;
 }
-
-#loginbar_header > nav {
-    /* background-color: brown; */
-}
-
 #loginbar_header > nav > ul {
-    /* background-color: orange; */
     display: flex; justify-content: space-around;
 }
-
 #loginbar_header > nav > ul > li {
-    /* background-color: rgb(195, 235, 250); */
-    font-size: 100%;
+    font-size: 90%;
 }
-
 #loginbar_header > nav > ul > li > a {
     color: white;
-    text-decoration: none;
 }
-
 #loginbar_header > nav > ul > li > a:focus {
     color: rgb(45, 45, 161);
 }
 /* 헤더 --------------------------------------------------------- [end] */
-footer{
-    text-align: center;
-    height: 200px;
-    width: 100%;
-    background-color: gray;
-    font-family: 'Jua', sans-serif;
+/* 푸터 --------------------------------------------------------- [start] */
+footer {
+    background-color: rgb(247, 240, 240);
+    display: grid; grid-template-columns: 1fr 8fr 1fr;
+}
+footer > div {
+    grid-column: 2/3;
+    display: grid; grid-template-columns: 1fr 5fr;
+}
+#img_logo_footer {
+    display: flex; justify-content: center; align-items: center;
+}
+#img_logo_footer > img {
+    width: 120px; height: 110px;
+}
+footer > div > div:last-child {
+    padding-top: 60px;
+}
+footer > div > div:last-child > div {
+    letter-spacing: 0px;
+    font-size: 13px;
+}
+/* 푸터 --------------------------------------------------------- [end] */
+
+@media(max-width: 768px) {
+    #image_logo_home {
+        grid-column: 2/3;
+    }
+    #menubar_header {
+        grid-column: 1/4;
+    }
+    #loginbar_header {
+        grid-row: 1/2;
+        grid-column: 3/4;
+    }
+    #total_container {
+        width: 100%; height: 100%;
+        display: grid;
+        grid-template-rows: 200px auto 200px;
+    }
+    #loginbar_header > nav > ul > li {
+        font-size: 70%;
+    }
 }

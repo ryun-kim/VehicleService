@@ -35,10 +35,16 @@ main > div > section {
 #detail_search_dropdown > div {
     display: flex;
 }
+#detail_search_dropdown > div:first-child {
+    width: 75%;
+}
 #detail_search_dropdown > div > select {
     border: 1px solid rgb(113, 216, 253);
-    padding: 10px 40px 10px 5px;
+    padding: 10px 0px 10px 5px; font-size: 100%;
 }
+
+#country_select, #model_select { width: 25%; }
+#detail_model_select { width: 50%; }
 
 #detail_search_btn > button {
     background-color: rgb(113, 216, 253);
@@ -47,40 +53,47 @@ main > div > section {
 /* 본문>차량검색 ------------------------------------------------ [end] */
 /* 본문>로그인 -------------------------------------------------- [start] */
 #login_home {
-    display: flex; flex-direction: column; align-content: center; gap: 5px;
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
 }
 .btn_in_div {
     display: flex; justify-content: center;
 }
+#login_home_btn {
+    width: 100%;
+    display: flex; justify-content: center;
+}
 #login_home_btn > button {
-    padding: 30px 50px;
+    width: 80%; padding: 30px 0px;
     background-color: rgb(113, 216, 253);
     font-weight: bold; color: white; font-size: 20px;
     border-radius: 4px;
 }
 #login_home_sub_btn {
-    display: flex; gap: 10px;
+    width: 80%;
+    display: grid; grid-template-columns: 7fr 5fr; gap: 10px;
+}
+#login_home_sub_btn a {
+    font-size: 90%; display: flex; justify-content: center;
 }
 /* 본문>로그인 -------------------------------------------------- [end] */
 /* 본문>인기매물 ------------------------------------------------ [start] */
 #popular_sales_home {
     width: 100%; height: 220px;
-    /*반응형 구현시 다시 border나오게 설정*/
-    border-right: none;
+    padding-left: 0px; padding-right: 0px;
 }
 .check_like_btns {
-    margin-bottom: 10px;
+    margin-bottom: 10px; padding-left: 20px;
 }
 #popular_sales_container {
-    width: 45%;
+    width: 45%; margin-left: 10px;
     position: absolute;
     overflow: hidden;
 }
 .prev_next_btns {
     display: flex; justify-content: space-between;
     padding: 0px;
-    width: 100%; font-size: 30px;
-    position: absolute; top: 45%;
+    width: 100%; font-size: 40px;
+    position: absolute; top: 30%;
     z-index: 2; cursor: pointer;
 }
 #popular_sales_list {
@@ -91,7 +104,7 @@ main > div > section {
     display: flex; flex-direction: column; align-items: center;
 }
 #popular_sales_list > div > img {
-    width: 100%; height: 100px;
+    width: 100px; height: 100px;
 }
 /* 본문>인기매물 ------------------------------------------------ [end] */
 /* 본문>내차팔기 ------------------------------------------------ [start] */
@@ -104,7 +117,7 @@ main > div > section {
 #selling_mycar_home a {
     background-color: rgb(113, 216, 253); color: white;
     display: flex; flex-direction: column; align-items: center;
-    padding: 30px 50px;
+    padding: 10% 0px; width: 80%;
     font-weight: bold; font-size: 20px; border-radius: 4px;
 }
 #selling_mycar_home a > i {
@@ -170,3 +183,27 @@ main > div > section {
 }
 /* 본문>고객센터 ------------------------------------------------ [end] */
 /* 본문 --------------------------------------------------------- [end] */
+
+@media(max-width: 1200px) {
+    #login_home_sub_btn a:first-child {
+        grid-column: 1/3;
+    }
+    #login_home_sub_btn a:last-child {
+        grid-column: 1/3;
+    }
+}
+@media(max-width: 768px) {
+    #search_car_home, #login_home, #popular_sales_home, #selling_mycar_home
+    , #news_home, #customer_service_home {
+        grid-column: 1/3;
+    }
+    #popular_sales_container {
+        width: 73%;
+    }
+    #login_home_sub_btn a:first-child {
+        grid-column: 1/2;
+    }
+    #login_home_sub_btn a:last-child {
+        grid-column: 2/3;
+    }
+}
