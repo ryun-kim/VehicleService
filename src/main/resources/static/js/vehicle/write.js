@@ -125,7 +125,7 @@
             }
             reader.readAsDataURL(input.files[0]);
         }else{  //파일업로드 취소
-            main_image.src = 'main_car.png';
+            main_image.src = 'img/main_car.png';
             main_image.style.opacity="0.3";
         }
     }
@@ -135,7 +135,7 @@
     var modelList;   // 모델리스트
     var detailModelList; //세부모델리스트
 
-    fetch("../MOCK_DATA.json") //json파일 가져오기
+    fetch("/json/MOCK_DATA.json") //json파일 가져오기
         .then(response => {
             return response.json();
         }).then(jsondata =>
@@ -233,10 +233,36 @@
             alert("차량 대표사진을 설정해 주십시오")
             return;
         }
+        var checked_option = document.querySelector('#checked_option');
+        var subimg = document.querySelector('#subimg');
+        var explanations = document.querySelector('#explanations');
+        var options_length = document.getElementsByName('option').length;
+        var explanation = document.getElementsByName('explanation').length;
+        var options = [];
+        var options2 = [];
+        for(var i=0; i<options_length; i++){
+            let option = document.getElementsByName('option')[i];
+            if(option.checked == true){
+                options.push(option.value)
+            }
+        }
+        checked_option.value=options;
+        subimg.value = fileInfoArr;
+
+
+        for(var j=0; j<explanation; j++){
+            let expl = document.getElementsByName('explanation')[j].innerText;
+            options2.push(expl)
+        }
+        explanations.value = options2;
+
+        var none = document.querySelector('#none');
+        if(none.checked == true){
+            var input_color  = document.querySelector('.input_color');
+            none.value = input_color.value;
+        }
         fm.submit();
     }
-
-
 
     function sub_fileBtn(){ //파일추가시 폴더열기
         document.querySelector('#sub_file').click();
