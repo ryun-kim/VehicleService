@@ -2,6 +2,7 @@ package com.koreait.vehicleservice.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -72,5 +73,19 @@ public class UserController {
         Map<String, Integer> res = new HashMap<>(); //암호화
         res.put("result", service.emailChk(email));
         return res; //json형태로 변환해서 날림
+    }
+
+    @PostMapping("/emailIdChk")
+    @ResponseBody //요청온것을 json형태로 응답한다. @requestBody : 요청온정보를 읽는다.
+    public Map<String, Integer> emailIdChk(@RequestBody UserEntity userEntity){
+        Map<String, Integer> res = new HashMap<>();
+        res.put("result", service.emailIdChk(userEntity));
+        return res;
+    }
+
+    @PostMapping("/chnPw")
+    public String setEventBasic(UserEntity userEntity) {
+        System.out.println(userEntity.getUpw());
+        return null;
     }
 }

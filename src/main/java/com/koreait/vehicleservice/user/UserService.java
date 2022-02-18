@@ -50,13 +50,21 @@ public class UserService {
         UserEntity entity = new UserEntity();
         entity.setEmail(email);
 
-        UserEntity result = mapper.selUser(entity);
+        UserEntity dbUser = mapper.selUser(entity);
 
-        if(result == null){
-            return 0; //이메일 없음
+        if(dbUser == null){
+            return 0; //회원정보없음
         } else {
-            return 1; //이메일 있음
+            return 1; //회원정보있음
         }
+    }
+
+    public int emailIdChk(UserEntity entity){
+        UserEntity dbUser = mapper.selUser(entity);
+        if(dbUser != null){
+            return 1; //회원정보있음
+        }
+        return 0; //회원정보없음
     }
 
     public UserEntity getId(String email){

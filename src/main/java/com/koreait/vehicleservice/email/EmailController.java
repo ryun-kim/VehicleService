@@ -25,12 +25,12 @@ public class EmailController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @PostMapping("/mail/{idEmailInput}") //이메일 인증 코드 보내기
+    @PostMapping("/mail/{emailVal}") //이메일 인증 코드 보내기
     @ResponseBody
-    public void emailConfirm(@PathVariable String idEmailInput)throws Exception{
+    public void emailConfirm(@PathVariable String emailVal)throws Exception{
         logger.info("post emailConfirm");
-        System.out.println("전달 받은 이메일 : "+idEmailInput);
-        emailService.sendSimpleMessage(idEmailInput);
+        System.out.println("전달 받은 이메일 : "+emailVal);
+        emailService.sendSimpleMessage(emailVal);
     }
 
     @PostMapping("/verifyCode/{code}/{email}") //이메일 안중코드 검증

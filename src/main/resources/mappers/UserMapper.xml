@@ -4,9 +4,10 @@
     <select id="selUser" resultType="UserEntity">
         SELECT * FROM t_user
         WHERE
-        <if test=" uid != null and uid != '' "> uid = #{uid} </if>
-        <if test=" email != null and email != '' "> email = #{email} </if>
+        <if test=" uid != null and email == null "> uid = #{uid} </if>
+        <if test=" email != null and uid == null "> email = #{email} </if>
         <if test=" iuser > 0 "> iuser = ${iuser} </if>
+        <if test=" uid != null and email != null "> uid = #{uid} and email = #{email} </if>
     </select>
 
     <insert id="insUser">

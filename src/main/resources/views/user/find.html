@@ -38,16 +38,16 @@
                         </div>
                         <input type="submit" class="col-md-2 btn btn-secondary" value="인증코드발송">
                     </div>
-                    <div class="row mt-4" id="verifyBox">
-                        <div class="col-xs-3 col-sm-3 col-md-2 phbox" id="verifyLabelBox">
+                    <div class="row mt-4 verifyBox">
+                        <div class="col-xs-3 col-sm-3 col-md-2 phbox verifyLabelBox">
 
                         </div>
-                        <div class="col-xs-9 col-sm-9 col-md-8 p-0" id="verifyInputBox">
+                        <div class="col-xs-9 col-sm-9 col-md-8 p-0 verifyInputBox">
 
                         </div>
                     </div>
                     <div class="idContainer mt-3">
-                        <span id="idText"></span>
+                        <span class="idText"></span>
                     </div>
                 </form>
                 <form class="w-100 h-50 pt-4" id="pasFindForm" method="post">
@@ -70,11 +70,40 @@
                                    aria-describedby="inputGroup-sizing-default" placeholder="이메일을 입력해주세요."
                                    name="pasEmailInput">
                         </div>
-                        <input type="submit" class="col-md-2 btn btn-secondary" value="비밀번호찾기"></input>
+                        <input type="submit" class="col-md-2 btn btn-secondary" value="인증코드발송">
+                    </div>
+                    <div class="row mt-4 verifyBox">
+                        <div class="col-xs-3 col-sm-3 col-md-2 phbox verifyLabelBox">
+
+                        </div>
+                        <div class="col-xs-9 col-sm-9 col-md-8 p-0 verifyInputBox">
+
+                        </div>
                     </div>
                 </form>
             </div>
             <div class="col-md-2"></div>
         </main>
+    </div>
+    <div id="modal" class="modal-overlay">
+        <div class="modal-window">
+            <div class="title">
+                <h2>새비밀번호 설정</h2>
+            </div>
+            <div class="close-area">X</div>
+            <form id="modalForm" method="post" th:action="@{/user/chnPw}">
+            <div class="topContent">
+                <span>비밀번호</span>
+                <input type="password" name="upw" class="newPwInput form-control" placeholder="영문자, 숫자, 특수문자 포함 8~15글자입니다.">
+            </div>
+            <div class="btmContent">
+                <span>비밀번호 확인</span>
+                <input type="password" name="rePasChk" class="newPwInput form-control" placeholder="영문자, 숫자, 특수문자 포함 8~15글자입니다.">
+            </div>
+             <div class="btnContainer">
+                <input type="submit" value="비밀번호 변경" class="btn btn-primary w-25">
+             </div>
+            </form>
+        </div>
     </div>
 </th:block>
