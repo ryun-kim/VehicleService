@@ -5,4 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface VehicleMapper {
     int inVehicle(VehicleEntity entity);
+    int inCarimg(CarImageEntity entity);
+    int selMaxiboard();
 }
