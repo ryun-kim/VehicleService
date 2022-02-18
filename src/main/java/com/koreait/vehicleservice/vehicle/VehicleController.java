@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("vehicle")
@@ -25,11 +27,9 @@ public class VehicleController {
     }
 
     @PostMapping("/write")
-    public String inVehicle(VehicleDto dto){
+    public String inVehicle(VehicleDto dto, @RequestParam MultipartFile mainimg){
         service.inVehicle(dto);
-//        String fileNm = service.uploadMainImg(dto.getMainimg());
+        String fileNm = service.uploadMainImg(mainimg);
             return "redirect:list";
-
-
     }
 }
