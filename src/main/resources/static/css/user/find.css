@@ -42,3 +42,9 @@ h1{
     padding-left: 0;
     padding-right: 0;
 }
+
+.idContainer{
+    text-align: center;
+    color: green;
+    font-size: large;
+}

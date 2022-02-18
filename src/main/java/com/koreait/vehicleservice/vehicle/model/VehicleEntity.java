@@ -2,9 +2,11 @@ package com.koreait.vehicleservice.vehicle.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
-public class BoardVo extends BoardEntity{
+@ToString
+public class VehicleEntity {
 
 }

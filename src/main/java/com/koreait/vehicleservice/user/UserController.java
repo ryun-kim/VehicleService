@@ -65,4 +65,12 @@ public class UserController {
         res.put("result", service.idChk(uid));
         return res; //json형태로 변환해서 날림
     }
+
+    @GetMapping("/emailChk/{email}")
+    @ResponseBody
+    public Map<String, Integer> emailChk(@PathVariable String email){ //email에 이메일값이 담긴다
+        Map<String, Integer> res = new HashMap<>(); //암호화
+        res.put("result", service.emailChk(email));
+        return res; //json형태로 변환해서 날림
+    }
 }
