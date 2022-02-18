@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/board/detail.css}">
+    <link rel="stylesheet" th:href="@{/css/vehicle/detail.css}">
 </head>
-<body>
+
+<th:block layout:fragment="content">
 
 <div class="header_bar">
 
@@ -70,6 +71,8 @@
     </div>
 </div>
 </div>
-</body>
-<script defer th:src="@{/js/board/detail.js}"></script>
+
+
+</th:block>
+<script defer th:src="@{/js/vehicle/detail.js}"></script>
 </html>
