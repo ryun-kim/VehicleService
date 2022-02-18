@@ -22,125 +22,126 @@
 
 <th:block layout:fragment="content">
     <div class="container">
-    <div class="row">
-        <!--사이드 메뉴-->
-        <nav id="sidebarMenu" class="col-sm col-md-2 ">
-            <ul class="sidebarMenu_menu nav flex-column nav-pills">
-                <h2 id="mypage_title">마이 페이지</h2>
+        <div class="row">
+            <!--사이드 메뉴-->
+            <nav id="sidebarMenu" class="col-sm col-md-2 ">
+                <ul class="sidebarMenu_menu nav flex-column nav-pills">
+                    <h2 id="mypage_title">마이 페이지</h2>
+                    <hr>
+                    <li class="nav-item userinfo">
+                        <a class="nav-link " aria-current="page" th:href="@{/mypage/userinfo}">회원정보수정</a>
+                    </li>
+                    <li class="nav-item buylist">
+                        <a class="nav-link" th:href="@{#}">구매내역</a>
+                    </li>
+                    <li class="nav-item sellinfo">
+                        <a class="nav-link" th:href="@{#}">판매정보</a>
+                    </li>
+                    <li class="nav-item chatlist">
+                        <a class="nav-link active" th:href="@{/mypage/chat}">나의 채팅목록</a>
+                    </li>
+                    <li class="nav-item likelist">
+                        <a class="nav-link" th:href="@{/mypage/like}">좋아요</a>
+                    </li>
+                </ul>
+            </nav>
+            <!--컨텐츠 부분-->
+            <div class="col-sm col-md-10">
+                <h3>채팅 목록</h3>
                 <hr>
-                <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="#">회원정보수정</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">구매내역</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">판매정보</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" th:href="@{/mypage/chat}">나의 채팅목록</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/mypage/like}">좋아요</a>
-                </li>
-            </ul>
-        </nav>
-        <!--컨텐츠 부분-->
-        <div class="col-sm col-md-10">
-            <h3>채팅 목록</h3>
-            <hr>
 
-            <div id="list_result" class="container">
-                <div class="row row-cols-1 row-cols-md-1 g-4">
-                    <div class="col">
-                        <div class="container shadow-sm bg-white g-2">
-                            <div class="row">
-                                <picture class="col-sm col-md-3 g-3">
-                                    <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/audi.jpg}"></a>
-                                </picture>
-                                <div class="col-sm col-md-9 g-3">
-                                    <a th:href="@{#}"><h2 class="">아우디</h2></a>
-                                    <p>5000만원</p>
-                                    <p>차량 정보</p>
-                                    <p>조회수</p>
-                                </div>
-                                <div class="g-3">
-                                    <div class="d-flex justify-content-end align-items-center">
-                                        <button type="button" class="btn jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                <div id="list_result" class="container">
+                    <div class="row row-cols-1 row-cols-md-1 g-4">
+                        <div class="col">
+                            <div class="container shadow-sm bg-white g-2">
+                                <div class="row">
+                                    <picture class="col-sm col-md-3 g-3">
+                                        <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/audi.jpg}"></a>
+                                    </picture>
+                                    <div class="col-sm col-md-9 g-3">
+                                        <a th:href="@{#}"><h2 class="">아우디</h2></a>
+                                        <p>5000만원</p>
+                                        <p>차량 정보</p>
+                                        <p>조회수</p>
                                     </div>
-                                    <button type="button" class="btn btn-primary position-relative">
-                                        유저1
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    <div class="g-3">
+                                        <div class="d-flex justify-content-end align-items-center">
+                                            <button type="button" class="btn jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary position-relative">
+                                            유저1
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 										  1
 										  <span class="visually-hidden">읽지않은 메세지</span>
 										</span>
-                                    </button>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="container shadow-sm">
-                            <div class="row">
-                                <picture class="col-sm col-md-3 g-3">
-                                    <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/colorado.png}"></a>
-                                </picture>
-                                <div class="col-sm col-md-9 g-3">
-                                    <a th:href="@{#}"><h2 class="">콜로라도</h2></a>
-                                    <p>4000만원</p>
-                                    <p class="">차량 정보</p>
-                                </div>
-                                <div class="g-2">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <button type="button" class="btn btn-outline-secondary jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
-                                        <small class="text-muted">10분전</small>
+                        <div class="col">
+                            <div class="container shadow-sm">
+                                <div class="row">
+                                    <picture class="col-sm col-md-3 g-3">
+                                        <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/colorado.png}"></a>
+                                    </picture>
+                                    <div class="col-sm col-md-9 g-3">
+                                        <a th:href="@{#}"><h2 class="">콜로라도</h2></a>
+                                        <p>4000만원</p>
+                                        <p class="">차량 정보</p>
                                     </div>
-                                    <button type="button" class="btn btn-primary position-relative">
-                                        유저1
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    <div class="g-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <button type="button" class="btn btn-outline-secondary jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                                            <small class="text-muted">10분전</small>
+                                        </div>
+                                        <button type="button" class="btn btn-primary position-relative">
+                                            유저1
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 										  5
 										  <span class="visually-hidden">읽지않은 메세지</span>
 										</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="container shadow-sm">
-                            <div class="row">
-                                <picture class="col-sm col-md-3 g-3">
-                                    <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/avante.jpg}"></a>
-                                </picture>
-                                <div class="col-sm col-md-9 g-3">
-                                    <a th:href="@{#}"><h2 class="">아반떼</h2></a>
-                                    <p>1000만원</p>
-                                    <p class="">차량 정보</p>
-                                </div>
-                                <div class="g-2">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <button type="button" class="btn btn-outline-secondary jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
-                                        <small class="text-muted">1 시간전</small>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="container shadow-sm">
-                            <div class="row">
-                                <picture class="col-sm col-md-3 g-3">
-                                    <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/avanten.jpg}"></a>
-                                </picture>
-                                <div class="col-sm col-md-9 g-3">
-                                    <a th:href="@{#}"><h2 class="">아반떼N</h2></a>
-                                    <p>3000만원</p>
-                                    <p class="">차량 정보</p>
+                        <div class="col">
+                            <div class="container shadow-sm">
+                                <div class="row">
+                                    <picture class="col-sm col-md-3 g-3">
+                                        <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/avante.jpg}"></a>
+                                    </picture>
+                                    <div class="col-sm col-md-9 g-3">
+                                        <a th:href="@{#}"><h2 class="">아반떼</h2></a>
+                                        <p>1000만원</p>
+                                        <p class="">차량 정보</p>
+                                    </div>
+                                    <div class="g-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <button type="button" class="btn btn-outline-secondary jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                                            <small class="text-muted">1 시간전</small>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="g-2">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <button type="button" class="btn btn-outline-secondary jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
-                                        <small class="text-muted">하루전</small>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="container shadow-sm">
+                                <div class="row">
+                                    <picture class="col-sm col-md-3 g-3">
+                                        <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/avanten.jpg}"></a>
+                                    </picture>
+                                    <div class="col-sm col-md-9 g-3">
+                                        <a th:href="@{#}"><h2 class="">아반떼N</h2></a>
+                                        <p>3000만원</p>
+                                        <p class="">차량 정보</p>
+                                    </div>
+                                    <div class="g-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <button type="button" class="btn btn-outline-secondary jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                                            <small class="text-muted">하루전</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +150,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
 </th:block>

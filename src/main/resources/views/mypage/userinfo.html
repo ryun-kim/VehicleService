@@ -26,10 +26,10 @@
             <!--사이드 메뉴-->
             <nav id="sidebarMenu" class="col-sm col-md-2 ">
                 <ul class="sidebarMenu_menu nav flex-column nav-pills">
-                    <a href="#"><h2>마이 페이지</h2></a>
+                    <h2 id="mypage_title">마이 페이지</h2>
                     <hr>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">회원정보수정</a>
+                        <a class="nav-link active" aria-current="page" th:href="@{/mypage/userinfo}">회원정보수정</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">구매내역</a>
@@ -38,7 +38,7 @@
                         <a class="nav-link" href="#">판매정보</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/mypage/chat}">나의 채팅목록</a>
+                        <a class="nav-link" th:href="@{/mypage/chat}">채팅목록</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/mypage/like}">좋아요</a>

@@ -17,6 +17,7 @@
             crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script defer th:src="@{/js/vehicle/list.js}"></script>
+
     <title>검색결과</title>
 </head>
 
@@ -224,8 +225,8 @@
                 </ul>
                 <div class="album  bg-light">
                     <div id="list_result" class="container">
-                        <div class="row row-cols-1 row-cols-md-3 g-4 card-group">
-                            <div class="col">
+                        <div class="row row-cols-1 row-cols-md-3 g-4 card-group listdiv">
+                            <tbody class="col">
                                 <div class="card shadow-sm bg-white h-100" >
                                     <img class="card-img-top car_img" th:src="@{/img/audi.jpg}" alt="Card image cap">
                                     <div class="card-body">
@@ -240,7 +241,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </tbody>
                             <div class="col">
                                 <div class="card shadow-sm bg-white h-100">
                                     <img class="card-img-top" th:src="@{/img/colorado.png}" alt="Card image cap">
@@ -294,23 +295,12 @@
                             </div>
                         </div>
                     </div>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <div id="page_container">
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
