@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.koreait.vehicleservice.user.UserMapper">
-    <select id="selUser" resultType="UserEntity">
-        SELECT * FROM t_user
-        WHERE
-        <if test=" uid != null and uid != '' "> uid = #{uid} </if>
-        <if test=" iuser > 0 "> iuser = ${iuser} </if>
-    </select>
+<mapper namespace="com.koreait.vehicleservice.vehicle.VehicleMapper">
 
-    <insert id="insUser">
-        insert into t_user
-        (uid, upw, nm, birthday, phnum, email)
+    <insert id="inVehicle">
+        insert into car_sell_board
+        (writeriuser,category,manufacturer,model,detail_model,car_number,price,color,fuel,distan_driven,gearbox,trading_area)
         values
-        (#{uid}, #{upw}, #{nm}, #{birthday}, #{phnum}, #{email})
+        (1,#{category},#{manufacturer},#{model},#{detail_model},#{car_number},#{price},#{color},#{fuel},#{distan_driven},#{gearbox},#{trading_area})
     </insert>
 </mapper>
