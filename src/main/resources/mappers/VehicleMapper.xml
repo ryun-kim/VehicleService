@@ -1,31 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<mapper namespace="com.koreait.vehicleservice.vehicle.VehicleMapper">
-    <select id="vehicleList" resultType="BoardVo">
-        SELECT *
-        FROM t_board
+package com.koreait.vehicleservice.vehicle;
 
-    </select>
+import org.apache.ibatis.annotations.Mapper;
 
-=======
-<mapper namespace="com.koreait.vehicleservice.user.UserMapper">
-    <select id="selUser" resultType="UserEntity">
-        SELECT * FROM t_user
-        WHERE
-        <if test=" uid != null and uid != '' "> uid = #{uid} </if>
-        <if test=" iuser > 0 "> iuser = ${iuser} </if>
-    </select>
-=======
-<mapper namespace="com.koreait.vehicleservice.vehicle.VehicleMapper">
->>>>>>> 8c3d634b58c777243b6f702860f9f57c2d871ab0
+import java.util.List;
 
-    <insert id="inVehicle">
-        insert into car_sell_board
-        (writeriuser,category,manufacturer,model,detail_model,car_number,price,color,fuel,distan_driven,gearbox,trading_area)
-        values
-        (1,#{category},#{manufacturer},#{model},#{detail_model},#{car_number},#{price},#{color},#{fuel},#{distan_driven},#{gearbox},#{trading_area})
-    </insert>
->>>>>>> 01be44f427ab4b81bbed89ca9761ac2e7c7d7a5e
-</mapper>
+@Mapper
+public interface VehicleMapper {
+    int inVehicle(VehicleEntity entity);
+    int inCarimg(CarImageEntity entity);
+    int selMaxiboard();
+    List<VehicleVo> vehicleList(VehicleDto dto);
+}

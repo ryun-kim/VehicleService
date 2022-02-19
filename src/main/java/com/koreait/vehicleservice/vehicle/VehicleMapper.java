@@ -9,5 +9,7 @@ public interface VehicleMapper {
 }
 =======
     int inVehicle(VehicleEntity entity);
+    int inCarimg(CarImageEntity entity);
+    int selMaxiboard();
 }
 >>>>>>> 8c3d634b58c777243b6f702860f9f57c2d871ab0
