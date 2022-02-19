@@ -156,6 +156,12 @@ modalForm.addEventListener('submit', (e) => {
         e.preventDefault();
         alert('비밀번호가 서로 다릅니다.')
     } else {
+        const idVal = pasFindForm.idInput.value;
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'uid';
+        input.value = idVal;
+        modalForm.appendChild(input);
         alert('비밀번호 변경에 성공하였습니다.')
     }
 })

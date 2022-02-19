@@ -16,4 +16,10 @@
         values
         (#{uid}, #{upw}, #{nm}, #{birthday}, #{phnum}, #{email})
     </insert>
+
+    <update id="updUserUpw">
+        update t_user
+        set upw = #{upw}
+        where uid = #{uid}
+    </update>
 </mapper>

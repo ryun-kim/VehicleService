@@ -72,4 +72,9 @@ public class UserService {
         userEntity.setEmail(email);
         return mapper.selUser(userEntity);
     }
+
+    public void pasChn(UserEntity userEntity){
+        userEntity.setUpw(BCrypt.hashpw(userEntity.getUpw(), BCrypt.gensalt()));
+        mapper.updUserUpw(userEntity);
+    }
 }

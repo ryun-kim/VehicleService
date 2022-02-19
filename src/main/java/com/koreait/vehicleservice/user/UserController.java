@@ -85,7 +85,9 @@ public class UserController {
 
     @PostMapping("/chnPw")
     public String setEventBasic(UserEntity userEntity) {
+        service.pasChn(userEntity);
+        System.out.println(userEntity.getUid());
         System.out.println(userEntity.getUpw());
-        return null;
+        return "redirect:/user/login";
     }
 }
