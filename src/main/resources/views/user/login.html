@@ -17,10 +17,10 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
-    <script defer src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <!--<script defer src="https://developers.kakao.com/sdk/js/kakao.js"></script>-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script defer th:src="@{/js/user/login.js}"></script>
-    <script defer th:src="@{/js/user/kakao.js}"></script>
+    <!--<script defer th:src="@{/js/user/kakao.js}"></script>-->
     <script defer th:src="@{/js/user/google.js}"></script>
     <title>로그인</title>
 </head>
@@ -66,7 +66,7 @@
                     <div class="line"></div>
                 </form>
                 <div class="kaoBox">
-                    <img th:src="@{/img/kakao_login_large_narrow.png}" id="kaobtn">
+                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=0e08b6c96d5f791a6eb59bd54c31aa90&redirect_uri=http://localhost:8090/auth/kakao/callback&response_type=code"><img th:src="@{/img/kakao_login_large_narrow.png}" id="kaobtn"></a>
                 </div>
                 <!--<div class="naverBox">
                     <a href="https://nid.naver.com/oauth2.0/authorize?response_type=token&amp;client_id=FKI5X4pkLPGeuMSpAt6W&amp;redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2Fhtml%2Flogin.html&amp;state=aac56330-c0d0-47ad-81a8-8af8a94507c8"
