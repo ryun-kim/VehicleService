@@ -11,12 +11,16 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("vehicle")
 public class VehicleController {
+
     @Autowired
-    private VehicleService service;
+    public VehicleService service;
+
 
     @GetMapping("/list")
     public void list() {}
 
+    @GetMapping("/list/for")
+    public void listfor(){}
 
     @GetMapping("/detail")
     public void detail(){

@@ -3,27 +3,27 @@
     const jjimElemArr = document.querySelectorAll('.jjimBtn'); //찜버튼
     const listorderElem = document.querySelector('#list_order'); // 정렬방법 만들어야함!!!
     const listdivElem = document.querySelector('.listdiv'); //결과창
-    if(searchFrmElem){
-        searchFrmElem.addEventListener('submit', ()=>{
+    if (searchFrmElem) {
+        searchFrmElem.addEventListener('submit', () => {
             const searchVal = searchFrmElem.search_area.value;
 
-            if(searchVal.length === 0){
+            if (searchVal.length === 0) {
                 alert('검색어를 입력해 주세요');
             }
 
         });
     }
 
-    if(jjimElemArr){
-        jjimElemArr.forEach(item=>{
+    if (jjimElemArr) {
+        jjimElemArr.forEach(item => {
             const jjimHeart = item.firstChild;
 
-            item.addEventListener('click', ()=>{
-                if(jjimHeart.classList.contains('fa-solid')){
+            item.addEventListener('click', () => {
+                if (jjimHeart.classList.contains('fa-solid')) {
                     jjimHeart.classList.remove('fa-solid');
                     jjimHeart.classList.add('fa-regular');
                     item.classList.remove('btn-outline-danger');
-                }else{
+                } else {
                     jjimHeart.classList.remove('fa-regular');
                     jjimHeart.classList.add('fa-solid');
                     item.classList.add('btn-outline-danger');
@@ -36,7 +36,7 @@
         myFetch.get(`/ajax/board/${icategory}`, list => {
             console.log(list);
             makeRecodeList(list);
-        }, { currentPage, recordCount });
+        }, {currentPage, recordCount});
     }
 
     //페이징 item 만들기
@@ -49,12 +49,12 @@
     }
 
     //레코드 생성
-    const makeRecordList = list =>{
+    const makeRecordList = list => {
         const tbodyElem = listdivElem.querySelector('tbody');
         tbodyElem.className = 'col';
         tbodyElem.innerHTML = null;
 
-        list.forEach(item =>{
+        list.forEach(item => {
             const divElem = document.createElement('div');
             divElem.className = 'card shadow-sm bg-white h-100';
             tbodyElem.appendChild(divElem);
@@ -78,15 +78,13 @@
             const imgElem = divElem.querySelector('.car_img');
             detailevent(imgElem);
             detailevent(detailElem);
-            function detailevent(param){
-                param.addEventListener('click',()=>{
-                    location.href= `/vehicle/detail?selliboard=${item.selliboard}`;
+
+            function detailevent(param) {
+                param.addEventListener('click', () => {
+                    location.href = `/vehicle/detail?selliboard=${item.selliboard}`;
                 })
             }
         });
 
     }
-
-
-
 }

@@ -12,6 +12,7 @@ import java.util.List;
 public class VehicleService {
     @Autowired
     private VehicleMapper mapper;
+
     @Autowired
     private MyFileUtils fileUtils;
 
@@ -41,8 +42,13 @@ public class VehicleService {
 //
 //        //세선 프로필 파일명을 수정해준다.
 //        loginUser.setProfileimg(fileNm);
+
         return fileNm;
     }
 
     public List<VehicleVo> vehicleList(VehicleDto dto){return mapper.vehicleList(dto);}
 }
+
+//        return fileNm;
+//    }
+

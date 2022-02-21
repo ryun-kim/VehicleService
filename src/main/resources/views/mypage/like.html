@@ -50,6 +50,7 @@
             <div class="col-sm col-md-10">
                 <h3>좋아요</h3>
                 <hr>
+<<<<<<< HEAD
                 <div class="d-grid d-md-flex justify-content-md-end">
                     <button id="jjim_Del_Btn" class="btn-sm btn-primary m-2" type="button">
                         좋아요 전체 삭제
@@ -68,6 +69,52 @@
                                         <p>5000만원</p>
                                         <p>차량 정보</p>
                                         <p>조회수</p>
+=======
+                <li class="nav-item userinfo">
+                    <a class="nav-link " aria-current="page" th:href="@{/mypage/userinfo}">회원정보수정</a>
+                </li>
+                <li class="nav-item buylist">
+                    <a class="nav-link" href="#">구매내역</a>
+                </li>
+                <li class="nav-item sellinfo">
+                    <a class="nav-link" href="#">판매정보</a>
+                </li>
+                <li class="nav-item chatlist">
+                    <a class="nav-link" th:href="@{/mypage/chat}">채팅목록</a>
+                </li>
+                <li class="nav-item likelist">
+                    <a class="nav-link active" th:href="@{/mypage/like}">좋아요</a>
+                </li>
+            </ul>
+        </nav>
+        <!--컨텐츠 부분-->
+        <div class="col-sm col-md-10">
+            <h3>좋아요</h3>
+            <hr>
+            <div class="d-grid d-md-flex justify-content-md-end">
+                <button id="jjim_Del_Btn" class="btn-sm btn-primary m-2" type="button">
+                    좋아요 전체 삭제
+                </button>
+            </div>
+            <div id="list_result" class="container">
+                <div class="row row-cols-1 row-cols-md-1 g-4">
+                    <div class="col">
+                        <div class="container shadow-sm bg-white g-2">
+                            <div class="row">
+                                <picture class="col-sm col-md-3 g-3">
+                                    <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/audi.jpg}"></a>
+                                </picture>
+                                <div class="col-sm col-md-9 g-3">
+                                    <a href="#"><h2 class="">아우디</h2></a>
+                                    <p>5000만원</p>
+                                    <p>차량 정보</p>
+                                    <p>조회수</p>
+                                </div>
+                                <div class="g-2">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <button type="button" class="btn jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                                        <small class="text-muted">1분전</small>
+>>>>>>> master
                                     </div>
                                     <div class="g-2">
                                         <div class="d-flex justify-content-between align-items-center">

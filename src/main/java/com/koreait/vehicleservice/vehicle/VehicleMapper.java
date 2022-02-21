@@ -11,3 +11,4 @@ public interface VehicleMapper {
     int selMaxiboard();
     List<VehicleVo> vehicleList(VehicleDto dto);
 }
+
