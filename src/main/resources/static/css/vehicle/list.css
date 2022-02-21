@@ -17,4 +17,6 @@ a{
 .accordion-button{
 
 }
-
+.car_img, .card-title{
+    cursor: pointer;
+}

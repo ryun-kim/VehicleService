@@ -26,7 +26,7 @@ public class VehicleService {
         var iboard = mapper.selMaxiboard();
 
 
-        final String PATH = "D:/upload/images/vehicle/"+iboard;
+        final String PATH = "../../resources/static/img/vehicle/"+iboard;
         fileUtils.delFolderFiles(PATH,true);
         String fileNm = fileUtils.saveFile(PATH,mf);
         System.out.println("fileNm :"+fileNm);
@@ -46,7 +46,16 @@ public class VehicleService {
         return fileNm;
     }
 
-    public List<VehicleVo> vehicleList(VehicleDto dto){return mapper.vehicleList(dto);}
+    public List<VehicleVo> vehicleList(VehicleDto dto){
+
+        final String PATH = "../img/vehicle/";
+        List<VehicleVo> list = mapper.vehicleList(dto);
+        for(int i=0; i<list.size(); i++){
+            String result =PATH + list.get(i).getSelliboard()+ "/"+list.get(i).getMainimg();
+            list.get(i).setMainimg(result);
+        }
+        return list;
+    }
 }
 
 //        return fileNm;
