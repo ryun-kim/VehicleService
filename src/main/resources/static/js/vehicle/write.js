@@ -125,7 +125,7 @@
             }
             reader.readAsDataURL(input.files[0]);
         }else{  //파일업로드 취소
-            main_image.src = 'img/main_car.png';
+            main_image.src = '/img/main_car.png';
             main_image.style.opacity="0.3";
         }
     }

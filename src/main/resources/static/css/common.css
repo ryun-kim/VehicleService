@@ -24,6 +24,7 @@ header > div {
 /* 헤더>로고 ---------------------------------------------------- [start] */
 header #image_logo_home {
     display: flex;  align-items: center;
+    cursor: pointer;
 }
 header #image_logo_home > img {
     width: 190px; height: 70px;
