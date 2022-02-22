@@ -1,3 +1,4 @@
+/*
 function onSignIn(){
     var auth2 = gapi.auth2.getAuthInstance()
     if(auth2.isSignedIn.get()){
@@ -8,4 +9,14 @@ function onSignIn(){
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
     }
+}
+*/
+
+// 구글 로그인 버튼 클릭
+function loginWithGoogle() {
+    fetch('/login/getGoogleAuthUrl').then(function (res) {
+        location.href = res;
+    }).catch(e => {
+        console.log(e);
+    })
 }

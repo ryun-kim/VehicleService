@@ -31,9 +31,9 @@ public class KakaoController {
     @Autowired MyUserUtils userUtils;
 
     @GetMapping("/auth/kakao/callback")
-    public String kakaoCallback(String code){ //data를 리턴해주는 컨트롤러 함수
+    public String kakaoCallback(String code){
 
-        /*카카오 로그인 액세스 토큰 받기*/
+        // ------------------ 카카오 로그인 액세스 토큰 받기 --------------------
         //POST방식으로 key=value 데이터를 요청 (카카오쪽으로)
         RestTemplate rt = new RestTemplate(); //http요청을 편하게 할 수 있다.
 
@@ -74,6 +74,7 @@ public class KakaoController {
 
         System.out.println("카카오 엑세스 토큰 : " + oauthToken.getAccess_token());
 
+        // ------------------ 엑세스 토큰으로 카카오로그인사용자 정보 요청 ----------------------
         RestTemplate rt2 = new RestTemplate(); //http요청을 편하게 할 수 있다.
 
         //HttpHeader 오브젝트 생성
@@ -111,6 +112,7 @@ public class KakaoController {
         System.out.println("카카오 생일 : " + kakaoProfile.getKakao_account().getBirthday());
         System.out.println("카카오 닉네임 : " + kakaoProfile.getProperties().getNickname());
 
+        // ---------------------- 로그인 및 회원가입 처리 ---------------------------
         //toString() : Null PointerException(NPE)을 발생
         //String.valueOf() :  "null"이라는 문자열로 처리
         //그래서 NPE(Null PointerException)를 방지해야하는 경우에서는 String.valueOf()를 사용하는 것이 좋다.
@@ -119,7 +121,7 @@ public class KakaoController {
         kaoUser.setUpw(BCrypt.hashpw(cosKey, BCrypt.gensalt()));
         kaoUser.setNm(kakaoProfile.getProperties().getNickname());
         kaoUser.setBirthday(kakaoProfile.getKakao_account().getBirthday());
-        kaoUser.setEmail(kakaoProfile.getKakao_account().getEmail());
+        kaoUser.setEmail(kakaoProfile.getKakao_account().getEmail()+"(카카오)");
         kaoUser.setPlatform("카카오");
 
         //가입자 혹은 비가입자 체크해서 처리
