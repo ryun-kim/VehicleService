@@ -21,12 +21,12 @@
 
     <select id="vehicleList" resultType="VehicleVo">
         SELECT A.selliboard, A.writeriuser, A.category, A.manufacturer, A.model, A.detail_model
-                , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area
+                , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number
                 , B.mainimg
         FROM car_sell_board A
         LEFT JOIN car_image B
         ON A.selliboard = B.selliboard
-        AND A.category ={icategory}
+
         ORDER BY A.selliboard DESC
     </select>
 
