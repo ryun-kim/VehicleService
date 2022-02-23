@@ -83,10 +83,41 @@
             </div>
             <h2>거래 지역</h2>
             <div id="area">
-                <input type="radio" id="soul" name="trading_area" value="서울" checked>
-                <label for="soul">서울</label>
-                <input type="radio" id="degu" name="trading_area" value="대구" >
-                <label for="degu">대구</label>
+                <input type="radio" id="seoul" name="trading_area" value="서울" checked>
+                <label for="seoul">서울</label>
+                <input type="radio" id="incheon" name="trading_area" value="인천" >
+                <label for="incheon">인천</label>
+                <input type="radio" id="daejeon" name="trading_area" value="대전" >
+                <label for="daejeon">대전</label>
+                <input type="radio" id="daegu" name="trading_area" value="대구" >
+                <label for="daegu">대구</label>
+                <input type="radio" id="gwangju" name="trading_area" value="광주" >
+                <label for="gwangju">광주</label>
+                <input type="radio" id="busan" name="trading_area" value="부산" >
+                <label for="busan">부산</label>
+                <input type="radio" id="ulsan" name="trading_area" value="울산" >
+                <label for="ulsan">울산</label>
+                <input type="radio" id="sejong" name="trading_area" value="세종" >
+                <label for="sejong">세종</label>
+                <input type="radio" id="gyeonggi" name="trading_area" value="경기" >
+                <label for="gyeonggi">경기</label>
+                <input type="radio" id="gangwon" name="trading_area" value="강원" >
+                <label for="gangwon">강원</label>
+                <input type="radio" id="gyeongnam" name="trading_area" value="경남" >
+                <label for="gyeongnam">경남</label>
+                <input type="radio" id="gyeongbuk" name="trading_area" value="경북" >
+                <label for="gyeongbuk">경북</label>
+                <input type="radio" id="jeollanam" name="trading_area" value="전남" >
+                <label for="jeollanam">전남</label>
+                <input type="radio" id="jeollbuk" name="trading_area" value="전북" >
+                <label for="jeollbuk">전북</label>
+                <input type="radio" id="chungnam" name="trading_area" value="충남" >
+                <label for="chungnam">충남</label>
+                <input type="radio" id="chungbuk" name="trading_area" value="충북" >
+                <label for="chungbuk">충북</label>
+                <input type="radio" id="jeju" name="trading_area" value="제주" >
+                <label for="jeju">제주</label>
+
 
             </div>
             <h2>추가옵션</h2>
@@ -94,7 +125,6 @@
                 <input type="checkbox" id="aircon" name="option" value="aircon" >
                 <label for="aircon"> <div class="option"><img th:src="@{/img/aircon.png}">
                 </div>오토에어컨</label>
-
                 <input type="checkbox" id="smart_key" name="option" value="smart_key" >
                 <label for="smart_key"> <div class="option"><img th:src="@{/img/key.png}">
                 </div>스마트키</label>
@@ -132,59 +162,59 @@
                         ▼다른 사진 추가하기(최대 6장)
                     </div>
                     <div>
-                        <input type="file" id="sub_file" class="hidden" accept="image/*"  onchange="previewImage(this,'View_area')" multiple>
+                        <input type="file" id="subimg" name="subimg" class="hidden" accept="image/*"  onchange="previewImage(this,'View_area')" multiple>
                         <input type="button" onclick="sub_fileBtn()" value="파일추가하기">
                     </div>
-                    <input type="hidden" name="subimg" id="subimg">
+                    <!--                <input type="hidden" name="subimg" id="subimg">-->
                     <span id='View_area'
                           style='position:relative;'>
-                    </span>
+                </span>
                 </div>
             </div>
 
             <h2>설명글</h2>
 
-            <div>
-                <div class="in">
-                    <span class="oo">차량상태:</span>
+            <div class="textarea">
+                <div class="text_title">
+                    <span>차량상태:</span>
                     <div contenteditable="true" name="explanation"> </div>
                 </div>
 
-                <div class="in">
-                    <span class="oo">사고유무: </span>
+                <div class="text_title">
+                    <span>사고유무: </span>
                     <div contenteditable="true" name="explanation"> </div>
                 </div>
 
-                <div class="in">
-                    <span class="oo">관리상태:</span>
+                <div class="text_title">
+                    <span>관리상태:</span>
                     <div contenteditable="true" name="explanation"> </div>
                 </div>
 
-                <div class="in">
-                    <span class="oo">내/외관 설명:</span>
+                <div class="text_title">
+                    <span>내/외관 :</span>
                     <div contenteditable="true" name="explanation"> </div>
                 </div>
 
-                <div class="in">
-                    <span class="oo">튜닝정보:</span>
+                <div class="text_title">
+                    <span>튜닝정보:</span>
                     <div contenteditable="true" name="explanation"> </div>
                 </div>
 
-                <div class="in">
-                    <span class="oo">그외:</span>
+                <div class="text_title">
+                    <span>그외:</span>
                     <div contenteditable="true" name="explanation"> </div>
                 </div>
             </div>
         </div>
+
         <input type="hidden" name="explanations" id="explanations">
         <div class="inbtn">
             <div>
-            <input type="submit" value="등록" id="btnSubmit">
-            <input type="button" value="취소">
+                <input type="submit" value="등록" id="btnSubmit">
+                <input type="button" value="취소">
             </div>
         </div>
     </form>
-<hr class="clear">
+    <hr class="clear">
     <script defer th:src="@{/js/vehicle/write.js}"></script>
 </th:block>>
-

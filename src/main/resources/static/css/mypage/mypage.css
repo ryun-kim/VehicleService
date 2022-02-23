@@ -1,15 +1,16 @@
-<<<<<<< HEAD
+
 a{
     text-decoration: none;
     color: black;
 }
 
-=======
->>>>>>> master
 #mypage_title {
     cursor: pointer;
 }
 
+.active{
+    background-color: rgb(113, 216, 253)!important;
+}
 .userinfo>a:hover, .buylist>a:hover, .sellinfo>a:hover, .chatlist>a:hover, .likelist>a:hover{
     background-color: rgb(113, 216, 253);
     color : #fff !important;
@@ -19,7 +20,7 @@ a{
     color:black;
 }
 
-<<<<<<< HEAD
+
 .sidebarMenu_menu>.nav-item>.active {
     background-color: rgb(113, 216, 253);
 }
@@ -29,9 +30,9 @@ a{
 }
 #jjim_Del_Btn:focus{
     color: #fff;
-    box-shadow: 0 0 0 0.2rem rgb(113, 216, 253);
-=======
+    box-shadow: 0 0 0 0.2rem rgb(113, 216, 253);}
+
 .sidebarMenu_menu>.nav-item>.active{
     background-color: rgb(113, 216, 253);
->>>>>>> master
+
 }

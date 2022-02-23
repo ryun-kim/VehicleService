@@ -3,22 +3,39 @@
 
     const fm = document.querySelector('#in_form');
     var fileInfoArr=[];
-    const pattern = /\d{2,3}[가-힣]{1}\d{4}$/;
+    const pattern = /\d{2,3}[가-힣]{1}\d{4}$/; //차량번호 정규식
 
     //차량이미지 클릭시 삭제.
     function fileRemove(index) {
         var imgId="#img_id_"+index;
-        console.log("삭제할 번호"+index);
         delete fileInfoArr[index];
         $(imgId).remove(); //미리보기 사진 삭제
-
     }
 
-    function check(file){ //차량 이미지 중복체크
-        const arr =
+
+    function filesList(){ //전송될 사진목록 공백제거하여 리턴
+        const newArr =
             fileInfoArr.filter(
                 (element) => true
             );
+
+        return newArr;
+    }
+
+    //
+    // function  test(fileNum){  다중파일 value값 변경할수있는 방법
+    //      const dataTransfer = new DataTransfer();
+    //         let files = $('#sub_file')[0].files;
+    //         let fileArray = Array.from(files);
+    //         fileArray.splice(fileNum, 1);
+    //         fileArray.forEach(file => { dataTransfer.items.add(file); });
+    //         $('#sub_file')[0].files = dataTransfer.files;
+    //         console.log("파일삭제확인")
+    //         console.log(targetObj.value)
+    // }
+
+    function check(file){ //차량 이미지 중복체크
+        const arr = filesList();
 
         for(var i=0; i<arr.length; i++){
             if(arr[i].name === file.name){
@@ -28,20 +45,6 @@
         return true;
     }
 
-
-
-    function filesList(){ //현재 전송될 사진목록
-        const newArr =
-            fileInfoArr.filter(
-                (element) => true
-            );
-
-        return newArr.length;
-        // console.log("전송될 파일목록")
-        // console.log(newArr)
-        // console.log("현재파일 배열상태")
-        // console.log(fileInfoArr)
-    }
 
 //차량이미지 추가 미리보기.
     function previewImage(targetObj, View_area) {
@@ -61,7 +64,7 @@
             var file = files[i];
 
             if(check(file)){ //차량중복체크
-                if(filesList()==6){
+                if(filesList().length==6){
                     alert('사진은 최대 6장 까지 등록하실수있습니다.');
                     return;
                 }
@@ -100,8 +103,8 @@
                     })(img);
                     reader.readAsDataURL(file);
                 }
-
             }
+
         }
     }
 
@@ -204,6 +207,9 @@
     btnSubmit.addEventListener('click',input_check)//submit 클릭
 
 
+
+
+
     function input_check(){ //submit 클릭시 입력체크
         const car_number= fm.car_number
         const price= fm.price
@@ -211,62 +217,70 @@
         const main_img=document.getElementById('file_upload').value;
         const detailModel = document.getElementById('sel_detailModel').value;
         var result= pattern.test(car_number.value);
-        if(result===false || car_number.value==''){
-            alert("차량번호를 다시 확인 해 주십시오")
-            car_number.focus();
-            return;
 
-        }else if(detailModel==='세부모델명'){
-            alert("등록할 차량모델을 선택해 주십시오")
-            return;
+        fetch(`/vehicle/carNumChk/${car_number.value}`)
+            .then(res => res.json())
+            .then((data) => {
+                if(result===false || car_number.value==''){
+                    alert("차량번호를 다시 확인 해 주십시오")
+                    car_number.focus();
+                }
+                else if(data.result==1){
+                    alert("이미 판매중인 차량번호입니다.")
+                    car_number.focus();
+                }else if(detailModel==='세부모델명'){
+                    alert("등록할 차량모델을 선택해 주십시오")
+                }else if(price.value==''){
+                    alert("가격을 작성해 주십시오")
+                    price.focus();
+                }else if(street.value==''){
+                    alert("주행거리를 작성해 주십시오")
+                    street.focus();
+                }else if(main_img==''){
+                    alert("차량 대표사진을 설정해 주십시오")
+                }else{
 
-        }else if(price.value==''){
-            alert("가격을 작성해 주십시오")
-            price.focus();
-            return;
-
-        }else if(street.value==''){
-            alert("주행거리를 작성해 주십시오")
-            street.focus();
-            return;
-        }else if(main_img==''){
-            alert("차량 대표사진을 설정해 주십시오")
-            return;
-        }
-        var checked_option = document.querySelector('#checked_option');
-        var subimg = document.querySelector('#subimg');
-        var explanations = document.querySelector('#explanations');
-        var options_length = document.getElementsByName('option').length;
-        var explanation = document.getElementsByName('explanation').length;
-        var options = [];
-        var options2 = [];
-        for(var i=0; i<options_length; i++){
-            let option = document.getElementsByName('option')[i];
-            if(option.checked == true){
-                options.push(option.value)
-            }
-        }
-        checked_option.value=options;
-        subimg.value = fileInfoArr;
+                    var checked_option = document.querySelector('#checked_option');
+                    var subimg = document.querySelector('#subimg');
+                    var explanations = document.querySelector('#explanations');
+                    var options_length = document.getElementsByName('option').length;
+                    var explanation = document.getElementsByName('explanation').length;
+                    var options = [];
+                    var options2 = [];
+                    for(var i=0; i<options_length; i++){
+                        let option = document.getElementsByName('option')[i];
+                        if(option.checked == true){
+                            options.push(option.value)
+                        }
+                    }
+                    checked_option.value=options;
+                    const dataTransfer = new DataTransfer();
+                    filesList().forEach(file => { dataTransfer.items.add(file); });
+                    subimg.files = dataTransfer.files;
 
 
-        for(var j=0; j<explanation; j++){
-            let expl = document.getElementsByName('explanation')[j].innerText;
-            options2.push(expl)
-        }
-        explanations.value = options2;
 
-        var none = document.querySelector('#none');
-        if(none.checked == true){
-            var input_color  = document.querySelector('.input_color');
-            none.value = input_color.value;
-        }
-        fm.submit();
+                    for(var j=0; j<explanation; j++){
+                        let expl = document.getElementsByName('explanation')[j].innerText;
+                        options2.push(expl)
+                    }
+                    explanations.value = options2;
+
+                    var none = document.querySelector('#none');
+                    if(none.checked == true){
+                        var input_color  = document.querySelector('.input_color');
+                        none.value = input_color.value;
+                    }
+                    fm.submit();}
+            })
+
+
     }
+
 
     function sub_fileBtn(){ //파일추가시 폴더열기
-        document.querySelector('#sub_file').click();
+        document.querySelector('#subimg').click();
     }
 
-}
 
+}
