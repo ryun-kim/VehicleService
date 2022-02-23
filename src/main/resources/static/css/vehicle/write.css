@@ -27,10 +27,11 @@ input[type=radio],input[type=checkbox] {
 
 
 #color,#area,#options{
-    display: flex;
+    display: grid;
     gap: 20px;
     text-align: center;
     font-weight: bold;
+    grid-template-columns: repeat(9,90px);
 }
 
 #area label,.option{
@@ -138,11 +139,6 @@ input[type=radio],input[type=checkbox] {
     border: solid 1px;
 }
 
-#text {
-    resize: none;
-    overflow: scroll;
-}
-
 .inbtn {
     text-align: center;
 }
@@ -158,10 +154,19 @@ input[type=radio],input[type=checkbox] {
     clear: both;
 }
 
-.in{
+.text_title{
     margin-top: 15px;
+    display: grid;
+    grid-template-columns: 100px 300px;
+
 }
-.in > div{
+.textarea{
+    border:1px solid;
+    width: 500px;
+    padding: 20px;
+    padding-bottom: 30px;
+}
+.text_title > div{
     display: inline-block;
 }
 [contenteditable]{ /*글작정 기능 */
@@ -174,4 +179,3 @@ input[type=radio],input[type=checkbox] {
     opacity: 0.3;
     display: block;
 }
-F

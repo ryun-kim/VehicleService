@@ -19,4 +19,43 @@
     <select id="selMaxiboard" resultType="int">
         SELECT MAX(selliboard) FROM car_sell_board;
     </select>
+
+    <insert id="inOptions">
+        INSERT into car_option
+        (selliboard,aircon,smart_key,camera,hi_pass,navigation,bluetooth)
+        values
+        (${selliboard},${aircon},${smart_key},${camera},${hi_pass},${navigation},${bluetooth})
+    </insert>
+
+    <insert id="inExplanation">
+        INSERT into car_explanation
+            (selliboard,car_state,accident_state,manage_state,inout_inform,tuning_inform,other)
+        values
+            (${selliboard},#{car_state},#{accident_state},#{manage_state},#{inout_inform},#{tuning_inform},#{other})
+    </insert>
+
+    <select id="selCarNum" resultType="VehicleEntity">
+        SELECT car_number FROM car_sell_board
+        WHERE car_number = #{car_number}
+    </select>
+
+    <select id="vehicleList" resultType="VehicleVo">
+        SELECT A.selliboard, A.writeriuser, A.category, A.manufacturer, A.model, A.detail_model
+             , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number
+             , B.mainimg
+        FROM car_sell_board A
+                 LEFT JOIN car_image B
+                           ON A.selliboard = B.selliboard
+        ORDER BY A.selliboard DESC
+    </select>
+
+    <select id="vehicledetail" resultType="VehicleVo">
+        SELECT A.selliboard, A.writeriuser, A.category, A.manufacturer, A.model, A.detail_model
+             , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number
+             , B.mainimg
+        FROM car_sell_board A
+                 LEFT JOIN car_image B
+                           ON A.selliboard = B.selliboard
+        WHERE selliboard = ${selliboard}
+    </select>
 </mapper>
