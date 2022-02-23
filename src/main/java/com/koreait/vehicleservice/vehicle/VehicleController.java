@@ -12,7 +12,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("vehicle")
 public class VehicleController {
-@Autowired private VehicleService service;
+    @Autowired private VehicleService service;
     @GetMapping("/list")
     public void list() {}
 
@@ -23,7 +23,7 @@ public class VehicleController {
     public String detail(VehicleEntity entity,Model model){
         entity.setSelliboard(11);//일단 고정 test
         model.addAttribute("data", service.vehicledetail(entity));
-    return "redirect:detail";
+        return "redirect:detail";
     }
 
     @GetMapping("/write")
@@ -40,7 +40,7 @@ public class VehicleController {
         service.uploadMainImg(mainimg); //메인이미지 db입력
         service.uploadSubImg(dto.getSubimg()); //서브이미지 db입력
 
-            return "redirect:list";
+        return "redirect:list";
     }
 
 

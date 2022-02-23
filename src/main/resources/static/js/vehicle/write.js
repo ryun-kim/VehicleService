@@ -221,57 +221,57 @@
         fetch(`/vehicle/carNumChk/${car_number.value}`)
             .then(res => res.json())
             .then((data) => {
-             if(result===false || car_number.value==''){
+                if(result===false || car_number.value==''){
                     alert("차량번호를 다시 확인 해 주십시오")
                     car_number.focus();
                 }
                 else if(data.result==1){
-                   alert("이미 판매중인 차량번호입니다.")
-                   car_number.focus();
-               }else if(detailModel==='세부모델명'){
-            alert("등록할 차량모델을 선택해 주십시오")
-        }else if(price.value==''){
-            alert("가격을 작성해 주십시오")
-            price.focus();
-        }else if(street.value==''){
-            alert("주행거리를 작성해 주십시오")
-            street.focus();
-        }else if(main_img==''){
-            alert("차량 대표사진을 설정해 주십시오")
-        }else{
+                    alert("이미 판매중인 차량번호입니다.")
+                    car_number.focus();
+                }else if(detailModel==='세부모델명'){
+                    alert("등록할 차량모델을 선택해 주십시오")
+                }else if(price.value==''){
+                    alert("가격을 작성해 주십시오")
+                    price.focus();
+                }else if(street.value==''){
+                    alert("주행거리를 작성해 주십시오")
+                    street.focus();
+                }else if(main_img==''){
+                    alert("차량 대표사진을 설정해 주십시오")
+                }else{
 
-        var checked_option = document.querySelector('#checked_option');
-        var subimg = document.querySelector('#subimg');
-        var explanations = document.querySelector('#explanations');
-        var options_length = document.getElementsByName('option').length;
-        var explanation = document.getElementsByName('explanation').length;
-        var options = [];
-        var options2 = [];
-        for(var i=0; i<options_length; i++){
-            let option = document.getElementsByName('option')[i];
-            if(option.checked == true){
-                options.push(option.value)
-            }
-        }
-        checked_option.value=options;
-        const dataTransfer = new DataTransfer();
-        filesList().forEach(file => { dataTransfer.items.add(file); });
-        subimg.files = dataTransfer.files;
+                    var checked_option = document.querySelector('#checked_option');
+                    var subimg = document.querySelector('#subimg');
+                    var explanations = document.querySelector('#explanations');
+                    var options_length = document.getElementsByName('option').length;
+                    var explanation = document.getElementsByName('explanation').length;
+                    var options = [];
+                    var options2 = [];
+                    for(var i=0; i<options_length; i++){
+                        let option = document.getElementsByName('option')[i];
+                        if(option.checked == true){
+                            options.push(option.value)
+                        }
+                    }
+                    checked_option.value=options;
+                    const dataTransfer = new DataTransfer();
+                    filesList().forEach(file => { dataTransfer.items.add(file); });
+                    subimg.files = dataTransfer.files;
 
 
 
-        for(var j=0; j<explanation; j++){
-            let expl = document.getElementsByName('explanation')[j].innerText;
-            options2.push(expl)
-        }
-        explanations.value = options2;
+                    for(var j=0; j<explanation; j++){
+                        let expl = document.getElementsByName('explanation')[j].innerText;
+                        options2.push(expl)
+                    }
+                    explanations.value = options2;
 
-        var none = document.querySelector('#none');
-        if(none.checked == true){
-            var input_color  = document.querySelector('.input_color');
-            none.value = input_color.value;
-        }
-                fm.submit();}
+                    var none = document.querySelector('#none');
+                    if(none.checked == true){
+                        var input_color  = document.querySelector('.input_color');
+                        none.value = input_color.value;
+                    }
+                    fm.submit();}
             })
 
 
@@ -284,4 +284,3 @@
 
 
 }
-

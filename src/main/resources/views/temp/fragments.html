@@ -11,7 +11,7 @@
                 <nav>
                     <ul>
                         <li><a th:href="@{/vehicle/list}">국산</a></li>
-                        <li><a th:href="@{/vehicle/list}">수입</a></li>
+                        <li><a th:href="@{/vehicle/list/for}">수입</a></li>
                         <li><a href="#">내차팔기</a></li>
                         <li><a th:href="@{/center/customer}">고객센터</a></li>
                     </ul>
@@ -25,7 +25,8 @@
                     </ul>
                     <ul th:if="${session.loginUser != null}">
                         <li><a th:href="@{/mypage/userinfo}">마이페이지</a></li>
-                        <li><a th:href="@{/user/logout}">로그아웃</a></li>
+                        <!--카카오 계정과 함께 로그아웃-->
+                        <li><a href="https://kauth.kakao.com/oauth/logout?client_id=0e08b6c96d5f791a6eb59bd54c31aa90&logout_redirect_uri=http://localhost:8090/user/logout">로그아웃</a></li>
                     </ul>
                 </nav>
             </div>

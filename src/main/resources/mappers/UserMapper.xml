@@ -4,9 +4,10 @@
     <select id="selUser" resultType="UserEntity">
         SELECT * FROM t_user
         WHERE
-        <if test=" uid != null and uid != '' "> uid = #{uid} </if>
-        <if test=" email != null and email != '' "> email = #{email} </if>
+        <if test=" uid != null and email == null "> uid = #{uid} </if>
+        <if test=" email != null and uid == null "> email = #{email} </if>
         <if test=" iuser > 0 "> iuser = ${iuser} </if>
+        <if test=" uid != null and email != null "> uid = #{uid} and email = #{email} </if>
     </select>
 
     <insert id="insUser">
@@ -15,4 +16,18 @@
         values
         (#{uid}, #{upw}, #{nm}, #{birthday}, #{phnum}, #{email})
     </insert>
+
+    <insert id="kaoInsUser">
+        insert into t_user
+            (uid, upw, nm, birthday, email, platform)
+        values
+            (#{uid}, #{upw}, #{nm}, #{birthday}, #{email}, #{platform})
+    </insert>
+
+    <update id="updUserUpw">
+        update t_user
+        set upw = #{upw}
+        where uid = #{uid}
+    </update>
+
 </mapper>

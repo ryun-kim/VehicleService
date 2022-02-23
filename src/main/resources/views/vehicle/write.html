@@ -14,208 +14,207 @@
 </head>
 
 <th:block layout:fragment="content">
-<form action="/vehicle/write" method="post" id="in_form" onsubmit="return false" enctype="multipart/form-data">
-    <div id="content">
-        <h1>차량정보</h1>
-        <h2>차량 번호</h2>
-        <div><input type="text" placeholder="12가3456" name="car_number" id="car_number"></div>
-        <h2>차량 모델</h2>
-        <div class="type" id="car_model">
-            <input type="radio" id="category1" name="category" value="국산" onclick="ko(0)">
-            <label for="category1">국산</label>
-            <input type="radio" id="category2" name="category" value="수입" onclick="ko(1)">
-            <label for="category2">수입</label>
+    <form action="/vehicle/write" method="post" id="in_form" onsubmit="return false" enctype="multipart/form-data">
+        <div id="content">
+            <h1>차량정보</h1>
+            <h2>차량 번호</h2>
+            <div><input type="text" placeholder="12가3456" name="car_number" id="car_number"></div>
+            <h2>차량 모델</h2>
+            <div class="type" id="car_model">
+                <input type="radio" id="category1" name="category" value="국산" onclick="ko(0)">
+                <label for="category1">국산</label>
+                <input type="radio" id="category2" name="category" value="수입" onclick="ko(1)">
+                <label for="category2">수입</label>
 
-            <select id="sel_company" name="manufacturer" onchange="addChange(this)">
-                <option selected>제조사</option>
-            </select>
+                <select id="sel_company" name="manufacturer" onchange="addChange(this)">
+                    <option selected>제조사</option>
+                </select>
 
-            <select id="sel_model" name="model" onchange="addChange2(this)">
-                <option selected>모델</option>
-            </select>
+                <select id="sel_model" name="model" onchange="addChange2(this)">
+                    <option selected>모델</option>
+                </select>
 
-            <select id="sel_detailModel" name="detail_model" >
-                <option selected>세부모델명</option>
-            </select>
-        </div>
-
-        <h2>가격</h2>
-        <div><input type="number" min="0" name="price" id="price">만원</div>
-        <h1>기본옵션</h1>
-        <h2>주행거리</h2>
-        <div><input type="number" min="0" name="distan_driven" id="street">km</div>
-        <div class="type">
-            <h2>변속기 타입</h2>
-            <div>
-                <input type="radio" id="gear1" name="gearbox" value="오토" checked>
-                <label for="gear1">오토</label>
-                <input type="radio" id="gear2" name="gearbox" value="수동">
-                <label for="gear2">수동</label>
+                <select id="sel_detailModel" name="detail_model" >
+                    <option selected>세부모델명</option>
+                </select>
             </div>
-            <h2>연료 타입</h2>
-            <div>
-                <input type="radio" id="fuel1" name="fuel" value="기본타입" checked>
-                <label for="fuel1">기본타입</label>
-                <input type="radio" id="fuel2" name="fuel" value="디필">
-                <label for="fuel2">디필</label>
-                <input type="radio" id="fuel3" name="fuel" value="LPG" >
-                <label for="fuel3">LPG</label>
-                <input type="radio" id="fuel4" name="fuel" value="하이브리드">
-                <label for="fuel4">하이브리드</label>
+
+            <h2>가격</h2>
+            <div><input type="number" min="0" name="price" id="price">만원</div>
+            <h1>기본옵션</h1>
+            <h2>주행거리</h2>
+            <div><input type="number" min="0" name="distan_driven" id="street">km</div>
+            <div class="type">
+                <h2>변속기 타입</h2>
+                <div>
+                    <input type="radio" id="gear1" name="gearbox" value="오토" checked>
+                    <label for="gear1">오토</label>
+                    <input type="radio" id="gear2" name="gearbox" value="수동">
+                    <label for="gear2">수동</label>
+                </div>
+                <h2>연료 타입</h2>
+                <div>
+                    <input type="radio" id="fuel1" name="fuel" value="기본타입" checked>
+                    <label for="fuel1">기본타입</label>
+                    <input type="radio" id="fuel2" name="fuel" value="디필">
+                    <label for="fuel2">디필</label>
+                    <input type="radio" id="fuel3" name="fuel" value="LPG" >
+                    <label for="fuel3">LPG</label>
+                    <input type="radio" id="fuel4" name="fuel" value="하이브리드">
+                    <label for="fuel4">하이브리드</label>
+                </div>
             </div>
-        </div>
-        <h2>색상</h2>
-        <div id="color">
-            <input type="radio" id="white" name="color" value="white" checked>
-            <label class="back_white" for="white"></label>
-            <input type="radio" id="black" name="color" value="black" >
-            <label class="back_black" for="black"></label>
-            <input type="radio" id="gray"  name="color" value="gray">
-            <label class="back_gray" for="gray"></label>
-            <input type="radio" id="red"  name="color" value="red">
-            <label class="back_red" for="red"></label>
-            <input type="radio" id="blue"name="color" value="blue">
-            <label class="back_blue" for="blue"></label>
-            <input type="radio" id="none"name="color">
-            <label for="none">직접입력
-                <input class="input_color" type="color">
-            </label>
-        </div>
-        <h2>거래 지역</h2>
-        <div id="area">
-            <input type="radio" id="seoul" name="trading_area" value="서울" checked>
-            <label for="seoul">서울</label>
-            <input type="radio" id="incheon" name="trading_area" value="인천" >
-            <label for="incheon">인천</label>
-            <input type="radio" id="daejeon" name="trading_area" value="대전" >
-            <label for="daejeon">대전</label>
-            <input type="radio" id="daegu" name="trading_area" value="대구" >
-            <label for="daegu">대구</label>
-            <input type="radio" id="gwangju" name="trading_area" value="광주" >
-            <label for="gwangju">광주</label>
-            <input type="radio" id="busan" name="trading_area" value="부산" >
-            <label for="busan">부산</label>
-            <input type="radio" id="ulsan" name="trading_area" value="울산" >
-            <label for="ulsan">울산</label>
-            <input type="radio" id="sejong" name="trading_area" value="세종" >
-            <label for="sejong">세종</label>
-            <input type="radio" id="gyeonggi" name="trading_area" value="경기" >
-            <label for="gyeonggi">경기</label>
-            <input type="radio" id="gangwon" name="trading_area" value="강원" >
-            <label for="gangwon">강원</label>
-            <input type="radio" id="gyeongnam" name="trading_area" value="경남" >
-            <label for="gyeongnam">경남</label>
-            <input type="radio" id="gyeongbuk" name="trading_area" value="경북" >
-            <label for="gyeongbuk">경북</label>
-            <input type="radio" id="jeollanam" name="trading_area" value="전남" >
-            <label for="jeollanam">전남</label>
-            <input type="radio" id="jeollbuk" name="trading_area" value="전북" >
-            <label for="jeollbuk">전북</label>
-            <input type="radio" id="chungnam" name="trading_area" value="충남" >
-            <label for="chungnam">충남</label>
-            <input type="radio" id="chungbuk" name="trading_area" value="충북" >
-            <label for="chungbuk">충북</label>
-            <input type="radio" id="jeju" name="trading_area" value="제주" >
-            <label for="jeju">제주</label>
-
-
-        </div>
-        <h2>추가옵션</h2>
-        <div id="options">
-            <input type="checkbox" id="aircon" name="option" value="aircon" >
-            <label for="aircon"> <div class="option"><img th:src="@{/img/aircon.png}">
-            </div>오토에어컨</label>
-            <input type="checkbox" id="smart_key" name="option" value="smart_key" >
-            <label for="smart_key"> <div class="option"><img th:src="@{/img/key.png}">
-            </div>스마트키</label>
-
-            <input type="checkbox" id="camera" name="option" value="camera" >
-            <label for="camera"> <div class="option"><img th:src="@{/img/camera.png}">
-            </div>후방카메라</label>
-
-            <input type="checkbox" id="hi_pass" name="option" value="hi_pass" >
-            <label for="hi_pass"> <div class="option"><img th:src="@{/img/hi_pass.png}">
-            </div>하이패스</label>
-
-            <input type="checkbox" id="navigation" name="option" value="navigation" >
-            <label for="navigation"> <div class="option"><img th:src="@{/img/navigation.png}">
-            </div>네비게이션</label>
-
-            <input type="checkbox" id="bluetooth" name="option" value="bluetooth" >
-            <label for="bluetooth"> <div class="option"><img th:src="@{/img/bluetooth.png}">
-            </div>블루투스</label>
-            <input type="hidden" id="checked_option" name="checked_option">
-        </div>
-        <h2>사진등록</h2>
-        <div id="photo">
-            <div>
-                <input type="file" id="file_upload" name="mainimg" class="hidden" accept="image/*" onchange="mainImg(event.target);">
-                <label for="file_upload"><img id="main_image" th:src="@{/img/main_car.png}">
-                    <div>
-                        차량 측면 사진을 올려주세요
-                    </div>
+            <h2>색상</h2>
+            <div id="color">
+                <input type="radio" id="white" name="color" value="white" checked>
+                <label class="back_white" for="white"></label>
+                <input type="radio" id="black" name="color" value="black" >
+                <label class="back_black" for="black"></label>
+                <input type="radio" id="gray"  name="color" value="gray">
+                <label class="back_gray" for="gray"></label>
+                <input type="radio" id="red"  name="color" value="red">
+                <label class="back_red" for="red"></label>
+                <input type="radio" id="blue"name="color" value="blue">
+                <label class="back_blue" for="blue"></label>
+                <input type="radio" id="none"name="color">
+                <label for="none">직접입력
+                    <input class="input_color" type="color">
                 </label>
+            </div>
+            <h2>거래 지역</h2>
+            <div id="area">
+                <input type="radio" id="seoul" name="trading_area" value="서울" checked>
+                <label for="seoul">서울</label>
+                <input type="radio" id="incheon" name="trading_area" value="인천" >
+                <label for="incheon">인천</label>
+                <input type="radio" id="daejeon" name="trading_area" value="대전" >
+                <label for="daejeon">대전</label>
+                <input type="radio" id="daegu" name="trading_area" value="대구" >
+                <label for="daegu">대구</label>
+                <input type="radio" id="gwangju" name="trading_area" value="광주" >
+                <label for="gwangju">광주</label>
+                <input type="radio" id="busan" name="trading_area" value="부산" >
+                <label for="busan">부산</label>
+                <input type="radio" id="ulsan" name="trading_area" value="울산" >
+                <label for="ulsan">울산</label>
+                <input type="radio" id="sejong" name="trading_area" value="세종" >
+                <label for="sejong">세종</label>
+                <input type="radio" id="gyeonggi" name="trading_area" value="경기" >
+                <label for="gyeonggi">경기</label>
+                <input type="radio" id="gangwon" name="trading_area" value="강원" >
+                <label for="gangwon">강원</label>
+                <input type="radio" id="gyeongnam" name="trading_area" value="경남" >
+                <label for="gyeongnam">경남</label>
+                <input type="radio" id="gyeongbuk" name="trading_area" value="경북" >
+                <label for="gyeongbuk">경북</label>
+                <input type="radio" id="jeollanam" name="trading_area" value="전남" >
+                <label for="jeollanam">전남</label>
+                <input type="radio" id="jeollbuk" name="trading_area" value="전북" >
+                <label for="jeollbuk">전북</label>
+                <input type="radio" id="chungnam" name="trading_area" value="충남" >
+                <label for="chungnam">충남</label>
+                <input type="radio" id="chungbuk" name="trading_area" value="충북" >
+                <label for="chungbuk">충북</label>
+                <input type="radio" id="jeju" name="trading_area" value="제주" >
+                <label for="jeju">제주</label>
+
 
             </div>
-            <div id="sub_photo">
+            <h2>추가옵션</h2>
+            <div id="options">
+                <input type="checkbox" id="aircon" name="option" value="aircon" >
+                <label for="aircon"> <div class="option"><img th:src="@{/img/aircon.png}">
+                </div>오토에어컨</label>
+                <input type="checkbox" id="smart_key" name="option" value="smart_key" >
+                <label for="smart_key"> <div class="option"><img th:src="@{/img/key.png}">
+                </div>스마트키</label>
+
+                <input type="checkbox" id="camera" name="option" value="camera" >
+                <label for="camera"> <div class="option"><img th:src="@{/img/camera.png}">
+                </div>후방카메라</label>
+
+                <input type="checkbox" id="hi_pass" name="option" value="hi_pass" >
+                <label for="hi_pass"> <div class="option"><img th:src="@{/img/hi_pass.png}">
+                </div>하이패스</label>
+
+                <input type="checkbox" id="navigation" name="option" value="navigation" >
+                <label for="navigation"> <div class="option"><img th:src="@{/img/navigation.png}">
+                </div>네비게이션</label>
+
+                <input type="checkbox" id="bluetooth" name="option" value="bluetooth" >
+                <label for="bluetooth"> <div class="option"><img th:src="@{/img/bluetooth.png}">
+                </div>블루투스</label>
+                <input type="hidden" id="checked_option" name="checked_option">
+            </div>
+            <h2>사진등록</h2>
+            <div id="photo">
                 <div>
-                    ▼다른 사진 추가하기(최대 6장)
+                    <input type="file" id="file_upload" name="mainimg" class="hidden" accept="image/*" onchange="mainImg(event.target);">
+                    <label for="file_upload"><img id="main_image" th:src="@{/img/main_car.png}">
+                        <div>
+                            차량 측면 사진을 올려주세요
+                        </div>
+                    </label>
+
                 </div>
-                <div>
-                    <input type="file" id="subimg" name="subimg" class="hidden" accept="image/*"  onchange="previewImage(this,'View_area')" multiple>
-                    <input type="button" onclick="sub_fileBtn()" value="파일추가하기">
-                </div>
-<!--                <input type="hidden" name="subimg" id="subimg">-->
-                <span id='View_area'
-                      style='position:relative;'>
+                <div id="sub_photo">
+                    <div>
+                        ▼다른 사진 추가하기(최대 6장)
+                    </div>
+                    <div>
+                        <input type="file" id="subimg" name="subimg" class="hidden" accept="image/*"  onchange="previewImage(this,'View_area')" multiple>
+                        <input type="button" onclick="sub_fileBtn()" value="파일추가하기">
+                    </div>
+                    <!--                <input type="hidden" name="subimg" id="subimg">-->
+                    <span id='View_area'
+                          style='position:relative;'>
                 </span>
+                </div>
+            </div>
+
+            <h2>설명글</h2>
+
+            <div class="textarea">
+                <div class="text_title">
+                    <span>차량상태:</span>
+                    <div contenteditable="true" name="explanation"> </div>
+                </div>
+
+                <div class="text_title">
+                    <span>사고유무: </span>
+                    <div contenteditable="true" name="explanation"> </div>
+                </div>
+
+                <div class="text_title">
+                    <span>관리상태:</span>
+                    <div contenteditable="true" name="explanation"> </div>
+                </div>
+
+                <div class="text_title">
+                    <span>내/외관 :</span>
+                    <div contenteditable="true" name="explanation"> </div>
+                </div>
+
+                <div class="text_title">
+                    <span>튜닝정보:</span>
+                    <div contenteditable="true" name="explanation"> </div>
+                </div>
+
+                <div class="text_title">
+                    <span>그외:</span>
+                    <div contenteditable="true" name="explanation"> </div>
+                </div>
             </div>
         </div>
 
-        <h2>설명글</h2>
-
-        <div class="textarea">
-            <div class="text_title">
-                <span>차량상태:</span>
-                <div contenteditable="true" name="explanation"> </div>
-            </div>
-
-            <div class="text_title">
-                <span>사고유무: </span>
-                <div contenteditable="true" name="explanation"> </div>
-            </div>
-
-            <div class="text_title">
-                <span>관리상태:</span>
-                <div contenteditable="true" name="explanation"> </div>
-            </div>
-
-            <div class="text_title">
-                <span>내/외관 :</span>
-                <div contenteditable="true" name="explanation"> </div>
-            </div>
-
-            <div class="text_title">
-                <span>튜닝정보:</span>
-                <div contenteditable="true" name="explanation"> </div>
-            </div>
-
-            <div class="text_title">
-                <span>그외:</span>
-                <div contenteditable="true" name="explanation"> </div>
+        <input type="hidden" name="explanations" id="explanations">
+        <div class="inbtn">
+            <div>
+                <input type="submit" value="등록" id="btnSubmit">
+                <input type="button" value="취소">
             </div>
         </div>
-    </div>
-
-    <input type="hidden" name="explanations" id="explanations">
-    <div class="inbtn">
-        <div>
-        <input type="submit" value="등록" id="btnSubmit">
-        <input type="button" value="취소">
-        </div>
-    </div>
-</form>
-<hr class="clear">
+    </form>
+    <hr class="clear">
     <script defer th:src="@{/js/vehicle/write.js}"></script>
 </th:block>>
-

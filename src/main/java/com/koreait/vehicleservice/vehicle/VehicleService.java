@@ -22,7 +22,7 @@ public class VehicleService {
     }
 
 
-        public String uploadMainImg(MultipartFile mf){  //메인 이미지 저장
+    public String uploadMainImg(MultipartFile mf){  //메인 이미지 저장
         if(mf==null){return null;}
         var iboard = mapper.selMaxiboard();
 
@@ -74,7 +74,7 @@ public class VehicleService {
                     break;
             }
         }
-       return mapper.inOptions(car_option);
+        return mapper.inOptions(car_option);
     }
 
     public int inExplanation(VehicleDto dto){
@@ -113,9 +113,9 @@ public class VehicleService {
         VehicleVo vo= mapper.vehicledetail(entity);
         int iboard = entity.getSelliboard();
         String strDirPath = "D:\\upload\\images\\vehicle\\"+iboard+"\\sub";
-       List subimg = ListFile( strDirPath );
-       vo.setSubimg(subimg);
-       return vo;
+        List subimg = ListFile( strDirPath );
+        vo.setSubimg(subimg);
+        return vo;
     }
 
 
@@ -127,6 +127,17 @@ public class VehicleService {
             if (fList[i].isFile()) {
                 list.add(fList[i].getName());
             }
+        }
+        return list;
+    }
+
+    public List<VehicleVo> vehicleList(VehicleEntity entity){
+
+        final String PATH = "../img/vehicle/";
+        List<VehicleVo> list = mapper.vehicleList(entity);
+        for(int i=0; i<list.size(); i++){
+            String result =PATH + list.get(i).getSelliboard()+ "/"+list.get(i).getMainimg();
+            list.get(i).setMainimg(result);
         }
         return list;
     }
