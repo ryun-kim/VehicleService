@@ -17,11 +17,8 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
-    <!--<script defer src="https://developers.kakao.com/sdk/js/kakao.js"></script>-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script defer th:src="@{/js/user/login.js}"></script>
-    <!--<script defer th:src="@{/js/user/kakao.js}"></script>-->
-    <!--<script defer th:src="@{/js/user/google.js}"></script>-->
     <title>로그인</title>
 </head>
 
@@ -66,32 +63,14 @@
                     <div class="line"></div>
                 </form>
                 <div class="kaoBox">
-                    <a href="https://kauth.kakao.com/oauth/authorize
-                    ?client_id=0e08b6c96d5f791a6eb59bd54c31aa90
-                    &redirect_uri=http://localhost:8090/auth/kakao/callback
-                    &response_type=code"><img th:src="@{/img/kakao_login_large_narrow.png}" id="kaobtn"></a>
+                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=0e08b6c96d5f791a6eb59bd54c31aa90&redirect_uri=http://localhost:8090/auth/kakao/callback&response_type=code"><img th:src="@{/img/kakao_login_large_narrow.png}" id="kaobtn"></a>
                 </div>
                 <div class="naverBox">
                     <a th:href="@{/naver/request}">
                         <img th:src="@{/img/btnG_완성형.png}" id="naver_id_login">
                     </a>
                 </div>
-                <!--<div class="googleBox">
-                    &lt;!&ndash;oauth2-client 라이브러리쓰기때문에 주소값 고정이다.&ndash;&gt;
-                   <a href="#"><button class="g-signin2" id="googleBtn">구글 로그인</button></a>
-                </div>-->
             </div>
         </div>
     </div>
-    <!--<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript">
-        var naver_id_login = new naver_id_login("FKI5X4pkLPGeuMSpAt6W", "http://127.0.0.1:8090/user/login");
-        var state = naver_id_login.getUniqState();
-        naver_id_login.setButton("white", 2,40);
-        naver_id_login.setDomain("http://127.0.0.1:8090");
-        naver_id_login.setState(state);
-        naver_id_login.setPopup();
-        naver_id_login.init_naver_id_login();
-    </script>-->
 </th:block>

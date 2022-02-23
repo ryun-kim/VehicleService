@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.koreait.vehicleservice.MyUserUtils;
 import com.koreait.vehicleservice.user.UserEntity;
-import com.koreait.vehicleservice.user.UserService;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,12 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.UUID;
 
 @Controller
 public class KakaoController {
@@ -63,9 +57,9 @@ public class KakaoController {
         //Gson, Json Simple, ObjectMapper
         //accesstoken을 자바객체로 가져오는 작업
         ObjectMapper obMapper = new ObjectMapper();
-        OAuthToken oauthToken = null;
+        KakaoOAuthToken oauthToken = null;
         try {
-             oauthToken = obMapper.readValue(response.getBody(), OAuthToken.class);
+             oauthToken = obMapper.readValue(response.getBody(), KakaoOAuthToken.class);
         } catch (JsonMappingException e){
             e.printStackTrace();
         } catch (JsonProcessingException e){
@@ -129,6 +123,11 @@ public class KakaoController {
         if(dbKaoUser == null){
             System.out.println("기존회원이 아니기에 자동 회원가입 진행");
             kaKaoService.kaoJoin(kaoUser);
+            UserEntity dbKaoUser2 = kaKaoService.kaoUserFind(String.valueOf(kakaoProfile.getId()));
+            kaoUser.setIuser(dbKaoUser2.getIuser());
+        } else {
+            System.out.println("기존회원이기에 바로 로그인 진행");
+            kaoUser.setIuser(dbKaoUser.getIuser());
         }
 
         //로그인 처리

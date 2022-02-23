@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 a{
     text-decoration: none;
     color: black;
 }
 
-=======
->>>>>>> master
 #mypage_title {
     cursor: pointer;
 }
@@ -15,23 +12,25 @@ a{
     color : #fff !important;
     border-radius: 5px;
 }
+
 .sidebarMenu_menu>.nav-item>a{
     color:black;
 }
 
-<<<<<<< HEAD
 .sidebarMenu_menu>.nav-item>.active {
     background-color: rgb(113, 216, 253);
 }
+
 #jjim_Del_Btn{
     background-color: rgb(113, 216, 253);
     border-color :rgb(113, 216, 253);
 }
-#jjim_Del_Btn:focus{
+
+#jjim_Del_Btn:focus {
     color: #fff;
     box-shadow: 0 0 0 0.2rem rgb(113, 216, 253);
-=======
+}
+
 .sidebarMenu_menu>.nav-item>.active{
     background-color: rgb(113, 216, 253);
->>>>>>> master
 }

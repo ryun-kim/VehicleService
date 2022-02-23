@@ -119,10 +119,6 @@ h3{
     padding-left: 5%;
 }
 
-/*.idDiv{
-    margin-top: 30px;
-}*/
-
 .termsBox{
     overflow-y: auto;
     height: 300px;
@@ -146,4 +142,24 @@ form > div > h1{
 
 .textred{
     color: red;
+}
+
+/* 헤더 홈이랑 안맞아서 작업 */
+#menubar_header > nav > ul{
+    margin: 0;
+    padding: 0;
+}
+
+#menubar_header a{
+    text-decoration: none;
+}
+
+#loginbar_header > nav > ul{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 14px;
+}
+
+#loginbar_header a{
+    text-decoration: none;
 }
