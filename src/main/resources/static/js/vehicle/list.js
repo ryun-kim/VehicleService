@@ -45,7 +45,7 @@
 
                 resultdiv.innerHTML = `
                 <div class="card shadow-sm bg-white h-100">
-                    <img class="card-img-top car_img" th:src="@{/img/vehicle/1/} + ${item.mainimg}" alt="이미지없음">
+                    <img class="card-img-top car_img" src="${item.mainimg}" alt="이미지없음">
                     <div class="card-body">
                         <h4 class="card-title">${item.detail_model}</h4>
                         <p class="card-text">${item.price}만원</p>

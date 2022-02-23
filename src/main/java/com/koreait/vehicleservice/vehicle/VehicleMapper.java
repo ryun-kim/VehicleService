@@ -9,6 +9,9 @@ public interface VehicleMapper {
     int inVehicle(VehicleEntity entity);
     int inCarimg(CarImageEntity entity);
     int selMaxiboard();
-    List<VehicleVo> vehicleList(VehicleDto dto);
+    int inOptions(CarOption car_option);
+    int inExplanation(CarExplanationEntity car_explanation);
+    VehicleEntity selCarNum(VehicleEntity entity);
+    List<VehicleVo> vehicleList(VehicleEntity entity);
+    VehicleVo vehicledetail(VehicleEntity entity);
 }
-
