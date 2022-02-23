@@ -1,6 +1,5 @@
 {
     const searchFrmElem = document.querySelector('#search_Result_Frm'); //검색어입력창
-    const jjimElemArr = document.querySelectorAll('.jjimBtn'); //찜버튼
     const listorderElem = document.querySelector('#list_order'); // 정렬방법 만들어야함!!!
 
     if (searchFrmElem) { //검색창에 검색없으면 알람
@@ -14,22 +13,18 @@
         });
     }
 
-    if (jjimElemArr) { //좋아요버튼 활성화
-        jjimElemArr.forEach(item => {
-            const jjimHeart = item.firstChild;
-
-            item.addEventListener('click', () => {
-                if (jjimHeart.classList.contains('fa-solid')) {
-                    jjimHeart.classList.remove('fa-solid');
-                    jjimHeart.classList.add('fa-regular');
-                    item.classList.remove('btn-outline-danger');
-                } else {
-                    jjimHeart.classList.remove('fa-regular');
-                    jjimHeart.classList.add('fa-solid');
-                    item.classList.add('btn-outline-danger');
-                }
-            });
-        })
+    //찜버튼 활성화
+    function jjimEvent(pk, target){
+        console.log(target);
+        if (target.firstChild.classList.contains('fa-solid')) { //찜
+            target.firstChild.classList.remove('fa-solid');
+            target.firstChild.classList.add('fa-regular');
+            target.classList.remove('btn-outline-danger');
+        } else {
+            target.firstChild.classList.remove('fa-regular');
+            target.firstChild.classList.add('fa-solid');
+            target.classList.add('btn-outline-danger');
+        }
     }
 
     //글 리스트 정보 가져오기
@@ -50,15 +45,15 @@
 
                 resultdiv.innerHTML = `
                 <div class="card shadow-sm bg-white h-100">
-                    <img class="card-img-top car_img" src="${item.mainimg}" alt="Card image cap">
+                    <img class="card-img-top car_img" th:src="@{/img/vehicle/1/} + ${item.mainimg}" alt="이미지없음">
                     <div class="card-body">
                         <h4 class="card-title">${item.detail_model}</h4>
-                        <p class="card-text">${item.price}만원</p>                   
+                        <p class="card-text">${item.price}만원</p>
                         <p class="card-text">${item.trading_area}</p>
                     </div>
                     <div class="g-4">
                         <div class="d-flex justify-content-end align-items-center">
-                        <button type="button" class="btn jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
+                        <button type="button" class="btn jjimBtn" onclick="jjimEvent(${item.selliboard}, this);"><i class="fa-regular fa-heart"></i>좋아요</button>
                         </div>
                     </div>
                 </div>

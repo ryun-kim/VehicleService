@@ -112,7 +112,7 @@ pasFindForm.addEventListener('submit', (e) => {
 
                         inputBtn.type = 'button';
                         inputBtn.className = 'col-md-2 btn btn-secondary';
-                        inputBtn.value = '비밀번호찾기';
+                        inputBtn.value = '확인';
                         verifyBox.appendChild(inputBtn);
 
                         inputBtn.addEventListener('click', () => {

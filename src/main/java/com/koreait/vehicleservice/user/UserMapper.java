@@ -7,4 +7,5 @@ public interface UserMapper {
     int insUser(UserEntity userEntity);
     UserEntity selUser(UserEntity entity);
     int updUserUpw(UserEntity userEntity);
+    int kaoInsUser(UserEntity kaoUser);
 }
