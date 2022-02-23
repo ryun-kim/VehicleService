@@ -56,6 +56,19 @@
         FROM car_sell_board A
                  LEFT JOIN car_image B
                            ON A.selliboard = B.selliboard
-        WHERE selliboard = ${selliboard}
+        WHERE A.selliboard = ${selliboard}
     </select>
+
+    <insert id="likes">
+        INSERT INTO likes
+            (selliboard, likesiuser)
+        VALUES
+            (${selliboard}, ${likesiuser})
+    </insert>
+
+    <delete id="dellikes">
+        DELETE FROM likes
+        WHERE selliboard = ${selliboard}
+          AND likesiuser =${likesiuser}
+    </delete>
 </mapper>

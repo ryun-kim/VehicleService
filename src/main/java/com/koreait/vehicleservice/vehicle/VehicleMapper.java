@@ -14,4 +14,9 @@ public interface VehicleMapper {
     VehicleEntity selCarNum(VehicleEntity entity);
     List<VehicleVo> vehicleList(VehicleEntity entity);
     VehicleVo vehicledetail(VehicleEntity entity);
+    int likes(VehicleDto dto);
+    int dellikes(VehicleDto dto);
+
+
+
 }

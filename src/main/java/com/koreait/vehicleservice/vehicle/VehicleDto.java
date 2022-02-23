@@ -12,8 +12,7 @@ import java.util.List;
 @ToString
 public class VehicleDto extends VehicleEntity {
     private String[] explanations; //설명글
-
+    private int likesiuser;
     private List<MultipartFile> subimg; //서브사진
     private String[] checked_option; //옵션
-
 }

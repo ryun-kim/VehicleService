@@ -1,6 +1,8 @@
 package com.koreait.vehicleservice.vehicle;
 
 import com.koreait.vehicleservice.MyFileUtils;
+import com.koreait.vehicleservice.MyUserUtils;
+import com.koreait.vehicleservice.user.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +18,8 @@ public class VehicleService {
     private VehicleMapper mapper;
     @Autowired
     private MyFileUtils fileUtils;
+    @Autowired
+    private MyUserUtils myUserUtils;
 
     public int inVehicle(VehicleEntity entity){ //차량등록
         return mapper.inVehicle(entity);
@@ -140,6 +144,14 @@ public class VehicleService {
             list.get(i).setMainimg(result);
         }
         return list;
+    }
+
+    public int likes(VehicleDto dto){
+        dto.setLikesiuser(myUserUtils.getLoginUserPk());
+        return mapper.likes(dto);
+    }
+    public int dellikes(VehicleDto dto){
+        return mapper.dellikes(dto);
     }
 }
 

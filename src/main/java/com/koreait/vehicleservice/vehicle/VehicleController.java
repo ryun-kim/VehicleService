@@ -20,10 +20,8 @@ public class VehicleController {
     public void listfor(){}
 
     @GetMapping("/detail")
-    public String detail(VehicleEntity entity,Model model){
-        entity.setSelliboard(11);//일단 고정 test
+    public void detail(VehicleEntity entity,Model model){
         model.addAttribute("data", service.vehicledetail(entity));
-        return "redirect:detail";
     }
 
     @GetMapping("/write")
@@ -54,4 +52,5 @@ public class VehicleController {
         res.put("result", a);
         return res;
     }
+
 }

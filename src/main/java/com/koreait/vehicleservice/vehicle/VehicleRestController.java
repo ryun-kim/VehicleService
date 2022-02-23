@@ -1,10 +1,8 @@
 package com.koreait.vehicleservice.vehicle;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,5 +16,17 @@ public class VehicleRestController {
     public List<VehicleVo> selBoardList(@PathVariable String category, VehicleDto vo) {
         vo.setCategory(category);
         return service.vehicleList(vo);
+    }
+
+
+    @PostMapping("/likes/selliboard={selliboard}")
+    public void likes(VehicleDto dto,@PathVariable int selliboard){
+        dto.setSelliboard(selliboard);
+        service.likes(dto);
+    }
+
+    @PostMapping("/dellikes")
+    public void dellikes(VehicleDto dto){
+        service.dellikes(dto);
     }
 }

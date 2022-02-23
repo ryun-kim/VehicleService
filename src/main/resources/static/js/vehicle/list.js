@@ -1,6 +1,8 @@
 {
     const searchFrmElem = document.querySelector('#search_Result_Frm'); //검색어입력창
     const listorderElem = document.querySelector('#list_order'); // 정렬방법 만들어야함!!!
+    const searchParams = new URL(window.location.href).searchParams;
+    const category = searchParams.get('category');
 
     if (searchFrmElem) { //검색창에 검색없으면 알람
         searchFrmElem.addEventListener('submit', () => {
@@ -16,20 +18,22 @@
     //찜버튼 활성화
     function jjimEvent(pk, target){
         console.log(target);
-        if (target.firstChild.classList.contains('fa-solid')) { //찜
+        if (target.firstChild.classList.contains('fa-solid')) { //찜 취소
             target.firstChild.classList.remove('fa-solid');
             target.firstChild.classList.add('fa-regular');
             target.classList.remove('btn-outline-danger');
+            myFetch.delete(`/ajax/vehicle/dellike/selliboard=${pk}`);
         } else {
-            target.firstChild.classList.remove('fa-regular');
+            target.firstChild.classList.remove('fa-regular'); //찜
             target.firstChild.classList.add('fa-solid');
             target.classList.add('btn-outline-danger');
+            myFetch.get(`/ajax/vehicle/like/selliboard=${pk}`);
         }
     }
 
     //글 리스트 정보 가져오기
     const getList = () => {
-        myFetch.get(`/ajax/vehicle/list`, list => {
+        myFetch.get(`/ajax/vehicle/${category}`, list => {
             console.log(list);
             makeRecordList(list);
         });
@@ -45,7 +49,7 @@
 
                 resultdiv.innerHTML = `
                 <div class="card shadow-sm bg-white h-100">
-                    <img class="card-img-top car_img" src="${item.mainimg}" alt="이미지없음">
+                    <img class="card-img-top car_img" src="/vehicleImg/${item.selliboard}/${item.mainimg}" alt="이미지없음">
                     <div class="card-body">
                         <h4 class="card-title">${item.detail_model}</h4>
                         <p class="card-text">${item.price}만원</p>
