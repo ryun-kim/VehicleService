@@ -18,16 +18,19 @@
     //찜버튼 활성화
     function jjimEvent(pk, target){
         console.log(target);
+        let selliboard = pk;
         if (target.firstChild.classList.contains('fa-solid')) { //찜 취소
             target.firstChild.classList.remove('fa-solid');
             target.firstChild.classList.add('fa-regular');
             target.classList.remove('btn-outline-danger');
-            myFetch.delete(`/ajax/vehicle/dellike/selliboard=${pk}`);
+            myFetch.delete(`/ajax/vehicle/dellikes/${selliboard}`);
         } else {
             target.firstChild.classList.remove('fa-regular'); //찜
             target.firstChild.classList.add('fa-solid');
             target.classList.add('btn-outline-danger');
-            myFetch.get(`/ajax/vehicle/like/selliboard=${pk}`);
+            myFetch.get(`/ajax/vehicle/likes/${selliboard}`,data=>{
+                console.log(data);
+            });
         }
     }
 

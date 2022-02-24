@@ -19,14 +19,15 @@ public class VehicleRestController {
     }
 
 
-    @PostMapping("/likes/selliboard={selliboard}")
-    public void likes(VehicleDto dto,@PathVariable int selliboard){
+    @GetMapping("/likes/{selliboard}")
+    public int likes(@PathVariable int selliboard,VehicleDto dto){
         dto.setSelliboard(selliboard);
-        service.likes(dto);
+        return service.likes(dto);
     }
 
-    @PostMapping("/dellikes")
-    public void dellikes(VehicleDto dto){
+    @DeleteMapping("/dellikes/{selliboard}")
+    public void dellikes(@PathVariable int selliboard,VehicleDto dto){
+        dto.setSelliboard(selliboard);
         service.dellikes(dto);
     }
 }
