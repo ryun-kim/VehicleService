@@ -46,7 +46,9 @@
         FROM car_sell_board A
                  LEFT JOIN car_image B
                            ON A.selliboard = B.selliboard
+
         ORDER BY A.selliboard DESC
+        LIMIT ${startIdx}, ${recordCount}
     </select>
 
     <select id="vehicleSearchList" resultType="VehicleVo">
@@ -67,6 +69,36 @@
              , B.mainimg,C.aircon,C.smart_key,C.camera,C.hi_pass,C.navigation,C.bluetooth,
             D.car_state,D.accident_state,D.manage_state,D.inout_inform,D.tuning_inform,D.other
         FROM car_sell_board A
+
+                 LEFT JOIN car_image B
+                           ON A.selliboard = B.selliboard
+        WHERE A.selliboard = ${selliboard}
+    </select>
+
+    <insert id="likes">
+        INSERT INTO likes
+            (selliboard, likesiuser)
+        VALUES
+            (${selliboard}, ${likesiuser})
+    </insert>
+
+    <delete id="dellikes">
+        DELETE FROM likes
+        WHERE selliboard = ${selliboard}
+          AND likesiuser =${likesiuser}
+    </delete>
+
+    <select id="jimchk" resultType="Integer">
+        SELECT count(*)
+        FROM likes
+        WHERE selliboard= ${selliboard}
+         AND likesiuser = ${likesiuser}
+    </select>
+
+    <select id="selMaxPageVal" resultType="VehicleDto">
+        SELECT CEIL(COUNT(selliboard) / ${recordCount}) AS result
+        FROM car_sell_board
+
                  INNER JOIN car_image B
                             ON A.selliboard = B.selliboard
                  INNER JOIN car_option C
@@ -74,5 +106,6 @@
                  INNER JOIN car_explanation D
                             ON A.selliboard = D.selliboard
         WHERE A.selliboard = ${selliboard};
+
     </select>
 </mapper>
