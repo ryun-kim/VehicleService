@@ -15,4 +15,8 @@ public class VehicleDto extends VehicleEntity {
     private int likesiuser;
     private List<MultipartFile> subimg; //서브사진
     private String[] checked_option; //옵션
+    private int recordCount;
+    private int currentPage;
+    private int startIdx;
+    private int result;
 }

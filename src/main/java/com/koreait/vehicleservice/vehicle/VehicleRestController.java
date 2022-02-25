@@ -12,9 +12,8 @@ public class VehicleRestController {
     @Autowired
     private VehicleService service;
 
-    @GetMapping("/{category}")
-    public List<VehicleVo> selBoardList(@PathVariable String category, VehicleDto vo) {
-        vo.setCategory(category);
+    @GetMapping("/list")
+    public List<VehicleVo> selBoardList(VehicleDto vo) {
         return service.vehicleList(vo);
     }
 
@@ -26,8 +25,18 @@ public class VehicleRestController {
     }
 
     @DeleteMapping("/dellikes/{selliboard}")
-    public void dellikes(@PathVariable int selliboard,VehicleDto dto){
+    public int dellikes(@PathVariable int selliboard,VehicleDto dto){
         dto.setSelliboard(selliboard);
-        service.dellikes(dto);
+        return service.dellikes(dto);
+    }
+
+    @GetMapping("/sellike")
+    public int sellike(VehicleDto dto){
+        return service.jimchk(dto);
+    }
+
+    @GetMapping("/maxpage")
+    public VehicleDto selMaxPageVal(VehicleDto dto) {
+        return service.selMaxPageVal(dto);
     }
 }

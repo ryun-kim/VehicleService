@@ -46,7 +46,9 @@
         FROM car_sell_board A
                  LEFT JOIN car_image B
                            ON A.selliboard = B.selliboard
+
         ORDER BY A.selliboard DESC
+        LIMIT ${startIdx}, ${recordCount}
     </select>
 
     <select id="vehicledetail" resultType="VehicleVo">
@@ -71,4 +73,16 @@
         WHERE selliboard = ${selliboard}
           AND likesiuser =${likesiuser}
     </delete>
+
+    <select id="jimchk" resultType="Integer">
+        SELECT count(*)
+        FROM likes
+        WHERE selliboard= ${selliboard}
+         AND likesiuser = ${likesiuser}
+    </select>
+
+    <select id="selMaxPageVal" resultType="VehicleDto">
+        SELECT CEIL(COUNT(selliboard) / ${recordCount}) AS result
+        FROM car_sell_board
+    </select>
 </mapper>

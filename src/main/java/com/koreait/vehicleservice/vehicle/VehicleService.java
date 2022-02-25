@@ -109,8 +109,10 @@ public class VehicleService {
 
 
     public List<VehicleVo> vehicleList(VehicleDto dto){
-        List<VehicleVo> list = mapper.vehicleList(dto);
-        return list;
+        int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
+        if(startIdx < 0) { startIdx = 0; }
+        dto.setStartIdx(startIdx);
+        return mapper.vehicleList(dto);
     }
 
     public VehicleVo vehicledetail(VehicleEntity entity){
@@ -135,7 +137,7 @@ public class VehicleService {
         return list;
     }
 
-        public List<VehicleVo> vehicleList(VehicleEntity entity){
+        public List<VehicleVo> vehicleList4(VehicleEntity entity){
 
         final String PATH = "../img/vehicle/";
         List<VehicleVo> list = mapper.vehicleList(entity);
@@ -151,7 +153,17 @@ public class VehicleService {
         return mapper.likes(dto);
     }
     public int dellikes(VehicleDto dto){
+        dto.setLikesiuser(myUserUtils.getLoginUserPk());
         return mapper.dellikes(dto);
+    }
+
+    public int jimchk(VehicleDto dto){
+        dto.setLikesiuser(myUserUtils.getLoginUserPk());
+        return mapper.jimchk(dto);
+    }
+
+    public VehicleDto selMaxPageVal(VehicleDto dto){
+        return mapper.selMaxPageVal(dto);
     }
 }
 

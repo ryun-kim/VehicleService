@@ -16,7 +16,6 @@ public interface VehicleMapper {
     VehicleVo vehicledetail(VehicleEntity entity);
     int likes(VehicleDto dto);
     int dellikes(VehicleDto dto);
-
-
-
+    int jimchk(VehicleDto dto);
+    VehicleDto selMaxPageVal(VehicleDto dto);
 }
