@@ -64,10 +64,15 @@
     <select id="vehicledetail" resultType="VehicleVo">
         SELECT A.selliboard, A.writeriuser, A.category, A.manufacturer, A.model, A.detail_model
              , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number
-             , B.mainimg
+             , B.mainimg,C.aircon,C.smart_key,C.camera,C.hi_pass,C.navigation,C.bluetooth,
+            D.car_state,D.accident_state,D.manage_state,D.inout_inform,D.tuning_inform,D.other
         FROM car_sell_board A
-                 LEFT JOIN car_image B
-                           ON A.selliboard = B.selliboard
-        WHERE selliboard = ${selliboard}
+                 INNER JOIN car_image B
+                            ON A.selliboard = B.selliboard
+                 INNER JOIN car_option C
+                            ON A.selliboard = C.selliboard
+                 INNER JOIN car_explanation D
+                            ON A.selliboard = D.selliboard
+        WHERE A.selliboard = ${selliboard};
     </select>
 </mapper>
