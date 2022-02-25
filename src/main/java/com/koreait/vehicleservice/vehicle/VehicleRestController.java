@@ -44,6 +44,6 @@ public class VehicleRestController {
         System.out.println(searchVal);
         VehicleDto dto = new VehicleDto();
         dto.setSearchText(searchVal);
-        return service.vehicleList(dto);
+        return service.vehicleList2(dto);
     }
 }
