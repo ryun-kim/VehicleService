@@ -158,7 +158,6 @@ input[type=radio],input[type=checkbox] {
     margin-top: 15px;
     display: grid;
     grid-template-columns: 100px 300px;
-
 }
 .textarea{
     border:1px solid;
@@ -166,6 +165,7 @@ input[type=radio],input[type=checkbox] {
     padding: 20px;
     padding-bottom: 30px;
 }
+
 .text_title > div{
     display: inline-block;
 }
@@ -199,3 +199,4 @@ input[type=radio],input[type=checkbox] {
 #loginbar_header a{
     text-decoration: none;
 }
+

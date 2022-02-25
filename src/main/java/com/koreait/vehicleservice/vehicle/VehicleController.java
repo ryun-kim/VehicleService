@@ -20,10 +20,8 @@ public class VehicleController {
     public void listfor(){}
 
     @GetMapping("/detail")
-    public String detail(VehicleEntity entity,Model model){
-        entity.setSelliboard(11);//일단 고정 test
-        model.addAttribute("data", service.vehicledetail(entity));
-        return "redirect:detail";
+    public void detail(VehicleEntity entity,Model model){
+        model.addAttribute("vo", service.vehicledetail(entity));
     }
 
     @GetMapping("/write")
@@ -38,7 +36,10 @@ public class VehicleController {
         service.inOptions(dto); //옵션 db입력
         service.inExplanation(dto);//설명글 db입력
         service.uploadMainImg(mainimg); //메인이미지 db입력
+        System.out.println(dto.getSubimg());
         service.uploadSubImg(dto.getSubimg()); //서브이미지 db입력
+
+        String aa ="ffdfsfdss"+"\n"+"vuvu\n";
 
         return "redirect:list";
     }
@@ -48,10 +49,8 @@ public class VehicleController {
     @ResponseBody
     public Map<String, Integer> selCarNum(@PathVariable String car_num){
         Map<String, Integer> res = new HashMap<>();
-        System.out.println(car_num);
-        int a = service.selCarNum(car_num);
-        System.out.println(a);
-        res.put("result", a);
+        int result = service.selCarNum(car_num);
+        res.put("result", result);
         return res;
     }
 }

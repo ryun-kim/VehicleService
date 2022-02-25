@@ -28,7 +28,7 @@
             nextArrow: $('.next')
         });
         $('.slider-nav').slick({
-            slidesToShow: 3,
+            slidesToShow: 6,
             slidesToScroll: 1,
             asNavFor: '.slider-for',
             focusOnSelect: true
