@@ -1,6 +1,8 @@
 package com.koreait.vehicleservice.vehicle;
 
 import com.koreait.vehicleservice.MyFileUtils;
+import com.koreait.vehicleservice.MyUserUtils;
+import com.koreait.vehicleservice.user.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +18,8 @@ public class VehicleService {
     private VehicleMapper mapper;
     @Autowired
     private MyFileUtils fileUtils;
+    @Autowired
+    private MyUserUtils myUserUtils;
 
     public int inVehicle(VehicleEntity entity){ //차량등록
         return mapper.inVehicle(entity);
@@ -104,8 +108,23 @@ public class VehicleService {
 
 
     public List<VehicleVo> vehicleList(VehicleDto dto){
-        List<VehicleVo> list = mapper.vehicleList(dto);
+
+        int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
+        if(startIdx < 0) { startIdx = 0; }
+        dto.setStartIdx(startIdx);
+        return mapper.vehicleList(dto);
+    }
+  
+     public List<VehicleVo> vehicleList2(VehicleDto dto){
+       
+        List<VehicleVo> list = null;
+        if(dto.getSearchText() != null){
+            list = mapper.vehicleSearchList(dto);
+        } else {
+            list = mapper.vehicleList(dto);
+        }
         return list;
+       
     }
 
     public VehicleVo vehicledetail(VehicleEntity entity){
@@ -133,7 +152,11 @@ public class VehicleService {
         return list;
     }
 
+
+       
+
     public List<VehicleVo> vehicleList(VehicleEntity entity){
+
 
         final String PATH = "../img/vehicle/";
         List<VehicleVo> list = mapper.vehicleList(entity);
@@ -142,5 +165,23 @@ public class VehicleService {
             list.get(i).setMainimg(result);
         }
         return list;
+    }
+
+    public int likes(VehicleDto dto){
+        dto.setLikesiuser(myUserUtils.getLoginUserPk());
+        return mapper.likes(dto);
+    }
+    public int dellikes(VehicleDto dto){
+        dto.setLikesiuser(myUserUtils.getLoginUserPk());
+        return mapper.dellikes(dto);
+    }
+
+    public int jimchk(VehicleDto dto){
+        dto.setLikesiuser(myUserUtils.getLoginUserPk());
+        return mapper.jimchk(dto);
+    }
+
+    public VehicleDto selMaxPageVal(VehicleDto dto){
+        return mapper.selMaxPageVal(dto);
     }
 }

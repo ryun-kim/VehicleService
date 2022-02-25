@@ -24,6 +24,9 @@
 
 <th:block layout:fragment="content">
     <div class="container">
+        <th:block th:if="${session.loginUser!=null}">
+            <input type="hidden" th:value="${session.loginUser.iuser}" id="iuser">
+        </th:block>
         <div class="row">
             <!--사이드 메뉴-->
             <nav id="sidebarMenu" class="col-sm col-md-2 g-3">
@@ -31,7 +34,7 @@
                     <!--검색창-->
                     <form class="form-group" id="search_Result_Frm">
                         <div class="input-group mb-3">
-                            <input type="text" id="search_area" class="form-control my-sm-1" placeholder="검색하기" aria-label="검색하기" aria-describedby="search_area">
+                            <input type="text" name="search_area" class="form-control my-sm-1" placeholder="모델명으로 입력" aria-label="검색하기" aria-describedby="search_area">
                             <button class="btn btn-outline-info my-sm-1" type="submit" id="search__area_btn">검색</button>
                         </div>
                     </form>
@@ -227,7 +230,7 @@
                 <div class="album  bg-light">
                     <div id="list_result" class="container">
                         <div class="row row-cols-1 row-cols-md-3 g-4 card-group listdiv">
-
+                            <!--리스트 결과 뿌려지는 부분-->
                         </div>
                     </div>
                     <div id="page_container">
