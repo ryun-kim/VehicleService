@@ -158,24 +158,14 @@ input[type=radio],input[type=checkbox] {
     margin-top: 15px;
     display: grid;
     grid-template-columns: 100px 300px;
+}
+.textarea{
+    border:1px solid;
+    width: 500px;
+    padding: 20px;
+    padding-bottom: 30px;
+}
 
-<<<<<<< HEAD
-}
-.textarea{
-    border:1px solid;
-    width: 500px;
-    padding: 20px;
-    padding-bottom: 30px;
-}
-=======
-}
-.textarea{
-    border:1px solid;
-    width: 500px;
-    padding: 20px;
-    padding-bottom: 30px;
-}
->>>>>>> 108157758219c07772f16221bd666ad5b5b95ce5
 .text_title > div{
     display: inline-block;
 }
@@ -188,8 +178,5 @@ input[type=radio],input[type=checkbox] {
     height:250px;
     opacity: 0.3;
     display: block;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 108157758219c07772f16221bd666ad5b5b95ce5
+

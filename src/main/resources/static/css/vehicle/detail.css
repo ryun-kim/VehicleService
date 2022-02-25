@@ -10,12 +10,23 @@ ul,li{list-style: none;}
     grid-column-gap: 20px;}
 
 .slider-nav{
-    width: 100px;
+    width: 350px;
 }
 .slider-nav img {
     width: 30px;
     height: 30px;
     border: 1px solid ;
+}
+
+.a{
+    width: 50px;
+}
+.slick-track{
+    width: 100px;
+}
+
+.slick-slide {
+    width: 30px;
 }
 /* 위에있는이미지 를 감싼 div 크기 */
 .slider-for {
@@ -28,7 +39,7 @@ ul,li{list-style: none;}
 .slide{
     border: 1px solid ;
     display: grid;
-    grid-template-columns: 60px 1fr 60px;  /*슬라이드 쇼 너비 크기*/
+    grid-template-columns: 20% 1fr 20%;  /*슬라이드 쇼 너비 크기*/
 }
 
 #textarea{
@@ -36,10 +47,8 @@ ul,li{list-style: none;}
     width: 80%;
     height: 300px;}
 
-.prev,.next{
-    border: solid 1px;
+.slider-navbar{display: grid; justify-content: center;
 }
-.slider-navbar{display: flex; justify-content: center;}
 
 .header_bar div{cursor: pointer;}
 
@@ -90,5 +99,42 @@ ul,li{list-style: none;}
 .btnbox{
     text-align: center;
 }
+.checklist{
+    text-align: center;
+}
+.checklist img{
+    width: 80%;
+}
 
+.option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.option>img{
+    width: 50px;
+    height: 50px;
+}
+.option{
+    border: solid 2px black;
+    width: 80px;
+    height: 80px;
+    border-radius: 20% 20% 20% 20%;
+    cursor: pointer;
+}
+
+.car_color{
+    border: 2px solid black;
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+}
+
+.options{
+    display: grid;
+    gap: 20px;
+    text-align: center;
+    font-weight: bold;
+    grid-template-columns: repeat(9,90px);
+}
