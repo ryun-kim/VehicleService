@@ -50,7 +50,7 @@ public class VehicleService {
         final String PATH = "D:/upload/images/vehicle/"+iboard+"/sub";
         fileUtils.delFolderFiles(PATH,true);
         for (MultipartFile mf : mhsr) {
-            if(mf==null){return null;}
+            if(mf==null||mf.getSize()==0){return null;}
             String fileNm = fileUtils.saveFile(PATH,mf);
             if(fileNm == null){return null;}
         }
@@ -99,8 +99,7 @@ public class VehicleService {
     public int selCarNum(String car_num){
         VehicleEntity entity = new VehicleEntity();
         entity.setCar_number(car_num);
-        String CarNumber = mapper.selCarNum(entity).getCar_number();
-        System.out.println(CarNumber);
+        String CarNumber = mapper.selCarNum(entity).getCar_number(); //null 을 get 할경우 nullpointer
         if(CarNumber.equals(car_num)){
             return 1; //중복
         }
@@ -109,18 +108,34 @@ public class VehicleService {
 
 
     public List<VehicleVo> vehicleList(VehicleDto dto){
+
         int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
         if(startIdx < 0) { startIdx = 0; }
         dto.setStartIdx(startIdx);
         return mapper.vehicleList(dto);
     }
+  
+     public List<VehicleVo> vehicleList2(VehicleDto dto){
+       
+        List<VehicleVo> list = null;
+        if(dto.getSearchText() != null){
+            list = mapper.vehicleSearchList(dto);
+        } else {
+            list = mapper.vehicleList(dto);
+        }
+        return list;
+       
+    }
 
     public VehicleVo vehicledetail(VehicleEntity entity){
+        //세선에서 유저iboard값 받아야함
         VehicleVo vo= mapper.vehicledetail(entity);
-        int iboard = entity.getSelliboard();
-        String strDirPath = "D:\\upload\\images\\vehicle\\"+iboard+"\\sub";
-        List subimg = ListFile( strDirPath );
-        vo.setSubimg(subimg);
+        String strDirPath = "D:\\upload\\images\\vehicle\\"+entity.getSelliboard()+"\\sub";
+        File file = new File(strDirPath);
+        if(file.exists() && file.isDirectory()) {
+            List subimg = ListFile(strDirPath);
+            vo.setSubimg(subimg);
+        }
         return vo;
     }
 
@@ -137,7 +152,11 @@ public class VehicleService {
         return list;
     }
 
-        public List<VehicleVo> vehicleList4(VehicleEntity entity){
+
+       
+
+    public List<VehicleVo> vehicleList(VehicleEntity entity){
+
 
         final String PATH = "../img/vehicle/";
         List<VehicleVo> list = mapper.vehicleList(entity);
@@ -166,4 +185,3 @@ public class VehicleService {
         return mapper.selMaxPageVal(dto);
     }
 }
-

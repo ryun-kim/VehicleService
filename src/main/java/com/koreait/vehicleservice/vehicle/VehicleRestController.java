@@ -17,7 +17,6 @@ public class VehicleRestController {
         return service.vehicleList(vo);
     }
 
-
     @GetMapping("/likes/{selliboard}")
     public int likes(@PathVariable int selliboard,VehicleDto dto){
         dto.setSelliboard(selliboard);
@@ -38,5 +37,13 @@ public class VehicleRestController {
     @GetMapping("/maxpage")
     public VehicleDto selMaxPageVal(VehicleDto dto) {
         return service.selMaxPageVal(dto);
+    }
+
+    @GetMapping("/search")
+    public List<VehicleVo> search(@RequestParam String searchVal){
+        System.out.println(searchVal);
+        VehicleDto dto = new VehicleDto();
+        dto.setSearchText(searchVal);
+        return service.vehicleList(dto);
     }
 }

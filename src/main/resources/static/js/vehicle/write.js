@@ -18,7 +18,6 @@
             fileInfoArr.filter(
                 (element) => true
             );
-
         return newArr;
     }
 
@@ -246,7 +245,7 @@
                     var options_length = document.getElementsByName('option').length;
                     var explanation = document.getElementsByName('explanation').length;
                     var options = [];
-                    var options2 = [];
+                    var explanaion_arr = [];
                     for(var i=0; i<options_length; i++){
                         let option = document.getElementsByName('option')[i];
                         if(option.checked == true){
@@ -262,16 +261,17 @@
 
                     for(var j=0; j<explanation; j++){
                         let expl = document.getElementsByName('explanation')[j].innerText;
-                        options2.push(expl)
+                        explanaion_arr.push(expl)
                     }
-                    explanations.value = options2;
+                    explanations.value = explanaion_arr;
 
                     var none = document.querySelector('#none');
                     if(none.checked == true){
                         var input_color  = document.querySelector('.input_color');
                         none.value = input_color.value;
                     }
-                    fm.submit();}
+                     fm.submit();
+                    }
             })
 
 

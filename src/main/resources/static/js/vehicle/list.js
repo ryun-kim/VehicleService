@@ -13,12 +13,19 @@
     const iuser = document.querySelector('#iuser');
 
     if (searchFrmElem) { //검색창에 검색없으면 알람
-        searchFrmElem.addEventListener('submit', () => {
+        searchFrmElem.addEventListener('submit', (e) => {
             const searchVal = searchFrmElem.search_area.value;
 
             if (searchVal.length === 0) {
+                e.preventDefault();
                 alert('검색어를 입력해 주세요');
+            } else {
+                myFetch.get('/ajax/vehicle/search', list => {
+                    console.log(list);
+                    makeRecordList(list);
+                }, { 'searchVal' : searchVal} );
             }
+            e.preventDefault();
         });
     }
 
@@ -107,7 +114,9 @@
     //레코드 생성
     const makeRecordList = list => {
         const listdivElem = document.querySelector('.listdiv'); //결과창
+        console.log(list);
         if(listdivElem){
+            listdivElem.innerHTML = '';
             list.forEach(item =>{
                 const resultdiv = document.createElement('div');
                 resultdiv.className = "col";
@@ -166,5 +175,5 @@
             })
         }
     }
-    getList();
+        getList();
 }

@@ -6,11 +6,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" th:href="@{/css/vehicle/detail.css}">
 </head>
 
 <th:block layout:fragment="content">
-
     <div class="header_bar">
 
         <div>기본정보</div>
@@ -26,12 +26,12 @@
                 <div class="slide">
                     <div class="prev"><span></span> </div>
                     <div class="slider-for">
-                        <div><img src="car1.jpg" alt="1"></div>
-                        <div><img src="car2.jpg" alt="2"></div>
-                        <div><img src="car3.jpg" alt="3"></div>
-                        <!--                    <div th:each="subimg : ${data.subimg}">-->
-                        <!--                        <img th:src="@{/img/${subimg}}" alt="">-->
-                        <!--                    </div>-->
+                        <div>
+                            <img th:src="@{'/vehicleImg/'+${vo.selliboard}+'/'+${vo.mainimg}}" alt="">
+                        </div>
+                        <div th:each ="subimg :${vo.subimg}" >
+                            <img th:src="@{'/vehicleImg/'+${vo.selliboard}+'/sub/'+${subimg}}" alt="">
+                        </div>
                     </div>
                     <div class="next">
                         <span></span>
@@ -39,17 +39,23 @@
                 </div>
                 <div class="slider-navbar">
                     <div class="slider-nav">
-                        <div><img src="car1.jpg" alt="1"></div>
-                        <div><img src="car2.jpg" alt="2"></div>
-                        <div><img src="car3.jpg" alt="3"></div>
+                        <div>
+                            <img th:src="@{'/vehicleImg/'+${vo.selliboard}+'/'+${vo.mainimg}}" alt="">
+                        </div>
+                        <div  th:each ="subimg :${vo.subimg}" >
+                            <img th:src="@{'/vehicleImg/'+${vo.selliboard}+'/sub/'+${subimg}}" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div>
-                <div><span>차량명</span> <span class="icon">찜</span></div>
+                <div>
+                    <span th:text="${vo.detail_model}"></span>
+                </div>
                 <div>판매자 정보
                     <div>닉네임</div>
+                    <div th:text="${vo.price}+' 만원'"></div>
                     <div>자기소개</div>
                     <div class="btnbox"><button class="btn">채팅하기</button></div>
                 </div>
@@ -57,26 +63,70 @@
         </div>
         <div><h1>상세옵션</h1>
             <div id="infomation">
-                <div>차량 번호 :</div>
-                <div>변속기 타입 :</div>
-                <div>연료 타입 :</div>
-                <div>차량 색상 :</div>
-                <div>거래 지역 :</div>
+                <div>차량 번호 :<span th:text="${vo.car_number}"></span> </div>
+                <div>주행거리: <spna th:text="${vo.distan_driven}+' km'"></spna></div>
+                <div>변속기 타입 :<span th:text="${vo.gearbox}"></span></div>
+                <div>연료 타입 :<span th:text="${vo.fuel}"></span></div>
+                <div>차량 색상 :
+                    <div class="car_color" th:style="${'background-color : '+ vo.color}"></div>
+                </div>
+                <div>거래 지역 :<span th:text="${vo.trading_area}"></span></div>
+                <div>추가옵션</div>
             </div>
+                <div class="options">
+                <div th:if="${vo.aircon==1}">
+                    <div>
+                        <div class="option">
+                            <img th:src="@{/img/aircon.png}">
+                        </div>
+                         오토에어컨
+                    </div>
+                </div>
+                <div th:if="${vo.smart_key==1}">
+                    <div> <div class="option"><img th:src="@{/img/key.png}">
+                    </div>스마트키</div>
+                </div>
+                <div th:if="${vo.camera==1}">
+                    <div> <div class="option"><img th:src="@{/img/camera.png}">
+                    </div>후방카메라</div>
+                </div>
+                <div th:if="${vo.hi_pass==1}">
+                    <div> <div class="option"><img th:src="@{/img/hi_pass.png}">
+                    </div>하이패스</div>
+                </div>
+                <div th:if="${vo.navigation==1}">
+                    <div> <div class="option"><img th:src="@{/img/navigation.png}">
+                    </div>네비게이션</div>
+                </div>
+                <div th:if="${vo.bluetooth==1}">
+                    <div> <div class="option"><img th:src="@{/img/bluetooth.png}">
+                    </div>블루투스</div>
+                </div>
+            </div>
+
         </div>
         <div><h1>설명글</h1>
+            <div id="textarea">
+                <div>차량상태: <spna th:text="${vo.car_state}" style="white-space: pre-line;"></spna></div>
+                <div>사고유무:<spna th:text="${vo.accident_state}"></spna></div>
+                <div>관리상태:<spna th:text="${vo.manage_state}"></spna></div>
+                <div>내/외관 :<spna th:text="${vo.inout_inform}"></spna></div>
+                <div>튜닝정보:<spna th:text="${vo.tuning_inform}"></spna></div>
+                <div>그외:<spna th:text="${vo.other}"></spna></div>
+            </div>
 
-            <div id="textarea"></div>
+
         </div>
         <div><h1>성능점검</h1>
-
-
+            <div class="checklist">
             <img th:src="@{/img/sample.jpg}" alt="차량점검표">
+            </div>
         </div>
     </div>
     </div>
 
-
+    <script defer th:src="@{/js/vehicle/detail.js}"></script>
 </th:block>
-<script defer th:src="@{/js/vehicle/detail.js}"></script>
+
+
 </html>

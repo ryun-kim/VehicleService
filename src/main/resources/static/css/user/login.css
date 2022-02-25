@@ -149,3 +149,15 @@ a:active {
     text-align: center;
     font-size: large;
 }
+
+/* 헤더 안맞아서 작업 */
+#menubar_header > nav > ul{
+    margin: 0;
+    padding: 0;
+}
+
+#loginbar_header > nav > ul{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 14px;
+}

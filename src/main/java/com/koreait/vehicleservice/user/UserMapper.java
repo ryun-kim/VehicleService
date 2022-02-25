@@ -8,4 +8,5 @@ public interface UserMapper {
     UserEntity selUser(UserEntity entity);
     int updUserUpw(UserEntity userEntity);
     int kaoInsUser(UserEntity kaoUser);
+    int navInsUser(UserEntity navUser);
 }

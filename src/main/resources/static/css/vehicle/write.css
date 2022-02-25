@@ -158,7 +158,6 @@ input[type=radio],input[type=checkbox] {
     margin-top: 15px;
     display: grid;
     grid-template-columns: 100px 300px;
-
 }
 .textarea{
     border:1px solid;
@@ -166,6 +165,7 @@ input[type=radio],input[type=checkbox] {
     padding: 20px;
     padding-bottom: 30px;
 }
+
 .text_title > div{
     display: inline-block;
 }
@@ -179,3 +179,24 @@ input[type=radio],input[type=checkbox] {
     opacity: 0.3;
     display: block;
 }
+
+/* 헤더 홈이랑 안맞아서 작업 */
+#menubar_header > nav > ul{
+    margin: 0;
+    padding: 0;
+}
+
+#menubar_header a{
+    text-decoration: none;
+}
+
+#loginbar_header > nav > ul{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 14px;
+}
+
+#loginbar_header a{
+    text-decoration: none;
+}
+
