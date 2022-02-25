@@ -130,7 +130,7 @@ ul,li{list-style: none;}
     display: inline-block;
     width: 100px;
     height: 30px;
-
+}
 /* 헤더 홈이랑 안맞아서 작업 */
 #menubar_header > nav > ul{
     margin: 0;

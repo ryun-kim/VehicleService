@@ -39,8 +39,6 @@ public class VehicleController {
         System.out.println(dto.getSubimg());
         service.uploadSubImg(dto.getSubimg()); //서브이미지 db입력
 
-        String aa ="ffdfsfdss"+"\n"+"vuvu\n";
-
         return "redirect:list";
     }
 
