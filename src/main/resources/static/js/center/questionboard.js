@@ -16,7 +16,8 @@ const writeBtn = document.querySelector('button');
 /*--------------------------클릭했을시 상세페이지로 이동-----------------------------------*/
 trArr.forEach(item => {
     item.addEventListener('click', () => {
-        $("section").load("/center/detailquestion");
+        const quesiboard = $(item).find('td:eq(0)').text() //클릭했을때 행의 quesiboard값 들고온다.
+        $("section").load(`/center/detailquestion?quesiboard=${quesiboard}`);
     })
 })
 

@@ -15,4 +15,5 @@ public class BoardEntity {
     private int hits;
     private String rdt;
     private String mdt;
+    private String isanswer;
 }

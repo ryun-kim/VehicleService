@@ -3,13 +3,19 @@
     const listorderElem = document.querySelector('#list_order'); // 정렬방법 만들어야함!!!
 
     if (searchFrmElem) { //검색창에 검색없으면 알람
-        searchFrmElem.addEventListener('submit', () => {
+        searchFrmElem.addEventListener('submit', (e) => {
             const searchVal = searchFrmElem.search_area.value;
 
             if (searchVal.length === 0) {
+                e.preventDefault();
                 alert('검색어를 입력해 주세요');
+            } else {
+                myFetch.get('/ajax/vehicle/search', list => {
+                    console.log(list);
+                    makeRecordList(list);
+                }, { 'searchVal' : searchVal} );
             }
-
+            e.preventDefault();
         });
     }
 
@@ -38,14 +44,16 @@
     //레코드 생성
     const makeRecordList = list => {
         const listdivElem = document.querySelector('.listdiv'); //결과창
+        console.log(list);
         if(listdivElem){
+            listdivElem.innerHTML = '';
             list.forEach(item =>{
                 const resultdiv = document.createElement('div');
                 resultdiv.className = "col";
 
                 resultdiv.innerHTML = `
                 <div class="card shadow-sm bg-white h-100">
-                    <img class="card-img-top car_img" src="${item.mainimg}" alt="이미지없음">
+                   <img class="card-img-top car_img" src="${item.mainimg}" alt="이미지없음">
                     <div class="card-body">
                         <h4 class="card-title">${item.detail_model}</h4>
                         <p class="card-text">${item.price}만원</p>
@@ -73,5 +81,5 @@
             })
         }
     }
-    getList();
+        getList();
 }

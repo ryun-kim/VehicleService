@@ -1,6 +1,16 @@
 <link rel="stylesheet" href="/css/center/write.css">
+<script defer>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+        if(form.title.value === '' || form.ctnt.value === ''){
+            e.preventDefault();
+            alert('제목 및 내용을 입력해주세요.');
+        }
+    })
+</script>
 <form method="post" th:action="@{/center/write}" th:object="${boardEntity}">
     <input class="border border-2" type="text" placeholder="제목을 입력해주세요." th:field="*{title}">
     <textarea class="border border-2" placeholder="내용을 입력해주세요." th:field="*{ctnt}"></textarea>
     <button type="submit" class="btn btn-primary">등록</button>
+    <a th:href="@{/center/customer}"><button type="button" class="btn btn-primary">목록</button></a>
 </form>

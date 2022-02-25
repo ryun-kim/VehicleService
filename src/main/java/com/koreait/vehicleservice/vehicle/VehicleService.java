@@ -105,7 +105,12 @@ public class VehicleService {
 
 
     public List<VehicleVo> vehicleList(VehicleDto dto){
-        List<VehicleVo> list = mapper.vehicleList(dto);
+        List<VehicleVo> list = null;
+        if(dto.getSearchText() != null){
+            list = mapper.vehicleSearchList(dto);
+        } else {
+            list = mapper.vehicleList(dto);
+        }
         return list;
     }
 

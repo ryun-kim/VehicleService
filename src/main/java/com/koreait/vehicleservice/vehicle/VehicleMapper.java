@@ -13,5 +13,6 @@ public interface VehicleMapper {
     int inExplanation(CarExplanationEntity car_explanation);
     VehicleEntity selCarNum(VehicleEntity entity);
     List<VehicleVo> vehicleList(VehicleEntity entity);
+    List<VehicleVo> vehicleSearchList(VehicleDto dto);
     VehicleVo vehicledetail(VehicleEntity entity);
 }

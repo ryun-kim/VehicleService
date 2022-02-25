@@ -2,11 +2,13 @@ package com.koreait.vehicleservice.vehicle;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
 @Getter
 @Setter
+@ToString
 public class VehicleVo extends VehicleEntity{
     private int aircon;
     private int smart_key;

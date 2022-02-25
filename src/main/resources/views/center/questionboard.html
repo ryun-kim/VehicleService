@@ -6,6 +6,11 @@
             <th>제목</th>
             <th>답변여부</th>
         </tr>
+        <tr th:each="item : ${list}">
+            <td th:text="${item.quesiboard}" name="quesiboard"></td>
+            <td th:text="${item.title}" name="title"></td>
+            <td th:text="${item.isanswer}" name="isanswer"></td>
+        </tr>
     </table>
 </div>
 <script src="/js/center/questionboard.js"></script>
