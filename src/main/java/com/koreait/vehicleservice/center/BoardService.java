@@ -27,4 +27,16 @@ public class BoardService {
         boardEntity.setQuesiboard(quesiboard);
         return mapper.selBoard(boardEntity);
     }
+
+    public void delBoard(int quesiboard){
+        BoardEntity boardEntity = new BoardEntity();
+        boardEntity.setQuesiboard(quesiboard);
+        boardEntity.setWriteriuser(userUtils.getLoginUserPk());
+        mapper.delBoard(boardEntity);
+    }
+
+    public int modBoard(BoardEntity boardEntity){
+        boardEntity.setWriteriuser(userUtils.getLoginUserPk());
+        return mapper.modBoard(boardEntity);
+    }
 }

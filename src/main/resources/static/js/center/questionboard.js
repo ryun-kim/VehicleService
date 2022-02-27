@@ -1,17 +1,7 @@
-// const moreInfo = document.querySelector('#moreInfo');
-// const menu = document.querySelector('#menu');
-// const notice = document.querySelector('#notice');
-const trArr = document.querySelectorAll('tr');
-const writeBtn = document.querySelector('button');
-
-/*--------------------------더보기 클릭했을시 공지사항페이지로 이동-----------------------------------*/
-/*moreInfo.addEventListener('click', () => {
-    $("section").load("/html/notice.html");
-    Array.from(menu.children).forEach(
-        v => v.classList.remove('selected')
-    )
-    notice.classList.add('selected');
-})*/
+const boardContainer = document.querySelector('.boardContainer');
+const trArr = boardContainer.querySelectorAll('tr');
+const writeBtn = boardContainer.querySelector('button');
+const loginUserInfrm = boardContainer.querySelector('.loginUserInfrm');
 
 /*--------------------------클릭했을시 상세페이지로 이동-----------------------------------*/
 trArr.forEach(item => {
@@ -23,5 +13,10 @@ trArr.forEach(item => {
 
 /*--------------------------클릭했을시 글쓰기페이지로 이동-----------------------------------*/
 writeBtn.addEventListener('click', () => {
-    $("section").load("/center/write");
+    if(loginUserInfrm === null) {
+        alert('로그인해야 이용할 수 있는 서비스입니다.')
+        location.href='/user/login';
+    } else {
+        $("section").load("/center/write?quesiboard=0");
+    }
 })

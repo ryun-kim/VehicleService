@@ -57,15 +57,17 @@ aside{
 
 table{
     width: 100%;
-    border: 1px solid rgb(119, 176, 230);
+    /*border: 1px solid rgb(119, 176, 230);*/
     border-collapse: collapse;
 }
 
-th, td{
-    border: 1px solid rgb(119, 176, 230);
+table > thead{
+    border-top: 1px solid #3891c0;
+    border-bottom: 1px solid #3891c0;
 }
 
 tr{
+    border-bottom: 0.1px solid #5194b7;
     height: 60px;
     text-align: center;
 }

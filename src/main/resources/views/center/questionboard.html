@@ -1,15 +1,18 @@
 <div class="boardContainer">
-    <button th:if="${session.loginUser != null}" type="button" class="btn btn-primary writeBtn mb-2">글쓰기</button>
+    <input th:if="${session.loginUser != null}" type="hidden" class="loginUserInfrm">
+    <button type="button" class="btn btn-primary writeBtn mb-2">글쓰기</button>
     <table>
-        <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>답변여부</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>답변여부</th>
+            </tr>
+        </thead>
         <tr th:each="item : ${list}">
-            <td th:text="${item.quesiboard}" name="quesiboard"></td>
-            <td th:text="${item.title}" name="title"></td>
-            <td th:text="${item.isanswer}" name="isanswer"></td>
+            <td th:text="${item.quesiboard}"></td>
+            <td th:text="${item.title}"></td>
+            <td th:text="${item.isanswer}"></td>
         </tr>
     </table>
 </div>

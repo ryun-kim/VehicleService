@@ -6,6 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/center")
 public class CenterController {
@@ -39,12 +42,30 @@ public class CenterController {
     public void detailnotice(){}
 
     @GetMapping("/write")
-    public void write(@ModelAttribute BoardEntity boardEntity){}
+    public void write(@ModelAttribute BoardEntity boardEntity, @RequestParam int quesiboard, Model model){
+        if(quesiboard > 0){
+           model.addAttribute("item", service.selBoard(quesiboard));
+        }
+    }
 
     @PostMapping("/write")
     public String writeProc(BoardEntity boardEntity){
         int rs = service.insBoard(boardEntity);
         System.out.println("1이면 입력성공 0이면 입력실패 : " + rs);
         return "redirect:/center/customer";
+    }
+
+    @GetMapping("/del/{quesiboard}")
+    public String del(@PathVariable int quesiboard){
+        service.delBoard(quesiboard);
+        return "redirect:/center/customer";
+    }
+
+    @ResponseBody
+    @PostMapping("/modify")
+    public Map<String, Integer> mod(@RequestBody BoardEntity boardEntity){
+        Map<String, Integer> map = new HashMap<>();
+        map.put("result", service.modBoard(boardEntity));
+        return map;
     }
 }

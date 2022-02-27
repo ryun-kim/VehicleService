@@ -9,4 +9,6 @@ public interface BoardMapper {
     int insBoard(BoardEntity boardEntity);
     List<BoardEntity> selBoardList();
     BoardVo selBoard(BoardEntity boardEntity);
+    int delBoard(BoardEntity boardEntity);
+    int modBoard(BoardEntity boardEntity);
 }

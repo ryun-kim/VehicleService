@@ -12,7 +12,7 @@
         FROM question_board A
         INNER JOIN t_user B
         ON A.writeriuser = B.iuser
-        WHERE A.quesiboard = ${quesiboard}
+        WHERE A.quesiboard = #{quesiboard}
     </select>
 
     <insert id="insBoard">
@@ -21,4 +21,14 @@
         VALUES
             (${writeriuser}, #{title}, #{ctnt})
     </insert>
+
+    <delete id="delBoard">
+        delete from question_board where quesiboard = ${quesiboard} and writeriuser = ${writeriuser}
+    </delete>
+
+    <update id="modBoard">
+        update question_board
+        set title = #{title}, ctnt = #{ctnt}
+        where quesiboard = ${quesiboard} and writeriuser = ${writeriuser}
+    </update>
 </mapper>

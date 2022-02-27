@@ -1,16 +1,55 @@
 <link rel="stylesheet" href="/css/center/write.css">
 <script defer>
-    const form = document.querySelector('form');
-    form.addEventListener('submit', (e) => {
-        if(form.title.value === '' || form.ctnt.value === ''){
-            e.preventDefault();
-            alert('제목 및 내용을 입력해주세요.');
-        }
-    })
+    const writeFrm = document.querySelector('#writeFrm');
+    const modFrm = document.querySelector('#modFrm');
+    if(writeFrm) {
+        writeFrm.addEventListener('submit', (e) => {
+            if (writeFrm.title.value === '' || writeFrm.ctnt.value === '') {
+                e.preventDefault();
+                alert('제목 및 내용을 입력해주세요.');
+            }
+        })
+    }
+
+    if(modFrm){
+        modFrm.addEventListener('submit', (e) => {
+            const quesiboard = modFrm.quesiboard.value;
+            if (modFrm.title.value === '' || modFrm.ctnt.value === '') {
+                e.preventDefault();
+                alert('제목 및 내용을 입력해주세요.');
+            } else {
+                e.preventDefault();
+                fetch('/center/modify', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        quesiboard : quesiboard,
+                        title : modFrm.title.value,
+                        ctnt :  modFrm.ctnt.value,
+                    }),
+                }).then(res => res.json())
+                    .then(data => {
+                        if(data.result === 1){
+                            $("section").load(`/center/detailquestion?quesiboard=${quesiboard}`);
+                        }
+                    })
+            }
+        })
+    }
 </script>
-<form method="post" th:action="@{/center/write}" th:object="${boardEntity}">
+<!--th:if, th:unless 쓸때 조건식은 같아야됨-->
+<form id="writeFrm" th:if="${item == null}" method="post" th:action="@{/center/write}" th:object="${boardEntity}">
     <input class="border border-2" type="text" placeholder="제목을 입력해주세요." th:field="*{title}">
     <textarea class="border border-2" placeholder="내용을 입력해주세요." th:field="*{ctnt}"></textarea>
     <button type="submit" class="btn btn-primary">등록</button>
+    <a th:href="@{/center/customer}"><button type="button" class="btn btn-primary">목록</button></a>
+</form>
+<form id="modFrm" th:unless="${item == null}">
+    <input type="hidden" th:name="quesiboard" th:value="${item.quesiboard}">
+    <input class="border border-2" type="text" placeholder="제목을 입력해주세요." th:value="${item.title}" th:name="title">
+    <textarea class="border border-2" placeholder="내용을 입력해주세요." th:text="${item.ctnt}" th:name="ctnt"></textarea>
+    <button type="submit" class="btn btn-primary">수정</button>
     <a th:href="@{/center/customer}"><button type="button" class="btn btn-primary">목록</button></a>
 </form>
