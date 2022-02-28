@@ -7,6 +7,8 @@
             if (writeFrm.title.value === '' || writeFrm.ctnt.value === '') {
                 e.preventDefault();
                 alert('제목 및 내용을 입력해주세요.');
+            } else {
+                alert('글 등록에 성공하였습니다.')
             }
         })
     }
@@ -19,6 +21,7 @@
                 alert('제목 및 내용을 입력해주세요.');
             } else {
                 e.preventDefault();
+                alert('수정에 성공하였습니다.')
                 fetch('/center/modify', {
                     method: "POST",
                     headers: {

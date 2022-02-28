@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -18,9 +19,9 @@ public class CenterController {
     @GetMapping("/customer")
     public void customer(){}
 
-    @GetMapping("/questionboard")
-    public void questionboard(Model model){
-        model.addAttribute("list", service.selBoardList());
+    @GetMapping("/questionboard")//클라이언트에서 보낸 url파라미터값 받를때 객체로받을땐 @RequestParam 안적는다.
+    public void questionboard(Model model, BoardDto dto){
+        model.addAttribute("list", service.selBoardList(dto));
     }
 
     @GetMapping("/guide")
@@ -62,10 +63,22 @@ public class CenterController {
     }
 
     @ResponseBody
-    @PostMapping("/modify")
+    @PostMapping("/modify") //post매핑일땐 @requestbody 붙여줘야함
     public Map<String, Integer> mod(@RequestBody BoardEntity boardEntity){
         Map<String, Integer> map = new HashMap<>();
         map.put("result", service.modBoard(boardEntity));
         return map;
+    }
+
+    @ResponseBody
+    @GetMapping("/board/maxpage") //get매핑일땐 @Requestbody 핑요없음
+    public ResultVo selMaxPageVal(BoardDto dto){
+        return service.selMaxPageVal(dto);
+    }
+
+    @ResponseBody
+    @PostMapping("/getlist")
+    public List<BoardEntity> getList(@RequestBody BoardDto dto){
+        return service.selBoardList(dto);
     }
 }

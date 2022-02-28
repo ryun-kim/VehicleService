@@ -18,8 +18,17 @@ public class BoardService {
         return mapper.insBoard(boardEntity);
     }
 
-    public List<BoardEntity> selBoardList(){
+    /*public List<BoardEntity> selBoardList(){
         return mapper.selBoardList();
+    }*/
+
+    public List<BoardEntity> selBoardList(BoardDto dto){
+        int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
+        if(startIdx < 0){
+            startIdx = 0;
+        }
+        dto.setStartIdx(startIdx);
+        return mapper.selBoardList(dto);
     }
 
     public BoardVo selBoard(int quesiboard){
@@ -38,5 +47,9 @@ public class BoardService {
     public int modBoard(BoardEntity boardEntity){
         boardEntity.setWriteriuser(userUtils.getLoginUserPk());
         return mapper.modBoard(boardEntity);
+    }
+
+    public ResultVo selMaxPageVal(BoardDto dto){
+        return mapper.selMaxPageVal(dto);
     }
 }

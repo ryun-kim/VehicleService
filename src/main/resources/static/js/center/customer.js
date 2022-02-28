@@ -8,11 +8,11 @@ const menu = document.querySelector('#menu');
 /*$(document).ready()는 문서가 준비되면 매개변수로 넣은 콜백 함수를 실행하라는 의미이다.
    jQuery 이벤트 메서드 중 하나이다. 이 메서드는 비슷한 기능을 수행한다.*/
 $(document).ready(function () {
-    $("section").load("/center/questionboard"); //load에 url을 넣어줘야됨 controller거쳐서 html파일이 열림
+    $("section").load(`/center/questionboard?currentPage=1&recordCount=5`); //load에 url을 넣어줘야됨 controller거쳐서 html파일이 열림
     board.classList.add('selected');
 
     board.addEventListener('click', () => {
-        $("section").load("/center/questionboard");
+        $("section").load(`/center/questionboard?currentPage=1&recordCount=5`);
     })
 
     guide.addEventListener('click', () => {

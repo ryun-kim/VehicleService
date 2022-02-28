@@ -102,13 +102,5 @@
         SELECT CEIL(COUNT(selliboard) / ${recordCount}) AS result
         FROM car_sell_board
 
-                 INNER JOIN car_image B
-                            ON A.selliboard = B.selliboard
-                 INNER JOIN car_option C
-                            ON A.selliboard = C.selliboard
-                 INNER JOIN car_explanation D
-                            ON A.selliboard = D.selliboard
-        WHERE A.selliboard = ${selliboard};
-
     </select>
 </mapper>
