@@ -6,7 +6,7 @@ const pageContainerElem = document.querySelector('#pageContainer');
 
 let currentPage = 1; //현재 페이지
 let maxPage = 1;
-const recordCount = 5; //레코드 수
+const recordCount = 6; //레코드 수
 const pagingCount = 5; //페이징의 페이징 수
 
 /*--------------------------클릭했을시 상세페이지로 이동-----------------------------------*/

@@ -3,6 +3,8 @@ const modBtn = document.querySelector('#modBtn');
 const delBtn = document.querySelector('#delBtn');
 const loginUserInfrm = document.querySelector('.loginUserInfrm');
 const data = document.querySelector('#data');
+const prevBtn = document.querySelector('#prevBtn');
+const nextBtn = document.querySelector('#nextBtn');
 
 /*--------------------------클릭했을시 글쓰기페이지로 이동-----------------------------------*/
 writeBtn.addEventListener('click', () => {
@@ -27,5 +29,17 @@ if(delBtn){
         if(confirm('정말 삭제 하시겠습니까?')) {
             location.href = `/center/del/${data.dataset.quesiboard}`;
         }
+    })
+}
+
+if(prevBtn){
+    prevBtn.addEventListener('click', () => {
+        $("section").load(`/center/detailquestion?quesiboard=${prevBtn.dataset.prevquesiboard}`);
+    })
+}
+
+if(nextBtn){
+    nextBtn.addEventListener('click', () => {
+        $("section").load(`/center/detailquestion?quesiboard=${nextBtn.dataset.nextquesiboard}`);
     })
 }

@@ -36,7 +36,10 @@ public class CenterController {
     @GetMapping("/detailquestion")
     public void detailquestion(@RequestParam int quesiboard, Model model){
         //쿼리스트링으로 파라미터를 URL로 전송할 때엔 컨트롤러에서 파라미터를 받을때 @RequestParam 을 사용한다.
-        model.addAttribute("item", service.selBoard(quesiboard));
+        BoardVo vo = service.selBoard(quesiboard);
+        BoardPrevNextVo pnVo = service.selPrevNext(vo);
+        model.addAttribute("item", vo);
+        model.addAttribute("prevnext", pnVo);
     }
 
     @GetMapping("/detailnotice")

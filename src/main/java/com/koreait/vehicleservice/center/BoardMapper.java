@@ -12,4 +12,6 @@ public interface BoardMapper {
     int delBoard(BoardEntity boardEntity);
     int modBoard(BoardEntity boardEntity);
     ResultVo selMaxPageVal(BoardDto dto);
+    int addHits(BoardEntity boardEntity);
+    BoardPrevNextVo selPrevNext(BoardVo vo);
 }
