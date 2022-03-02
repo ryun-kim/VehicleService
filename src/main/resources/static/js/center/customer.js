@@ -22,10 +22,6 @@ $(document).ready(function () {
     introduction.addEventListener('click', () => {
         $("section").load("/center/introduction");
     })
-
-    notice.addEventListener('click', () => {
-        $("section").load("/center/notice");
-    })
 });
 
 /*----------------------------------- 클릭했을시 li태그에 색상적용 ----------------------------------*/

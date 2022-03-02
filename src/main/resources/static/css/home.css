@@ -131,13 +131,50 @@ main > div > section {
     font-size: 20px; margin-bottom: 10px;
 }
 #news_container {
-    display: flex;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 30px 10px;
 }
 #news_container > div {
-    margin: 5px; cursor: pointer;
+    width: 100%; height: 100%;
 }
-#news_container > div > img {
-    width: 100px; height: 80px;
+#news_container > div > a > div:nth-child(1) {
+    width: 100%; height: 50%;
+    display: flex; justify-content: center;
+}
+#news_container img {
+    width: 100%; height: 100%;
+}
+#news_container > div > a > div:nth-child(2) {
+    font-size: 13px; font-weight: bold;
+
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+#news_container > div > a > div:nth-child(3) {
+    font-size: 10px;
+
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+#news_container > div > a > div:nth-child(4) {
+    font-size: 10px;
+    font-weight: bold;
 }
 /* 본문>뉴스 ---------------------------------------------------- [end] */
 /* 본문>고객센터 ------------------------------------------------ [start] */
@@ -185,6 +222,9 @@ main > div > section {
 /* 본문 --------------------------------------------------------- [end] */
 
 @media(max-width: 1200px) {
+    #news_container {
+        display: grid; grid-template-columns: repeat(4, 1fr);
+    }
     #login_home_sub_btn a:first-child {
         grid-column: 1/3;
     }
@@ -193,6 +233,9 @@ main > div > section {
     }
 }
 @media(max-width: 768px) {
+    #news_container {
+        display: grid; grid-template-columns: repeat(3, 1fr);
+    }
     #search_car_home, #login_home, #popular_sales_home, #selling_mycar_home
     , #news_home, #customer_service_home {
         grid-column: 1/3;
