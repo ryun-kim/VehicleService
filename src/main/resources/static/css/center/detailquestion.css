@@ -6,8 +6,13 @@
     vertical-align: bottom;
 }
 
-button{
+.floatRiBtn{
     float: right;
+    margin-top: 30px;
+}
+
+.floatLeBtn{
+    float: left;
     margin-top: 30px;
 }
 
