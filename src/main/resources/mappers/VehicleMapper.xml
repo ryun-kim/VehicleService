@@ -60,6 +60,7 @@
         ON A.selliboard = B.selliboard
         where A.model LIKE concat('%',#{searchText},'%')
         or A.detail_model LIKE concat('%',#{searchText},'%')
+        or A.manufacturer LIKE concat('%',#{searchText},'%')
         ORDER BY A.selliboard DESC
     </select>
 

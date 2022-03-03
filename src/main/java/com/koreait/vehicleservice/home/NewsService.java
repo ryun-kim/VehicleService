@@ -52,7 +52,7 @@ public class NewsService {
         JSONObject jsonObject = (JSONObject) jsonParser.parse(responseBody);
 
         JSONArray items = (JSONArray) jsonObject.get("items");
-        System.out.println(items);
+        /*System.out.println(items);*/
 
         //
         ObjectMapper objectMapper = new ObjectMapper();
@@ -61,15 +61,15 @@ public class NewsService {
         List<NewsEntity> itemsList = objectMapper.convertValue(items, new TypeReference<List<NewsEntity>>() {});
 
         if (mapper.selNewsBoardList(newsEntity).size() == 0) {
-            System.out.println(mapper.selNewsBoardList(newsEntity).size());
+            /*System.out.println(mapper.selNewsBoardList(newsEntity).size());*/
             for (NewsEntity item : itemsList) {
-                System.out.println(item);
+                /*System.out.println(item);*/
                 mapper.insNewsBoard(item);
             }
         } else {
-            System.out.println(mapper.selNewsBoardList(newsEntity).size());
+            /*System.out.println(mapper.selNewsBoardList(newsEntity).size());*/
             for (NewsEntity item : itemsList) {
-                System.out.println(item);
+                /*System.out.println(item);*/
                 mapper.upNewsBoardList(item);
             }
         }

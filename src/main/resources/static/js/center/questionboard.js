@@ -18,14 +18,16 @@ trArr.forEach(item => {
 })
 
 /*--------------------------클릭했을시 글쓰기페이지로 이동-----------------------------------*/
-writeBtn.addEventListener('click', () => {
-    if(loginUserInfrm === null) {
-        alert('로그인해야 이용할 수 있는 서비스입니다.')
-        location.href='/user/login';
-    } else {
-        $("section").load("/center/write?quesiboard=0");
-    }
-})
+if(writeBtn) {
+    writeBtn.addEventListener('click', () => {
+        if (loginUserInfrm === null) {
+            alert('로그인해야 이용할 수 있는 서비스입니다.')
+            location.href = '/user/login';
+        } else {
+            $("section").load("/center/write?quesiboard=0");
+        }
+    })
+}
 
 const getList = () => {
     fetch('/center/getlist', {
