@@ -127,6 +127,11 @@ public class VehicleService {
        
     }
 
+    public List<VehicleVo> searchList(ListSearchEntity list){
+    
+        return mapper.vehicleSearchList2(list);
+    }
+
     public VehicleVo vehicledetail(VehicleEntity entity){
         //세선에서 유저iboard값 받아야함
         VehicleVo vo= mapper.vehicledetail(entity);

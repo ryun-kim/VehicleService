@@ -46,4 +46,9 @@ public class VehicleRestController {
         dto.setSearchText(searchVal);
         return service.vehicleList2(dto);
     }
+
+    @GetMapping("/searchList")
+    public List<VehicleVo>  searchList(ListSearchEntity list){
+        return service.searchList(list);
+    }
 }

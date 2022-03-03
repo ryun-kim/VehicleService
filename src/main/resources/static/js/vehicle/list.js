@@ -1,5 +1,6 @@
 {
     const searchFrmElem = document.querySelector('#search_Result_Frm'); //검색어입력창
+    const list_searchFrmElem = document.querySelector('#List_search_Frm'); //리스트 검색
     const listorderElem = document.querySelector('#list_order'); // 정렬방법 만들어야함!!!
 
     const pageContainerElem = document.querySelector('#page_container');
@@ -21,13 +22,87 @@
                 alert('검색어를 입력해 주세요');
             } else {
                 myFetch.get('/ajax/vehicle/search', list => {
-                    console.log(list);
+                    // console.log(list);
                     makeRecordList(list);
                 }, { 'searchVal' : searchVal} );
             }
             e.preventDefault();
         });
     }
+
+
+
+    function getSearchList() { //리스트 검색
+            const com_query = 'input[name="manufacturer"]:checked';
+        const compunyList = document.querySelectorAll(com_query);
+        let compunyResult = [];
+        compunyList.forEach((el) => {
+            compunyResult.push(el.value)
+        });
+
+        const start_Mileage = document.getElementById('start_Mileage');
+        let Min_Mileage= parseInt(start_Mileage.options[start_Mileage.selectedIndex].value);
+
+        const end_Mileage = document.getElementById('end_Mileage');
+        let Max_Mileage= parseInt(end_Mileage.options[end_Mileage.selectedIndex].value);
+
+        const start_price = document.getElementById('start_price');
+        let Min_price= parseInt(start_price.options[start_price.selectedIndex].value);
+
+        const end_price = document.getElementById('end_price');
+        let Max_price= parseInt(end_price.options[end_price.selectedIndex].value);
+
+        const gearbox_query = 'input[name="gearbox"]:checked';
+        const gearbox = document.querySelectorAll(gearbox_query);
+        let gearboxResult = [];
+        gearbox.forEach((el) => {
+            gearboxResult.push(el.value)
+        });
+
+        const fuel_query = 'input[name="fuel"]:checked';
+        const fuel = document.querySelectorAll(fuel_query);
+        let fuelResult = [];
+        fuel.forEach((el) => {
+            fuelResult.push(el.value)
+        });
+
+        const aria_query = 'input[name="area"]:checked';
+        const ariaList = document.querySelectorAll(aria_query);
+        let ariaResult = [];
+        ariaList.forEach((el) => {
+            ariaResult.push(el.value)
+        });
+
+
+        console.log(compunyResult)
+        console.log(Min_Mileage)
+        console.log(Max_Mileage)
+        console.log(Min_price)
+        console.log(Max_price)
+        console.log(gearboxResult)
+        console.log(fuelResult)
+        console.log(ariaResult)
+        console.log('==============================================')
+
+                myFetch.get('/ajax/vehicle/searchList', list => {
+                    console.log("검색결과리스트")
+                    console.log(list);
+                    makeRecordList(list);
+                },{
+                    'compunyResult' : compunyResult,
+                    'Min_Mileage' : Min_Mileage,
+                    'Max_Mileage' : Max_Mileage,
+                    'Min_price' : Min_price,
+                    'Max_price' : Max_price,
+                    'gearboxResult' : gearboxResult,
+                    'fuelResult' : fuelResult,
+                    'ariaResult' : ariaResult
+                } );
+
+    }
+
+
+
 
     //찜버튼 활성화
     function jjimEvent(pk, target){
@@ -40,7 +115,7 @@
             target.classList.add('btn-outline-danger');
 
             myFetch.get(`/ajax/vehicle/likes/${selliboard}`,data=>{
-                console.log(data);
+                // console.log(data);
             });
         }else { //찜 취소
             iElem.classList.remove('fa-solid');
@@ -62,7 +137,7 @@
     //마지막 페이지 값 (once)
     const getMaxPageVal = () => {
         myFetch.get(`/ajax/vehicle/maxpage`, data => {
-            console.log(data.result);
+            // console.log(data.result);
             maxPage = data.result;
             makePaging();
         }, {recordCount});
@@ -114,7 +189,7 @@
     //레코드 생성
     const makeRecordList = list => {
         const listdivElem = document.querySelector('.listdiv'); //결과창
-        console.log(list);
+        // console.log(list);
         if(listdivElem){
             listdivElem.innerHTML = '';
             list.forEach(item =>{
@@ -131,7 +206,7 @@
                             <p class="card-text">${item.trading_area}</p>
                         </div>    
                     </div>
-                `;
+                `
                 let fullBtnDiv = document.createElement('div');
                 fullBtnDiv.classList.add('g-4')
                 fullBtnDiv.innerHTML = `

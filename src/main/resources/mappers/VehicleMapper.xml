@@ -64,6 +64,54 @@
         ORDER BY A.selliboard DESC
     </select>
 
+    <select id="vehicleSearchList2" resultType="VehicleVo">
+        SELECT A.selliboard, A.writeriuser, A.category, A.manufacturer, A.model, A.detail_model
+             , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number
+             , B.mainimg
+        FROM car_sell_board A
+                 LEFT JOIN car_image B
+                           ON A.selliboard = B.selliboard
+        <where>
+        <if test="compunyResult.size()!=0">
+        AND A.manufacturer IN
+            <foreach collection="compunyResult" item="com" open="(" close=")" separator=",">
+                #{com}
+            </foreach>
+        </if>
+        <if test="Min_Mileage!=0">
+            AND A.distan_driven &gt;= ${Min_Mileage}
+        </if>
+        <if test="Max_Mileage>0">
+            AND A.distan_driven &lt;= ${Max_Mileage}
+        </if>
+        <if test="Min_price!=0">
+            AND A.price &gt;= ${Min_price}
+        </if>
+        <if test="Max_price>0">
+            AND A.price &lt;= ${Max_price}
+        </if>
+        <if test="gearboxResult.size()!=0">
+            AND A.gearbox IN
+            <foreach collection="gearboxResult" item="gearbox" open="(" close=")" separator=",">
+                #{gearbox}
+            </foreach>
+        </if>
+        <if test="fuelResult.size()!=0">
+            AND A.fuel IN
+            <foreach collection="fuelResult" item="fuel" open="(" close=")" separator=",">
+                #{fuel}
+            </foreach>
+        </if>
+        <if test="ariaResult.size()!=0">
+            AND A.trading_area IN
+            <foreach collection="ariaResult" item="aria" open="(" close=")" separator=",">
+                #{aria}
+            </foreach>
+        </if>
+        </where>
+        ORDER BY A.selliboard DESC
+    </select>
+
     <select id="vehicledetail" resultType="VehicleVo">
         SELECT A.selliboard, A.writeriuser, A.category, A.manufacturer, A.model, A.detail_model
              , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number

@@ -74,7 +74,7 @@ var companyList ; // 제조사 리스트
 var modelList;   // 모델리스트
 var detailModelList; //세부모델리스트
 
-fetch("../jsonData/MOCK_DATA.json") //TODO json파일 가져오기
+fetch("/json/MOCK_DATA.json") // json파일 가져오기
     .then(response => {
         return response.json();
     }).then(jsondata =>
@@ -171,3 +171,9 @@ insurance_btn.addEventListener('click', () => {
     }
 });
 //고객센터 > 질문게시판/공지사항 ------------------------------------- [end]
+
+
+const searchBtn = document.querySelector('#detail_search_btn');
+searchBtn.addEventListener('click',()=>{
+
+})
