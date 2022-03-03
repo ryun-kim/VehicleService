@@ -18,9 +18,11 @@ public class BoardService {
         return mapper.insBoard(boardEntity);
     }
 
-    /*public List<BoardEntity> selBoardList(){
-        return mapper.selBoardList();
-    }*/
+    public int insCmtBoard(BoardCmtEntity cmtEntity){
+        cmtEntity.setWriterNm(userUtils.getLoginUser().getNm());
+        mapper.modBoardIsAnw(cmtEntity);
+        return mapper.insCmtBoard(cmtEntity);
+    }
 
     public List<BoardEntity> selBoardList(BoardDto dto){
         int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
@@ -39,7 +41,14 @@ public class BoardService {
         if(hitsResult == 1){ //detail로 들어갔을때 올려진 hits가 바로보이게하기위해
             detail.setHits(detail.getHits() + 1);
         }
+
         return detail;
+    }
+
+    public BoardCmtEntity selCmtBoard(int quesiboard){
+        BoardCmtEntity entity = new BoardCmtEntity();
+        entity.setQuesiboard(quesiboard);
+        return mapper.selCmtBoard(entity);
     }
 
     public BoardPrevNextVo selPrevNext(BoardVo vo){

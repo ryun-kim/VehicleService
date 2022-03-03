@@ -19,12 +19,16 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-12 questionContent border-top border-2" th:text="${item.ctnt}">
-
+        <div class="col-12 questionContent border-top border-2" th:text="${item.ctnt}"></div>
+        <div th:if="${item.isanswer.toString().equals('완료') && cmtItem != null}" class="col-12 answerContent border-top border-2">
+            <span th:text="${cmtItem.writerNm}"></span>
+            <span th:text="${cmtItem.rdt}"></span>
         </div>
-        <div class="col-12 answerContent border-top border-2">
-
-        </div>
+        <div th:if="${item.isanswer.toString().equals('완료') && cmtItem != null}" th:text="${cmtItem.cmtctnt}" class="col-12"></div>
+        <form th:if="${(session.loginUser != null && session.loginUser.getNm().toString().equals('관리자')) && item.isanswer.toString().equals('미완료')}">
+            <textarea class="form-control" id="floatingTextarea" placeholder="답변을 입력하세요." th:name="cmtctnt"></textarea>
+            <input type="submit" value="등록" class="btn btn-primary">
+        </form>
     </div>
 </div>
 <script src="/js/center/detailquestion.js"></script>
