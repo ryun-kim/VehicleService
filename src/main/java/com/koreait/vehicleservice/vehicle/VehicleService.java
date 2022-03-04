@@ -20,8 +20,10 @@ public class VehicleService {
     private MyFileUtils fileUtils;
     @Autowired
     private MyUserUtils myUserUtils;
-
+    @Autowired
+    MyUserUtils userUtils;
     public int inVehicle(VehicleEntity entity){ //차량등록
+        entity.setWriteriuser(userUtils.getLoginUserPk());
         return mapper.inVehicle(entity);
     }
 
@@ -160,17 +162,17 @@ public class VehicleService {
 
        
 
-    public List<VehicleVo> vehicleList(VehicleEntity entity){
-
-
-        final String PATH = "../img/vehicle/";
-        List<VehicleVo> list = mapper.vehicleList(entity);
-        for(int i=0; i<list.size(); i++){
-            String result =PATH + list.get(i).getSelliboard()+ "/"+list.get(i).getMainimg();
-            list.get(i).setMainimg(result);
-        }
-        return list;
-    }
+//    public List<VehicleVo> vehicleList(VehicleEntity entity){
+//
+//
+//        final String PATH = "../img/vehicle/";
+//        List<VehicleVo> list = mapper.vehicleList(entity);
+//        for(int i=0; i<list.size(); i++){
+//            String result =PATH + list.get(i).getSelliboard()+ "/"+list.get(i).getMainimg();
+//            list.get(i).setMainimg(result);
+//        }
+//        return list;
+//    }
 
     public int likes(VehicleDto dto){
         dto.setLikesiuser(myUserUtils.getLoginUserPk());
@@ -188,5 +190,12 @@ public class VehicleService {
 
     public VehicleDto selMaxPageVal(VehicleDto dto){
         return mapper.selMaxPageVal(dto);
+    }
+
+    public List<VehicleVo> homeSearchList(VehicleEntity entity){ //홈에서 검색
+        System.out.println(entity.getManufacturer());
+        System.out.println(entity.getModel());
+        System.out.println(entity.getDetail_model());
+        return mapper.homeSearchList(entity);
     }
 }

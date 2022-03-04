@@ -22,7 +22,7 @@
                 alert('검색어를 입력해 주세요');
             } else {
                 myFetch.get('/ajax/vehicle/search', list => {
-                    // console.log(list);
+                    localStorage.setItem("cast", JSON.stringify(list));
                     makeRecordList(list);
                 }, { 'searchVal' : searchVal} );
             }
@@ -73,20 +73,19 @@
             ariaResult.push(el.value)
         });
 
-
-        console.log(compunyResult)
-        console.log(Min_Mileage)
-        console.log(Max_Mileage)
-        console.log(Min_price)
-        console.log(Max_price)
-        console.log(gearboxResult)
-        console.log(fuelResult)
-        console.log(ariaResult)
-        console.log('==============================================')
+        //
+        // console.log(compunyResult)
+        // console.log(Min_Mileage)
+        // console.log(Max_Mileage)
+        // console.log(Min_price)
+        // console.log(Max_price)
+        // console.log(gearboxResult)
+        // console.log(fuelResult)
+        // console.log(ariaResult)
+        // console.log('==============================================')
 
                 myFetch.get('/ajax/vehicle/searchList', list => {
-                    console.log("검색결과리스트")
-                    console.log(list);
+                    localStorage.setItem("cast", JSON.stringify(list));
                     makeRecordList(list);
                 },{
                     'compunyResult' : compunyResult,
@@ -126,12 +125,18 @@
         }
     }
 
-    //글 리스트 정보 가져오기
-    const getList = () => {
-        myFetch.get(`/ajax/vehicle/list`, data => {
-            makeRecordList(data);
-        },{ currentPage, recordCount });
+
+        //글 리스트 정보 가져오기
+        const getList = () => {
+
+            myFetch.get(`/ajax/vehicle/list`, data => {
+                localStorage.setItem("cast", JSON.stringify(data));
+                makeRecordList(data);
+            },{ currentPage, recordCount });
     }
+
+
+
 
 
     //마지막 페이지 값 (once)
@@ -250,5 +255,12 @@
             })
         }
     }
+
+    var aa = JSON.parse(localStorage.getItem("cast"));
+    if(aa != null){
+        makeRecordList(aa);
+    }else{
         getList();
+    }
+
 }
