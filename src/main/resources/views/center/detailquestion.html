@@ -1,9 +1,11 @@
 <link rel="stylesheet" href="/css/center/detailquestion.css">
 <input th:if="${session.loginUser != null}" type="hidden" class="loginUserInfrm">
-<button type="button" id="writeBtn" class="btn btn-primary">글쓰기</button>
-<button th:if="${session.loginUser != null && session.loginUser.getIuser() == item.writeriuser}" type="button" id="modBtn" class="btn btn-primary">수정</button>
-<button th:if="${session.loginUser != null && session.loginUser.getIuser() == item.writeriuser}" type="button" id="delBtn" class="btn btn-primary">삭제</button>
-<a th:href="@{/center/customer}"><button type="button" class="btn btn-primary">목록</button></a>
+<button th:if="${prevnext.prevquesiboard > 0}" type="button" id="prevBtn" th:data-prevquesiboard="${prevnext.prevquesiboard}" class="btn btn-primary floatLeBtn">이전글</button>
+<button th:if="${prevnext.nextquesiboard > 0}" type="button" id="nextBtn" th:data-nextquesiboard="${prevnext.nextquesiboard}" class="btn btn-primary floatLeBtn">다음글</button>
+<button th:if="${session.loginUser == null || !session.loginUser.getNm().toString().equals('관리자')}" type="button" id="writeBtn" class="btn btn-primary floatRiBtn">글쓰기</button>
+<button th:if="${session.loginUser != null && session.loginUser.getIuser() == item.writeriuser}" type="button" id="modBtn" class="btn btn-primary floatRiBtn">수정</button>
+<button th:if="${session.loginUser != null && session.loginUser.getIuser() == item.writeriuser}" type="button" id="delBtn" class="btn btn-primary floatRiBtn">삭제</button>
+<a th:href="@{/center/customer}"><button type="button" class="btn btn-primary floatRiBtn">목록</button></a>
 <div class="btnBox border-top border-2">
     <div id="data" th:data-quesiboard="${item.quesiboard}">
         <h1 class="d-inline-block" th:text="${item.quesiboard}"></h1>
@@ -12,17 +14,21 @@
     <div>
         <h6 class="d-inline-block" th:text="${item.writerNm}"></h6>
         <h6 class="d-inline-block" th:text="${item.rdt}"></h6>
-        <h6 class="d-inline-block" th:text="${item.hits}"></h6>
+        조회수 : <h6 class="d-inline-block" th:text="${item.hits}"></h6>
     </div>
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-12 questionContent border-top border-2" th:text="${item.ctnt}">
-
+        <div class="col-12 questionContent border-top border-2" th:text="${item.ctnt}"></div>
+        <div th:if="${item.isanswer.toString().equals('완료') && cmtItem != null}" class="col-12 answerContent border-top border-2">
+            <span th:text="${cmtItem.writerNm}"></span>
+            <span th:text="${cmtItem.rdt}"></span>
         </div>
-        <div class="col-12 answerContent border-top border-2">
-            A
-        </div>
+        <div th:if="${item.isanswer.toString().equals('완료') && cmtItem != null}" th:text="${cmtItem.cmtctnt}" class="col-12"></div>
+        <form th:if="${(session.loginUser != null && session.loginUser.getNm().toString().equals('관리자')) && item.isanswer.toString().equals('미완료')}">
+            <textarea class="form-control" id="floatingTextarea" placeholder="답변을 입력하세요." th:name="cmtctnt"></textarea>
+            <input type="submit" value="등록" class="btn btn-primary">
+        </form>
     </div>
 </div>
 <script src="/js/center/detailquestion.js"></script>

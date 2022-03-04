@@ -2,17 +2,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.koreait.vehicleservice.center.BoardMapper">
     <select id="selBoardList" resultType="BoardEntity">
-        select quesiboard, title, isanswer
+        select quesiboard, title, isanswer, hits
         from question_board
         order by quesiboard desc
+        LIMIT ${startIdx}, ${recordCount}
     </select>
 
     <select id="selBoard" resultType="BoardVo">
-        SELECT A.quesiboard, A.writeriuser, A.title, A.ctnt, A.hits, A.rdt, B.nm as writerNm
-        FROM question_board A
-        INNER JOIN t_user B
-        ON A.writeriuser = B.iuser
-        WHERE A.quesiboard = #{quesiboard}
+        SELECT
+        A.quesiboard, A.writeriuser, A.title, A.ctnt, A.isanswer,
+        A.hits, A.rdt, B.nm as writerNm
+        FROM question_board A INNER JOIN t_user B ON A.writeriuser = B.iuser
+        WHERE A.quesiboard = ${quesiboard}
+    </select>
+
+    <select id="selCmtBoard" resultType="BoardCmtEntity">
+        select *
+        from cmt_question_board
+        where quesiboard = ${quesiboard}
+    </select>
+
+    <select id="selPrevNext" resultType="BoardPrevNextVo">
+        <![CDATA[
+            SELECT (
+                SELECT quesiboard FROM question_board
+                WHERE quesiboard > ${quesiboard}
+                ORDER BY quesiboard
+                LIMIT 1
+            ) AS prevquesiboard,
+            (
+                SELECT quesiboard FROM question_board
+                WHERE quesiboard < ${quesiboard}
+                ORDER BY quesiboard DESC
+                LIMIT 1
+            ) AS nextquesiboard
+        ]]> <!--꺽새 오류 해결하기위해 cdata로 감싼다-->
+    </select>
+
+    <select id="selMaxPageVal" resultType="ResultVo">
+        select ceil(count(quesiboard) / ${recordCount}) as result
+        from question_board
     </select>
 
     <insert id="insBoard">
@@ -22,13 +51,32 @@
             (${writeriuser}, #{title}, #{ctnt})
     </insert>
 
+    <insert id="insCmtBoard">
+        insert into cmt_question_board
+        (quesiboard, cmtctnt, writerNm)
+        values
+        (${quesiboard}, #{cmtctnt}, #{writerNm})
+    </insert>
+
     <delete id="delBoard">
         delete from question_board where quesiboard = ${quesiboard} and writeriuser = ${writeriuser}
     </delete>
 
     <update id="modBoard">
         update question_board
-        set title = #{title}, ctnt = #{ctnt}
+        set title = #{title}, ctnt = #{ctnt}, mdt = now(), hits = hits - 2
         where quesiboard = ${quesiboard} and writeriuser = ${writeriuser}
+    </update>
+
+    <update id="modBoardIsAnw">
+        update question_board
+        set isanswer = '완료'
+        where quesiboard = ${quesiboard}
+    </update>
+
+    <update id="addHits">
+        update question_board
+        set hits = hits + 1
+        where quesiboard = ${quesiboard}
     </update>
 </mapper>

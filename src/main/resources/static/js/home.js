@@ -69,73 +69,73 @@ nextBtn.addEventListener('click', () => {
 //인기매물 슬라이드 ------------------------------------------------- [end]
 
 //제조사, 모델, 상세모델 -------------------------------------------- [start]
-// var json=null ;
-// var companyList ; // 제조사 리스트
-// var modelList;   // 모델리스트
-// var detailModelList; //세부모델리스트
-//
-// fetch("../jsonData/MOCK_DATA.json") //TODO json파일 가져오기
-//     .then(response => {
-//         return response.json();
-//     }).then(jsondata =>
-//     json = jsondata
-// );
-//
-// function ko(index){
-//     companyList = json.result[index].companyList; //0 국산 1 수입 제조사리스트 저장
-//
-//     var target = option_reset("country_select");
-//     option_reset("model_select");
-//     option_reset("detail_model_select");
-//     for(var i=0; i<companyList.length; i++){ //제조사 옵션에 추가
-//         var opt = document.createElement("option");
-//         opt.value = companyList[i].company;
-//
-//         opt.innerHTML = companyList[i].company;
-//         target.appendChild(opt);
-//     }
-// }
-//
-// function addChange(e){
-//     var target = option_reset("model_select");
-//     option_reset("detail_model_select");
-//     for(var i=0; i<companyList.length; i++){
-//         if(e.value == companyList[i].company) {
-//             modelList= companyList[i].modelList;// 해당 제조사의 모델리스트 담기
-//         }
-//     }
-//
-//     for(var i=0; i<modelList.length; i++){  //선택된 제조사의 모델 옵션에 담기
-//         var opt = document.createElement("option");
-//         opt.value = modelList[i].model;
-//         opt.innerHTML = modelList[i].model;
-//         target.appendChild(opt);
-//     }
-//     if(e.value==='제조사'){
-//         target.options.length = 1;
-//     }
-// }
-//
-// function addChange2(e){
-//     var target = option_reset("detail_model_select");
-//     for(var i=0; i<modelList.length; i++){
-//         if(e.value == modelList[i].model) {
-//             detailModelList= modelList[i].detailModelList; //선택된 모델의 세부모델 리스트 담기
-//         }
-//     }
-//     for(var i=0; i<detailModelList.length; i++){ //선택된 모델의 세부모델 옵션에 담기
-//         var opt = document.createElement("option");
-//         opt.value = detailModelList[i].detailModel;
-//         opt.innerHTML = detailModelList[i].detailModel;
-//         target.appendChild(opt);
-//     }
-// }
-//
-// function option_reset(str){
-//     var target = document.getElementById(`${str}`)
-//     target.options.length = 1;
-//     return target;
-// }
+var json=null ;
+var companyList ; // 제조사 리스트
+var modelList;   // 모델리스트
+var detailModelList; //세부모델리스트
+
+fetch("/json/MOCK_DATA.json") // json파일 가져오기
+    .then(response => {
+        return response.json();
+    }).then(jsondata =>
+    json = jsondata
+);
+
+function ko(index){
+    companyList = json.result[index].companyList; //0 국산 1 수입 제조사리스트 저장
+
+    var target = option_reset("country_select");
+    option_reset("model_select");
+    option_reset("detail_model_select");
+    for(var i=0; i<companyList.length; i++){ //제조사 옵션에 추가
+        var opt = document.createElement("option");
+        opt.value = companyList[i].company;
+
+        opt.innerHTML = companyList[i].company;
+        target.appendChild(opt);
+    }
+}
+
+function addChange(e){
+    var target = option_reset("model_select");
+    option_reset("detail_model_select");
+    for(var i=0; i<companyList.length; i++){
+        if(e.value == companyList[i].company) {
+            modelList= companyList[i].modelList;// 해당 제조사의 모델리스트 담기
+        }
+    }
+
+    for(var i=0; i<modelList.length; i++){  //선택된 제조사의 모델 옵션에 담기
+        var opt = document.createElement("option");
+        opt.value = modelList[i].model;
+        opt.innerHTML = modelList[i].model;
+        target.appendChild(opt);
+    }
+    if(e.value==='제조사'){
+        target.options.length = 1;
+    }
+}
+
+function addChange2(e){
+    var target = option_reset("detail_model_select");
+    for(var i=0; i<modelList.length; i++){
+        if(e.value == modelList[i].model) {
+            detailModelList= modelList[i].detailModelList; //선택된 모델의 세부모델 리스트 담기
+        }
+    }
+    for(var i=0; i<detailModelList.length; i++){ //선택된 모델의 세부모델 옵션에 담기
+        var opt = document.createElement("option");
+        opt.value = detailModelList[i].detailModel;
+        opt.innerHTML = detailModelList[i].detailModel;
+        target.appendChild(opt);
+    }
+}
+
+function option_reset(str){
+    var target = document.getElementById(`${str}`)
+    target.options.length = 1;
+    return target;
+}
 //제조사, 모델, 상세모델 -------------------------------------------- [end]
 
 //고객센터 > 질문게시판/공지사항 ------------------------------------- [start]
@@ -171,3 +171,45 @@ insurance_btn.addEventListener('click', () => {
     }
 });
 //고객센터 > 질문게시판/공지사항 ------------------------------------- [end]
+
+
+const searchBtn = document.querySelector('#detail_search_btn');
+searchBtn.addEventListener('click',()=>{
+
+})
+
+//날씨정보 뿌리기 ---------------------------------------------- [start]
+const API_KEY = "871242005db9771ca1c90b14fd7046bd"; /*회원가입을 하면 자동으로 키발급해준다*/
+
+let weatherIcon = {
+    '01' : 'fas fa-sun',
+    '02' : 'fas fa-cloud-sun',
+    '03' : 'fas fa-cloud',
+    '04' : 'fas fa-cloud-meatball',
+    '09' : 'fas fa-cloud-sun-rain',
+    '10' : 'fas fa-cloud-showers-heavy',
+    '11' : 'fas fa-poo-storm',
+    '13' : 'far fa-snowflake',
+    '50' : 'fas fa-smog'
+};
+
+function onGeoOk(position){ /*position: 함수의 기본객체 user의 위치를 얻는다*/
+    const lat = position.coords.latitude; //위도가져오기
+    const lon = position.coords.longitude; //경도가져오기
+    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`; /*경도, 위도, api키를 넣어 날씨정보를 가져온다
+    units=metric : 온도를 섭씨로 변환(옵션이다)*/
+    fetch(url).then(res => /*fetch는 프로미스(당장 뭔가일어나지않고 시간이좀걸린뒤 일어남)임 응답을 then으로 받음*/
+        res.json()).then((data) =>{
+        const weather = document.querySelector('#weather span:nth-child(1)');
+        const city = document.querySelector('#weather span:nth-child(2)');
+        const icon = document.querySelector('#weather span:nth-child(3)');
+        weather.innerText = `${data.weather[0].main}/${data.main.temp}`;
+        city.innerText = data.name;
+        icon.className = weatherIcon[(data.weather[0].icon).substr(0,2)];
+    });
+}
+function onGeoError(){
+    alert('위치 및 날씨정보를 불러올수 없습니다.');
+}
+navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError); /*브라우저에서 위치좌표(위도,경도)를줌 첫번째인자: 성공했을때 두번째인자: 실패했을때*/
+//날씨정보 뿌리기 ---------------------------------------------- [end]

@@ -6,8 +6,13 @@
     vertical-align: bottom;
 }
 
-button{
+.floatRiBtn{
     float: right;
+    margin-top: 30px;
+}
+
+.floatLeBtn{
+    float: left;
     margin-top: 30px;
 }
 
@@ -16,10 +21,15 @@ button{
 }
 
 .answerContent{
-    height: 220px;
+    /*height: 220px;*/
 }
 
 .btnBox > div:nth-child(2){
     height: 38px;
     line-height: 40px;
+}
+
+form > input{
+    float: right;
+    margin-top: 10px;
 }

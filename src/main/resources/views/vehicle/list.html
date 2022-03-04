@@ -41,70 +41,46 @@
                     <!--검색창End-->
                     <hr>
                     <!-- 셀렉트검색창-->
-                    <form class="">
+                    <form d="List_search_Frm">
                         <div class="accordion accordion-flush" id="search_list">
-                            <div class="accordion-item ">
+                            <div class="accordion-item">
                                 <h2 class="accordion-header" id="search_list_com">
-                                    <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#select_com" aria-expanded="true" aria-controls="select_com">
+                                    <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#select_com" aria-expanded="false" aria-controls="select_com">
                                         제조사
                                     </button>
                                 </h2>
-                                <div id="select_com" class="accordion-collapse collapse show" aria-labelledby="search_list_com">
+                                <div id="select_com" class="accordion-collapse collapse" aria-labelledby="search_list_com">
                                     <div class="accordion-body">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="kia">
+                                            <input class="form-check-input" type="checkbox" name="manufacturer" value="기아" id="kia" onchange="getSearchList()">
                                             <label class="form-check-label" for="kia">
                                                 기아
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="hyundai">
+                                            <input class="form-check-input" type="checkbox" name="manufacturer" value="현대" id="hyundai" onchange="getSearchList()">
                                             <label class="form-check-label" for="hyundai">
                                                 현대
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="ssangyong">
+                                            <input class="form-check-input" type="checkbox" name="manufacturer" value="쌍용" id="ssangyong" onchange="getSearchList()">
                                             <label class="form-check-label" for="ssangyong">
                                                 쌍용
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="chevo">
+                                            <input class="form-check-input" type="checkbox" name="manufacturer" value="쉐보레" id="chevo" onchange="getSearchList()">
                                             <label class="form-check-label" for="chevo">
                                                 쉐보레
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="rno">
+                                            <input class="form-check-input" type="checkbox" name="manufacturer" value="르노" id="rno" onchange="getSearchList()">
                                             <label class="form-check-label" for="rno">
                                                 르노
                                             </label>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="search_list_year">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#select_year" aria-expanded="false" aria-controls="select_year">
-                                        연식
-                                    </button>
-                                </h2>
-                                <div id="select_year" class="accordion-collapse collapse" aria-labelledby="search_list_year">
-                                    <div class="accordion-body">
-                                        <select name="start_Year" class="form-select form-select-sm">
-                                            <option value="1">00년</option>
-                                            <option value="2">10년</option>
-                                            <option value="3">20년</option>
-                                            <option value="4">22년</option>
-                                        </select>~
-
-                                        <select name="end_Year" class="form-select form-select-sm">
-                                            <option value="1">00년</option>
-                                            <option value="2">10년</option>
-                                            <option value="3">20년</option>
-                                            <option value="4">22년</option>
-                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -116,17 +92,18 @@
                                 </h2>
                                 <div id="select_km" class="accordion-collapse collapse" aria-labelledby="search_list_year">
                                     <div class="accordion-body">
-                                        <select name="start_Year" class="form-select form-select-sm">
-                                            <option value="#">5만미만</option>
-                                            <option value="#">5만</option>
-                                            <option value="#">10만</option>
-                                            <option value="#">20만</option>
+                                        <select id="start_Mileage" class="form-select form-select-sm" onchange="getSearchList()">
+                                            <option value="0">0</option>
+                                            <option value="50000">5만</option>
+                                            <option value="100000">10만</option>
+                                            <option value="200000">20만</option>
                                         </select>~
-                                        <select name="end_Year" class="form-select form-select-sm">
-                                            <option value="#">5만미만</option>
-                                            <option value="#">5만</option>
-                                            <option value="#">10만</option>
-                                            <option value="#">20만</option>
+                                        <select id="end_Mileage" class="form-select form-select-sm" onchange="getSearchList()">
+                                            <option value="0">0</option>
+                                            <option value="50000">5만</option>
+                                            <option value="100000">10만</option>
+                                            <option value="200000">20만</option>
+                                            <option value="300000">30만</option>
                                         </select>
                                     </div>
                                 </div>
@@ -139,18 +116,77 @@
                                 </h2>
                                 <div id="select_price" class="accordion-collapse collapse" aria-labelledby="search_list_price">
                                     <div class="accordion-body">
-                                        <select name="start_price" class="form-select form-select-sm">
-                                            <option value="#">100만</option>
-                                            <option value="#">500만</option>
-                                            <option value="#">1000만</option>
-                                            <option value="#">1000만이상</option>
+                                        <select id="start_price" class="form-select form-select-sm" onchange="getSearchList()">
+                                            <option value="0">0원</option>
+                                            <option value="500">500만원</option>
+                                            <option value="1000">1000만원</option>
+                                            <option value="3000">3000만원</option>
                                         </select>~
-                                        <select name="end_price" class="form-select form-select-sm">
-                                            <option value="#">100만</option>
-                                            <option value="#">500만</option>
-                                            <option value="#">1000만</option>
-                                            <option value="#">1000만이상</option>
+                                        <select id="end_price" class="form-select form-select-sm" onchange="getSearchList()">
+                                            <option value="0">0원</option>
+                                            <option value="500">500만원</option>
+                                            <option value="1000">1000만원</option>
+                                            <option value="3000">3000만원</option>
+                                            <option value="5000">5000만원</option>
                                         </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="search_list_gearbox">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#select_gearbox" aria-expanded="false" aria-controls="select_gearbox">
+                                        변속기
+                                    </button>
+                                </h2>
+                                <div id="select_gearbox" class="accordion-collapse collapse" aria-labelledby="search_list_gearbox">
+                                    <div class="accordion-body">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="오토" id="auto" name="gearbox" onchange="getSearchList()">
+                                            <label class="form-check-label" for="auto">
+                                                오토
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="수동" id="stick"  name="gearbox" onchange="getSearchList()">
+                                            <label class="form-check-label" for="stick">
+                                                수동
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="search_list_fuel">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#select_fuel" aria-expanded="false" aria-controls="select_fuel">
+                                        연료
+                                    </button>
+                                </h2>
+                                <div id="select_fuel" class="accordion-collapse collapse" aria-labelledby="search_list_fuel">
+                                    <div class="accordion-body">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="기본타입" id="default" name="fuel" onchange="getSearchList()">
+                                            <label class="form-check-label" for="default">
+                                                기본타입
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="디젤" id="diesel"  name="fuel" onchange="getSearchList()">
+                                            <label class="form-check-label" for="diesel">
+                                                디젤
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="LPG" id="LPG" name="fuel" onchange="getSearchList()">
+                                            <label class="form-check-label" for="LPG">
+                                                LPG
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="하이브리드" id="hybrid"  name="fuel" onchange="getSearchList()">
+                                            <label class="form-check-label" for="hybrid">
+                                                하이브리드
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -163,41 +199,110 @@
                                 <div id="select_aria" class="accordion-collapse collapse" aria-labelledby="search_list_aria">
                                     <div class="accordion-body">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="seoul">
+                                            <input class="form-check-input" type="checkbox" value="서울" id="seoul" name="area" onchange="getSearchList()">
                                             <label class="form-check-label" for="seoul">
                                                 서울
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="daegu">
+                                            <input class="form-check-input" type="checkbox" value="인천" id="incheon"  name="area" onchange="getSearchList()">
+                                            <label class="form-check-label" for="incheon">
+                                                인천
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="대전" id="daejeon"  name="area" onchange="getSearchList()">
+                                            <label class="form-check-label" for="incheon">
+                                                대전
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="대구" id="daegu"  name="area" onchange="getSearchList()">
                                             <label class="form-check-label" for="daegu">
                                                 대구
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="busan">
-                                            <label class="form-check-label" for="busan">
-                                                부산
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="gwangju">
+                                            <input class="form-check-input" type="checkbox" value="광주" id="gwangju"  name="area" onchange="getSearchList()">
                                             <label class="form-check-label" for="gwangju">
                                                 광주
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="ulsan">
+                                            <input class="form-check-input" type="checkbox" value="부산" id="busan"  name="area" onchange="getSearchList()">
+                                            <label class="form-check-label" for="busan">
+                                                부산
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="울산" id="ulsan"  name="area" onchange="getSearchList()">
                                             <label class="form-check-label" for="ulsan">
                                                 울산
                                             </label>
                                         </div>
+
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="incheon">
+                                            <input class="form-check-input" type="checkbox" value="세종" id="sejong"  name="area" onchange="getSearchList()">
                                             <label class="form-check-label" for="incheon">
-                                                인천
+                                                세종
                                             </label>
                                         </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="경기" id="gyeonggi"  name="area" onchange="getSearchList()">
+                                            <label class="form-check-label" for="incheon">
+                                                경기
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="강원" id="gangwon"  name="area" onchange="getSearchList()">
+                                            <label class="form-check-label" for="incheon">
+                                                강원
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="경남" id="gyeongnam"  name="area" onchange="getSearchList()">
+                                            <label class="form-check-label" for="incheon">
+                                                경남
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="경북" id="gyeongbuk"  name="area" onchange="getSearchList()">
+                                            <label class="form-check-label" for="incheon">
+                                                경북
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="전남" id="jeollanam"  name="area" onchange="getSearchList()">
+                                            <label class="form-check-label" for="incheon">
+                                                전남
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="전북" id="jeollbuk"  name="area" onchange="getSearchList()">
+                                            <label class="form-check-label" for="incheon">
+                                                전북
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="충남" id="chungnam"  name="area" onchange="getSearchList()">
+                                            <label class="form-check-label" for="incheon">
+                                                충남
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="충북" id="chungbuk"  name="area" onchange="getSearchList()">
+                                            <label class="form-check-label" for="incheon">
+                                                충북
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="제주" id="jeju"  name="area" onchange="getSearchList()">
+                                            <label class="form-check-label" for="incheon">
+                                                제주
+                                            </label>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

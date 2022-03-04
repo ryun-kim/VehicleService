@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.koreait.vehicleservice.home.NewsMapper">
+    <insert id="insNewsBoard">
+        INSERT INTO news_board
+            (title, originallink, link, description, pubDate)
+        VALUES
+            (#{title}, #{originallink}, #{link}, #{description}, #{pubDate})
+    </insert>
+
+    <select id="selNewsBoardList" resultType="NewsEntity">
+        SELECT * FROM news_board
+    </select>
+
+    <update id="upNewsBoardList">
+        UPDATE news_board
+        SET title = #{title}, originallink = #{originallink}, link = #{link},
+            description = #{description}, pubDate = #{pubDate}
+        WHERE newspk = #{newspk}
+    </update>
+</mapper>

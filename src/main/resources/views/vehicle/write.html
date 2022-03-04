@@ -6,14 +6,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" th:href="@{/css/vehicle/write.css}">
 
+
+    <link rel="stylesheet" th:href="@{/css/vehicle/write.css}">
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 
 <th:block layout:fragment="content">
+    <div class="container">
     <form action="/vehicle/write" method="post" id="in_form" onsubmit="return false" enctype="multipart/form-data">
         <div id="content">
             <h1>차량정보</h1>
@@ -47,21 +48,21 @@
             <div class="type">
                 <h2>변속기 타입</h2>
                 <div>
-                    <input type="radio" id="gear1" name="gearbox" value="오토" checked>
-                    <label for="gear1">오토</label>
-                    <input type="radio" id="gear2" name="gearbox" value="수동">
-                    <label for="gear2">수동</label>
+                    <input type="radio" id="auto" name="gearbox" value="오토" checked>
+                    <label for="auto">오토</label>
+                    <input type="radio" id="stick" name="gearbox" value="수동">
+                    <label for="stick">수동</label>
                 </div>
                 <h2>연료 타입</h2>
                 <div>
-                    <input type="radio" id="fuel1" name="fuel" value="기본타입" checked>
-                    <label for="fuel1">기본타입</label>
-                    <input type="radio" id="fuel2" name="fuel" value="디필">
-                    <label for="fuel2">디필</label>
-                    <input type="radio" id="fuel3" name="fuel" value="LPG" >
-                    <label for="fuel3">LPG</label>
-                    <input type="radio" id="fuel4" name="fuel" value="하이브리드">
-                    <label for="fuel4">하이브리드</label>
+                    <input type="radio" id="default" name="fuel" value="기본타입" checked>
+                    <label for="default">기본타입</label>
+                    <input type="radio" id="diesel" name="fuel" value="디젤">
+                    <label for="diesel">디젤</label>
+                    <input type="radio" id="LPG" name="fuel" value="LPG" >
+                    <label for="LPG">LPG</label>
+                    <input type="radio" id="hybrid" name="fuel" value="하이브리드">
+                    <label for="hybrid">하이브리드</label>
                 </div>
             </div>
             <h2>색상</h2>
@@ -216,4 +217,5 @@
     </form>
     <hr class="clear">
     <script defer th:src="@{/js/vehicle/write.js}"></script>
+    </div>
 </th:block>>

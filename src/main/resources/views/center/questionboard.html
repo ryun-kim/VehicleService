@@ -1,19 +1,28 @@
 <div class="boardContainer">
     <input th:if="${session.loginUser != null}" type="hidden" class="loginUserInfrm">
-    <button type="button" class="btn btn-primary writeBtn mb-2">글쓰기</button>
+    <button th:if="${session.loginUser == null || !session.loginUser.getNm().toString().equals('관리자')}" type="button" class="btn btn-primary writeBtn mb-2">글쓰기</button>
     <table>
         <thead>
             <tr>
                 <th>번호</th>
                 <th>제목</th>
+                <th>조회수</th>
                 <th>답변여부</th>
             </tr>
         </thead>
-        <tr th:each="item : ${list}">
-            <td th:text="${item.quesiboard}"></td>
-            <td th:text="${item.title}"></td>
-            <td th:text="${item.isanswer}"></td>
-        </tr>
+        <tbody>
+            <tr th:each="item : ${list}">
+                <td th:text="${item.quesiboard}"></td>
+                <td th:text="${item.title}"></td>
+                <td th:text="${item.hits}"></td>
+                <td th:text="${item.isanswer}"></td>
+            </tr>
+        </tbody>
     </table>
+    <div id="pageContainer" class="mt-3">
+        <nav>
+            <ul class="pagination justify-content-center"></ul>
+        </nav>
+    </div>
 </div>
 <script src="/js/center/questionboard.js"></script>
