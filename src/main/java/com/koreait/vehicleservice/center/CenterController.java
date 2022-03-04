@@ -35,8 +35,13 @@ public class CenterController {
         //쿼리스트링으로 파라미터를 URL로 전송할 때엔 컨트롤러에서 파라미터를 받을때 @RequestParam 을 사용한다.
         BoardVo vo = service.selBoard(quesiboard);
         BoardPrevNextVo pnVo = service.selPrevNext(vo);
+        BoardCmtEntity entity = service.selCmtBoard(quesiboard);
+
         model.addAttribute("item", vo);
         model.addAttribute("prevnext", pnVo);
+        if(entity != null) {
+            model.addAttribute("cmtItem", entity);
+        }
     }
 
     @GetMapping("/write")
@@ -77,5 +82,13 @@ public class CenterController {
     @PostMapping("/getlist")
     public List<BoardEntity> getList(@RequestBody BoardDto dto){
         return service.selBoardList(dto);
+    }
+
+    @ResponseBody
+    @PostMapping("/comment")
+    public Map<String, Integer> comment(@RequestBody BoardCmtEntity cmtEntity){
+        Map<String, Integer> map = new HashMap<>();
+        map.put("result", service.insCmtBoard(cmtEntity));
+        return map;
     }
 }

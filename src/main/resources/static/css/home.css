@@ -250,3 +250,18 @@ main > div > section {
         grid-column: 2/3;
     }
 }
+
+.weather-font{
+   /* top: 10%;
+    left: 90%;
+    transform: translate(-1%,-50%);
+    z-index: 2;
+    text-align: center;
+    font-size: 35px;
+    color: black;
+    opacity: 60%;*/
+    text-align: center;
+    font-size: 35px;
+    color: black;
+    opacity: 60%;
+}
