@@ -13,8 +13,15 @@ public class VehicleRestController {
     private VehicleService service;
 
     @GetMapping("/list")
-    public List<VehicleVo> selBoardList(VehicleDto vo) {
-        return service.vehicleList(vo);
+    public List<VehicleVo> selBoardList(VehicleDto dto) {
+            return service.vehicleList(dto);
+    }
+
+    @GetMapping("/homSearch")
+    public List<VehicleVo> homeSearchList(VehicleEntity entity){
+        List<VehicleVo> list = service.homeSearchList(entity);
+        System.out.println(list);
+        return list;
     }
 
     @GetMapping("/likes/{selliboard}")

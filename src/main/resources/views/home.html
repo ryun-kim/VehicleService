@@ -19,33 +19,39 @@
         <div>
             <!-- 차량검색 -------------------------------------- [start] -->
             <section id="search_car_home">
+                <form action="/ajax/vehicle/list" method="post" onsubmit="return false" id="homeSearch">
                 <div id="dom_inc_btn">
-                    <button onclick="ko(0)">국산</button>
-                    <button onclick="ko(1)">수입</button>
+                    <button onclick="ko(0)" >국산</button>
+                    <button onclick="ko(1)" >수입</button>
+
                 </div>
                 <div id="detail_search_dropdown">
                     <div>
-                        <select id="country_select" name="country_select" onchange="addChange(this)">
+                        <select id="country_select" name="manufacturer" onchange="addChange(this)">
                             <option selected>제조사</option>
                         </select>
-                        <select id="model_select" name="model_select" onchange="addChange2(this)">
+                        <select id="model_select" name="model" onchange="addChange2(this)">
                             <option selected>모델</option>
                         </select>
-                        <select id="detail_model_select" name="detail_model_select">
+                        <select id="detail_model_select" name="detail_model">
                             <option selected>세부모델</option>
                         </select>
                     </div>
-                    <div id="detail_search_btn"><button>검색</button></div>
+                    <div id="detail_search_btn"><button id="btnSubmit">검색</button></div>
                 </div>
+                </form>
             </section>
             <!-- 차량검색 -------------------------------------- [end] -->
             <!-- 로그인 ---------------------------------------- [start] -->
             <section id="login_home">
+                <div th:if="${session.loginUser != null}">
+                   <div th:text="${session.loginUser.getNm()}"></div>
+                </div>
                 <div id="login_home_btn" class="btn_in_div"><button>로그인</button></div>
 
                 <div id="login_home_sub_btn" class="btn_in_div">
-                    <a href="#">아이디/비밀번호 찾기</a>
-                    <a href="#">회원가입</a>
+                    <a th:href="@{/user/find}">아이디/비밀번호 찾기</a>
+                    <a th:href="@{/user/join}">회원가입</a>
                 </div>
             </section>
             <!-- 로그인 ---------------------------------------- [end] -->
@@ -96,7 +102,7 @@
             <section id="selling_mycar_home">
                 <div>내차팔기</div>
                 <div>
-                    <a href="#">
+                    <a th:href="@{/vehicle/write/}">
                         내 차 등록<br>
                         <i class="fa-solid fa-right-long"></i>
                     </a>
@@ -139,8 +145,6 @@
                     </div>
                 </div>
                 <div id="customer_service_otherbtns">
-                    <div><button>사이트 소개</button></div>
-                    <div><button>서비스 가이드</button></div>
                     <div id="insurance_btn"><button>보험료 조회</button></div>
                 </div>
                 <div id="insurance_board">

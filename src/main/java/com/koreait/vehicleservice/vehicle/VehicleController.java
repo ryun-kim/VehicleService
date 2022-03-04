@@ -36,7 +36,6 @@ public class VehicleController {
         service.inOptions(dto); //옵션 db입력
         service.inExplanation(dto);//설명글 db입력
         service.uploadMainImg(mainimg); //메인이미지 db입력
-        System.out.println(dto.getSubimg());
         service.uploadSubImg(dto.getSubimg()); //서브이미지 db입력
 
         return "redirect:list";
