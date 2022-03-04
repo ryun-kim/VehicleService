@@ -23,6 +23,9 @@
 
 <th:block layout:fragment="content">
     <div class="container">
+        <th:block th:if="${session.loginUser!=null}">
+            <input type="hidden" th:value="${session.loginUser.iuser}" id="iuser">
+        </th:block>
         <div class="row">
             <!--사이드 메뉴-->
             <nav id="sidebarMenu" class="col-sm col-md-2 ">
@@ -55,103 +58,36 @@
                         좋아요 전체 삭제
                     </button>
                 </div>
-                <div id="list_result" class="container">
+                <div id="like_result" class="container">
                     <div class="row row-cols-1 row-cols-md-1 g-4">
-                        <div class="col">
-                            <div class="container shadow-sm bg-white g-2">
-                                <div class="row">
-                                    <picture class="col-sm col-md-3 g-3">
-                                        <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/audi.jpg}"></a>
-                                    </picture>
-                                    <div class="col-sm col-md-9 g-3">
-                                        <a href="#"><h2 class="">아우디</h2></a>
-                                        <p>5000만원</p>
-                                        <p>차량 정보</p>
-                                        <p>조회수</p>
-                                    </div>
-                                    <div class="g-2">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <button type="button" class="btn jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
-                                            <small class="text-muted">1분전</small>
-                                        </div>
-                                        <button type="button" class="btn btn-primary position-relative">
-                                            유저1
-                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-										  1
-										  <span class="visually-hidden">읽지않은 메세지</span>
-										</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="container shadow-sm">
-                                <div class="row">
-                                    <picture class="col-sm col-md-3 g-3">
-                                        <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/colorado.png}"></a>
-                                    </picture>
-                                    <div class="col-sm col-md-9 g-3">
-                                        <a href="#"><h2 class="">콜로라도</h2></a>
-                                        <p>4000만원</p>
-                                        <p class="">차량 정보</p>
-                                    </div>
-                                    <div class="g-2">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <button type="button" class="btn btn-outline-secondary jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
-                                            <small class="text-muted">10분전</small>
-                                        </div>
-                                        <button type="button" class="btn btn-primary position-relative">
-                                            유저1
-                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-										  5
-										  <span class="visually-hidden">읽지않은 메세지</span>
-										</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="container shadow-sm">
-                                <div class="row">
-                                    <picture class="col-sm col-md-3 g-3">
-                                        <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/avante.jpg}"></a>
-                                    </picture>
-                                    <div class="col-sm col-md-9 g-3">
-                                        <a href="#"><h2 class="">아반떼</h2></a>
-                                        <p>1000만원</p>
-                                        <p class="">차량 정보</p>
-                                    </div>
-                                    <div class="g-2">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <button type="button" class="btn btn-outline-secondary jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
-                                            <small class="text-muted">1 시간전</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="container shadow-sm">
-                                <div class="row">
-                                    <picture class="col-sm col-md-3 g-3">
-                                        <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/avanten.jpg}"></a>
-                                    </picture>
-                                    <div class="col-sm col-md-9 g-3">
-                                        <a href="#"><h2 class="">아반떼N</h2></a>
-                                        <p>3000만원</p>
-                                        <p class="">차량 정보</p>
-                                    </div>
-                                    <div class="g-2">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <button type="button" class="btn btn-outline-secondary jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>
-                                            <small class="text-muted">하루전</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<!--                        <div class="col">-->
+<!--                            <div class="container shadow-sm">-->
+<!--                                <div class="row">-->
+<!--                                    <picture class="col-sm col-md-3 g-3">-->
+<!--                                        <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/colorado.png}"></a>-->
+<!--                                    </picture>-->
+<!--                                    <div class="col-sm col-md-9 g-3">-->
+<!--                                        <a href="#"><h2 class="">콜로라도</h2></a>-->
+<!--                                        <p>4000만원</p>-->
+<!--                                        <p class="">차량 정보</p>-->
+<!--                                    </div>-->
+<!--                                    <div class="g-2">-->
+<!--                                        <div class="d-flex justify-content-between align-items-center">-->
+<!--                                            <button type="button" class="btn btn-outline-secondary jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>-->
+<!--                                            <small class="text-muted">10분전</small>-->
+<!--                                        </div>-->
+<!--                                        <button type="button" class="btn btn-primary position-relative">-->
+<!--                                            유저1-->
+<!--                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">-->
+<!--										  5-->
+<!--										  <span class="visually-hidden">읽지않은 메세지</span>-->
+<!--										</span>-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
                     </div>
                 </div>
             </div>
