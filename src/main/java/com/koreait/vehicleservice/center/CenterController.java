@@ -30,6 +30,9 @@ public class CenterController {
     @GetMapping("/introduction")
     public void introduction(){}
 
+    @GetMapping("/notice")
+    public void notice(){}
+
     @GetMapping("/detailquestion")
     public void detailquestion(@RequestParam int quesiboard, Model model){
         //쿼리스트링으로 파라미터를 URL로 전송할 때엔 컨트롤러에서 파라미터를 받을때 @RequestParam 을 사용한다.

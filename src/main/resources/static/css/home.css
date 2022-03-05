@@ -251,6 +251,26 @@ main > div > section {
     }
 }
 
+.iconBox{
+    display: inline-block;
+}
+
+.iconBox > img{
+    width: 150px;
+}
+
+.weatherBox{
+    margin-top: 30px;
+    background: linear-gradient(#c8ddee, #ffffff);
+    border-radius: 30px;
+}
+
+.weatherText{
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+
 .weather-font{
    /* top: 10%;
     left: 90%;
@@ -260,8 +280,22 @@ main > div > section {
     font-size: 35px;
     color: black;
     opacity: 60%;*/
+    display: inline-block;
     text-align: center;
-    font-size: 35px;
+    font-size: 24px;
     color: black;
     opacity: 60%;
+    padding: 15px;
+}
+
+.lookUp{
+    margin-top: 20px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+}
+
+#weather, #humidity, #city{
+    text-align: left;
 }
