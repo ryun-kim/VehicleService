@@ -77,4 +77,15 @@ public class UserService {
         userEntity.setUpw(BCrypt.hashpw(userEntity.getUpw(), BCrypt.gensalt()));
         mapper.updUserUpw(userEntity);
     }
+
+    public int myPgPasChn(UserEntity userEntity){
+        userEntity.setUid(userUtils.getLoginUser().getUid());
+        UserEntity dbUser = mapper.selUser(userEntity);
+        if(!BCrypt.checkpw(userEntity.getUpw(), dbUser.getUpw())){
+            return 2; //현재비밀번호 다름
+        }
+        String hashedPw = BCrypt.hashpw(userEntity.getNewupw(), BCrypt.gensalt());
+        userEntity.setUpw(hashedPw);
+        return mapper.updUserUpw(userEntity); //비번 변경 성공
+    }
 }

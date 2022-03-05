@@ -4,6 +4,7 @@ const incBtn = document.querySelector('#dom_inc_btn > button:last-child');
 
 function focusBtnChange(focusBtn, otherBtn, color, background_color) {
     otherBtn.style = '';
+    otherBtn.classList.remove('hitsBtn');
     focusBtn.style['color'] = color;
     focusBtn.style['background-color'] = background_color;
     focusBtn.style['font-weight'] = 'bold';
@@ -214,7 +215,7 @@ const API_KEY = "871242005db9771ca1c90b14fd7046bd"; /*회원가입을 하면 자
 function onGeoOk(position){ /*position: 함수의 기본객체 user의 위치를 얻는다*/
     const lat = position.coords.latitude; //위도가져오기
     const lon = position.coords.longitude; //경도가져오기
-    console.log(lat, lon)
+    // console.log(lat, lon)
     const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`; /*경도, 위도, api키를 넣어 날씨정보를 가져온다
     units=metric : 온도를 섭씨로 변환(옵션이다)*/
     fetch(url).then(res => /*fetch는 프로미스(당장 뭔가일어나지않고 시간이좀걸린뒤 일어남)임 응답을 then으로 받음*/
@@ -242,3 +243,16 @@ function onGeoError(){
 }
 navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError); /*브라우저에서 위치좌표(위도,경도)를줌 첫번째인자: 성공했을때 두번째인자: 실패했을때*/
 //날씨정보 뿌리기 ---------------------------------------------- [end]
+
+//조회순.좋아요순 버튼 이벤트 ---------------------------------------------- [start]
+const hitsBtn = document.querySelector('.check_like_btns > button:first-child');
+const likesBtn = document.querySelector('.check_like_btns > button:last-child');
+
+//focusBtnChange(domBtn, incBtn, 'white', 'rgb(123, 209, 240)');
+hitsBtn.addEventListener('click', () => {
+    focusBtnChange(hitsBtn, likesBtn, 'white', 'rgb(123, 209, 240)');
+});
+likesBtn.addEventListener('click', () => {
+    focusBtnChange(likesBtn, hitsBtn, 'white', 'rgb(123, 209, 240)');
+});
+//조회순.좋아요순 버튼 이벤트 ---------------------------------------------- [end]

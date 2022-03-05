@@ -272,14 +272,6 @@ main > div > section {
 }
 
 .weather-font{
-   /* top: 10%;
-    left: 90%;
-    transform: translate(-1%,-50%);
-    z-index: 2;
-    text-align: center;
-    font-size: 35px;
-    color: black;
-    opacity: 60%;*/
     display: inline-block;
     text-align: center;
     font-size: 24px;
@@ -296,6 +288,20 @@ main > div > section {
     color: white;
 }
 
-#weather, #humidity, #city{
+#weather, #humidity, #city, #temp, #temp2{
     text-align: left;
+}
+
+.check_like_btns > button:first-child{
+    height: 30px;
+}
+
+.check_like_btns > button:last-child{
+    height: 30px;
+}
+
+.hitsBtn{
+    color: white;
+    background-color: rgb(123, 209, 240);
+    font-weight: bold;
 }

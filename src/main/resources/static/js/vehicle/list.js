@@ -18,8 +18,7 @@
             const searchVal = searchFrmElem.search_area.value;
 
             if (searchVal.length === 0) {
-                e.preventDefault();
-                alert('검색어를 입력해 주세요');
+                getList();
             } else {
                 myFetch.get('/ajax/vehicle/search', list => {
                     localStorage.setItem("cast", JSON.stringify(list));

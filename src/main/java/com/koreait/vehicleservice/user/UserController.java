@@ -90,4 +90,12 @@ public class UserController {
         System.out.println(userEntity.getUpw());
         return "redirect:/user/login";
     }
+
+    @ResponseBody
+    @PostMapping("/pasChk")
+    public Map<String, Integer> pasChk(@RequestBody UserEntity userEntity){
+        Map<String, Integer> map = new HashMap<>();
+        map.put("result", service.myPgPasChn(userEntity));
+        return map;
+    }
 }
