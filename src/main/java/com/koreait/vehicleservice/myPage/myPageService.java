@@ -18,6 +18,10 @@ public class myPageService {
     private MyUserUtils myUserUtils;
 
     public List<VehicleVo> likesList(VehicleDto dto){
+
+        int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
+        if(startIdx < 0) { startIdx = 0; }
+        dto.setStartIdx(startIdx);
         dto.setIuser(myUserUtils.getLoginUserPk());
         return mapper.likesList(dto);
     }
@@ -26,4 +30,9 @@ public class myPageService {
         dto.setLikesiuser(myUserUtils.getLoginUserPk());
         return mapper.delAllLike(dto);
     }
+
+    public VehicleDto selMaxPageVal(VehicleDto dto){
+        return mapper.selMaxPageVal(dto);
+    }
+
 }
