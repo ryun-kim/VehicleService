@@ -43,3 +43,4 @@ const myFetch = {
         }), cb);
     }
 }
+

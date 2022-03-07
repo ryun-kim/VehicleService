@@ -21,10 +21,15 @@
 }
 
 .answerContent{
-    height: 220px;
+    /*height: 220px;*/
 }
 
 .btnBox > div:nth-child(2){
     height: 38px;
     line-height: 40px;
+}
+
+form > input{
+    float: right;
+    margin-top: 10px;
 }

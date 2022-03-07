@@ -116,7 +116,6 @@ public class VehicleService {
         dto.setStartIdx(startIdx);
         return mapper.vehicleList(dto);
     }
-  
      public List<VehicleVo> vehicleList2(VehicleDto dto){
        
         List<VehicleVo> list = null;

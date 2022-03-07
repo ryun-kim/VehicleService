@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koreait.vehicleservice.myPage.myPageMapper">
+    <select id="likesList" resultType="VehicleVo">
+        SELECT A.selliboard, A.writeriuser, A.category, A.model, A.detail_model, A.trading_area
+             , A.price, B.mainimg, C.selliboard, C.likesiuser, D.iuser
+        FROM car_sell_board A
+                 INNER JOIN car_image B ON A.selliboard = B.selliboard
+                 INNER JOIN likes C ON C.selliboard = A.selliboard
+                 INNER JOIN t_user D ON D.iuser =  C.likesiuser
+        WHERE D.iuser = ${iuser}
+    </select>
+
+    <delete id="delAllLike">
+        DELETE FROM likes
+        WHERE likesiuser =${likesiuser}
+    </delete>
+</mapper>

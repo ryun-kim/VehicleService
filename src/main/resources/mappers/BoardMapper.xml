@@ -9,11 +9,17 @@
     </select>
 
     <select id="selBoard" resultType="BoardVo">
-        SELECT A.quesiboard, A.writeriuser, A.title, A.ctnt, A.hits, A.rdt, B.nm as writerNm
-        FROM question_board A
-        INNER JOIN t_user B
-        ON A.writeriuser = B.iuser
-        WHERE A.quesiboard = #{quesiboard}
+        SELECT
+        A.quesiboard, A.writeriuser, A.title, A.ctnt, A.isanswer,
+        A.hits, A.rdt, B.nm as writerNm
+        FROM question_board A INNER JOIN t_user B ON A.writeriuser = B.iuser
+        WHERE A.quesiboard = ${quesiboard}
+    </select>
+
+    <select id="selCmtBoard" resultType="BoardCmtEntity">
+        select *
+        from cmt_question_board
+        where quesiboard = ${quesiboard}
     </select>
 
     <select id="selPrevNext" resultType="BoardPrevNextVo">
@@ -45,6 +51,13 @@
             (${writeriuser}, #{title}, #{ctnt})
     </insert>
 
+    <insert id="insCmtBoard">
+        insert into cmt_question_board
+        (quesiboard, cmtctnt, writerNm)
+        values
+        (${quesiboard}, #{cmtctnt}, #{writerNm})
+    </insert>
+
     <delete id="delBoard">
         delete from question_board where quesiboard = ${quesiboard} and writeriuser = ${writeriuser}
     </delete>
@@ -53,6 +66,12 @@
         update question_board
         set title = #{title}, ctnt = #{ctnt}, mdt = now(), hits = hits - 2
         where quesiboard = ${quesiboard} and writeriuser = ${writeriuser}
+    </update>
+
+    <update id="modBoardIsAnw">
+        update question_board
+        set isanswer = '완료'
+        where quesiboard = ${quesiboard}
     </update>
 
     <update id="addHits">
