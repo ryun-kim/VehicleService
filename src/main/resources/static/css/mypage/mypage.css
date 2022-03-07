@@ -62,3 +62,6 @@ a{
 #loginbar_header a{
     text-decoration: none;
 }
+.img-fluid, .result_title, .pointer{
+    cursor: pointer;
+}

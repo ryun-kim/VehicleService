@@ -9,10 +9,18 @@
                  INNER JOIN likes C ON C.selliboard = A.selliboard
                  INNER JOIN t_user D ON D.iuser =  C.likesiuser
         WHERE D.iuser = ${iuser}
+        ORDER BY A.selliboard DESC
+            LIMIT ${startIdx}, ${recordCount}
+
     </select>
 
     <delete id="delAllLike">
         DELETE FROM likes
         WHERE likesiuser =${likesiuser}
     </delete>
+
+    <select id="selMaxPageVal" resultType="VehicleDto">
+        SELECT CEIL(COUNT(selliboard) / ${recordCount}) AS result
+        FROM car_sell_board
+    </select>
 </mapper>
