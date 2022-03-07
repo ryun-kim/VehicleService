@@ -1,0 +1,40 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout"> <!--타임리프를 사용하겠다는말-->
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/chat/chat.css}">
+    <title>Title</title>
+</head>
+<th:block layout:fragment="content">
+    <div id="container" class="container">
+        <h1 th:text="${roomNumber}+'의 채팅방'"></h1>
+        <input type="hidden" id="sessionId" value="">
+        <input type="hidden" id="roomNumber" th:value="${roomNumber}">
+
+        <div id="chating" class="chating">
+        </div>
+
+    <div id="yourName">
+        <table class="inputTable">
+            <tr>
+                <th>사용자명</th>
+                <th><input type="text" name="userName" id="userName" th:value="${session.loginUser.getNm()}"></th>
+                <th><button onclick="chatName()" id="startBtn">이름 등록</button></th>
+            </tr>
+        </table>
+    </div>
+    <div id="yourMsg">
+        <table class="inputTable">
+            <tr>
+                <th>메시지</th>
+                <th><input id="chatting" placeholder="보내실 메시지를 입력하세요."></th>
+                <th><button onclick="send()" id="sendBtn">보내기</button></th>
+            </tr>
+        </table>
+    </div>
+</div>
+    <script defer th:src="@{/js/chat/chat.js}"></script>
+</th:block>
+</html>
