@@ -251,8 +251,60 @@ const likesBtn = document.querySelector('.check_like_btns > button:last-child');
 //focusBtnChange(domBtn, incBtn, 'white', 'rgb(123, 209, 240)');
 hitsBtn.addEventListener('click', () => {
     focusBtnChange(hitsBtn, likesBtn, 'white', 'rgb(123, 209, 240)');
+    getListHitsLank();
 });
 likesBtn.addEventListener('click', () => {
     focusBtnChange(likesBtn, hitsBtn, 'white', 'rgb(123, 209, 240)');
+    getListLikeLank();
 });
 //조회순.좋아요순 버튼 이벤트 ---------------------------------------------- [end]
+
+//좋아요순, 조회순 리스트 가져오기 -------------------------------- [start]
+function getListHitsLank() {
+    myFetch.get('/home/hitslank', data => {
+        makeLecordLankList(data);
+    })
+}
+
+function getListLikeLank() {
+    myFetch.get('/home/likelank', data => {
+        makeLecordLankList(data);
+    })
+}
+
+const makeLecordLankList = list => {
+    // console.log(list);
+    const popular_sales_list = document.querySelector('#popular_sales_list');
+    if(popular_sales_list){
+        popular_sales_list.innerHTML = '';
+        list.forEach(item => {
+            const resultdiv = document.createElement('div');
+            const blankdiv = document.createElement('div');
+            popular_sales_list.style.width = 'calc(300%)';
+            resultdiv.className = "popular_sales_img";
+            resultdiv.style.width = 'calc(30%)';
+            resultdiv.style.cursor = 'pointer';
+            if(item.hits !== null && item.likesum === 0) {
+                resultdiv.innerHTML = `
+                <img src="/vehicleImg/${item.selliboard}/${item.mainimg}" alt="pop1">
+                    <div>${item.model}</div>
+                    <div>조회수 : ${item.hits}</div>
+            `
+            } else {
+                resultdiv.innerHTML = `
+                <img src="/vehicleImg/${item.selliboard}/${item.mainimg}" alt="pop1">
+                    <div>${item.model}</div>
+                    <div>좋아요수 : ${item.likesum}</div>
+            `
+            }
+            resultdiv.addEventListener('click', () => {
+                location.href=`/vehicle/detail?selliboard=${item.selliboard}`;
+            })
+            blankdiv.style.width = 'calc(5%)';
+            popular_sales_list.appendChild(resultdiv);
+            popular_sales_list.appendChild(blankdiv);
+        })
+    }
+}
+getListHitsLank();
+//좋아요순, 조회순 리스트 가져오기 -------------------------------- [end]

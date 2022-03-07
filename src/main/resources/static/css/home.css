@@ -103,6 +103,7 @@ main > div > section {
 .popular_sales_img {
     display: flex; flex-direction: column; align-items: center;
 }
+
 #popular_sales_list > div > img {
     width: 100px; height: 100px;
 }

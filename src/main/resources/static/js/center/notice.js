@@ -1,7 +1,7 @@
-const boardContainer = document.querySelector('.boardContainer');
-const trArr = boardContainer.querySelectorAll('tr');
-const writeBtn = boardContainer.querySelector('button');
-const loginUserInfrm = boardContainer.querySelector('.loginUserInfrm');
+const noticeContainer = document.querySelector('.noticeContainer');
+const trArr = noticeContainer.querySelectorAll('tr');
+const writeBtn = noticeContainer.querySelector('button');
+const loginUserInfrm = noticeContainer.querySelector('.loginUserInfrm');
 const pageContainerElem = document.querySelector('#pageContainer');
 
 let currentPage = 1; //현재 페이지
@@ -12,8 +12,8 @@ const pagingCount = 5; //페이징의 페이징 수
 /*--------------------------클릭했을시 상세페이지로 이동-----------------------------------*/
 trArr.forEach(item => {
     item.addEventListener('click', () => {
-        const quesiboard = $(item).find('td:eq(0)').text() //클릭했을때 행의 quesiboard값 들고온다.
-        $("section").load(`/center/detailquestion?quesiboard=${quesiboard}`);
+        const iboard = $(item).find('td:eq(0)').text() //클릭했을때 행의 quesiboard값 들고온다.
+        $("section").load(`/center/detailnotice?iboard=${iboard}`);
     })
 })
 
@@ -24,13 +24,13 @@ if(writeBtn) {
             alert('로그인해야 이용할 수 있는 서비스입니다.')
             location.href = '/user/login';
         } else {
-            $("section").load("/center/write?quesiboard=0");
+            $("section").load("/center/write?iboard=0");
         }
     })
 }
 
 const getList = () => {
-    fetch('/center/getlist', {
+    fetch('/center/getlist2', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const getList = () => {
 
 //마지막 페이지 값(한번만 호출)
 const getMaxPageVal = () => {
-    myFetch.get(`/center/board/maxpage`, data => {
+    myFetch.get(`/center/board/maxpage2`, data => {
         maxPage = data.result;
         makePaging();
     }, {
@@ -104,21 +104,20 @@ const makePaging = () => {
 }
 
 const makeRecodeList = list => {
-    const tbodyElem = boardContainer.querySelector('table tbody');
+    const tbodyElem = noticeContainer.querySelector('table tbody');
     tbodyElem.innerHTML = null; //그전에 있던거 지운다
     list.forEach(item => {
         const trElem = document.createElement('tr');
         tbodyElem.appendChild(trElem); //먼저 어팬드할까 나중에 어팬드할까는 차이없다
         trElem.innerHTML = `
-                <td>${item.quesiboard}</td>
+                <td>${item.iboard}</td>
                 <td>${item.title}</td>
                 <td>${item.hits}</td>
-                <td>${item.isanswer}</td>
                 `;
         trElem.classList.add('pointer');
         trElem.addEventListener('click', () => {
-            const quesiboard = item.quesiboard; //클릭했을때 행의 quesiboard값 들고온다.
-            $("section").load(`/center/detailquestion?quesiboard=${quesiboard}`);
+            const iboard = item.iboard; //클릭했을때 행의 quesiboard값 들고온다.
+            $("section").load(`/center/detailnotice?iboard=${iboard}`);
         })
     });
 }

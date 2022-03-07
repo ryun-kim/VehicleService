@@ -184,4 +184,36 @@
         SELECT CEIL(COUNT(selliboard) / ${recordCount}) AS result
         FROM car_sell_board
     </select>
+
+    <update id="likeCount">
+        update car_sell_board
+        set likesum = likesum + 1
+        where selliboard = ${selliboard}
+    </update>
+
+    <update id="likeMinus">
+        update car_sell_board
+        set likesum = likesum - 1
+        where selliboard = ${selliboard}
+    </update>
+
+    <update id="hitsCount">
+        update car_sell_board
+        set hits = hits + 1
+        where selliboard = ${selliboard}
+    </update>
+
+    <select id="selLikeLank" resultType="VehicleVo">
+        SELECT A.selliboard, A.model, A.likesum, B.mainimg
+        FROM car_sell_board A LEFT JOIN car_image B ON A.selliboard = B.selliboard
+        ORDER BY likesum desc
+        LIMIT 9
+    </select>
+
+    <select id="selhitsLank" resultType="VehicleVo">
+        SELECT A.selliboard, A.model, A.hits, B.mainimg
+        FROM car_sell_board A LEFT JOIN car_image B ON A.selliboard = B.selliboard
+        ORDER BY hits desc
+        LIMIT 9
+    </select>
 </mapper>

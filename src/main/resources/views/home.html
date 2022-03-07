@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
-    <link rel="stylesheet" th:href="@{/css/home.css}">
     <script defer th:src="@{/js/home.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
     <title>홈</title>
 </head>
 
@@ -66,9 +66,9 @@
                         <i class="fa-solid fa-chevron-right popNext"></i>
                     </div>
                     <div id="popular_sales_list">
-                        <div class="popular_sales_img">
-                            <img th:src="@{/img/avante.jpg}" alt="pop1">
-                            <div>인기매물1</div>
+                        <!--<div class="popular_sales_img" th:each="item : ${likeLank}">
+                            <img th:src="@{/vehicleImg/${item.selliboard}/${item.mainimg}}" alt="pop1">
+                            <div th:text="${item.detail_model}"></div>
                         </div>
                         <div class="popular_sales_img">
                             <img th:src="@{/img/avante.jpg}" alt="pop2">
@@ -93,7 +93,7 @@
                         <div class="popular_sales_img">
                             <img th:src="@{/img/avante.jpg}" alt="pop7">
                             <div>인기매물7</div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </section>

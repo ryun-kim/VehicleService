@@ -24,7 +24,7 @@ $(document).ready(function () {
     })
 
     notice.addEventListener('click', () => {
-        $("section").load("/center/notice");
+        $("section").load("/center/notice?currentPage=1&recordCount=6");
     })
 });
 
