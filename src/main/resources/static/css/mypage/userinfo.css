@@ -1,19 +1,31 @@
 /* 마이페이지 > 회원정보수정 */
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
 
 .userinfo_modify_container > div {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 .userinfo_modify_container > div > div {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 .userinfo_modify_container > div > div > div {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 .userinfo_modify_container > div > div input {
-    border-top: none; border-right: none; border-left: none;
-    border-bottom: 1px solid gray;
+    border-top: none;border-right: none;border-left: none;
+    border-bottom: 1px solid #b2b2b2;
     font-size: 14px;
+    outline: none;
 }
+
+.userinfo_modify_container > div > div input:focus {
+    border-top: none; border-right: none; border-left: none;
+    border-bottom: 1px solid #207cab;
+}
+
 /* 회원정보수정 > 이메일 인증 ----------------------------------- [start] */
 #basic_info_container button {
     border: 1px solid gray;
@@ -23,12 +35,44 @@
 /* 회원정보수정 > 이메일 인증 ----------------------------------- [end] */
 
 /* 회원정보수정 > 비밀번호변경 ---------------------------------- [start] */
+#basic_info_container > div,
+#pw_setting_container > div {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#pw_setting_container > div:nth-child(1) {
+    margin-bottom: 20px;
+}
+
+#basic_info_container > div > input,
+#pw_setting_container > div > input {
+    width: 40%;
+    padding: 5px;
+}
+
+#basic_info_container > div > label,
+#pw_setting_container > div > label {
+    font-size: 19px;
+}
+
 /* 회원정보수정 > 비밀번호변경 ---------------------------------- [end] */
 
 /* 회원정보수정 > 수정 버튼 ------------------------------------- [start] */
 .userinfo_modify_container > div > input {
-    width: 100%;
-    padding: 5px;
+    width: 40%;
+    padding: 10px;
+    transform: translateX(75%);
+    background-color: rgb(113, 216, 253);
+    color : #fff !important;
+    border: none;
+    border-radius: 5px;
+}
+
+.userinfo_modify_container > div > input:active {
+    background-color: rgb(63, 153, 218);
 }
 /* 회원정보수정 > 수정 버튼 ------------------------------------- [end] */
 
@@ -50,4 +94,95 @@
 
 #loginbar_header a{
     text-decoration: none;
+}
+
+common css
+
+* { box-sizing: border-box; }
+body { margin: 0px; }
+nav { width: 100%; }
+ul { list-style: none; padding: 0px; }
+a { text-decoration: none; }
+
+body > div {
+    width: 100%; height: 100%;
+    display: grid;
+    grid-template-rows: 100px auto 200px;
+}
+body > div > div { margin-top: 20px; margin-bottom: 30px; }
+/* 헤더 --------------------------------------------------------- [start] */
+header {
+    background-color: rgb(113, 216, 253);
+    position: sticky; top: 0; z-index: 10;
+    display: grid; grid-template-columns: 1fr 8fr 1fr;
+    font-family: 'Jua', sans-serif;
+}
+header > div {
+    grid-column: 2/3;
+    display: grid; grid-template-columns: 1fr 4fr 1fr;
+}
+/* 헤더>로고 ---------------------------------------------------- [start] */
+header #image_logo_home {
+    display: flex;  align-items: center;
+    cursor: pointer;
+}
+header #image_logo_home > img {
+    width: 190px; height: 70px;
+}
+/* 헤더>메뉴바 -------------------------------------------------- [start] */
+#menubar_header {
+    display: flex;  align-items: center; height: 100%;
+}
+#menubar_header > nav > ul {
+    height: 100%;
+    display: flex; justify-content: space-around;
+}
+#menubar_header > nav > ul > li {
+    display: flex; align-items: center;
+    font-size: 180%;
+}
+#menubar_header > nav > ul > li > a {
+    color: white; font-weight: 800;
+}
+#menubar_header > nav > ul > li > a:focus {
+    color: rgb(45, 45, 161);
+}
+
+/* 헤더>로그인바 ------------------------------------------------ [start] */
+#loginbar_header {
+    display: flex;  align-items: flex-end;
+}
+#loginbar_header > nav > ul {
+    display: flex; justify-content: space-around;
+}
+#loginbar_header > nav > ul > li {
+    font-size: 90%;
+}
+#loginbar_header > nav > ul > li > a {
+    color: white;
+}
+#loginbar_header > nav > ul > li > a:focus {
+    color: rgb(45, 45, 161);
+}
+/* 헤더 --------------------------------------------------------- [end] */
+
+@media(max-width: 768px) {
+    #image_logo_home {
+        grid-column: 2/3;
+    }
+    #menubar_header {
+        grid-column: 1/4;
+    }
+    #loginbar_header {
+        grid-row: 1/2;
+        grid-column: 3/4;
+    }
+    #total_container {
+        width: 100%; height: 100%;
+        display: grid;
+        grid-template-rows: 200px auto 200px;
+    }
+    #loginbar_header > nav > ul > li {
+        font-size: 70%;
+    }
 }
