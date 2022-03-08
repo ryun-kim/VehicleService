@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="/css/center/write.css">
+<script defer>
+    const writeFrm = document.querySelector('#writeFrm');
+    if(writeFrm) {
+        writeFrm.addEventListener('submit', (e) => {
+            if (writeFrm.title.value === '' || writeFrm.ctnt.value === '') {
+                e.preventDefault();
+                alert('제목 및 내용을 입력해주세요.');
+            } else {
+                alert('글 등록에 성공하였습니다.')
+            }
+        })
+    }
+</script>
+<!--th:if, th:unless 쓸때 조건식은 같아야됨-->
+<form id="writeFrm" th:if="${item == null}" method="post" th:action="@{/center/noticewrite}" th:object="${noticeBoardEntity}">
+    <input class="border border-2" type="text" placeholder="제목을 입력해주세요." th:field="*{title}">
+    <textarea class="border border-2" placeholder="내용을 입력해주세요." th:field="*{ctnt}"></textarea>
+    <button type="submit" class="btn btn-primary">등록</button>
+    <a th:href="@{/center/customer}"><button type="button" class="btn btn-primary">목록</button></a>
+</form>

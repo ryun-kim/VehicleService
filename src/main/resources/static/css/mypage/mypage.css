@@ -1,3 +1,15 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
 a{
     text-decoration: none;
     color: black;
@@ -5,20 +17,26 @@ a{
 
 #mypage_title {
     cursor: pointer;
+    text-align: center;
 }
 
-.active{
-    background-color: rgb(113, 216, 253)!important;
+.active {
+    background-color: rgb(113, 216, 253);
+    color : #fff !important;
 }
 
 .userinfo>a:hover, .buylist>a:hover, .sellinfo>a:hover, .chatlist>a:hover, .likelist>a:hover{
-    background-color: rgb(113, 216, 253);
-    color : #fff !important;
     border-radius: 5px;
 }
 
 .sidebarMenu_menu>.nav-item>a{
     color:black;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.sidebarMenu_menu>.nav-item > .nav-link:hover {
+    color: #007dcd;
 }
 
 .sidebarMenu_menu>.nav-item>.active {
@@ -61,7 +79,4 @@ a{
 
 #loginbar_header a{
     text-decoration: none;
-}
-.img-fluid, .result_title, .pointer{
-    cursor: pointer;
 }

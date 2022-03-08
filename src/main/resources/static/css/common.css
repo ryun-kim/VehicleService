@@ -67,7 +67,7 @@ header #image_logo_home > img {
 /* 헤더 --------------------------------------------------------- [end] */
 /* 푸터 --------------------------------------------------------- [start] */
 footer {
-    background-color: rgb(247, 240, 240);
+    background-color: rgb(218, 217, 217);
     display: grid; grid-template-columns: 1fr 8fr 1fr;
 }
 footer > div {

@@ -24,7 +24,7 @@ if(writeBtn) {
             alert('로그인해야 이용할 수 있는 서비스입니다.')
             location.href = '/user/login';
         } else {
-            $("section").load("/center/write?iboard=0");
+            $("section").load("/center/noticewrite");
         }
     })
 }
