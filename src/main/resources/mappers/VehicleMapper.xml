@@ -41,14 +41,14 @@
 
     <select id="vehicleList" resultType="VehicleVo">
         SELECT A.selliboard, A.writeriuser, A.category, A.manufacturer, A.model, A.detail_model
-        , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number
+        , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number, A.hits
         , B.mainimg
         FROM car_sell_board A
                  LEFT JOIN car_image B
                            ON A.selliboard = B.selliboard
-
+        where A.category = #{category}
         <if test="manufacturer != null">
-            WHERE A.manufacturer = #{manufacturer}
+            AND A.manufacturer = #{manufacturer}
         </if>
         <if test="model != null">
             AND A.model = #{model}
@@ -56,9 +56,15 @@
         <if test="detail_model != null">
             AND A.detail_model = #{detail_model}
         </if>
-        ORDER BY A.selliboard DESC
 
-        LIMIT ${startIdx}, ${recordCount}
+        ORDER BY
+/*                 <if test="gg">
+                     A.hits DESC
+                 </if>
+*/                A.selliboard desc
+
+
+        LIMIT  ${startIdx}, ${recordCount}
 
     </select>
 
@@ -94,6 +100,7 @@
         where A.model LIKE concat('%',#{searchText},'%')
         or A.detail_model LIKE concat('%',#{searchText},'%')
         or A.manufacturer LIKE concat('%',#{searchText},'%')
+
         ORDER BY A.selliboard DESC
     </select>
 

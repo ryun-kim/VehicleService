@@ -19,7 +19,7 @@ import java.util.List;
 @Component
 public class SocketHandler extends TextWebSocketHandler {
 
-    @Autowired
+
 
     //HashMap<String,WebSocketSession> sessionMap = new HashMap<>(); // 웹소켓 세션을 담을 맵
     List<HashMap<String,Object>> rls = new ArrayList<>();

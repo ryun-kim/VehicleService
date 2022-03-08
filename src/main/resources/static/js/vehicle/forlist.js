@@ -124,11 +124,10 @@
         }
     }
 
-
         //글 리스트 정보 가져오기
         const getList = () => {
 
-            myFetch.get(`/ajax/vehicle/list`, data => {
+            myFetch.get(`/ajax/vehicle/forlist`, data => {
                 localStorage.setItem("cast", JSON.stringify(data));
                 makeRecordList(data);
             },{ currentPage, recordCount });
@@ -208,7 +207,7 @@
                             <h4 class="card-title">${item.detail_model}</h4>
                             <p class="card-text">${item.fuel}</p>
                             <p class="card-text">${item.price}만원</p>
-                            <p class="card-text">판매지역: ${item.trading_area}</p>                            
+                            <p class="card-text">판매지역: ${item.trading_area}</p>                           
                         </div>    
                     </div>
                 `
@@ -262,13 +261,6 @@
     }else{
         getList();
     }
-    //여기서
-    // let listOrder = document.querySelector('#list_order');
-    // listOrder.addEventListener('click', ()=>{
-    //     myFetch.get("/ajax/vehicle/sortlist", a =>{
-    //
-    //     })
-    // })
-
+    getList();
 
 }
