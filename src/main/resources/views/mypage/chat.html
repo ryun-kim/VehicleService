@@ -23,7 +23,7 @@
 <th:block layout:fragment="content">
     <div class="container">
         <th:block th:if="${session.loginUser!=null}">
-            <input type="hidden" th:value="${session.loginUser.iuser}" id="iuser">
+            <input type="hidden" th:value="${session.loginUser.iuser}" class="iuser">
         </th:block>
         <div class="row">
             <!--사이드 메뉴-->

@@ -22,4 +22,6 @@ public class VehicleDto extends VehicleEntity {
     private String searchText;
     private int iuser;
 
+//    private String test;
+
 }
