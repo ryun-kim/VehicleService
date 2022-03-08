@@ -12,6 +12,7 @@ public interface BoardMapper {
     List<BoardEntity> selBoardList(BoardDto dto);
     List<NoticeBoardEntity> selNoticeBoardList(NoticeBoardDto dto);
     BoardVo selBoard(BoardEntity boardEntity);
+    NoticeBoardVo selNoticeBoard(NoticeBoardEntity noticeBoardEntity);
     BoardCmtEntity selCmtBoard(BoardCmtEntity boardEntity);
     int delBoard(BoardEntity boardEntity);
     int modBoard(BoardEntity boardEntity);
@@ -19,5 +20,6 @@ public interface BoardMapper {
     ResultVo selMaxPageVal(BoardDto dto);
     ResultVo selMaxPageVal2(NoticeBoardDto dto);
     int addHits(BoardEntity boardEntity);
+    int addNoticeHits(NoticeBoardEntity ntity);
     BoardPrevNextVo selPrevNext(BoardVo vo);
 }

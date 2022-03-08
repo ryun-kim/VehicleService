@@ -59,6 +59,17 @@ public class BoardService {
         return detail;
     }
 
+    public NoticeBoardVo selNoticeBoard(int iboard){
+        NoticeBoardEntity entity = new NoticeBoardEntity();
+        entity.setIboard(iboard);
+        NoticeBoardVo detail = mapper.selNoticeBoard(entity);
+        int hitsResult = mapper.addNoticeHits(entity);
+        if(hitsResult == 1){ //detail로 들어갔을때 올려진 hits가 바로보이게하기위해
+            detail.setHits(detail.getHits() + 1);
+        }
+        return detail;
+    }
+
     public BoardCmtEntity selCmtBoard(int quesiboard){
         BoardCmtEntity entity = new BoardCmtEntity();
         entity.setQuesiboard(quesiboard);
