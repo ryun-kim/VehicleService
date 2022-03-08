@@ -8,6 +8,13 @@
         LIMIT ${startIdx}, ${recordCount}
     </select>
 
+    <select id="selNoticeBoardList" resultType="NoticeBoardEntity">
+        select iboard, title, hits
+        from notice_board
+        order by iboard desc
+        LIMIT ${startIdx}, ${recordCount}
+    </select>
+
     <select id="selBoard" resultType="BoardVo">
         SELECT
         A.quesiboard, A.writeriuser, A.title, A.ctnt, A.isanswer,
@@ -44,8 +51,20 @@
         from question_board
     </select>
 
+    <select id="selMaxPageVal2" resultType="ResultVo">
+        select ceil(count(iboard) / ${recordCount}) as result
+        from notice_board
+    </select>
+
     <insert id="insBoard">
         INSERT INTO question_board
+            (writeriuser, title, ctnt)
+        VALUES
+            (${writeriuser}, #{title}, #{ctnt})
+    </insert>
+
+    <insert id="insNoticeBoard">
+        INSERT INTO notice_board
             (writeriuser, title, ctnt)
         VALUES
             (${writeriuser}, #{title}, #{ctnt})

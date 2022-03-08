@@ -24,14 +24,16 @@ public class CenterController {
         model.addAttribute("list", service.selBoardList(dto));
     }
 
+    @GetMapping("/notice")//클라이언트에서 보낸 url파라미터값 받를때 객체로받을땐 @RequestParam 안적는다.
+    public void notice(Model model, NoticeBoardDto dto){
+        model.addAttribute("list", service.selNoticeBoardList(dto));
+    }
+
     @GetMapping("/guide")
     public void guide(){}
 
     @GetMapping("/introduction")
     public void introduction(){}
-
-    @GetMapping("/notice")
-    public void notice(){}
 
     @GetMapping("/detailquestion")
     public void detailquestion(@RequestParam int quesiboard, Model model){
@@ -52,6 +54,16 @@ public class CenterController {
         if(quesiboard > 0){
            model.addAttribute("item", service.selBoard(quesiboard));
         }
+    }
+
+    @GetMapping("/noticewrite")
+    public void write(@ModelAttribute NoticeBoardEntity noticeBoardEntity){}
+
+    @PostMapping("/noticewrite")
+    public String noticeWriteProc(NoticeBoardEntity noticeBoardEntity){
+        int rs = service.insNoticeBoard(noticeBoardEntity);
+        System.out.println("1이면 입력성공 0이면 입력실패 : " + rs);
+        return "redirect:/center/customer";
     }
 
     @PostMapping("/write")
@@ -82,9 +94,21 @@ public class CenterController {
     }
 
     @ResponseBody
+    @GetMapping("/board/maxpage2") //get매핑일땐 @Requestbody 핑요없음
+    public ResultVo selMaxPageVal2(NoticeBoardDto dto){
+        return service.selMaxPageVal2(dto);
+    }
+
+    @ResponseBody
     @PostMapping("/getlist")
     public List<BoardEntity> getList(@RequestBody BoardDto dto){
         return service.selBoardList(dto);
+    }
+
+    @ResponseBody
+    @PostMapping("/getlist2")
+    public List<NoticeBoardEntity> getList2(@RequestBody NoticeBoardDto dto){
+        return service.selNoticeBoardList(dto);
     }
 
     @ResponseBody

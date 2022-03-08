@@ -18,6 +18,11 @@ public class BoardService {
         return mapper.insBoard(boardEntity);
     }
 
+    public int insNoticeBoard(NoticeBoardEntity noticeBoardEntity){
+        noticeBoardEntity.setWriteriuser(userUtils.getLoginUserPk());
+        return mapper.insNoticeBoard(noticeBoardEntity);
+    }
+
     public int insCmtBoard(BoardCmtEntity cmtEntity){
         cmtEntity.setWriterNm(userUtils.getLoginUser().getNm());
         mapper.modBoardIsAnw(cmtEntity);
@@ -31,6 +36,15 @@ public class BoardService {
         }
         dto.setStartIdx(startIdx);
         return mapper.selBoardList(dto);
+    }
+
+    public List<NoticeBoardEntity> selNoticeBoardList(NoticeBoardDto dto){
+        int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
+        if(startIdx < 0){
+            startIdx = 0;
+        }
+        dto.setStartIdx(startIdx);
+        return mapper.selNoticeBoardList(dto);
     }
 
     public BoardVo selBoard(int quesiboard){
@@ -69,5 +83,9 @@ public class BoardService {
 
     public ResultVo selMaxPageVal(BoardDto dto){
         return mapper.selMaxPageVal(dto);
+    }
+
+    public ResultVo selMaxPageVal2(NoticeBoardDto dto){
+        return mapper.selMaxPageVal2(dto);
     }
 }
