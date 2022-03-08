@@ -18,11 +18,15 @@
             crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script defer th:src="@{/js/mypage/userinfo.js}"></script>
+    <script defer th:src="@{/js/mypage/mypage.js}"></script>
     <title>회원정보 수정</title>
 </head>
 
 <th:block layout:fragment="content">
     <div class="container">
+        <th:block th:if="${session.loginUser!=null}">
+            <input type="hidden" th:value="${session.loginUser.iuser}" class="iuser">
+        </th:block>
         <div class="row">
             <!--사이드 메뉴-->
             <nav id="sidebarMenu" class="col-sm col-md-2 ">
