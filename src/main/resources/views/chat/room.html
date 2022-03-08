@@ -1,0 +1,28 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout"> <!--타임리프를 사용하겠다는말-->
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/chat/room.css}">
+    <title>Title</title>
+</head>
+<th:block layout:fragment="content">
+    <div class="container">
+        <h1>채팅방</h1>
+        <div id="roomContainer" class="roomContainer">
+            <table id="roomList" class="roomList"></table>
+        </div>
+        <div>
+            <table class="inputTable">
+                <tr>
+                    <th>방 제목</th>
+                    <th><input type="text" name="roomName" id="roomName"></th>
+                    <th><button id="createRoom">방 만들기</button></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script defer th:src="@{/js/chat/room.js}"></script>
+</th:block>
+</html>
