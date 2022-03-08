@@ -8,11 +8,25 @@
         LIMIT ${startIdx}, ${recordCount}
     </select>
 
+    <select id="selHomeBoardList" resultType="BoardEntity">
+        select title
+        from question_board
+        order by quesiboard desc
+        LIMIT 3
+    </select>
+
     <select id="selNoticeBoardList" resultType="NoticeBoardEntity">
         select iboard, title, hits
         from notice_board
         order by iboard desc
         LIMIT ${startIdx}, ${recordCount}
+    </select>
+
+    <select id="selNoticeHomeBoardList" resultType="NoticeBoardEntity">
+        select title
+        from notice_board
+        order by iboard desc
+        LIMIT 3
     </select>
 
     <select id="selBoard" resultType="BoardVo">

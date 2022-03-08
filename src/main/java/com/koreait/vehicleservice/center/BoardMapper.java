@@ -10,7 +10,9 @@ public interface BoardMapper {
     int insNoticeBoard(NoticeBoardEntity noticeBoardEntity);
     int insCmtBoard(BoardCmtEntity cmtEntity);
     List<BoardEntity> selBoardList(BoardDto dto);
+    List<BoardEntity> selHomeBoardList();
     List<NoticeBoardEntity> selNoticeBoardList(NoticeBoardDto dto);
+    List<NoticeBoardEntity> selNoticeHomeBoardList();
     BoardVo selBoard(BoardEntity boardEntity);
     NoticeBoardVo selNoticeBoard(NoticeBoardEntity noticeBoardEntity);
     BoardCmtEntity selCmtBoard(BoardCmtEntity boardEntity);

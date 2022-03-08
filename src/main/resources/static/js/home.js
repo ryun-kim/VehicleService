@@ -308,3 +308,16 @@ const makeLecordLankList = list => {
 }
 getListHitsLank();
 //좋아요순, 조회순 리스트 가져오기 -------------------------------- [end]
+
+const selling_mycar = document.querySelector('#selling_mycar_home div:last-child');
+if(selling_mycar){
+    selling_mycar.addEventListener('click', () => {
+        if(loginUserInfrm === null){
+            alert('로그인해야 이용할 수 있는 서비스입니다.');
+            location.href = '/user/login';
+            return;
+        }
+        location.href = '/vehicle/write';
+    })
+}
+

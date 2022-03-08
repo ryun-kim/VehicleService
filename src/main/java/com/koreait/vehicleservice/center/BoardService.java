@@ -30,21 +30,27 @@ public class BoardService {
     }
 
     public List<BoardEntity> selBoardList(BoardDto dto){
-        int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
-        if(startIdx < 0){
-            startIdx = 0;
+        if(dto.getCurrentPage() > 0) {
+            int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
+            if (startIdx < 0) {
+                startIdx = 0;
+            }
+            dto.setStartIdx(startIdx);
+            return mapper.selBoardList(dto);
         }
-        dto.setStartIdx(startIdx);
-        return mapper.selBoardList(dto);
+        return mapper.selHomeBoardList(); //home에서 뿌려주는 질문게시판 리스트
     }
 
     public List<NoticeBoardEntity> selNoticeBoardList(NoticeBoardDto dto){
-        int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
-        if(startIdx < 0){
-            startIdx = 0;
+        if(dto.getCurrentPage() > 0) {
+            int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
+            if (startIdx < 0) {
+                startIdx = 0;
+            }
+            dto.setStartIdx(startIdx);
+            return mapper.selNoticeBoardList(dto);
         }
-        dto.setStartIdx(startIdx);
-        return mapper.selNoticeBoardList(dto);
+        return mapper.selNoticeHomeBoardList(); //home에서 뿌려주는 공지게시판 리스트
     }
 
     public BoardVo selBoard(int quesiboard){

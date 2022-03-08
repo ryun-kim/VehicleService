@@ -25,4 +25,5 @@ public class VehicleVo extends VehicleEntity {
     private String inout_inform;
     private String tuning_inform;
     private String other;
+    private String writerNm;
 }
