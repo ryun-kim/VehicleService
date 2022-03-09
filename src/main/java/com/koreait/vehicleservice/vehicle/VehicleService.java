@@ -192,9 +192,6 @@ public class VehicleService {
     }
 
     public List<VehicleVo> homeSearchList(VehicleEntity entity){ //홈에서 검색
-        System.out.println(entity.getManufacturer());
-        System.out.println(entity.getModel());
-        System.out.println(entity.getDetail_model());
         return mapper.homeSearchList(entity);
     }
 }

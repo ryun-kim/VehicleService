@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class VehicleEntity {
+public class VehicleEntity {  //db와 일치
      int selliboard; //글번호
      int writeriuser; //작성자
      String category; //국산 수입
