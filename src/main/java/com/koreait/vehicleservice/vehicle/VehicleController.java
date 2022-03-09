@@ -12,25 +12,29 @@ import java.util.Map;
 @Controller
 @RequestMapping("vehicle")
 public class VehicleController {
-    @Autowired private VehicleService service;
-    @GetMapping("/list")
-    public void list() {}
+    @Autowired
+    private VehicleService service;
 
-    @GetMapping("/list/for")
-    public void listfor(){}
+    @GetMapping("/list")
+    public void list() {
+    }
+
+    @GetMapping("/forlist")
+    public void forlist() {
+    }
 
     @GetMapping("/detail")
-    public void detail(VehicleEntity entity,Model model){
+    public void detail(VehicleEntity entity, Model model) {
         model.addAttribute("vo", service.vehicledetail(entity));
     }
 
     @GetMapping("/write")
-    public void write(){
+    public void write() {
 
     }
 
     @PostMapping("/write")
-    public String inVehicle(VehicleDto dto, @RequestParam MultipartFile mainimg){
+    public String inVehicle(VehicleDto dto, @RequestParam MultipartFile mainimg) {
         VehicleEntity entity = dto;
         service.inVehicle(entity);//판매글 db입력
         service.inOptions(dto); //옵션 db입력
@@ -44,7 +48,7 @@ public class VehicleController {
 
     @GetMapping("/carNumChk/{car_num}")
     @ResponseBody
-    public Map<String, Integer> selCarNum(@PathVariable String car_num){
+    public Map<String, Integer> selCarNum(@PathVariable String car_num) {
         Map<String, Integer> res = new HashMap<>();
         int result = service.selCarNum(car_num);
         res.put("result", result);

@@ -18,6 +18,11 @@ public class BoardService {
         return mapper.insBoard(boardEntity);
     }
 
+    public int insNoticeBoard(NoticeBoardEntity noticeBoardEntity){
+        noticeBoardEntity.setWriteriuser(userUtils.getLoginUserPk());
+        return mapper.insNoticeBoard(noticeBoardEntity);
+    }
+
     public int insCmtBoard(BoardCmtEntity cmtEntity){
         cmtEntity.setWriterNm(userUtils.getLoginUser().getNm());
         mapper.modBoardIsAnw(cmtEntity);
@@ -25,12 +30,27 @@ public class BoardService {
     }
 
     public List<BoardEntity> selBoardList(BoardDto dto){
-        int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
-        if(startIdx < 0){
-            startIdx = 0;
+        if(dto.getCurrentPage() > 0) {
+            int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
+            if (startIdx < 0) {
+                startIdx = 0;
+            }
+            dto.setStartIdx(startIdx);
+            return mapper.selBoardList(dto);
         }
-        dto.setStartIdx(startIdx);
-        return mapper.selBoardList(dto);
+        return mapper.selHomeBoardList(); //home에서 뿌려주는 질문게시판 리스트
+    }
+
+    public List<NoticeBoardEntity> selNoticeBoardList(NoticeBoardDto dto){
+        if(dto.getCurrentPage() > 0) {
+            int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
+            if (startIdx < 0) {
+                startIdx = 0;
+            }
+            dto.setStartIdx(startIdx);
+            return mapper.selNoticeBoardList(dto);
+        }
+        return mapper.selNoticeHomeBoardList(); //home에서 뿌려주는 공지게시판 리스트
     }
 
     public BoardVo selBoard(int quesiboard){
@@ -42,6 +62,17 @@ public class BoardService {
             detail.setHits(detail.getHits() + 1);
         }
 
+        return detail;
+    }
+
+    public NoticeBoardVo selNoticeBoard(int iboard){
+        NoticeBoardEntity entity = new NoticeBoardEntity();
+        entity.setIboard(iboard);
+        NoticeBoardVo detail = mapper.selNoticeBoard(entity);
+        int hitsResult = mapper.addNoticeHits(entity);
+        if(hitsResult == 1){ //detail로 들어갔을때 올려진 hits가 바로보이게하기위해
+            detail.setHits(detail.getHits() + 1);
+        }
         return detail;
     }
 
@@ -69,5 +100,9 @@ public class BoardService {
 
     public ResultVo selMaxPageVal(BoardDto dto){
         return mapper.selMaxPageVal(dto);
+    }
+
+    public ResultVo selMaxPageVal2(NoticeBoardDto dto){
+        return mapper.selMaxPageVal2(dto);
     }
 }

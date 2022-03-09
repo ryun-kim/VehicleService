@@ -26,9 +26,10 @@ public class SocketHandler extends TextWebSocketHandler {
     @Autowired MainService service;
     @Autowired MyUserUtils userUtils;
 
-   List<HashMap<String, Object>> rls = new ArrayList<>(); //웹소켓 세션을 담아둘 리스트
 
-    List<ChattingRoom> list;// 채팅내역 리스트
+   List<HashMap<String, Object>> rls = new ArrayList<>(); //웹소켓 세션을 담아둘 리스트
+   List<ChattingRoom> list;// 채팅내역 리스트
+
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message) {
         String msg = message.getPayload();

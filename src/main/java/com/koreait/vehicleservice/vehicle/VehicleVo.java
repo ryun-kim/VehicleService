@@ -25,4 +25,5 @@ public class VehicleVo extends VehicleEntity { //db 의 select 용
     private String inout_inform;
     private String tuning_inform;
     private String other;
+    private String writerNm;
 }

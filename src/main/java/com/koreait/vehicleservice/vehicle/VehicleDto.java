@@ -22,4 +22,6 @@ public class VehicleDto extends VehicleEntity {  //사용자정보 받기용
     private String searchText;
     private int iuser;
 
+//    private String test;
+
 }

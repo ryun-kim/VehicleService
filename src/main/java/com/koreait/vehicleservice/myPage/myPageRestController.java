@@ -23,4 +23,8 @@ public class myPageRestController {
 
     @DeleteMapping("/dellikes")
     public int dellAllLike(VehicleDto dto) {return service.delAllLike(dto);}
+    @GetMapping("/maxpage")
+    public VehicleDto selMaxPageVal(VehicleDto dto) {
+        return service.selMaxPageVal(dto);
+    }
 }

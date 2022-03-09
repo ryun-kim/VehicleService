@@ -22,6 +22,10 @@ $(document).ready(function () {
     introduction.addEventListener('click', () => {
         $("section").load("/center/introduction");
     })
+
+    notice.addEventListener('click', () => {
+        $("section").load("/center/notice?currentPage=1&recordCount=6");
+    })
 });
 
 /*----------------------------------- 클릭했을시 li태그에 색상적용 ----------------------------------*/

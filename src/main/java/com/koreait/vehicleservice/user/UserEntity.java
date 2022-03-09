@@ -11,6 +11,7 @@ public class UserEntity {
     private int iuser;
     private String uid;
     private String upw;
+    private String newupw;
     private String nm;
     private String birthday;
     private String birthdayYear;

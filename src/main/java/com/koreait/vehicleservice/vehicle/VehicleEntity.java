@@ -21,4 +21,6 @@ public class VehicleEntity {  //db와 일치
      int distan_driven;  //거리
      String gearbox; //변속기
      String trading_area;  //거래지역
+     int hits;
+     int likesum;
 }

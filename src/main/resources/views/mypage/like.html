@@ -17,6 +17,7 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script defer th:src="@{/js/mypage/mypage_like.js}"></script>
     <script defer th:src="@{/js/mypage/mypage.js}"></script>
     <title>좋아요</title>
 </head>
@@ -24,7 +25,7 @@
 <th:block layout:fragment="content">
     <div class="container">
         <th:block th:if="${session.loginUser!=null}">
-            <input type="hidden" th:value="${session.loginUser.iuser}" id="iuser">
+            <input type="hidden" th:value="${session.loginUser.iuser}" class="iuser">
         </th:block>
         <div class="row">
             <!--사이드 메뉴-->
@@ -54,41 +55,21 @@
                 <h3>좋아요</h3>
                 <hr>
                 <div class="d-grid d-md-flex justify-content-md-end">
-                    <button id="jjim_Del_Btn" class="btn-sm btn-primary m-2" type="button">
+                    <button id="jjim_Del_Btn" class="btn-sm btn-primary m-2" onclick="jjimAll()" type="button">
                         좋아요 전체 삭제
                     </button>
                 </div>
                 <div id="like_result" class="container">
                     <div class="row row-cols-1 row-cols-md-1 g-4">
-<!--                        <div class="col">-->
-<!--                            <div class="container shadow-sm">-->
-<!--                                <div class="row">-->
-<!--                                    <picture class="col-sm col-md-3 g-3">-->
-<!--                                        <a th:href="@{#}"><img class="img-fluid" th:src="@{/img/colorado.png}"></a>-->
-<!--                                    </picture>-->
-<!--                                    <div class="col-sm col-md-9 g-3">-->
-<!--                                        <a href="#"><h2 class="">콜로라도</h2></a>-->
-<!--                                        <p>4000만원</p>-->
-<!--                                        <p class="">차량 정보</p>-->
-<!--                                    </div>-->
-<!--                                    <div class="g-2">-->
-<!--                                        <div class="d-flex justify-content-between align-items-center">-->
-<!--                                            <button type="button" class="btn btn-outline-secondary jjimBtn"><i class="fa-regular fa-heart"></i>좋아요</button>-->
-<!--                                            <small class="text-muted">10분전</small>-->
-<!--                                        </div>-->
-<!--                                        <button type="button" class="btn btn-primary position-relative">-->
-<!--                                            유저1-->
-<!--                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">-->
-<!--										  5-->
-<!--										  <span class="visually-hidden">읽지않은 메세지</span>-->
-<!--										</span>-->
-<!--                                        </button>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
 
                     </div>
+                </div>
+
+                <div id="like_container">
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>

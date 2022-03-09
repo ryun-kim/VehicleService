@@ -18,11 +18,15 @@
             crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script defer th:src="@{/js/mypage/userinfo.js}"></script>
+    <script defer th:src="@{/js/mypage/mypage.js}"></script>
     <title>회원정보 수정</title>
 </head>
 
 <th:block layout:fragment="content">
     <div class="container">
+        <th:block th:if="${session.loginUser!=null}">
+            <input type="hidden" th:value="${session.loginUser.iuser}" class="iuser">
+        </th:block>
         <div class="row">
             <!--사이드 메뉴-->
             <nav id="sidebarMenu" class="col-sm col-md-2 ">
@@ -54,33 +58,26 @@
                     <div>
                         <h3>비밀번호 설정 및 변경</h3>
                         <hr>
-                        <!-- 회원정보 수정 > 이메일 인증 --------------------- [start] -->
+                        <!-- 회원정보 수정 > 비번 입력 --------------------- [start] -->
                         <div id="basic_info_container">
                             <div>
-                                <label>이메일</label>
+                                <label>현재 비밀번호</label>
                                 <br>
-                                <input type="text" name="email" placeholder="nncha7@naver.com">
-                                <button>인증번호 받기</button>
-                            </div>
-                            <div>
-                                <label>인증번호</label>
-                                <br>
-                                <input type="text" name="chkN" placeholder="인증번호 입력">
-                                <button>확인</button>
+                                <input type="text" name="upw" placeholder="현재 비밀번호를 입력해주세요.">
                             </div>
                         </div>
-                        <!-- 회원정보 수정 > 이메일 인증 --------------------- [end] -->
+                        <!-- 회원정보 수정 > 비번 입력 --------------------- [end] -->
                         <!-- 회원정보 수정 > 비밀번호 확인 ------------------- [start] -->
                         <div id="pw_setting_container">
                             <div>
                                 <label>새 비밀번호</label>
                                 <br>
-                                <input type="password" name="newPassword" placeholder="">
+                                <input type="password" name="newupw" placeholder="영문자, 숫자, 특수문자 포함 8~15글자입니다.">
                             </div>
                             <div>
                                 <label>새 비밀번호 확인</label>
                                 <br>
-                                <input type="password" name="phoneN" placeholder="">
+                                <input type="password" name="rePassword" placeholder="영문자, 숫자, 특수문자 포함 8~15글자입니다.">
                             </div>
                         </div>
                         <!-- 회원정보 수정 > 비밀번호 확인 ------------------- [end] -->

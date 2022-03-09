@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
-    <link rel="stylesheet" th:href="@{/css/home.css}">
     <script defer th:src="@{/js/home.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
     <title>홈</title>
 </head>
 
@@ -58,7 +58,7 @@
             <!-- 인기매물 -------------------------------------- [start] -->
             <section id="popular_sales_home">
                 <div class="check_like_btns">
-                    <a>조회순</a> / <a>좋아요순</a>
+                    <button class="hitsBtn">조회순</button> / <button>좋아요순</button>
                 </div>
                 <div id="popular_sales_container">
                     <div class="prev_next_btns">
@@ -66,9 +66,9 @@
                         <i class="fa-solid fa-chevron-right popNext"></i>
                     </div>
                     <div id="popular_sales_list">
-                        <div class="popular_sales_img">
-                            <img th:src="@{/img/avante.jpg}" alt="pop1">
-                            <div>인기매물1</div>
+                        <!--<div class="popular_sales_img" th:each="item : ${likeLank}">
+                            <img th:src="@{/vehicleImg/${item.selliboard}/${item.mainimg}}" alt="pop1">
+                            <div th:text="${item.detail_model}"></div>
                         </div>
                         <div class="popular_sales_img">
                             <img th:src="@{/img/avante.jpg}" alt="pop2">
@@ -93,16 +93,17 @@
                         <div class="popular_sales_img">
                             <img th:src="@{/img/avante.jpg}" alt="pop7">
                             <div>인기매물7</div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </section>
             <!-- 인기매물 -------------------------------------- [end] -->
             <!-- 내차팔기 -------------------------------------- [start] -->
             <section id="selling_mycar_home">
-                <div>내차팔기</div>
+
+                <div style="text-align: center">차량을 등록해주세요!</div>
                 <div>
-                    <a th:href="@{/vehicle/write/}">
+                    <a>
                         내 차 등록<br>
                         <i class="fa-solid fa-right-long"></i>
                     </a>
@@ -133,29 +134,39 @@
                     </div>
                     <div id="qn_mini_board">
                         <div>
-                            <a>질문 게시판 내용1</a>
-                            <a>질문 게시판 내용2</a>
-                            <a>질문 게시판 내용3</a>
+                            <a th:each="list : ${boardList}" th:href="@{/center/customer}">
+                                <span th:text="${list.title}"></span>
+                            </a>
                         </div>
                         <div>
-                            <a>공지사항 내용1</a>
-                            <a>공지사항 내용2</a>
-                            <a>공지사항 내용3</a>
+                            <a th:each="list : ${noticeList}" th:href="@{/center/customer}">
+                                <span th:text="${list.title}"></span>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div id="customer_service_otherbtns">
-                    <div id="insurance_btn"><button>보험료 조회</button></div>
+                    <div id="insurance_btn"><button class="lookUp">보험료 조회</button></div>
                 </div>
                 <div id="insurance_board">
                     <a href="https://www.directdb.co.kr" target="_blank">DB손해보험다이렉트</a>
                     <br>
                     <a href="https://www.directdb.co.kr" target="_blank">한화보험다이렉트</a>
                 </div>
-                <div id="weather" class="weather-font">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <div class="weatherBox">
+                    <div class="weatherText">
+                        오늘의 날씨
+                    </div>
+                    <div class="iconBox">
+                        <img>
+                    </div>
+                    <div class="weather-font">
+                        <div id="weather">날씨 : <span></span></div>
+                        <div id="temp">현재 기온 : <span></span></div>
+                        <div id="temp2">체감 기온 : <span></span></div>
+                        <div id="humidity">습도 : <span></span></div>
+                        <div id="city">도시 : <span></span></div>
+                    </div>
                 </div>
             </section>
             <!-- 고객센터 -------------------------------------- [end] -->

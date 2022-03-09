@@ -109,13 +109,13 @@ public class VehicleService {
     }
 
 
-    public List<VehicleVo> vehicleList(VehicleDto dto){
-
+    public List<VehicleVo> vehicleList(VehicleDto dto){ //차량 리스트
         int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
         if(startIdx < 0) { startIdx = 0; }
         dto.setStartIdx(startIdx);
         return mapper.vehicleList(dto);
     }
+
      public List<VehicleVo> vehicleList2(VehicleDto dto){
        
         List<VehicleVo> list = null;
@@ -135,6 +135,10 @@ public class VehicleService {
 
     public VehicleVo vehicledetail(VehicleEntity entity){
         //세선에서 유저iboard값 받아야함
+        int hisRs = mapper.hitsCount(entity);
+        if(hisRs == 1){ //detail로 들어갔을때 올려진 hits가 바로보이게하기위해
+            entity.setHits(entity.getHits() + 1);
+        }
         VehicleVo vo= mapper.vehicledetail(entity);
         String strDirPath = "D:\\upload\\images\\vehicle\\"+entity.getSelliboard()+"\\sub";
         File file = new File(strDirPath);
@@ -173,25 +177,35 @@ public class VehicleService {
 //        return list;
 //    }
 
-    public int likes(VehicleDto dto){
+    public int likes(VehicleDto dto){ //좋아요
         dto.setLikesiuser(myUserUtils.getLoginUserPk());
+        mapper.likeCount(dto);
         return mapper.likes(dto);
     }
-    public int dellikes(VehicleDto dto){
+    public int dellikes(VehicleDto dto){ //좋아요 취소
         dto.setLikesiuser(myUserUtils.getLoginUserPk());
+        mapper.likeMinus(dto);
         return mapper.dellikes(dto);
     }
 
-    public int jimchk(VehicleDto dto){
+    public int jimchk(VehicleDto dto){ //좋아요 목록
         dto.setLikesiuser(myUserUtils.getLoginUserPk());
         return mapper.jimchk(dto);
     }
 
-    public VehicleDto selMaxPageVal(VehicleDto dto){
+    public VehicleDto selMaxPageVal(VehicleDto dto){ //페이징처리
         return mapper.selMaxPageVal(dto);
     }
 
     public List<VehicleVo> homeSearchList(VehicleEntity entity){ //홈에서 검색
         return mapper.homeSearchList(entity);
+    }
+
+    public List<VehicleVo> selLikeLank(){
+        return mapper.selLikeLank();
+    }
+
+    public List<VehicleVo> selhitsLank(){
+        return mapper.selhitsLank();
     }
 }

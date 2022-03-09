@@ -89,6 +89,11 @@ td{
     padding-top: 40px;
 }
 
+.noticeContainer{
+    height: 100%;
+    padding-top: 40px;
+}
+
 .writeBtn{
     float: right;
 }
