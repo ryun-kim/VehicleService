@@ -37,4 +37,20 @@
 
 
 
+    var chattingBtn = document.querySelector('#chattingBtn');
+    chattingBtn.addEventListener('click',()=>{
+        var boardTitle = document.querySelector('#boardTitle').innerHTML;
+        var selliboard = document.querySelector('#selliboard').value;
+        var writeriuser = document.querySelector('#writeriuser').value;
+
+        console.log(boardTitle)
+        myFetch.post(`/chat/createChatting`, roomNumber => {
+            if(roomNumber !=0){ //구매자 판매자가 (iuser)가 다른경우
+                location.href="/chat/moveChating?roomName="+boardTitle+"&"+"roomNumber="+roomNumber;
+            }
+        },{
+            selliboard : selliboard,
+            iuser : writeriuser
+        });
+    })
 }

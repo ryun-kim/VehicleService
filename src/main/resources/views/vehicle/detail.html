@@ -51,9 +51,11 @@
 
             <div>
                 <div>
-                    <span th:text="${vo.detail_model}"></span>
+                    <span id="boardTitle" th:text="${vo.detail_model}"></span>
                 </div>
                 <div>판매자 정보
+                    <input id="selliboard"  type="hidden" th:value="${vo.selliboard}">
+                    <input id="writeriuser" type="hidden" th:value="${vo.writeriuser}">
                     <div th:text="${vo.writerNm}"></div>
                     <div th:text="${vo.price}+' 만원'"></div>
                     <div class="btnbox"><button class="btn">채팅하기</button></div>
