@@ -40,3 +40,8 @@ a{
 #loginbar_header a{
     text-decoration: none;
 }
+
+.card:hover{
+    transform: scale(1.07);
+    transition: transform .5s;
+}
