@@ -1,5 +1,6 @@
 package com.koreait.vehicleservice.chat;
 
+import com.koreait.vehicleservice.MyUserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,26 +17,17 @@ import java.util.List;
 public class MainController {
     @Autowired MainService service;
     List<Room> roomList = new ArrayList<>(); //방리스트
+    @Autowired MyUserUtils userUtils;
 
     @GetMapping("/chat")
-    public void chat(Room room,Model model){
+    public String chat(Room room,Model model){
+        if(userUtils.getLoginUser()==null){
+            return "redirect:/home";
+        }
         model.addAttribute("roomNumber",room.getRoomNumber());
+        return "/chat/chat";
     }
-//
-//    @GetMapping("/room")  //test room 페이지
-//    public void room(){}
 
-//    @GetMapping("/createRoom") //test room페이지에서 방생성
-//    @ResponseBody
-//    public List<Room> createRoom(String roomName){
-//        if(roomName != null && !roomName.trim().equals("")) {
-//            Room room = new Room();
-//            room.setRoomNumber(++roomNumber);
-//            room.setRoomName(roomName);
-//            roomList.add(room);
-//        }
-//        return roomList;
-//    }
 
     @GetMapping("/getRoom")
     @ResponseBody
