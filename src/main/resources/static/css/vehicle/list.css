@@ -45,3 +45,7 @@ a{
     transform: scale(1.07);
     transition: transform .5s;
 }
+
+#page_container{
+    margin-top: 30px;
+}
