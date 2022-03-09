@@ -16,18 +16,11 @@
         <div id="chating" class="chating">
         </div>
 
-    <div id="yourName">
-        <table class="inputTable">
-            <tr>
-                <th>사용자명</th>
-                <th><input type="text" name="userName" id="userName" th:value="${session.loginUser.getNm()}"></th>
-                <th><button onclick="chatName()" id="startBtn">이름 등록</button></th>
-            </tr>
-        </table>
-    </div>
     <div id="yourMsg">
         <table class="inputTable">
             <tr>
+                <input type="hidden" id="userName" th:value="${session.loginUser.getIuser()}">
+                <input type="hidden" id="iuser" th:value="${session.loginUser.getIuser()}">
                 <th>메시지</th>
                 <th><input id="chatting" placeholder="보내실 메시지를 입력하세요."></th>
                 <th><button onclick="send()" id="sendBtn">보내기</button></th>

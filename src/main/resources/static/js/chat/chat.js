@@ -16,6 +16,7 @@ function wsEvt() {
         var msg = data.data;
         if(msg != null && msg.trim() != ''){
             var d = JSON.parse(msg);
+
             if(d.type == "getId"){
                 var si = d.sessionId != null ? d.sessionId : "";
                 if(si != ''){
@@ -28,7 +29,22 @@ function wsEvt() {
                     $("#chating").append("<p class='others'>" + d.userName + " :" + d.msg + "</p>");
                 }
 
-            }else{
+            }else if(d.type=="getChatting"){
+                var si = d.sessionId != null ? d.sessionId : "";
+                if(si != ''){
+                    $("#sessionId").val(si);
+                }
+
+                d.list.forEach(ctnt => {
+                    item = JSON.parse(ctnt)
+                    if(item.iuser ==  $("#iuser").val()){
+                        $("#chating").append("<p class='me'>나 :" + item.ctnt + "</p>");
+                    }else{
+                        $("#chating").append("<p class='others'>" + item.iuser + " :" + item.ctnt + "</p>");
+                    }
+                });
+
+            } else{
                 console.warn("unknown type!")
             }
         }
@@ -41,17 +57,15 @@ function wsEvt() {
     });
 }
 
-function chatName(){
         wsOpen();
-        $("#yourName").hide();
-        $("#yourMsg").show();
-}
+
 
 function send() {
     var option ={
         type: "message",
         roomNumber: $("#roomNumber").val(),
         sessionId : $("#sessionId").val(),
+        iuser : $("#iuser").val(),
         userName : $("#userName").val(),
         msg : $("#chatting").val()
     }
