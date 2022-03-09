@@ -58,10 +58,8 @@
         </if>
 
         ORDER BY
-/*                 <if test="gg">
-                     A.hits DESC
-                 </if>
-*/                A.selliboard desc
+
+                A.selliboard desc
 
 
         LIMIT  ${startIdx}, ${recordCount}

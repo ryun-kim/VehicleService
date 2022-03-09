@@ -1,6 +1,6 @@
 /* 홈페이지 */
 a:visited {color: black; text-decoration: none;}
-a { text-decoration: none; cursor: pointer;}
+a { text-decoration: none; cursor: pointer; color: black; }
 button {
     -webkit-appearance: none; -moz-appearance: none; appearance: none;
     border: none; cursor: pointer;
@@ -14,7 +14,8 @@ main > div {
     display: grid; grid-template-columns: 2fr 1fr; gap: 20px 0px;
 }
 main > div > section {
-    border: 1px solid rgb(192, 223, 236);
+    /*border: 1px solid rgb(192, 223, 236);*/
+    border: 1px solid rgb(224, 218, 218);
     padding: 20px;
 }
 /* 본문>차량검색 ------------------------------------------------ [start] */
@@ -63,17 +64,42 @@ main > div > section {
     display: flex; justify-content: center;
 }
 #login_home_btn > button {
-    width: 80%; padding: 30px 0px;
+    width: 80%; padding: 20px 0px;
     background-color: rgb(113, 216, 253);
     font-weight: bold; color: white; font-size: 20px;
     border-radius: 4px;
 }
+
+#login_home_btn > button > i {
+    font-size: 30px;
+}
+
 #login_home_sub_btn {
     width: 80%;
     display: grid; grid-template-columns: 7fr 5fr; gap: 10px;
 }
 #login_home_sub_btn a {
     font-size: 90%; display: flex; justify-content: center;
+}
+
+.login_after_box{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.login_after_text{
+    font-size: large;
+    padding-top: 5px;
+}
+
+.login_after_btn > a > button{
+    border-radius: 20px;
+    height: 30px;
+    width: 80px;
+    background-color: rgb(113, 216, 253);
+    font-weight: bold;
+    color: white;
 }
 /* 본문>로그인 -------------------------------------------------- [end] */
 /* 본문>인기매물 ------------------------------------------------ [start] */
