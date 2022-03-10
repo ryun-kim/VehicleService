@@ -40,7 +40,7 @@
     </select>
 
     <select id="vehicleList" resultType="VehicleVo">
-        SELECT A.selliboard, A.writeriuser, A.category, A.manufacturer, A.model, A.detail_model
+        SELECT A.selliboard, A.writeriuser, A.category, A.manufacturer, A.model, A.detail_model, A.likesum
         , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number, A.hits
         , B.mainimg
         FROM car_sell_board A

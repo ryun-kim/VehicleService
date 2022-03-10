@@ -18,6 +18,15 @@
         DELETE FROM likes
         WHERE likesiuser =${likesiuser}
     </delete>
+    <update id="delllikesum">
+        update car_sell_board
+        set likesum = likesum - 1
+        where selliboard = ${selliboard}
+    </update>
+    <select id="seldeliboard" resultType="Integer">
+        select selliboard FROM likes
+        WHERE likesiuser =${likesiuser}
+    </select>
 
     <select id="selMaxPageVal" resultType="VehicleDto">
         SELECT CEIL(COUNT(selliboard) / ${recordCount}) AS result
