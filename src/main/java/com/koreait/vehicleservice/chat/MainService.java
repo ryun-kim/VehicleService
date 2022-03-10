@@ -13,10 +13,7 @@ public class MainService {
     @Autowired MyUserUtils userUtils;
 
     public int createChatting(Room room){
-        //세션값있는지 체크해야함
-        //세션값과 구매자의 회원번호가 다른지 확인해야함
-        //이미 두사람이 입장된 방이 있는지 판별해야함
-
+        if(room.getIuser() != userUtils.getLoginUserPk()){ //구매자와 판매자가 다른지 확인
         int result = mapper.inchattingList(room); //해당 판매번호에 대한 방번호개설
         int roomNumber = mapper.selRoomNumber(room); //방번호받기
         room.setRoomNumber(roomNumber);
@@ -25,6 +22,7 @@ public class MainService {
         int result3 = mapper.inchattingUser(room); //해당 방번호에 입장할 판매자
         if(result==1 && result2==1 && result3==1){
             return roomNumber;
+        }
         }
     return 0;
     }

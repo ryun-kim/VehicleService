@@ -21,7 +21,7 @@ public class MainController {
 
     @GetMapping("/chat")
     public String chat(Room room,Model model){
-        if(userUtils.getLoginUser()==null){
+        if(userUtils.getLoginUser()==null){ //세션값있는지 체크 //해당방입장권환있는지도 체크해야함
             return "redirect:/home";
         }
         model.addAttribute("roomNumber",room.getRoomNumber());

@@ -146,6 +146,7 @@
                 #{aria}
             </foreach>
         </if>
+                AND A.category = #{category}
         </where>
         ORDER BY A.selliboard DESC
     </select>

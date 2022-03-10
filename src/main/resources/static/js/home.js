@@ -82,6 +82,8 @@ fetch("/json/MOCK_DATA.json") // json파일 가져오기
     json = jsondata
 );
 
+
+
 function ko(index){
     companyList = json.result[index].companyList; //0 국산 1 수입 제조사리스트 저장
 
@@ -320,4 +322,7 @@ if(selling_mycar){
         location.href = '/vehicle/write';
     })
 }
+
+
+
 
