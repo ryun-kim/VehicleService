@@ -8,11 +8,25 @@
         LIMIT ${startIdx}, ${recordCount}
     </select>
 
+    <select id="selHomeBoardList" resultType="BoardEntity">
+        select title
+        from question_board
+        order by quesiboard desc
+        LIMIT 3
+    </select>
+
     <select id="selNoticeBoardList" resultType="NoticeBoardEntity">
         select iboard, title, hits
         from notice_board
         order by iboard desc
         LIMIT ${startIdx}, ${recordCount}
+    </select>
+
+    <select id="selNoticeHomeBoardList" resultType="NoticeBoardEntity">
+        select title
+        from notice_board
+        order by iboard desc
+        LIMIT 3
     </select>
 
     <select id="selBoard" resultType="BoardVo">
@@ -21,6 +35,12 @@
         A.hits, A.rdt, B.nm as writerNm
         FROM question_board A INNER JOIN t_user B ON A.writeriuser = B.iuser
         WHERE A.quesiboard = ${quesiboard}
+    </select>
+
+    <select id="selNoticeBoard" resultType="NoticeBoardVo">
+        SELECT A.iboard, A.writeriuser, A.title, A.ctnt, A.hits, A.rdt, B.nm as writerNm
+        FROM notice_board A INNER JOIN t_user B ON A.writeriuser = B.iuser
+        WHERE A.iboard = ${iboard}
     </select>
 
     <select id="selCmtBoard" resultType="BoardCmtEntity">
@@ -97,5 +117,11 @@
         update question_board
         set hits = hits + 1
         where quesiboard = ${quesiboard}
+    </update>
+
+    <update id="addNoticeHits">
+        update notice_board
+        set hits = hits + 1
+        where iboard = ${iboard}
     </update>
 </mapper>

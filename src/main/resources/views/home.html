@@ -44,14 +44,24 @@
             <!-- 차량검색 -------------------------------------- [end] -->
             <!-- 로그인 ---------------------------------------- [start] -->
             <section id="login_home">
-                <div th:if="${session.loginUser != null}">
-                   <div th:text="${session.loginUser.getNm()}"></div>
-                </div>
-                <div id="login_home_btn" class="btn_in_div"><button>로그인</button></div>
-
-                <div id="login_home_sub_btn" class="btn_in_div">
+                <a style="color: white; width: 100%;" th:href="@{/user/login}">
+                    <div th:if="${session.loginUser == null}" id="login_home_btn" class="btn_in_div">
+                        <button>
+                            내차네차 로그인<br>
+                            <i class="fa-solid fa-right-long"></i>
+                        </button>
+                    </div>
+                </a>
+                <div th:if="${session.loginUser == null}" id="login_home_sub_btn" class="btn_in_div">
                     <a th:href="@{/user/find}">아이디/비밀번호 찾기</a>
                     <a th:href="@{/user/join}">회원가입</a>
+                </div>
+                <div th:unless="${session.loginUser == null}" class="login_after_box">
+                    <div th:utext="${session.loginUser.getNm()} + '님 반갑습니다. &lt;br /&gt; 평균별점 : '" class="login_after_text"></div>
+                    <div class="login_after_btn">
+                        <a th:href="@{/mypage/userinfo}"><button>마이페이지</button></a></br>
+                        <a th:href="@{/user/logout}"><button>로그아웃</button></a>
+                    </div>
                 </div>
             </section>
             <!-- 로그인 ---------------------------------------- [end] -->
@@ -103,9 +113,10 @@
             <!-- 인기매물 -------------------------------------- [end] -->
             <!-- 내차팔기 -------------------------------------- [start] -->
             <section id="selling_mycar_home">
-                <div>내차팔기</div>
+
+                <div style="text-align: center">차량을 등록해주세요!</div>
                 <div>
-                    <a th:href="@{/vehicle/write/}">
+                    <a>
                         내 차 등록<br>
                         <i class="fa-solid fa-right-long"></i>
                     </a>
@@ -136,14 +147,14 @@
                     </div>
                     <div id="qn_mini_board">
                         <div>
-                            <a>질문 게시판 내용1</a>
-                            <a>질문 게시판 내용2</a>
-                            <a>질문 게시판 내용3</a>
+                            <a th:each="list : ${boardList}" th:href="@{/center/customer}">
+                                <span th:text="${list.title}"></span>
+                            </a>
                         </div>
                         <div>
-                            <a>공지사항 내용1</a>
-                            <a>공지사항 내용2</a>
-                            <a>공지사항 내용3</a>
+                            <a th:each="list : ${noticeList}" th:href="@{/center/customer}">
+                                <span th:text="${list.title}"></span>
+                            </a>
                         </div>
                     </div>
                 </div>

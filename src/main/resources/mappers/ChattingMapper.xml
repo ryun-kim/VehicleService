@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koreait.vehicleservice.chat.MainMapper">
+   <insert id="inchattingList">
+    insert into chattinglist (selliboard)
+        values (${selliboard})
+   </insert>
+
+    <insert id="inchattingUser">
+        insert into chattinguser (iuser,roomNumber)
+        values (${iuser},${roomNumber})
+    </insert>
+
+    <select id="selRoomNumber" resultType="int">
+        select MAX(roomNumber)AS roomNumber
+        from chattinglist
+        where selliboard = ${selliboard}
+    </select>
+
+    <select id="selCattingRoom" resultType="ChattingRoom">
+        SELECT *
+        from chattingroom
+        where roomNumber = ${roomNumber}
+        order by chatNumber asc
+    </select>
+
+    <insert id="inChattingRoom">
+        insert into chattingroom (roomNumber,ctnt,iuser)
+        values (${roomNumber},#{ctnt},${iuser})
+    </insert>
+</mapper>

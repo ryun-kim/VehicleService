@@ -1,40 +1,33 @@
 package com.koreait.vehicleservice.chat;
 
+import com.koreait.vehicleservice.MyUserUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Controller
 @RequestMapping("/chat")
 public class MainController {
-    List<Room> roomList = new ArrayList<Room>();
-    static int roomNumber = 0;
+    @Autowired MainService service;
+    List<Room> roomList = new ArrayList<>(); //방리스트
+    @Autowired MyUserUtils userUtils;
 
     @GetMapping("/chat")
-    public void chat(Room room,Model model){
-        model.addAttribute("roomNumber",room.getRoomNumber());
-    }
-
-    @GetMapping("/room")
-    public void room(){}
-
-    @GetMapping("/createRoom")
-    @ResponseBody
-    public List<Room> createRoom(String roomName){
-        if(roomName != null && !roomName.trim().equals("")) {
-            Room room = new Room();
-            room.setRoomNumber(++roomNumber);
-            room.setRoomName(roomName);
-            roomList.add(room);
+    public String chat(Room room,Model model){
+        if(userUtils.getLoginUser()==null){ //세션값있는지 체크 //해당방입장권환있는지도 체크해야함
+            return "redirect:/home";
         }
-        return roomList;
+        model.addAttribute("roomNumber",room.getRoomNumber());
+        return "/chat/chat";
     }
+
 
     @GetMapping("/getRoom")
     @ResponseBody
@@ -43,17 +36,22 @@ public class MainController {
     }
 
 
-    @GetMapping("/moveChating")
-    public String chating(@RequestParam HashMap<Object, Object> params, Model model) {
-        int roomNumber = Integer.parseInt((String) params.get("roomNumber"));
+    @GetMapping("/moveChating") //직접치는거 방지? 머그런거같던데 일단 보류
+    public String chating(Room room) throws UnsupportedEncodingException {
+//        int roomNumber = Integer.parseInt((String) params.get("roomNumber"));
+//        List<Room> new_list = roomList.stream().filter(o->o.getRoomNumber()==roomNumber).collect(Collectors.toList());
+//        if(new_list != null && new_list.size() > 0) {
+//           String roomName =(String)params.get("roomName");
+        String RoomName = URLEncoder.encode(room.getRoomName(), "UTF-8");
+            return "redirect:/chat/chat?roomName="+RoomName+"&"+"roomNumber="+room.getRoomNumber();
+//        }else {
+//            return "/room";
+//        }
+    }
 
-        List<Room> new_list = roomList.stream().filter(o->o.getRoomNumber()==roomNumber).collect(Collectors.toList());
-        if(new_list != null && new_list.size() > 0) {
-           String roomName =(String)params.get("roomName");
-
-            return "redirect:/chat/chat?roomName="+roomName+"&"+"roomNumber="+roomNumber;
-        }else {
-            return "/room";
-        }
+    @PostMapping("/createChatting")
+    @ResponseBody
+    public int createChatting(@RequestBody Room room){
+        return  service.createChatting(room); //생성된 방번호 리턴
     }
 }

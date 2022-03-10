@@ -1,14 +1,11 @@
 {
     const searchFrmElem = document.querySelector('#search_Result_Frm'); //검색어입력창
-    const list_searchFrmElem = document.querySelector('#List_search_Frm'); //리스트 검색
-    const listorderElem = document.querySelector('#list_order'); // 정렬방법 만들어야함!!!
-
     const pageContainerElem = document.querySelector('#page_container');
     const ulElem = pageContainerElem.querySelector('nav > ul');
 
     let currentPage = 1; //현재 페이지
     let maxPage = 1;
-    const recordCount = 6; //레코드 수 화면에 뜨는 갯수
+    const recordCount = 6; //레코드 수
     const pagingCount = 5; //페이징의 페이징 수
 
     const iuser = document.querySelector('#iuser');
@@ -40,19 +37,19 @@
     );
 
     function getSearchCompany(json){
-        var comList =json.result[0].companyList;
-        const select_com = document.querySelector('#select_com>.accordion-body');
-        for(var i=0; i<comList.length; i++) {
-            let searchCompany = document.createElement('div');
-            searchCompany.className = "form-check";
-            searchCompany.innerHTML = `
+        var comList =json.result[1].companyList;
+      const select_com = document.querySelector('#select_com>.accordion-body');
+       for(var i=0; i<comList.length; i++) {
+           let searchCompany = document.createElement('div');
+           searchCompany.className = "form-check";
+           searchCompany.innerHTML = `
                       <input class="form-check-input" type="checkbox" name="manufacturer" value="`+comList[i].company+`"  onchange="getSearchList()">
                         <label class="form-check-label" for="hyundai">
                        `+ comList[i].company+`
                         </label>
                 `
-            select_com.appendChild(searchCompany);
-        }
+           select_com.appendChild(searchCompany);
+       }
 
     }
 
@@ -99,11 +96,22 @@
             ariaResult.push(el.value)
         });
 
+        //
+        // console.log(compunyResult)
+        // console.log(Min_Mileage)
+        // console.log(Max_Mileage)
+        // console.log(Min_price)
+        // console.log(Max_price)
+        // console.log(gearboxResult)
+        // console.log(fuelResult)
+        // console.log(ariaResult)
+        // console.log('==============================================')
+
                 myFetch.get('/ajax/vehicle/searchList', list => {
                     localStorage.setItem("cast", JSON.stringify(list));
                     makeRecordList(list);
                 },{
-                    'category' : "국산",
+                    'category' : "수입",
                     'compunyResult' : compunyResult,
                     'Min_Mileage' : Min_Mileage,
                     'Max_Mileage' : Max_Mileage,
@@ -141,11 +149,10 @@
         }
     }
 
-
         //글 리스트 정보 가져오기
         const getList = () => {
 
-            myFetch.get(`/ajax/vehicle/list`, data => {
+            myFetch.get(`/ajax/vehicle/forlist`, data => {
                 localStorage.setItem("cast", JSON.stringify(data));
                 makeRecordList(data);
             },{ currentPage, recordCount });
@@ -154,14 +161,13 @@
 
 
 
-    const category = "국산";
+    const category= "수입";
     //마지막 페이지 값 (once)
     const getMaxPageVal = () => {
         myFetch.get(`/ajax/vehicle/maxpage`, data => {
-            // console.log(data.result);
             maxPage = data.result;
             makePaging();
-        }, {recordCount, category});
+        }, {recordCount, category });
     }
     getMaxPageVal();
 
@@ -225,7 +231,7 @@
                             <h4 class="card-title">${item.detail_model}</h4>
                             <p class="card-text">${item.fuel}</p>
                             <p class="card-text">${item.price}만원</p>
-                            <p class="card-text">판매지역: ${item.trading_area}</p>                            
+                            <p class="card-text">판매지역: ${item.trading_area}</p>                           
                         </div>    
                     </div>
                 `
@@ -273,6 +279,7 @@
         }
     }
 
+
     var aa = JSON.parse(localStorage.getItem("cast"));
     if(aa != null){
         makeRecordList(aa);
@@ -280,25 +287,7 @@
         getList();
     }
 
-    //여기서
-    // let listOrder = document.querySelector('#list_order');
-    //
-    // listOrder.addEventListener('click', ()=>{
-    //     listOrder.classList.add('active');
-    //     myFetch.get("/ajax/vehicle/sortlist", a =>{
-    //
-    //     })
-    // })
 
-    // const test = list =>{
-    //     let listOrder = document.querySelector('#list_order');
-    //     if(listOrder){
-    //         list.forEach(item=>{
-    //             item.addEventListener('click',()=>{
-    //                 myFetch.get(`/ajax/vehicle/`)
-    //             })
-    //         })
-    //     }
-    // }
+    getList();
 
 }

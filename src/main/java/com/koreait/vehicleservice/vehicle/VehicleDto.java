@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class VehicleDto extends VehicleEntity {
+public class VehicleDto extends VehicleEntity {  //사용자정보 받기용
     private String[] explanations; //설명글
     private int likesiuser;
     private List<MultipartFile> subimg; //서브사진
@@ -21,5 +21,7 @@ public class VehicleDto extends VehicleEntity {
     private int result;
     private String searchText;
     private int iuser;
+
+//    private String test;
 
 }

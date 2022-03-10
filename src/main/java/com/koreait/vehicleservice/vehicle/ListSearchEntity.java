@@ -8,6 +8,7 @@ import java.util.List;
 @Getter
 @Setter
 public class ListSearchEntity {
+    private String category; //국산 수입
     private List<String> compunyResult; //제조사
     private int  Min_Mileage; //최대거리
     private int  Max_Mileage;  //최소거리

@@ -109,13 +109,13 @@ public class VehicleService {
     }
 
 
-    public List<VehicleVo> vehicleList(VehicleDto dto){
-
+    public List<VehicleVo> vehicleList(VehicleDto dto){ //차량 리스트
         int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
         if(startIdx < 0) { startIdx = 0; }
         dto.setStartIdx(startIdx);
         return mapper.vehicleList(dto);
     }
+
      public List<VehicleVo> vehicleList2(VehicleDto dto){
        
         List<VehicleVo> list = null;
@@ -177,30 +177,28 @@ public class VehicleService {
 //        return list;
 //    }
 
-    public int likes(VehicleDto dto){
+    public int likes(VehicleDto dto){ //좋아요
         dto.setLikesiuser(myUserUtils.getLoginUserPk());
         mapper.likeCount(dto);
         return mapper.likes(dto);
     }
-    public int dellikes(VehicleDto dto){
+    public int dellikes(VehicleDto dto){ //좋아요 취소
         dto.setLikesiuser(myUserUtils.getLoginUserPk());
         mapper.likeMinus(dto);
         return mapper.dellikes(dto);
     }
 
-    public int jimchk(VehicleDto dto){
+    public int jimchk(VehicleDto dto){ //좋아요 목록
         dto.setLikesiuser(myUserUtils.getLoginUserPk());
         return mapper.jimchk(dto);
     }
 
-    public VehicleDto selMaxPageVal(VehicleDto dto){
+    public VehicleDto selMaxPageVal(VehicleDto dto){ //페이징처리
         return mapper.selMaxPageVal(dto);
     }
 
+
     public List<VehicleVo> homeSearchList(VehicleEntity entity){ //홈에서 검색
-        System.out.println(entity.getManufacturer());
-        System.out.println(entity.getModel());
-        System.out.println(entity.getDetail_model());
         return mapper.homeSearchList(entity);
     }
 

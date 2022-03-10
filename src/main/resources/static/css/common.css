@@ -70,7 +70,7 @@ footer {
     background-color: rgb(218, 217, 217);
     display: grid; grid-template-columns: 1fr 8fr 1fr;
 }
-footer > div {
+/*footer > div {
     grid-column: 2/3;
     display: grid; grid-template-columns: 1fr 5fr;
 }
@@ -82,10 +82,12 @@ footer > div {
 }
 footer > div > div:last-child {
     padding-top: 60px;
-}
-footer > div > div:last-child > div {
-    letter-spacing: 0px;
+}*/
+footer > div:nth-child(2) {
+    text-align: center;
+    /*letter-spacing: 1px;*/
     font-size: 13px;
+    padding-top: 60px;
 }
 /* 푸터 --------------------------------------------------------- [end] */
 

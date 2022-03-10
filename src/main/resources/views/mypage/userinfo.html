@@ -18,11 +18,15 @@
             crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script defer th:src="@{/js/mypage/userinfo.js}"></script>
+    <script defer th:src="@{/js/mypage/mypage.js}"></script>
     <title>회원정보 수정</title>
 </head>
 
 <th:block layout:fragment="content">
     <div class="container">
+        <th:block th:if="${session.loginUser!=null}">
+            <input type="hidden" th:value="${session.loginUser.iuser}" class="iuser">
+        </th:block>
         <div class="row">
             <!--사이드 메뉴-->
             <nav id="sidebarMenu" class="col-sm col-md-2 ">
@@ -49,7 +53,7 @@
             <!--컨텐츠 부분-->
             <!--비번수정은 기존로그인사용자, 소셜로그인사용자 나눠서 분기-->
             <!--th:if, th:unless에 들어가는 조건식은 같아야된다.-->
-            <div class="col-sm col-md-10" th:if="${session.loginUser.getPlatform() == null || session.loginUser.getPlatform() == ''}">
+            <div class="col-sm col-md-10 bg-light" th:if="${session.loginUser.getPlatform() == null || session.loginUser.getPlatform() == ''}">
                 <form class="userinfo_modify_container">
                     <div>
                         <h3>비밀번호 설정 및 변경</h3>

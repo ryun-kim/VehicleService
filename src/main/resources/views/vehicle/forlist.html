@@ -17,7 +17,7 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script defer th:src="@{/js/vehicle/list.js}"></script>
+    <script defer th:src="@{/js/vehicle/forlist.js}"></script>
 
     <title>검색결과</title>
 </head>
@@ -51,7 +51,6 @@
                                 </h2>
                                 <div id="select_com" class="accordion-collapse collapse" aria-labelledby="search_list_com">
                                     <div class="accordion-body">
-
 
 
                                     </div>
@@ -292,8 +291,8 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" th:href="@{#}">최신</a>
                     </li>
-                    <li class="nav-item" value="gg">
-                        <a class="nav-link"  th:href="@{#}">좋아요순</a>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{#}">좋아요순</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{#}">낮은가격순</a>
@@ -302,7 +301,6 @@
                         <a class="nav-link" th:href="@{#}">높은가격순</a>
                     </li>
                 </ul>
-
                 <div class="album  bg-light">
                     <div id="list_result" class="container">
                         <div class="row row-cols-1 row-cols-md-3 g-4 card-group listdiv">
@@ -317,31 +315,7 @@
                     </div>
                 </div>
             </div>
-<!--            <div id="map" style="width:500px;height:400px;"></div>-->
-<!--            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7b9b781c5adc37c26e0b14e776ae7f27"></script>-->
-<!--            <script>-->
-<!--                var mapContainer = document.getElementById('map'), // 지도를 표시할 div-->
-<!--                    mapOption = {-->
-<!--                        center: new kakao.maps.LatLng(35.86607144630034, 128.59378175599252), // 지도의 중심좌표-->
-<!--                        level: 3, // 지도의 확대 레벨-->
-<!--                        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류-->
-<!--                    };-->
 
-<!--                // 지도를 생성한다-->
-<!--                var map = new kakao.maps.Map(mapContainer, mapOption);-->
-
-<!--                // 지도에 마커를 생성하고 표시한다-->
-<!--                var marker = new kakao.maps.Marker({-->
-<!--                    position: new kakao.maps.LatLng(35.86607144630034, 128.59378175599252), // 마커의 좌표-->
-<!--                    draggable : true, // 마커를 드래그 가능하도록 설정한다-->
-<!--                    map: map // 마커를 표시할 지도 객체-->
-<!--                });-->
-
-<!--                // 마커에 클릭 이벤트를 등록한다-->
-<!--                kakao.maps.event.addListener(marker, 'click', function() {-->
-<!--                    confirm('이 위치를 보내시겠습니까?');-->
-<!--                });-->
-<!--            </script>-->
         </div>
     </div>
 </th:block>

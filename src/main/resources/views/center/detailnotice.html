@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/css/center/detailquestion.css">
+<input th:if="${session.loginUser != null}" type="hidden" class="loginUserInfrm">
+<a th:href="@{/center/customer}"><button type="button" class="btn btn-primary floatRiBtn">목록</button></a>
+<div class="btnBox border-top border-2">
+    <div id="data" th:data-quesiboard="${item.iboard}">
+        <h1 class="d-inline-block" th:text="${item.iboard}"></h1>
+        <h2 class="d-inline-block" th:text="${item.title}"></h2>
+    </div>
+    <div>
+        <h6 class="d-inline-block" th:text="${item.writerNm}"></h6>
+        <h6 class="d-inline-block" th:text="${item.rdt}"></h6>
+        조회수 : <h6 class="d-inline-block" th:text="${item.hits}"></h6>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 questionContent border-top border-2" th:text="${item.ctnt}"></div>
+    </div>
+</div>

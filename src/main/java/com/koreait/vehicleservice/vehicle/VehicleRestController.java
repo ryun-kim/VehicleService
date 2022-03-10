@@ -13,8 +13,24 @@ public class VehicleRestController {
     private VehicleService service;
 
     @GetMapping("/list")
-    public List<VehicleVo> selBoardList(VehicleDto dto) {
-            return service.vehicleList(dto);
+    public List<VehicleVo> selBoardList(VehicleDto dto) { //국산  리스트
+        dto.setCategory("국산");
+        return service.vehicleList(dto);
+    }
+
+//    @ResponseBody
+//    @GetMapping("/sortlist")
+//    public List<VehicleDto> mangham(@RequestParam("test") String test){
+//         VehicleDto dto = new VehicleDto();
+//         dto.setTest(test);
+////         List<VehicleDto> list = service.
+//
+//    }
+
+    @GetMapping("/forlist")
+    public List<VehicleVo> selBoardforList(VehicleDto dto) { //수입 리스트
+        dto.setCategory("수입");
+        return service.vehicleList(dto);
     }
 
     @GetMapping("/homSearch")
@@ -58,4 +74,6 @@ public class VehicleRestController {
     public List<VehicleVo>  searchList(ListSearchEntity list){
         return service.searchList(list);
     }
+
+
 }

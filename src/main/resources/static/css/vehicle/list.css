@@ -40,3 +40,16 @@ a{
 #loginbar_header a{
     text-decoration: none;
 }
+
+.card:hover{
+    transform: scale(1.07);
+    transition: transform .5s;
+}
+
+#page_container{
+    margin-top: 30px;
+}
+
+.card_div{
+    max-height: 500px;
+}
