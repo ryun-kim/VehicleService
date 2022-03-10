@@ -1,6 +1,6 @@
 <div class="noticeContainer">
     <input th:if="${session.loginUser != null}" type="hidden" class="loginUserInfrm">
-    <button th:if="${session.loginUser != null && session.loginUser.getNm().toString().equals('관리자')}" type="button" class="btn btn-primary writeBtn mb-2">글쓰기</button>
+    <button th:if="${session.loginUser != null && session.loginUser.getUid().toString().equals('sjw2451')}" type="button" class="btn btn-primary writeBtn mb-2">글쓰기</button>
     <table>
         <thead>
             <tr>

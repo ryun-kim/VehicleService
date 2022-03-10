@@ -60,7 +60,8 @@
                     <div th:utext="${session.loginUser.getNm()} + '님 반갑습니다. &lt;br /&gt; 평균별점 : '" class="login_after_text"></div>
                     <div class="login_after_btn">
                         <a th:href="@{/mypage/userinfo}"><button>마이페이지</button></a></br>
-                        <a th:href="@{/user/logout}"><button>로그아웃</button></a>
+                        <!--카카오 계정과 함께 로그아웃-->
+                        <a href="https://kauth.kakao.com/oauth/logout?client_id=0e08b6c96d5f791a6eb59bd54c31aa90&logout_redirect_uri=http://localhost:8090/user/logout"><button>로그아웃</button></a>
                     </div>
                 </div>
             </section>

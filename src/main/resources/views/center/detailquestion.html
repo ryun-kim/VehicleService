@@ -2,7 +2,7 @@
 <input th:if="${session.loginUser != null}" type="hidden" class="loginUserInfrm">
 <button th:if="${prevnext.prevquesiboard > 0}" type="button" id="prevBtn" th:data-prevquesiboard="${prevnext.prevquesiboard}" class="btn btn-primary floatLeBtn">이전글</button>
 <button th:if="${prevnext.nextquesiboard > 0}" type="button" id="nextBtn" th:data-nextquesiboard="${prevnext.nextquesiboard}" class="btn btn-primary floatLeBtn">다음글</button>
-<button th:if="${session.loginUser == null || !session.loginUser.getNm().toString().equals('관리자')}" type="button" id="writeBtn" class="btn btn-primary floatRiBtn">글쓰기</button>
+<button th:if="${session.loginUser == null || !session.loginUser.getUid().toString().equals('sjw2451')}" type="button" id="writeBtn" class="btn btn-primary floatRiBtn">글쓰기</button>
 <button th:if="${session.loginUser != null && session.loginUser.getIuser() == item.writeriuser}" type="button" id="modBtn" class="btn btn-primary floatRiBtn">수정</button>
 <button th:if="${session.loginUser != null && session.loginUser.getIuser() == item.writeriuser}" type="button" id="delBtn" class="btn btn-primary floatRiBtn">삭제</button>
 <a th:href="@{/center/customer}"><button type="button" class="btn btn-primary floatRiBtn">목록</button></a>
@@ -25,7 +25,7 @@
             <span th:text="${cmtItem.rdt}"></span>
         </div>
         <div th:if="${item.isanswer.toString().equals('완료') && cmtItem != null}" th:text="${cmtItem.cmtctnt}" class="col-12"></div>
-        <form th:if="${(session.loginUser != null && session.loginUser.getNm().toString().equals('관리자')) && item.isanswer.toString().equals('미완료')}">
+        <form th:if="${(session.loginUser != null && session.loginUser.getUid().toString().equals('sjw2451')) && item.isanswer.toString().equals('미완료')}">
             <textarea class="form-control" id="floatingTextarea" placeholder="답변을 입력하세요." th:name="cmtctnt"></textarea>
             <input type="submit" value="등록" class="btn btn-primary">
         </form>
