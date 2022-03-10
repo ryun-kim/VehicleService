@@ -225,7 +225,8 @@
                             <h4 class="card-title">${item.detail_model}</h4>
                             <p class="card-text">${item.fuel}</p>
                             <p class="card-text">${item.price}만원</p>
-                            <p class="card-text">판매지역: ${item.trading_area}</p>                            
+                            <p class="card-text">판매지역: ${item.trading_area}</p>
+                            <p class="card-text">좋아요 수: ${item.likesum}</p>               
                         </div>    
                     </div>
                 `
@@ -279,26 +280,14 @@
     }else{
         getList();
     }
+/*
+    const price = "selliboard";
+    console.log(aa.sort((a,b)=>{
+        return a[price] -b[price];
+    }));
+    for(var i=1; i <= 6; i++){
 
-    //여기서
-    // let listOrder = document.querySelector('#list_order');
-    //
-    // listOrder.addEventListener('click', ()=>{
-    //     listOrder.classList.add('active');
-    //     myFetch.get("/ajax/vehicle/sortlist", a =>{
-    //
-    //     })
-    // })
+    }
 
-    // const test = list =>{
-    //     let listOrder = document.querySelector('#list_order');
-    //     if(listOrder){
-    //         list.forEach(item=>{
-    //             item.addEventListener('click',()=>{
-    //                 myFetch.get(`/ajax/vehicle/`)
-    //             })
-    //         })
-    //     }
-    // }
-
+ */
 }
