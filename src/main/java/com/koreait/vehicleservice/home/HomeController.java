@@ -21,8 +21,8 @@ public class HomeController {
     @GetMapping("/home")
     public void home(NewsEntity entity, Model model) throws Exception {
         model.addAttribute("newsList", service.getData(entity));
-//        model.addAttribute("likeLank", vehicleService.selLikeLank());
-//        model.addAttribute("hitsLank", vehicleService.selhitsLank());
+        model.addAttribute("likeLank", vehicleService.selLikeLank());
+        model.addAttribute("hitsLank", vehicleService.selhitsLank());
     }
 
     @GetMapping("/home/likelank")
