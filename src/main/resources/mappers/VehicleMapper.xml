@@ -58,7 +58,12 @@
         </if>
 
         ORDER BY
+<<<<<<< HEAD
              A.selliboard desc
+=======
+
+                A.selliboard desc
+>>>>>>> f6f05df4eb0899f5e7997223c37cf8248d7c9a39
 
 
         LIMIT  ${startIdx}, ${recordCount}

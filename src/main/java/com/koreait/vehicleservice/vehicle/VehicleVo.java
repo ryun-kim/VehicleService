@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class VehicleVo extends VehicleEntity {
+public class VehicleVo extends VehicleEntity { //db 의 select 용
     private int aircon;
     private int smart_key;
     private int camera;
