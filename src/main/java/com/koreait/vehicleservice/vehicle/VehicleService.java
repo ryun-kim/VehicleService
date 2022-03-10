@@ -197,6 +197,7 @@ public class VehicleService {
         return mapper.selMaxPageVal(dto);
     }
 
+
     public List<VehicleVo> homeSearchList(VehicleEntity entity){ //홈에서 검색
         return mapper.homeSearchList(entity);
     }

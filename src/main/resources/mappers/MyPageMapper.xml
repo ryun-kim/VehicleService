@@ -21,6 +21,6 @@
 
     <select id="selMaxPageVal" resultType="VehicleDto">
         SELECT CEIL(COUNT(selliboard) / ${recordCount}) AS result
-        FROM car_sell_board
+        FROM likes
     </select>
 </mapper>

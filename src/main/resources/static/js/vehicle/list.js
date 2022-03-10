@@ -8,7 +8,7 @@
 
     let currentPage = 1; //현재 페이지
     let maxPage = 1;
-    const recordCount = 6; //레코드 수
+    const recordCount = 6; //레코드 수 화면에 뜨는 갯수
     const pagingCount = 5; //페이징의 페이징 수
 
     const iuser = document.querySelector('#iuser');
@@ -154,14 +154,14 @@
 
 
 
-
+    const category = "국산";
     //마지막 페이지 값 (once)
     const getMaxPageVal = () => {
         myFetch.get(`/ajax/vehicle/maxpage`, data => {
             // console.log(data.result);
             maxPage = data.result;
             makePaging();
-        }, {recordCount});
+        }, {recordCount, category});
     }
     getMaxPageVal();
 
@@ -215,7 +215,7 @@
             listdivElem.innerHTML = '';
             list.forEach(item =>{
                 const resultdiv = document.createElement('div');
-                resultdiv.className = "col";
+                resultdiv.className = "col card_div";
                 resultdiv.innerHTML = `
                     <div class="card shadow-sm bg-white h-100 " xmlns:c="http://www.w3.org/1999/html">
                         <input type="hidden" value="${item.selliboard}">
@@ -279,13 +279,26 @@
     }else{
         getList();
     }
+
     //여기서
     // let listOrder = document.querySelector('#list_order');
+    //
     // listOrder.addEventListener('click', ()=>{
+    //     listOrder.classList.add('active');
     //     myFetch.get("/ajax/vehicle/sortlist", a =>{
     //
     //     })
     // })
 
+    // const test = list =>{
+    //     let listOrder = document.querySelector('#list_order');
+    //     if(listOrder){
+    //         list.forEach(item=>{
+    //             item.addEventListener('click',()=>{
+    //                 myFetch.get(`/ajax/vehicle/`)
+    //             })
+    //         })
+    //     }
+    // }
 
 }

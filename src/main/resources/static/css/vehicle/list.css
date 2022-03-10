@@ -49,3 +49,7 @@ a{
 #page_container{
     margin-top: 30px;
 }
+
+.card_div{
+    max-height: 500px;
+}
