@@ -1,8 +1,5 @@
 {
     const searchFrmElem = document.querySelector('#search_Result_Frm'); //검색어입력창
-    const list_searchFrmElem = document.querySelector('#List_search_Frm'); //리스트 검색
-    const listorderElem = document.querySelector('#list_order'); // 정렬방법 만들어야함!!!
-
     const pageContainerElem = document.querySelector('#page_container');
     const ulElem = pageContainerElem.querySelector('nav > ul');
 
@@ -136,14 +133,13 @@
 
 
 
-
+    const category= "수입";
     //마지막 페이지 값 (once)
     const getMaxPageVal = () => {
         myFetch.get(`/ajax/vehicle/maxpage`, data => {
-            // console.log(data.result);
             maxPage = data.result;
             makePaging();
-        }, {recordCount});
+        }, {recordCount, category });
     }
     getMaxPageVal();
 
@@ -197,7 +193,7 @@
             listdivElem.innerHTML = '';
             list.forEach(item =>{
                 const resultdiv = document.createElement('div');
-                resultdiv.className = "col";
+                resultdiv.className = "col card_div";
                 resultdiv.innerHTML = `
                     <div class="card shadow-sm bg-white h-100 " xmlns:c="http://www.w3.org/1999/html">
                         <input type="hidden" value="${item.selliboard}">
