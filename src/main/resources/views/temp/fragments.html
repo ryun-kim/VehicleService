@@ -13,7 +13,7 @@
                     <ul>
                         <li><a th:href="@{/vehicle/list}" onclick="allList()">국산</a></li>
                         <li><a th:href="@{/vehicle/forlist}">수입</a></li>
-                        <li id="selling_mycar"><a>내차팔기</a></li>
+                        <li id="selling_mycar"><a th:href="@{#}">내차팔기</a></li>
                         <li><a th:href="@{/center/customer}">고객센터</a></li>
                     </ul>
                 </nav>
@@ -37,19 +37,18 @@
 </th:block>
 <th:block th:fragment="footer">
     <footer>
-        <div>
-            <div id="img_logo_footer">
-<!--                <img th:src="@{/img/chacha_logo1.png}" alt="Logo">-->
-            </div>
-            <div>
+            <!--<div id="img_logo_footer">
+                <img th:src="@{/img/chacha_logo1.png}" alt="Logo">
+            </div>-->
+            <div></div>
                 <div>
                     명칭 : 내차네차  |  등록연월 : 2021.12.17  |  발행연월 : 2022.03.14<br>
-                    발행인 : 김재륜, 신재완, 이승준, 하승화<br>
-                    전화번호 : 053-710-5890  |  Email : asv@naver.com<br>
-                    발행소 : https://github.com/jaewanjaewan/VehicleService
+                    발행인 : 김재륜, 신재완, 이승준, 하승화 | Helper 김민우<br>
+                    전화번호 : 010-3363-1032  |  Email : asv@naver.com<br>
+                    발행소 : https://github.com/jaewanjaewan/VehicleService<br><br>
+                    O2O를 잇는 신뢰와 기술로 차량을 사고 파는 모습의 진화를 만듭니다  |  Copyright © 내차네차(주)
                 </div>
-            </div>
-        </div>
+            <div></div>
     </footer>
 </th:block>
 
