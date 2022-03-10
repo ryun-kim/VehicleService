@@ -50,7 +50,7 @@
             }
         },{
             selliboard : selliboard,
-            iuser : writeriuser
+            iuser : writeriuser  //글 작성자의 iuser
         });
     })
 }

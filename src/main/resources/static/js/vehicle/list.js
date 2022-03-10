@@ -31,6 +31,33 @@
 
 
 
+
+    fetch("/json/MOCK_DATA.json") //json파일 가져오기
+        .then(response => {
+            return response.json();
+        }).then(jsondata =>
+        getSearchCompany(jsondata)
+    );
+
+    function getSearchCompany(json){
+        var comList =json.result[0].companyList;
+        const select_com = document.querySelector('#select_com>.accordion-body');
+        for(var i=0; i<comList.length; i++) {
+            let searchCompany = document.createElement('div');
+            searchCompany.className = "form-check";
+            searchCompany.innerHTML = `
+                      <input class="form-check-input" type="checkbox" name="manufacturer" value="`+comList[i].company+`"  onchange="getSearchList()">
+                        <label class="form-check-label" for="hyundai">
+                       `+ comList[i].company+`
+                        </label>
+                `
+            select_com.appendChild(searchCompany);
+        }
+
+    }
+
+
+
     function getSearchList() { //리스트 검색
             const com_query = 'input[name="manufacturer"]:checked';
         const compunyList = document.querySelectorAll(com_query);
@@ -72,21 +99,11 @@
             ariaResult.push(el.value)
         });
 
-        //
-        // console.log(compunyResult)
-        // console.log(Min_Mileage)
-        // console.log(Max_Mileage)
-        // console.log(Min_price)
-        // console.log(Max_price)
-        // console.log(gearboxResult)
-        // console.log(fuelResult)
-        // console.log(ariaResult)
-        // console.log('==============================================')
-
                 myFetch.get('/ajax/vehicle/searchList', list => {
                     localStorage.setItem("cast", JSON.stringify(list));
                     makeRecordList(list);
                 },{
+                    'category' : "국산",
                     'compunyResult' : compunyResult,
                     'Min_Mileage' : Min_Mileage,
                     'Max_Mileage' : Max_Mileage,
