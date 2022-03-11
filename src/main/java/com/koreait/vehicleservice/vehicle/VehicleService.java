@@ -189,8 +189,11 @@ public class VehicleService {
     }
 
     public int jimchk(VehicleDto dto){ //좋아요 목록
-        dto.setLikesiuser(myUserUtils.getLoginUserPk());
-        return mapper.jimchk(dto);
+        if(myUserUtils.getLoginUser() != null){
+            dto.setLikesiuser(myUserUtils.getLoginUserPk());
+            return mapper.jimchk(dto);
+        }
+        return 2;//로그인안되어있으면 2 리턴
     }
 
     public VehicleDto selMaxPageVal(VehicleDto dto){ //페이징처리

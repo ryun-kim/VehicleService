@@ -44,9 +44,7 @@ ul,li{list-style: none;}
 }
 
 #textarea{
-    border: 1px solid;
-    width: 80%;
-    height: 300px;}
+    margin-bottom: 90px;}
 
 .slider-navbar{display: grid; justify-content: center;
 }
@@ -87,7 +85,7 @@ ul,li{list-style: none;}
     width: 100px;
 }
 
-.chattingBtn {
+#chattingBtn {
     width: 360px;
     height: 100px;
     margin: 0 auto;
