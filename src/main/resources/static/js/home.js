@@ -282,10 +282,10 @@ const makeLecordLankList = list => {
         list.forEach(item => {
             const resultdiv = document.createElement('div');
             const blankdiv = document.createElement('div');
-            popular_sales_list.style.width = 'calc(100%)';
+            popular_sales_list.style.width = 'calc(300%)';
             popular_sales_list.style.margin = '0 auto';
             resultdiv.className = "popular_sales_img";
-            resultdiv.style.width = 'calc(50%)';
+            resultdiv.style.width = 'calc(30%)';
             resultdiv.style.cursor = 'pointer';
             if(item.hits !== null && item.likesum === 0) {
                 resultdiv.innerHTML = `
