@@ -13,13 +13,16 @@ public interface VehicleMapper {
     int inExplanation(CarExplanationEntity car_explanation);
     VehicleEntity selCarNum(VehicleEntity entity);
     List<VehicleVo> vehicleList(VehicleEntity entity);
-    List<VehicleVo> homeSearchList(VehicleEntity entity);
+    List<VehicleVo> homeSearchList(VehicleDto dto);
     List<VehicleVo> vehicleSearchList(VehicleDto dto);
     VehicleVo vehicledetail(VehicleEntity entity);
     int likes(VehicleDto dto);
     int dellikes(VehicleDto dto);
     int jimchk(VehicleDto dto);
     VehicleDto selMaxPageVal(VehicleDto dto);
+    VehicleDto searchMaxPageVal(VehicleDto dto);
+    VehicleDto searchListMaxPageVal(VehicleDto dto);
+    VehicleDto homeMaxPageVal(VehicleDto dto);
     List<VehicleVo> vehicleSearchList2(ListSearchEntity list);
     int likeCount(VehicleDto dto);
     int likeMinus(VehicleDto dto);

@@ -34,9 +34,8 @@ public class VehicleRestController {
     }
 
     @GetMapping("/homSearch")
-    public List<VehicleVo> homeSearchList(VehicleEntity entity){
-        List<VehicleVo> list = service.homeSearchList(entity);
-        System.out.println(list);
+    public List<VehicleVo> homeSearchList(VehicleDto dto){
+        List<VehicleVo> list = service.homeSearchList(dto);
         return list;
     }
 

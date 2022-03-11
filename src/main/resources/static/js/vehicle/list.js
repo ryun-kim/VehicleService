@@ -18,12 +18,14 @@
             const searchVal = searchFrmElem.search_area.value;
 
             if (searchVal.length === 0) {
+                localStorage.setItem("cast", null);
+                getMaxPageVal();
                 getList();
             } else {
-                myFetch.get('/ajax/vehicle/search', list => {
-                    localStorage.setItem("cast", JSON.stringify(list));
-                    makeRecordList(list);
-                }, { 'searchVal' : searchVal} );
+                localStorage.setItem("cast", "sideSearch");
+                localStorage.setItem("param", JSON.stringify({ 'searchVal' : searchVal}));
+                getMaxPageVal("sideSearch");
+                getList();
             }
             e.preventDefault();
         });
@@ -141,29 +143,84 @@
         }
     }
 
-
+    var ViewList = localStorage.getItem("cast");
         //글 리스트 정보 가져오기
         const getList = () => {
 
-            myFetch.get(`/ajax/vehicle/list`, data => {
-                localStorage.setItem("cast", JSON.stringify(data));
-                makeRecordList(data);
-            },{ currentPage, recordCount });
-    }
+            if (ViewList != null) {
+                if (ViewList === "home") {
+                    var param = JSON.parse(localStorage.getItem("param"))
+                    myFetch.get(`/ajax/vehicle/homSearch`, data => {
+                        makeRecordList(data);
+                    }, {
+                        'manufacturer': param.manufacturer,
+                        'model': param.model,
+                        'detail_model': param.detail_model,
+                        'currentPage': currentPage,
+                        'recordCount': recordCount
+                    });
+
+                } else {
+                    myFetch.get(`/ajax/vehicle/list`, data => {
+                        makeRecordList(data);
+                    }, {currentPage, recordCount});
+                }
+            }
+        }
 
 
 
 
-    const category = "국산";
+    getMaxPageVal(ViewList);
+
+
     //마지막 페이지 값 (once)
-    const getMaxPageVal = () => {
+
+    function getMaxPageVal(root) {  // maxpage를 가져옴
+
+        if(root != null){
+        switch (root) {
+
+
+            case "home": //홈
+                var param = JSON.parse(localStorage.getItem("param"))
+                var new_param = {
+                    'manufacturer': param.manufacturer,
+                    'model': param.model,
+                    'detail_model': param.detail_model,
+                    'currentPage': currentPage,
+                    'recordCount': recordCount,
+                    'category': "국산",
+                    'root': "home"
+                };
+                break;
+            case "sideSearch":  //모델명
+                var param = JSON.parse(localStorage.getItem("param"))
+                var new_param = {
+                    'searchVal' : param.searchVal,
+                    'currentPage': currentPage,
+                    'recordCount': recordCount,
+                    'category': "국산",
+                    'root': "sideSearch"
+                };
+                break;
+        }
+        }else{
+            var new_param = { //전체
+                'currentPage': currentPage,
+                'recordCount': recordCount,
+                'category': "국산",
+                'root': null
+            };
+        }
+
         myFetch.get(`/ajax/vehicle/maxpage`, data => {
-            // console.log(data.result);
             maxPage = data.result;
+            console.log(maxPage)
             makePaging();
-        }, {recordCount, category});
+        }, new_param);
     }
-    getMaxPageVal();
+
 
 
 
@@ -273,32 +330,8 @@
         }
     }
 
-    var aa = JSON.parse(localStorage.getItem("cast"));
-    if(aa != null){
-        makeRecordList(aa);
-    }else{
-        getList();
-    }
+        getList(); //전체리스트 추출
 
-    //여기서
-    // let listOrder = document.querySelector('#list_order');
-    //
-    // listOrder.addEventListener('click', ()=>{
-    //     listOrder.classList.add('active');
-    //     myFetch.get("/ajax/vehicle/sortlist", a =>{
-    //
-    //     })
-    // })
 
-    // const test = list =>{
-    //     let listOrder = document.querySelector('#list_order');
-    //     if(listOrder){
-    //         list.forEach(item=>{
-    //             item.addEventListener('click',()=>{
-    //                 myFetch.get(`/ajax/vehicle/`)
-    //             })
-    //         })
-    //     }
-    // }
 
 }

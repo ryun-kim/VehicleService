@@ -47,27 +47,13 @@
                  LEFT JOIN car_image B
                            ON A.selliboard = B.selliboard
         where A.category = #{category}
-        <if test="manufacturer != null">
-            AND A.manufacturer = #{manufacturer}
-        </if>
-        <if test="model != null">
-            AND A.model = #{model}
-        </if>
-        <if test="detail_model != null">
-            AND A.detail_model = #{detail_model}
-        </if>
-
-        ORDER BY
-
-
-                A.selliboard desc
-
+        ORDER BY A.selliboard desc
         LIMIT  ${startIdx}, ${recordCount}
 
     </select>
 
 
-    <select id="homeSearchList" resultType="VehicleVo">
+    <select id="homeSearchList" resultType="VehicleVo"> <!--홈 검색-->
         SELECT A.selliboard, A.writeriuser, A.category, A.manufacturer, A.model, A.detail_model
         , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number
         , B.mainimg
@@ -84,11 +70,14 @@
         <if test='!detail_model.equals("null")'>
             AND A.detail_model = #{detail_model}
         </if>
-        ORDER BY A.selliboard DESC
+
+        <if test='recordCount != 0'>
+            LIMIT  ${startIdx}, ${recordCount}
+        </if>
 
     </select>
 
-    <select id="vehicleSearchList" resultType="VehicleVo">
+    <select id="vehicleSearchList" resultType="VehicleVo"><!--모델명 검색-->
         SELECT A.selliboard, A.writeriuser, A.category, A.manufacturer, A.model, A.detail_model
         , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number
         , B.mainimg
@@ -99,10 +88,12 @@
         or A.detail_model LIKE concat('%',#{searchText},'%')
         or A.manufacturer LIKE concat('%',#{searchText},'%')
 
-        ORDER BY A.selliboard DESC
+        <if test='recordCount != 0'>
+            LIMIT  ${startIdx}, ${recordCount}
+        </if>
     </select>
 
-    <select id="vehicleSearchList2" resultType="VehicleVo">
+    <select id="vehicleSearchList2" resultType="VehicleVo"><!--사이드 검색-->
         SELECT A.selliboard, A.writeriuser, A.category, A.manufacturer, A.model, A.detail_model
              , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number
              , B.mainimg
@@ -148,7 +139,9 @@
         </if>
                 AND A.category = #{category}
         </where>
-        ORDER BY A.selliboard DESC
+        <if test='recordCount != 0'>
+            LIMIT  ${startIdx}, ${recordCount}
+        </if>
     </select>
 
     <select id="vehicledetail" resultType="VehicleVo">
@@ -188,10 +181,78 @@
          AND likesiuser = ${likesiuser}
     </select>
 
-    <select id="selMaxPageVal" resultType="VehicleDto">
+    <select id="selMaxPageVal" resultType="VehicleDto">  <!--전체 리스트에대한 max페이지-->
         SELECT ceil(COUNT(selliboard) / ${recordCount}) AS result
         FROM car_sell_board
         WHERE category=#{category}
+    </select>
+
+    <select id="searchMaxPageVal" resultType="VehicleDto">!--모델명검색에대한 max페이지-->
+        SELECT ceil(COUNT(selliboard) / ${recordCount}) AS result
+        FROM car_sell_board
+        where model LIKE concat('%',#{searchText},'%')
+           or detail_model LIKE concat('%',#{searchText},'%')
+           or manufacturer LIKE concat('%',#{searchText},'%')
+    </select>
+
+    <select id="searchListMaxPageVal" resultType="VehicleDto">!--사이드 검색에대한 max페이지-->
+        SELECT ceil(COUNT(selliboard) / ${recordCount}) AS result
+        FROM car_sell_board
+        <where>
+            <if test="compunyResult.size()!=0">
+                AND manufacturer IN
+                <foreach collection="compunyResult" item="com" open="(" close=")" separator=",">
+                    #{com}
+                </foreach>
+            </if>
+            <if test="Min_Mileage!=0">
+                AND distan_driven &gt;= ${Min_Mileage}
+            </if>
+            <if test="Max_Mileage>0">
+                AND distan_driven &lt;= ${Max_Mileage}
+            </if>
+            <if test="Min_price!=0">
+                AND price &gt;= ${Min_price}
+            </if>
+            <if test="Max_price>0">
+                AND price &lt;= ${Max_price}
+            </if>
+            <if test="gearboxResult.size()!=0">
+                AND gearbox IN
+                <foreach collection="gearboxResult" item="gearbox" open="(" close=")" separator=",">
+                    #{gearbox}
+                </foreach>
+            </if>
+            <if test="fuelResult.size()!=0">
+                AND fuel IN
+                <foreach collection="fuelResult" item="fuel" open="(" close=")" separator=",">
+                    #{fuel}
+                </foreach>
+            </if>
+            <if test="ariaResult.size()!=0">
+                AND trading_area IN
+                <foreach collection="ariaResult" item="aria" open="(" close=")" separator=",">
+                    #{aria}
+                </foreach>
+            </if>
+            AND category = #{category}
+        </where>
+    </select>
+
+    <select id="homeMaxPageVal" resultType="VehicleDto"><!--홈검색에 대한 max페이지-->
+        SELECT ceil(COUNT(selliboard) / ${recordCount}) AS result
+        FROM car_sell_board
+        <where>
+        <if test='!manufacturer.equals("null")'>
+            AND manufacturer = #{manufacturer}
+        </if>
+        <if test='!model.equals("null")'>
+            AND model = #{model}
+        </if>
+        <if test='!detail_model.equals("null")'>
+            AND detail_model = #{detail_model}
+        </if>
+        </where>
     </select>
 
     <update id="likeCount">

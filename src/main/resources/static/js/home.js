@@ -174,6 +174,8 @@ insurance_btn.addEventListener('click', () => {
     }
 });
 //고객센터 > 질문게시판/공지사항 ------------------------------------- [end]
+
+//홈 차량검색 ------------------------------------- [start]
 const btnSubmit = document.querySelector('#btnSubmit');
 btnSubmit.addEventListener('click',input_check)//submit 클릭
 
@@ -184,20 +186,23 @@ function input_check(){
     if(manufacturer==='제조사') {
         alert("검색할 제조사를 선택해 주십시오")
     }else{
+        var param = {
+            'manufacturer':manufacturer==="제조사"?null:manufacturer,
+            'model':model==="모델"?null:model,
+            'detail_model':detail_model==="세부모델"?null:detail_model
+        };
         myFetch.get(`/ajax/vehicle/homSearch`, data => {
             if(data.length==0){
                 alert('검색결과가 없습니다.')
             }else{
-                localStorage.setItem("cast", JSON.stringify(data));
+                localStorage.setItem("cast", "home");
+                localStorage.setItem("param", JSON.stringify(param));
                 location.href='vehicle/list';
             }
-        },{
-            'manufacturer':manufacturer==="제조사"?null:manufacturer,
-            'model':model==="모델"?null:model,
-            'detail_model':detail_model==="세부모델"?null:detail_model
-        });
+        },param);
     }
 }
+//홈 차량검색 ------------------------------------- [end]
 
 //날씨정보 뿌리기 ---------------------------------------------- [start]
 const API_KEY = "871242005db9771ca1c90b14fd7046bd"; /*회원가입을 하면 자동으로 키발급해준다*/
