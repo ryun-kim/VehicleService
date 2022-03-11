@@ -57,7 +57,7 @@
                     <a th:href="@{/user/join}">회원가입</a>
                 </div>
                 <div th:unless="${session.loginUser == null}" class="login_after_box">
-                    <div th:utext="${session.loginUser.getNm()} + '님 반갑습니다. &lt;br /&gt; 평균별점 : '" class="login_after_text"></div>
+                    <div th:utext="${session.loginUser.getNm() + session.loginUser.getIuser()} + '님 반갑습니다. &lt;br /&gt; 평균별점 : '" class="login_after_text"></div>
                     <div class="login_after_btn">
                         <a th:href="@{/mypage/userinfo}"><button>마이페이지</button></a></br>
                         <!--카카오 계정과 함께 로그아웃-->

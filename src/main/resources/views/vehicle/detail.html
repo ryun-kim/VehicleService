@@ -55,16 +55,15 @@
                     </div>
                 </div>
             </div>
-
             <div>
                 <div>
                     <span id="boardTitle" th:text="${vo.detail_model}"></span>
                 </div>
-                <div>판매자 정보
+                <div>
                     <input id="selliboard"  type="hidden" th:value="${vo.selliboard}">
                     <input id="writeriuser" type="hidden" th:value="${vo.writeriuser}">
-                    <div>닉네임: <div th:text="${vo.writerNm}"></div></div>
-                    <div th:text="${vo.price}+' 만원'"></div>
+                    <div>판매자 닉네임: <span th:text="${vo.writerNm + vo.iuser}"></span></div>
+                    <div th:text="'가격: ' + ${vo.price}+ ' 만원'"></div>
                     <th:block th:if="${session.loginUser!=null}">
                         <div id="likeBtn" class="d-flex justify-content-end align-items-center">
                         </div>

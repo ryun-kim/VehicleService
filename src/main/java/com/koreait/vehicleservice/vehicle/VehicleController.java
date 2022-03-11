@@ -42,7 +42,7 @@ public class VehicleController {
         service.uploadMainImg(mainimg); //메인이미지 db입력
         service.uploadSubImg(dto.getSubimg()); //서브이미지 db입력
 
-        return "redirect:list";
+        return "redirect:/vehicle/list";
     }
 
 
