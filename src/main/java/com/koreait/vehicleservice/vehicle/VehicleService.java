@@ -116,8 +116,8 @@ public class VehicleService {
         return mapper.vehicleList(dto);
     }
 
-     public List<VehicleVo> vehicleList2(VehicleDto dto){
-       
+     public List<VehicleVo> vehicleList2(VehicleDto dto){ //모델명검색
+
         List<VehicleVo> list = null;
         if(dto.getSearchText() != null){
             list = mapper.vehicleSearchList(dto);
@@ -128,7 +128,7 @@ public class VehicleService {
        
     }
 
-    public List<VehicleVo> searchList(ListSearchEntity list){
+    public List<VehicleVo> searchList(ListSearchEntity list){ //사이드 검색
     
         return mapper.vehicleSearchList2(list);
     }
@@ -197,12 +197,25 @@ public class VehicleService {
     }
 
     public VehicleDto selMaxPageVal(VehicleDto dto){ //페이징처리
+        if(dto.getRoot()!= null){
+        switch (dto.getRoot()){
+            case "home":
+                return mapper.homeMaxPageVal(dto);
+            case "sideSearch":
+                return mapper.searchListMaxPageVal(dto);
+            case "modelSearch":
+                return mapper.searchMaxPageVal(dto);
+        }
+        }
         return mapper.selMaxPageVal(dto);
     }
 
 
-    public List<VehicleVo> homeSearchList(VehicleEntity entity){ //홈에서 검색
-        return mapper.homeSearchList(entity);
+    public List<VehicleVo> homeSearchList(VehicleDto dto){ //홈에서 검색
+        int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
+        if(startIdx < 0) { startIdx = 0; }
+        dto.setStartIdx(startIdx);
+        return mapper.homeSearchList(dto);
     }
 
     public List<VehicleVo> selLikeLank(){

@@ -1,5 +1,5 @@
 function allList(){
-    localStorage.setItem("cast", null);
+    localStorage.setItem("cast", null);  //국산클릭하여 리스트를 뿌렸다는 의미
 }
 
 const sellingMycar = document.querySelector('#selling_mycar');
