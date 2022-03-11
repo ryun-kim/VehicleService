@@ -10,6 +10,9 @@ import java.util.List;
 public interface myPageMapper {
     List<VehicleVo> likesList(VehicleDto dto);
     int delAllLike (VehicleDto dto);
+    int delllikesum (VehicleDto dto);
     VehicleDto selMaxPageVal(VehicleDto dto);
+    List<Integer> seldeliboard (VehicleDto dto);
+
 
 }

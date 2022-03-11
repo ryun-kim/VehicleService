@@ -37,10 +37,10 @@ function plusPercent(psList_Count) {
     return plusVal;
 }
 
-psListElem.style.cssText = `width : calc(${plusPercent(psList_Count)}%);`;
+psListElem.style.cssText = `width : calc(${plusPercent(psList_Count)}%); height: 100%; display: flex; justify-content: center;`;
 
 psImgElem.forEach((item) => {
-    item.style.cssText = `width : calc(30%);`
+    item.style.cssText = `width : calc(50%); height : 100%;`
     let itemkey = Object.keys(psImgElem).find(key => psImgElem[key] === item);
     const psListGap1 = document.createElement('div');              //사이거리
     const psListGap2 = document.createElement('div');              //사이거리
@@ -288,6 +288,7 @@ const makeLecordLankList = list => {
             const resultdiv = document.createElement('div');
             const blankdiv = document.createElement('div');
             popular_sales_list.style.width = 'calc(300%)';
+            popular_sales_list.style.margin = '0 auto';
             resultdiv.className = "popular_sales_img";
             resultdiv.style.width = 'calc(30%)';
             resultdiv.style.cursor = 'pointer';

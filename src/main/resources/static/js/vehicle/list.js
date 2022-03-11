@@ -282,7 +282,8 @@
                             <h4 class="card-title">${item.detail_model}</h4>
                             <p class="card-text">${item.fuel}</p>
                             <p class="card-text">${item.price}만원</p>
-                            <p class="card-text">판매지역: ${item.trading_area}</p>                            
+                            <p class="card-text">판매지역: ${item.trading_area}</p>
+                            <p class="card-text">좋아요 수: ${item.likesum}</p>               
                         </div>    
                     </div>
                 `
@@ -330,8 +331,6 @@
         }
     }
 
-        getList(); //전체리스트 추출
-
-
+ getList(); //전체리스트 추출
 
 }

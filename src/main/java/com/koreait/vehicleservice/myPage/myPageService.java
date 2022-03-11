@@ -28,6 +28,16 @@ public class myPageService {
 
     public int delAllLike(VehicleDto dto){
         dto.setLikesiuser(myUserUtils.getLoginUserPk());
+        List<Integer> list = mapper.seldeliboard(dto);
+        if(list.size()>0){
+            for (int i =0; i<list.size();i++){
+                VehicleDto delDto = new VehicleDto();
+                delDto.setSelliboard(list.get(i));
+                System.out.println("list.get(i)");
+                System.out.println(list.get(i));
+                mapper.delllikesum(delDto);
+            }
+        }
         return mapper.delAllLike(dto);
     }
 
