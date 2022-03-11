@@ -17,6 +17,9 @@ public class ListSearchEntity {
     private List<String> gearboxResult; //변속기
     private List<String> fuelResult; //연료
     private List<String> ariaResult; //지역
+    private int recordCount;
+    private int currentPage;
+    private int startIdx;
 //aria 오타임 수정해야할부분
 
 }
