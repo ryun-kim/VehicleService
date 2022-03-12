@@ -20,13 +20,13 @@
             <!-- 차량검색 -------------------------------------- [start] -->
             <section id="search_car_home">
                 <form action="/ajax/vehicle/list" method="post" onsubmit="return false" id="homeSearch">
-                <div id="dom_inc_btn">
-                    <button onclick="ko(0)" >국산</button>
-                    <button onclick="ko(1)" >수입</button>
 
-                </div>
                 <div id="detail_search_dropdown">
-                    <div>
+                    <div id="dom_inc_btn">
+                        <button onclick="ko(0)" >국산</button>
+                        <button onclick="ko(1)" >수입</button>
+                    </div>
+                    <div id="select-btn">
                         <select id="country_select" name="manufacturer" onchange="addChange(this)">
                             <option selected>제조사</option>
                         </select>
@@ -36,8 +36,8 @@
                         <select id="detail_model_select" name="detail_model">
                             <option selected>세부모델</option>
                         </select>
+                        <button id="btnSubmit">검색</button>
                     </div>
-                    <div id="detail_search_btn"><button id="btnSubmit">검색</button></div>
                 </div>
                 </form>
             </section>
@@ -60,7 +60,8 @@
                     <div th:utext="${session.loginUser.getNm()} + '님 반갑습니다. &lt;br /&gt; 평균별점 : '" class="login_after_text"></div>
                     <div class="login_after_btn">
                         <a th:href="@{/mypage/userinfo}"><button>마이페이지</button></a></br>
-                        <a th:href="@{/user/logout}"><button>로그아웃</button></a>
+                        <!--카카오 계정과 함께 로그아웃-->
+                        <a href="https://kauth.kakao.com/oauth/logout?client_id=0e08b6c96d5f791a6eb59bd54c31aa90&logout_redirect_uri=http://localhost:8090/user/logout"><button>로그아웃</button></a>
                     </div>
                 </div>
             </section>
@@ -76,34 +77,6 @@
                         <i class="fa-solid fa-chevron-right popNext"></i>
                     </div>
                     <div id="popular_sales_list">
-                        <!--<div class="popular_sales_img" th:each="item : ${likeLank}">
-                            <img th:src="@{/vehicleImg/${item.selliboard}/${item.mainimg}}" alt="pop1">
-                            <div th:text="${item.detail_model}"></div>
-                        </div>
-                        <div class="popular_sales_img">
-                            <img th:src="@{/img/avante.jpg}" alt="pop2">
-                            <div>인기매물2</div>
-                        </div>
-                        <div class="popular_sales_img">
-                            <img th:src="@{/img/avante.jpg}" alt="pop3">
-                            <div>인기매물3</div>
-                        </div>
-                        <div class="popular_sales_img">
-                            <img th:src="@{/img/avante.jpg}" alt="pop4">
-                            <div>인기매물4</div>
-                        </div>
-                        <div class="popular_sales_img">
-                            <img th:src="@{/img/avante.jpg}" alt="pop5">
-                            <div>인기매물5</div>
-                        </div>
-                        <div class="popular_sales_img">
-                            <img th:src="@{/img/avante.jpg}" alt="pop6">
-                            <div>인기매물6</div>
-                        </div>
-                        <div class="popular_sales_img">
-                            <img th:src="@{/img/avante.jpg}" alt="pop7">
-                            <div>인기매물7</div>
-                        </div>-->
                     </div>
                 </div>
             </section>

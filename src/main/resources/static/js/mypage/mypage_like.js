@@ -156,7 +156,7 @@
             })
         }
     }
-    function jjimAll(){
+    function jjimAll(){ //좋아요 전체 삭제
         if(confirm("정말로 모두 삭제하시겠습니까?")){
             myFetch.delete(`/ajax/mypage/dellikes`);
             window.location.href =`/mypage/like`;

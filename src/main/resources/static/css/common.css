@@ -54,6 +54,7 @@ header #image_logo_home > img {
 }
 #loginbar_header > nav > ul {
     display: flex; justify-content: space-around;
+    margin-bottom: 16px;
 }
 #loginbar_header > nav > ul > li {
     font-size: 90%;
