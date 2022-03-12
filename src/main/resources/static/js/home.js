@@ -70,6 +70,7 @@ nextBtn.addEventListener('click', () => {
 //인기매물 슬라이드 ------------------------------------------------- [end]
 
 //제조사, 모델, 상세모델 -------------------------------------------- [start]
+var btnIdex; //홈검색에서 국산인지 수입인지 확인는용도  국산이면list 수입이면 forlist로 이동
 var json=null ;
 var companyList ; // 제조사 리스트
 var modelList;   // 모델리스트
@@ -85,6 +86,7 @@ fetch("/json/MOCK_DATA.json") // json파일 가져오기
 
 
 function ko(index){
+    btnIdex= index;
     companyList = json.result[index].companyList; //0 국산 1 수입 제조사리스트 저장
 
     var target = option_reset("country_select");
@@ -197,7 +199,11 @@ function input_check(){
             }else{
                 localStorage.setItem("cast", "home");
                 localStorage.setItem("param", JSON.stringify(param));
-                location.href='vehicle/list';
+                if(btnIdex==0){
+                    location.href='vehicle/list';
+                }else if(btnIdex==1){
+                    location.href='vehicle/forlist';
+                }
             }
         },param);
     }

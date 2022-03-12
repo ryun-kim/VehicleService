@@ -21,5 +21,6 @@ public class ListSearchEntity {
     private int currentPage;
     private int startIdx;
 //aria 오타임 수정해야할부분
-
+    private int result;
+    private String root;
 }

@@ -13,19 +13,21 @@
     if (searchFrmElem) { //검색창에 검색없으면 알람
         searchFrmElem.addEventListener('submit', (e) => {
             const searchVal = searchFrmElem.search_area.value;
-
+            currentPage = 1; //현재 페이지
             if (searchVal.length === 0) {
+                ViewList= "AllList";
+                localStorage.setItem("cast", null);
+                getMaxPageVal("AllList");
                 getList();
             } else {
-                myFetch.get('/ajax/vehicle/search', list => {
-                    localStorage.setItem("cast", JSON.stringify(list));
-                    makeRecordList(list);
-                }, { 'searchVal' : searchVal} );
+                ViewList= "modelSearch";
+                localStorage.setItem("param", JSON.stringify({ 'searchVal' : searchVal}));
+                getMaxPageVal("modelSearch");
+                getList();
             }
             e.preventDefault();
         });
     }
-
 
 
 
@@ -56,6 +58,7 @@
 
 
     function getSearchList() { //리스트 검색
+        currentPage = 1;
             const com_query = 'input[name="manufacturer"]:checked';
         const compunyList = document.querySelectorAll(com_query);
         let compunyResult = [];
@@ -96,33 +99,23 @@
             ariaResult.push(el.value)
         });
 
-        //
-        // console.log(compunyResult)
-        // console.log(Min_Mileage)
-        // console.log(Max_Mileage)
-        // console.log(Min_price)
-        // console.log(Max_price)
-        // console.log(gearboxResult)
-        // console.log(fuelResult)
-        // console.log(ariaResult)
-        // console.log('==============================================')
-
-                myFetch.get('/ajax/vehicle/searchList', list => {
-                    localStorage.setItem("cast", JSON.stringify(list));
-                    makeRecordList(list);
-                },{
-                    'category' : "수입",
-                    'compunyResult' : compunyResult,
-                    'Min_Mileage' : Min_Mileage,
-                    'Max_Mileage' : Max_Mileage,
-                    'Min_price' : Min_price,
-                    'Max_price' : Max_price,
-                    'gearboxResult' : gearboxResult,
-                    'fuelResult' : fuelResult,
-                    'ariaResult' : ariaResult
-                } );
-
+        ViewList= "sideSearch";
+        var param ={
+            'category' : "수입",
+            'compunyResult' : compunyResult,
+            'Min_Mileage' : Min_Mileage,
+            'Max_Mileage' : Max_Mileage,
+            'Min_price' : Min_price,
+            'Max_price' : Max_price,
+            'gearboxResult' : gearboxResult,
+            'fuelResult' : fuelResult,
+            'ariaResult' : ariaResult
+        }
+        localStorage.setItem("param", JSON.stringify(param));
+        getMaxPageVal("sideSearch");
+        getList();
     }
+
 
 
 
@@ -149,30 +142,135 @@
         }
     }
 
-        //글 리스트 정보 가져오기
-        const getList = () => {
+    function getMaxPageVal(root) {  // maxpage를 가져옴
+        if(root != null){
+            switch (root) {
+                case "AllList":  //국산버튼 클릭
+                    var new_param = {
+                        'currentPage': currentPage,
+                        'recordCount': recordCount,
+                        'category': "수입",
+                        'root': "AllList"
+                    };
+                    break;
+                case "home": //홈
+                    var param = JSON.parse(localStorage.getItem("param"))
+                    var new_param = {
+                        'manufacturer': param.manufacturer,
+                        'model': param.model,
+                        'detail_model': param.detail_model,
+                        'currentPage': currentPage,
+                        'recordCount': recordCount,
+                        'category': "수입",
+                        'root': "home"
+                    };
+                    break;
+                case "modelSearch":  //모델명
+                    var param = JSON.parse(localStorage.getItem("param"))
+                    var new_param = {
+                        'searchVal' : param.searchVal,
+                        'currentPage': currentPage,
+                        'recordCount': recordCount,
+                        'category': "수입",
+                        'root': "modelSearch"
+                    };
+                    break;
+                case "sideSearch":  //사이드 검색
+                    var param = JSON.parse(localStorage.getItem("param"))
+                    var new_param = {
+                        'compunyResult' : param.compunyResult,
+                        'Min_Mileage' : param.Min_Mileage,
+                        'Max_Mileage' : param.Max_Mileage,
+                        'Min_price' : param.Min_price,
+                        'Max_price' : param.Max_price,
+                        'gearboxResult' : param.gearboxResult,
+                        'fuelResult' : param.fuelResult,
+                        'ariaResult' : param.ariaResult,
+                        'currentPage': currentPage,
+                        'recordCount': recordCount,
+                        'category': "수입",
+                        'root': "sideSearch"
+                    };
+                    break;
+            }
+            if(root === "sideSearch"){
+                myFetch.get(`/ajax/vehicle/sideSearchmaxpage`, data => {
+                    maxPage = data.result;
+                    console.log("페이지개수")
+                    console.log(maxPage)
+                    makePaging();
+                }, new_param);
+            }else{
+                myFetch.get(`/ajax/vehicle/maxpage`, data => {
+                    maxPage = data.result;
+                    console.log("페이지개수")
+                    console.log(maxPage)
+                    makePaging();
+                }, new_param);
+            }
+        }
 
-            myFetch.get(`/ajax/vehicle/forlist`, data => {
-                localStorage.setItem("cast", JSON.stringify(data));
-                makeRecordList(data);
-            },{ currentPage, recordCount });
     }
 
+    var ViewList = localStorage.getItem("cast");
+    console.log(ViewList)
 
+    getMaxPageVal(ViewList);
 
+    //글 리스트 정보 가져오기
+    const getList = () => {
+        console.log("getList()호출")
+        if (ViewList != null) {
+            if (ViewList === "home") { //홈
+                var param = JSON.parse(localStorage.getItem("param"))
+                myFetch.get(`/ajax/vehicle/homSearch`, data => {
+                    makeRecordList(data);
+                }, {
+                    'manufacturer': param.manufacturer,
+                    'model': param.model,
+                    'detail_model': param.detail_model,
+                    'currentPage': currentPage,
+                    'recordCount': recordCount
+                });
 
-    const category= "수입";
-    //마지막 페이지 값 (once)
-    const getMaxPageVal = () => {
-        myFetch.get(`/ajax/vehicle/maxpage`, data => {
-            maxPage = data.result;
-            makePaging();
-        }, {recordCount, category });
+            } else if(ViewList === "modelSearch"){ //모델
+                var param = JSON.parse(localStorage.getItem("param"))
+                console.log(param.searchVal)
+                myFetch.get(`/ajax/vehicle/search`, data => {
+                    makeRecordList(data);
+                },{
+                    'searchVal' : param.searchVal,
+                    'currentPage': currentPage,
+                    'recordCount': recordCount,
+                    'category': "수입",
+                });
+
+            }else if(ViewList === "sideSearch"){ //사이드 검색
+                var param = JSON.parse(localStorage.getItem("param"))
+                myFetch.get(`/ajax/vehicle/searchList`, data => {
+                    makeRecordList(data);
+                },{
+                    'compunyResult' : param.compunyResult,
+                    'Min_Mileage' : param.Min_Mileage,
+                    'Max_Mileage' : param.Max_Mileage,
+                    'Min_price' : param.Min_price,
+                    'Max_price' : param.Max_price,
+                    'gearboxResult' : param.gearboxResult,
+                    'fuelResult' : param.fuelResult,
+                    'ariaResult' : param.ariaResult,
+                    'currentPage': currentPage,
+                    'recordCount': recordCount,
+                    'category': "수입",
+                    'root': "sideSearch"
+                });
+
+            }else if(ViewList === "AllList"){ //수입
+                myFetch.get(`/ajax/vehicle/forlist`, data => {
+                    makeRecordList(data);
+                }, {currentPage, recordCount});
+            }
+        }
     }
-    getMaxPageVal();
-
-
-
 
 
     const makePaging = () => {
@@ -277,14 +375,6 @@
                 }
             })
         }
-    }
-
-
-    var aa = JSON.parse(localStorage.getItem("cast"));
-    if(aa != null){
-        makeRecordList(aa);
-    }else{
-        getList();
     }
 
 
