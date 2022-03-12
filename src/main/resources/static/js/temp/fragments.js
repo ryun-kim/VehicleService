@@ -1,5 +1,6 @@
 function allList(){
-    localStorage.setItem("cast", "AllList");  //국산클릭하여 리스트를 뿌렸다는 의미
+    localStorage.setItem("cast", "AllList");  //국산/수입을 클릭하여 리스트를 뿌렸다는 의미
+    localStorage.setItem("currentPage", 1); //1페이지부터
 }
 
 const sellingMycar = document.querySelector('#selling_mycar');
