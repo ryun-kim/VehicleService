@@ -379,3 +379,8 @@ main > div > section {
     font-weight: bold;
 }
 
+#dom_inc_btn > button:first-child{
+    color: white;
+    background-color: rgb(123, 209, 240);
+}
+

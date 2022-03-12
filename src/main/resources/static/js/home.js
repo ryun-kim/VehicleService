@@ -338,4 +338,3 @@ if(selling_mycar){
 
 
 
-
