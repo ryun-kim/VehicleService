@@ -12,6 +12,10 @@
 
     if (searchFrmElem) { //검색창에 검색없으면 알람
         searchFrmElem.addEventListener('submit', (e) => {
+            const allCheckList = document.querySelectorAll('input[type="checkbox"]');
+            allCheckList.forEach(item => {
+                item.checked = false;
+            }) //모든 select박스 체크 해제
             const searchVal = searchFrmElem.search_area.value;
             currentPage = 1; //현재 페이지
             localStorage.setItem("currentPage", currentPage);
@@ -61,6 +65,7 @@
 
 
     function getSearchList() { //사이드 검색
+        searchFrmElem.search_area.value = ''; //검색창 값 초기화
         currentPage = 1;
         localStorage.setItem("currentPage", currentPage);
         localStorage.setItem("sortName","basic");

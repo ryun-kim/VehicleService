@@ -7,4 +7,5 @@ import lombok.Setter;
 @Setter
 public class BoardVo extends BoardEntity{
     private String writerNm;
+    private int iuser;
 }

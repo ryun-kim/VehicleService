@@ -32,7 +32,7 @@
     <select id="selBoard" resultType="BoardVo">
         SELECT
         A.quesiboard, A.writeriuser, A.title, A.ctnt, A.isanswer,
-        A.hits, A.rdt, B.nm as writerNm
+        A.hits, A.rdt, B.nm as writerNm, B.iuser
         FROM question_board A INNER JOIN t_user B ON A.writeriuser = B.iuser
         WHERE A.quesiboard = ${quesiboard}
     </select>
