@@ -16,6 +16,7 @@
             currentPage = 1; //현재 페이지
             localStorage.setItem("currentPage", currentPage);
             localStorage.setItem("sortName","basic");
+            activeCheck()
             if (searchVal.length === 0) {
                 ViewList= "AllList";
                 localStorage.setItem("cast", null);
@@ -64,6 +65,7 @@
         currentPage = 1;
         localStorage.setItem("currentPage", currentPage);
         localStorage.setItem("sortName","basic");
+        activeCheck()
             const com_query = 'input[name="manufacturer"]:checked';
         const compunyList = document.querySelectorAll(com_query);
         let compunyResult = [];
@@ -225,7 +227,6 @@
 
     //글 리스트 정보 가져오기
     const getList = () => {
-        console.log("getList()호출")
         if (ViewList != null) {
             var sortName = localStorage.getItem("sortName");
             if (ViewList === "home") { //홈
@@ -400,6 +401,29 @@
         localStorage.setItem("sortName",sort)
         localStorage.setItem("currentPage", 1);
         getList()
+    }
+    activeCheck()
+    function activeCheck(){
+        var active = document.querySelector('.active');
+        active.classList.remove('active')
+        var activecheck =localStorage.getItem("sortName");
+        var activeElement = null;
+        switch (activecheck){
+            case "basic":
+                activeElement = document.querySelector('#basic');
+                break;
+            case "like":
+                activeElement = document.querySelector('#like');
+                break;
+            case "lowPrice":
+                activeElement = document.querySelector('#lowPrice');
+                break;
+            case "highPrice":
+                activeElement = document.querySelector('#highPrice');
+                break;
+        }
+        if(activeElement != null)
+        activeElement.classList.add('active')
     }
 
 
