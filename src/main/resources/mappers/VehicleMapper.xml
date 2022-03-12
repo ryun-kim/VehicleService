@@ -103,7 +103,7 @@
 
     <select id="vehicleSearchList" resultType="VehicleVo"><!--모델명 검색-->
         SELECT A.selliboard, A.writeriuser, A.category, A.manufacturer, A.model, A.detail_model
-        , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number
+        , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number, A.likesum
         , B.mainimg
         FROM car_sell_board A
         LEFT JOIN car_image B
@@ -132,7 +132,7 @@
 
     <select id="vehicleSearchList2" resultType="VehicleVo"><!--사이드 검색-->
         SELECT A.selliboard, A.writeriuser, A.category, A.manufacturer, A.model, A.detail_model
-             , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number
+             , A.price, A.color, A.fuel, A.distan_driven, A.gearbox, A.trading_area, A.car_number, A.likesum
              , B.mainimg
         FROM car_sell_board A
                  LEFT JOIN car_image B
