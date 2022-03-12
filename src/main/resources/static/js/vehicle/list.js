@@ -15,6 +15,10 @@
 
     if (searchFrmElem) { //검색창에 검색없으면 알람
         searchFrmElem.addEventListener('submit', (e) => {
+            const allCheckList = document.querySelectorAll('input[type="checkbox"]');
+            allCheckList.forEach(item => {
+                item.checked = false;
+            }) //모든 select박스 체크 해제
             const searchVal = searchFrmElem.search_area.value;
             currentPage = 1; //현재 페이지
             if (searchVal.length === 0) {
@@ -62,6 +66,7 @@
 
 
     function getSearchList() { //사이드검색
+        searchFrmElem.search_area.value = ''; //검색창 값 초기화
         currentPage = 1;
             const com_query = 'input[name="manufacturer"]:checked';
         const compunyList = document.querySelectorAll(com_query);

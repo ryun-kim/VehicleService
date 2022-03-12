@@ -84,9 +84,10 @@
         FROM car_sell_board A
         LEFT JOIN car_image B
         ON A.selliboard = B.selliboard
-        where A.model LIKE concat('%',#{searchVal},'%')
+        where A.category = #{category}
+        and (A.model LIKE concat('%',#{searchVal},'%')
         or A.detail_model LIKE concat('%',#{searchVal},'%')
-        or A.manufacturer LIKE concat('%',#{searchVal},'%')
+        or A.manufacturer LIKE concat('%',#{searchVal},'%'))
 
         <if test='recordCount != 0'>
             LIMIT  ${startIdx}, ${recordCount}
