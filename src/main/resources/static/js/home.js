@@ -197,6 +197,7 @@ function input_check(){
             if(data.length==0){
                 alert('검색결과가 없습니다.')
             }else{
+                localStorage.setItem("currentPage", 1);
                 localStorage.setItem("cast", "home");
                 localStorage.setItem("param", JSON.stringify(param));
                 if(btnIdex==0){

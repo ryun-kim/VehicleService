@@ -6,7 +6,7 @@
     const pageContainerElem = document.querySelector('#page_container');
     const ulElem = pageContainerElem.querySelector('nav > ul');
 
-    let currentPage = 1; //현재 페이지
+    let currentPage = localStorage.getItem("currentPage"); //현재 페이지
     let maxPage = 1;
     const recordCount = 6; //레코드 수 화면에 뜨는 갯수
     const pagingCount = 5; //페이징의 페이징 수
@@ -17,12 +17,14 @@
         searchFrmElem.addEventListener('submit', (e) => {
             const searchVal = searchFrmElem.search_area.value;
             currentPage = 1; //현재 페이지
+            localStorage.setItem("currentPage", currentPage);
             if (searchVal.length === 0) {
                 ViewList= "AllList";
                 localStorage.setItem("cast", null);
                 getMaxPageVal("AllList");
                 getList();
             } else {
+                localStorage.setItem("cast", "modelSearch");
                 ViewList= "modelSearch";
                 localStorage.setItem("param", JSON.stringify({ 'searchVal' : searchVal}));
                 getMaxPageVal("modelSearch");
@@ -63,6 +65,7 @@
 
     function getSearchList() { //사이드검색
         currentPage = 1;
+        localStorage.setItem("currentPage", currentPage);
             const com_query = 'input[name="manufacturer"]:checked';
         const compunyList = document.querySelectorAll(com_query);
         let compunyResult = [];
@@ -115,6 +118,7 @@
             'fuelResult' : fuelResult,
             'ariaResult' : ariaResult
         }
+        localStorage.setItem("cast", "sideSearch");
         localStorage.setItem("param", JSON.stringify(param));
         getMaxPageVal("sideSearch");
         getList();
@@ -286,6 +290,7 @@
         if(startPage > 1) {
             makePagingItem('&lt;', () => {
                 currentPage = startPage - 1;
+                localStorage.setItem("currentPage", currentPage);
                 getList();
                 makePaging();
             });
@@ -294,6 +299,7 @@
             makePagingItem(i, () => {
                 if(currentPage !== i) {
                     currentPage = i;
+                    localStorage.setItem("currentPage", currentPage);
                     getList();
                 }
             });
@@ -301,6 +307,7 @@
         if(maxPage > lastPage) {
             makePagingItem('&gt;', () => {
                 currentPage = lastPage + 1;
+                localStorage.setItem("currentPage", currentPage);
                 getList();
                 makePaging();
             });
