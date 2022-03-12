@@ -21,7 +21,7 @@ public interface VehicleMapper {
     int jimchk(VehicleDto dto);
     VehicleDto selMaxPageVal(VehicleDto dto);
     VehicleDto searchMaxPageVal(VehicleDto dto);
-    VehicleDto searchListMaxPageVal(VehicleDto dto);
+    VehicleDto sideSearchMaxPageVal(ListSearchEntity list);
     VehicleDto homeMaxPageVal(VehicleDto dto);
     List<VehicleVo> vehicleSearchList2(ListSearchEntity list);
     int likeCount(VehicleDto dto);

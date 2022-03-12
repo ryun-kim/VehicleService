@@ -61,11 +61,13 @@ public class VehicleRestController {
         return service.selMaxPageVal(dto);
     }
 
+    @GetMapping("/sideSearchmaxpage")
+    public VehicleDto sideSearchMaxPageVal(ListSearchEntity list) {
+        return service.sideSearchMaxPageVal(list);
+    }
+
     @GetMapping("/search")
-    public List<VehicleVo> search(@RequestParam String searchVal){
-        System.out.println(searchVal);
-        VehicleDto dto = new VehicleDto();
-        dto.setSearchText(searchVal);
+    public List<VehicleVo> search(VehicleDto dto){
         return service.vehicleList2(dto);
     }
 

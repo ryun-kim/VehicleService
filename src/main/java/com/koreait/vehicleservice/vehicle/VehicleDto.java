@@ -19,8 +19,7 @@ public class VehicleDto extends VehicleEntity {  //사용자정보 받기용
     private int currentPage;
     private int startIdx;
     private int result;
-    private String searchText;
     private int iuser;
     private String root; //접근한곳에 대한 정보
-
+    String searchVal; // 모델명검색어
 }
