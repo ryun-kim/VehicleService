@@ -300,13 +300,13 @@ const makeLecordLankList = list => {
             resultdiv.className = "popular_sales_img";
             resultdiv.style.width = 'calc(30%)';
             resultdiv.style.cursor = 'pointer';
-            if(item.hits !== null && item.likesum === 0) {
+            if(item.hits > 0) { //조회수가 0일땐 데이터가 안뜬다.
                 resultdiv.innerHTML = `
                 <img src="/vehicleImg/${item.selliboard}/${item.mainimg}" alt="pop1">
                     <div>${item.model}</div>
                     <div>조회수 : ${item.hits}</div>
             `
-            } else {
+            } else if(item.likesum > 0) { //좋아요수가 0일땐 데이터가 안뜬다.
                 resultdiv.innerHTML = `
                 <img src="/vehicleImg/${item.selliboard}/${item.mainimg}" alt="pop1">
                     <div>${item.model}</div>
