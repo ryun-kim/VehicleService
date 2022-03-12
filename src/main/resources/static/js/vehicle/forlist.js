@@ -19,6 +19,7 @@
             const searchVal = searchFrmElem.search_area.value;
             currentPage = 1; //현재 페이지
             localStorage.setItem("currentPage", currentPage);
+            localStorage.setItem("sortName","basic");
             if (searchVal.length === 0) {
                 ViewList= "AllList";
                 localStorage.setItem("cast", null);
@@ -63,10 +64,11 @@
 
 
 
-    function getSearchList() { //리스트 검색
+    function getSearchList() { //사이드 검색
         searchFrmElem.search_area.value = ''; //검색창 값 초기화
         currentPage = 1;
         localStorage.setItem("currentPage", currentPage);
+        localStorage.setItem("sortName","basic");
             const com_query = 'input[name="manufacturer"]:checked';
         const compunyList = document.querySelectorAll(com_query);
         let compunyResult = [];
@@ -230,6 +232,7 @@
     const getList = () => {
         console.log("getList()호출")
         if (ViewList != null) {
+            var sortName = localStorage.getItem("sortName");
             if (ViewList === "home") { //홈
                 var param = JSON.parse(localStorage.getItem("param"))
                 myFetch.get(`/ajax/vehicle/homSearch`, data => {
@@ -239,7 +242,8 @@
                     'model': param.model,
                     'detail_model': param.detail_model,
                     'currentPage': currentPage,
-                    'recordCount': recordCount
+                    'recordCount': recordCount,
+                    'sort':sortName
                 });
 
             } else if(ViewList === "modelSearch"){ //모델
@@ -252,6 +256,7 @@
                     'currentPage': currentPage,
                     'recordCount': recordCount,
                     'category': "수입",
+                    'sort':sortName
                 });
 
             }else if(ViewList === "sideSearch"){ //사이드 검색
@@ -270,13 +275,16 @@
                     'currentPage': currentPage,
                     'recordCount': recordCount,
                     'category': "수입",
-                    'root': "sideSearch"
+                    'root': "sideSearch",
+                    'sort':sortName
                 });
 
             }else if(ViewList === "AllList"){ //수입
                 myFetch.get(`/ajax/vehicle/forlist`, data => {
                     makeRecordList(data);
-                }, {currentPage, recordCount});
+                }, {'currentPage':currentPage,
+                    'recordCount':recordCount,
+                    'sort':sortName});
             }
         }
     }
@@ -388,6 +396,15 @@
                 }
             })
         }
+    }
+    function SortList(sort,target){
+        var active = document.querySelector('.active');
+        active.classList.remove('active')
+
+        target.classList.add('active');
+        localStorage.setItem("sortName",sort)
+        localStorage.setItem("currentPage", 1);
+        getList()
     }
 
 
