@@ -101,10 +101,14 @@ public class VehicleService {
     public int selCarNum(String car_num){
         VehicleEntity entity = new VehicleEntity();
         entity.setCar_number(car_num);
-        String CarNumber = mapper.selCarNum(entity).getCar_number(); //null 을 get 할경우 nullpointer
-        if(CarNumber.equals(car_num)){
-            return 1; //중복
+        VehicleEntity resultentity = mapper.selCarNum(entity);
+        if(resultentity != null){
+            String CarNumber = mapper.selCarNum(entity).getCar_number();
+            if(CarNumber.equals(car_num)){
+                return 1; //중복
+            }
         }
+
         return 0; //사용가능 차량번호
     }
 
