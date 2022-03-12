@@ -18,6 +18,7 @@
             const searchVal = searchFrmElem.search_area.value;
             currentPage = 1; //현재 페이지
             localStorage.setItem("currentPage", currentPage);
+            localStorage.setItem("sortName","basic");
             if (searchVal.length === 0) {
                 ViewList= "AllList";
                 localStorage.setItem("cast", null);
@@ -66,6 +67,7 @@
     function getSearchList() { //사이드검색
         currentPage = 1;
         localStorage.setItem("currentPage", currentPage);
+        localStorage.setItem("sortName","basic");
             const com_query = 'input[name="manufacturer"]:checked';
         const compunyList = document.querySelectorAll(com_query);
         let compunyResult = [];
@@ -225,7 +227,7 @@
     getMaxPageVal(ViewList);
 
     const getList = () => {
-        console.log("getList()호출")
+        var sortName = localStorage.getItem("sortName");
         if (ViewList != null) {
             if (ViewList === "home") { //홈
                 var param = JSON.parse(localStorage.getItem("param"))
@@ -236,12 +238,12 @@
                     'model': param.model,
                     'detail_model': param.detail_model,
                     'currentPage': currentPage,
-                    'recordCount': recordCount
+                    'recordCount': recordCount,
+                    'sort':sortName
                 });
 
             } else if(ViewList === "modelSearch"){ //모델
                 var param = JSON.parse(localStorage.getItem("param"))
-                console.log(param.searchVal)
                 myFetch.get(`/ajax/vehicle/search`, data => {
                     makeRecordList(data);
                 },{
@@ -249,6 +251,7 @@
                     'currentPage': currentPage,
                     'recordCount': recordCount,
                     'category': "국산",
+                    'sort':sortName
                 });
 
             }else if(ViewList === "sideSearch"){ //사이드 검색
@@ -267,13 +270,16 @@
                     'currentPage': currentPage,
                     'recordCount': recordCount,
                     'category': "국산",
-                    'root': "sideSearch"
+                    'root': "sideSearch",
+                    'sort':sortName
                 });
 
             }else if(ViewList === "AllList"){ //국산
                 myFetch.get(`/ajax/vehicle/list`, data => {
                     makeRecordList(data);
-                }, {currentPage, recordCount});
+                }, {'currentPage':currentPage,
+                    'recordCount':recordCount,
+                    'sort':sortName});
             }
         }
     }
@@ -326,7 +332,7 @@
     //레코드 생성
     const makeRecordList = list => {
         const listdivElem = document.querySelector('.listdiv'); //결과창
-        // console.log(list);
+
         if(listdivElem){
             listdivElem.innerHTML = '';
             list.forEach(item =>{
@@ -389,6 +395,19 @@
             })
         }
     }
+
+
+    function SortList(sort,target){
+        var active = document.querySelector('.active');
+        active.classList.remove('active')
+
+        target.classList.add('active');
+                localStorage.setItem("sortName",sort)
+        localStorage.setItem("currentPage", 1);
+                getList()
+    }
+
+
 
  getList(); //전체리스트 추출
 

@@ -289,16 +289,16 @@
                 <hr>
                 <ul id="list_order" class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{#}">최신</a>
+                        <a class="nav-link active" aria-current="page" onclick="SortList('basic',this)">최신</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{#}">좋아요순</a>
+                        <a class="nav-link" onclick="SortList('like',this)">좋아요순</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{#}">낮은가격순</a>
+                        <a class="nav-link" onclick="SortList('lowPrice',this)">낮은가격순</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{#}">높은가격순</a>
+                        <a class="nav-link" onclick="SortList('highPrice',this)">높은가격순</a>
                     </li>
                 </ul>
                 <div class="album  bg-light">

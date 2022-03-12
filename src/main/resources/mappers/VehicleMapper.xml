@@ -47,7 +47,19 @@
                  LEFT JOIN car_image B
                            ON A.selliboard = B.selliboard
         where A.category = #{category}
-        ORDER BY A.selliboard desc
+        <if test='sort.equals("like")'>
+            ORDER BY A.likesum desc
+        </if>
+        <if test='sort.equals("highPrice")'>
+            ORDER BY A.price desc
+        </if>
+        <if test='sort.equals("lowPrice")'>
+            ORDER BY A.price
+        </if>
+        <if test='sort.equals("basic")'>
+            ORDER BY A.selliboard desc
+        </if>
+
         LIMIT  ${startIdx}, ${recordCount}
 
     </select>
@@ -70,6 +82,18 @@
         <if test='!detail_model.equals("null")'>
             AND A.detail_model = #{detail_model}
         </if>
+        <if test='sort.equals("like")'>
+            ORDER BY A.likesum desc
+        </if>
+        <if test='sort.equals("highPrice")'>
+            ORDER BY A.price desc
+        </if>
+        <if test='sort.equals("lowPrice")'>
+            ORDER BY A.price
+        </if>
+        <if test='sort.equals("basic")'>
+            ORDER BY A.selliboard desc
+        </if>
 
         <if test='recordCount != 0'>
             LIMIT  ${startIdx}, ${recordCount}
@@ -88,6 +112,18 @@
         or A.detail_model LIKE concat('%',#{searchVal},'%')
         or A.manufacturer LIKE concat('%',#{searchVal},'%')
 
+        <if test='sort.equals("like")'>
+            ORDER BY A.likesum desc
+        </if>
+        <if test='sort.equals("highPrice")'>
+            ORDER BY A.price desc
+        </if>
+        <if test='sort.equals("lowPrice")'>
+            ORDER BY A.price
+        </if>
+        <if test='sort.equals("basic")'>
+            ORDER BY A.selliboard desc
+        </if>
         <if test='recordCount != 0'>
             LIMIT  ${startIdx}, ${recordCount}
         </if>
@@ -139,6 +175,18 @@
         </if>
                 AND A.category = #{category}
         </where>
+        <if test='sort.equals("like")'>
+            ORDER BY A.likesum desc
+        </if>
+        <if test='sort.equals("highPrice")'>
+            ORDER BY A.price desc
+        </if>
+        <if test='sort.equals("lowPrice")'>
+            ORDER BY A.price
+        </if>
+        <if test='sort.equals("basic")'>
+            ORDER BY A.selliboard desc
+        </if>
         <if test='recordCount != 0'>
             LIMIT  ${startIdx}, ${recordCount}
         </if>
