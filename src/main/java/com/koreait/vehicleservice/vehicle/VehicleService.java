@@ -117,9 +117,11 @@ public class VehicleService {
     }
 
      public List<VehicleVo> vehicleList2(VehicleDto dto){ //모델명검색
-
+         int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
+         if(startIdx < 0) { startIdx = 0; }
+         dto.setStartIdx(startIdx);
         List<VehicleVo> list = null;
-        if(dto.getSearchText() != null){
+        if(dto.getSearchVal() != null){
             list = mapper.vehicleSearchList(dto);
         } else {
             list = mapper.vehicleList(dto);
@@ -129,7 +131,9 @@ public class VehicleService {
     }
 
     public List<VehicleVo> searchList(ListSearchEntity list){ //사이드 검색
-    
+        int startIdx = (list.getCurrentPage() - 1) * list.getRecordCount();
+        if(startIdx < 0) { startIdx = 0; }
+        list.setStartIdx(startIdx);
         return mapper.vehicleSearchList2(list);
     }
 
@@ -201,13 +205,23 @@ public class VehicleService {
         switch (dto.getRoot()){
             case "home":
                 return mapper.homeMaxPageVal(dto);
-            case "sideSearch":
-                return mapper.searchListMaxPageVal(dto);
             case "modelSearch":
                 return mapper.searchMaxPageVal(dto);
+            case "AllList":
+                return mapper.selMaxPageVal(dto);
         }
         }
         return mapper.selMaxPageVal(dto);
+    }
+
+
+    public VehicleDto sideSearchMaxPageVal(ListSearchEntity list){ //사이드검색 페이징
+        if(list.getRoot()!= null){
+           if(list.getRoot().equals("sideSearch")){
+               return mapper.sideSearchMaxPageVal(list);
+           }
+        }
+        return null;
     }
 
 
