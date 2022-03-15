@@ -81,9 +81,7 @@ fetch("/json/MOCK_DATA.json") // json파일 가져오기
         return response.json();
     }).then(jsondata =>
     json = jsondata
-);
-
-
+)
 
 function ko(index){
     btnIdex= index;

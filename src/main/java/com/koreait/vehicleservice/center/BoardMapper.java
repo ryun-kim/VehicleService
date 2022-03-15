@@ -16,12 +16,12 @@ public interface BoardMapper {
     BoardVo selBoard(BoardEntity boardEntity);
     NoticeBoardVo selNoticeBoard(NoticeBoardEntity noticeBoardEntity);
     BoardCmtEntity selCmtBoard(BoardCmtEntity boardEntity);
-    int delBoard(BoardEntity boardEntity);
-    int modBoard(BoardEntity boardEntity);
-    int modBoardIsAnw(BoardCmtEntity cmtEntity);
     ResultVo selMaxPageVal(BoardDto dto);
     ResultVo selMaxPageVal2(NoticeBoardDto dto);
+    BoardPrevNextVo selPrevNext(BoardVo vo);
+    int modBoard(BoardEntity boardEntity);
+    int modBoardIsAnw(BoardCmtEntity cmtEntity);
+    int delBoard(BoardEntity boardEntity);
     int addHits(BoardEntity boardEntity);
     int addNoticeHits(NoticeBoardEntity ntity);
-    BoardPrevNextVo selPrevNext(BoardVo vo);
 }

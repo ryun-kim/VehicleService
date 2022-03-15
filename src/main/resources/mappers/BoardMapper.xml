@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.koreait.vehicleservice.center.BoardMapper">
+    <insert id="insBoard">
+        INSERT INTO question_board
+            (writeriuser, title, ctnt)
+        VALUES
+            (${writeriuser}, #{title}, #{ctnt})
+    </insert>
+
+    <insert id="insNoticeBoard">
+        INSERT INTO notice_board
+            (writeriuser, title, ctnt)
+        VALUES
+            (${writeriuser}, #{title}, #{ctnt})
+    </insert>
+
+    <insert id="insCmtBoard">
+        insert into cmt_question_board
+            (quesiboard, cmtctnt, writerNm)
+        values
+            (${quesiboard}, #{cmtctnt}, #{writerNm})
+    </insert>
+
     <select id="selBoardList" resultType="BoardEntity">
         select quesiboard, title, isanswer, hits
         from question_board
@@ -76,31 +97,6 @@
         from notice_board
     </select>
 
-    <insert id="insBoard">
-        INSERT INTO question_board
-            (writeriuser, title, ctnt)
-        VALUES
-            (${writeriuser}, #{title}, #{ctnt})
-    </insert>
-
-    <insert id="insNoticeBoard">
-        INSERT INTO notice_board
-            (writeriuser, title, ctnt)
-        VALUES
-            (${writeriuser}, #{title}, #{ctnt})
-    </insert>
-
-    <insert id="insCmtBoard">
-        insert into cmt_question_board
-        (quesiboard, cmtctnt, writerNm)
-        values
-        (${quesiboard}, #{cmtctnt}, #{writerNm})
-    </insert>
-
-    <delete id="delBoard">
-        delete from question_board where quesiboard = ${quesiboard} and writeriuser = ${writeriuser}
-    </delete>
-
     <update id="modBoard">
         update question_board
         set title = #{title}, ctnt = #{ctnt}, mdt = now(), hits = hits - 2
@@ -112,6 +108,10 @@
         set isanswer = '완료'
         where quesiboard = ${quesiboard}
     </update>
+
+    <delete id="delBoard">
+        delete from question_board where quesiboard = ${quesiboard} and writeriuser = ${writeriuser}
+    </delete>
 
     <update id="addHits">
         update question_board

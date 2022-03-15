@@ -1,5 +1,7 @@
 <div class="boardContainer">
+    <!--로그인했는지 안했는지 체크위해-->
     <input th:if="${session.loginUser != null}" type="hidden" class="loginUserInfrm">
+    <!--관리자 계정이 아니고 일반 계정일시 글쓰기 버튼이 나타남-->
     <button th:if="${session.loginUser == null || !session.loginUser.getUid().toString().equals('sjw2451')}" type="button" class="btn btn-primary writeBtn mb-2">글쓰기</button>
     <table>
         <thead>
@@ -19,6 +21,7 @@
             </tr>
         </tbody>
     </table>
+    <!--페이징부분-->
     <div id="pageContainer" class="mt-3">
         <nav>
             <ul class="pagination justify-content-center"></ul>

@@ -19,7 +19,7 @@ public class CenterController {
     @GetMapping("/customer")
     public void customer(){}
 
-    @GetMapping("/questionboard")//클라이언트에서 보낸 url파라미터값 받를때 객체로받을땐 @RequestParam 안적는다.
+    @GetMapping("/questionboard")//클라이언트에서 보낸 uri파라미터값 받를때 객체로받을땐 @RequestParam 안적는다.
     public void questionboard(Model model, BoardDto dto){
         model.addAttribute("list", service.selBoardList(dto));
     }
@@ -35,30 +35,29 @@ public class CenterController {
     @GetMapping("/introduction")
     public void introduction(){}
 
-    @GetMapping("/detailquestion")
+    @GetMapping("/detailquestion")//쿼리스트링으로 파라미터를 URI로 전송할 때엔 컨트롤러에서 파라미터를 받을때 @RequestParam 을 사용한다.
     public void detailquestion(@RequestParam int quesiboard, Model model){
-        //쿼리스트링으로 파라미터를 URL로 전송할 때엔 컨트롤러에서 파라미터를 받을때 @RequestParam 을 사용한다.
         BoardVo vo = service.selBoard(quesiboard);
         BoardPrevNextVo pnVo = service.selPrevNext(vo);
         BoardCmtEntity entity = service.selCmtBoard(quesiboard);
 
         model.addAttribute("item", vo);
         model.addAttribute("prevnext", pnVo);
-        if(entity != null) {
+        if(entity != null) { //댓글이 있다면
             model.addAttribute("cmtItem", entity);
         }
     }
 
     @GetMapping("/detailnotice")
     public void detailnotice(@RequestParam int iboard, Model model){
-        //쿼리스트링으로 파라미터를 URL로 전송할 때엔 컨트롤러에서 파라미터를 받을때 @RequestParam 을 사용한다.
+        //쿼리스트링으로 파라미터를 URI로 전송할 때엔 컨트롤러에서 파라미터를 받을때 @RequestParam 을 사용한다.
         NoticeBoardVo vo = service.selNoticeBoard(iboard);
         model.addAttribute("item", vo);
     }
 
     @GetMapping("/write")
     public void write(@ModelAttribute BoardEntity boardEntity, @RequestParam int quesiboard, Model model){
-        if(quesiboard > 0){
+        if(quesiboard > 0){//디테일 정보가지고 글쓰기 페이지(수정페이지) 이동
            model.addAttribute("item", service.selBoard(quesiboard));
         }
     }
@@ -86,7 +85,7 @@ public class CenterController {
         return "redirect:/center/customer";
     }
 
-    @ResponseBody
+    @ResponseBody //응답 타입이 JSON
     @PostMapping("/modify") //post매핑일땐 @requestbody 붙여줘야함
     public Map<String, Integer> mod(@RequestBody BoardEntity boardEntity){
         Map<String, Integer> map = new HashMap<>();
