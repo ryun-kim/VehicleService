@@ -26,10 +26,12 @@ public class UserEntity {
     private double averating;
     private String introduction;
 
+    //생년월일 19960510 표현으로 조합
     public String combineBirthday(String birthdayYear, int birthdayMonth, int birthdayDay){
         return birthdayYear + String.format("%02d", birthdayMonth) +  String.format("%02d", birthdayDay);
     }
 
+    //이메일 wodhks6307@naver.com 표현으로 조합
     public String combineEmail(String frontEmail, String backEmail){
         return frontEmail + "@" + backEmail;
     }

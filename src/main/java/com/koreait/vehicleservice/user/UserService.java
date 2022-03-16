@@ -11,6 +11,8 @@ public class UserService {
     @Autowired UserMapper mapper;
     @Autowired MyUserUtils userUtils;
 
+
+    //회원가입
     public int joinProc(UserEntity userEntity){
         UserEntity entity = new UserEntity();
         userEntity.setBirthday(entity.combineBirthday(userEntity.getBirthdayYear(), userEntity.getBirthdayMonth(), userEntity.getBirthdayDay()));
@@ -33,6 +35,7 @@ public class UserService {
         }
     }
 
+    //로그인
     public int login(UserEntity entity){
         UserEntity loginUser = null;
         loginUser = mapper.selUser(entity);
@@ -46,6 +49,7 @@ public class UserService {
         return 3; //비밀번호 틀림
     }
 
+    //이메일을 이용하여 dbUser 체크
     public int emailChk(String email){
         UserEntity entity = new UserEntity();
         entity.setEmail(email);
@@ -59,6 +63,7 @@ public class UserService {
         }
     }
 
+    //이메일, id를 이용하여 dbUser 체크
     public int emailIdChk(UserEntity entity){
         UserEntity dbUser = mapper.selUser(entity);
         if(dbUser != null){
@@ -67,17 +72,20 @@ public class UserService {
         return 0; //회원정보없음
     }
 
+    //id찾기
     public UserEntity getId(String email){
         UserEntity userEntity = new UserEntity();
         userEntity.setEmail(email);
         return mapper.selUser(userEntity);
     }
 
+    //비밀번호 변경
     public void pasChn(UserEntity userEntity){
         userEntity.setUpw(BCrypt.hashpw(userEntity.getUpw(), BCrypt.gensalt()));
         mapper.updUserUpw(userEntity);
     }
 
+    //마이페이지 비밀번호 변경
     public int myPgPasChn(UserEntity userEntity){
         userEntity.setUid(userUtils.getLoginUser().getUid());
         UserEntity dbUser = mapper.selUser(userEntity);

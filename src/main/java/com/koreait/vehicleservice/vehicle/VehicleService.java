@@ -22,6 +22,7 @@ public class VehicleService {
     private MyUserUtils myUserUtils;
     @Autowired
     MyUserUtils userUtils;
+
     public int inVehicle(VehicleEntity entity){ //차량등록
         entity.setWriteriuser(userUtils.getLoginUserPk());
         return mapper.inVehicle(entity);
@@ -236,10 +237,12 @@ public class VehicleService {
         return mapper.homeSearchList(dto);
     }
 
+    //좋아요 순위 가져오기
     public List<VehicleVo> selLikeLank(){
         return mapper.selLikeLank();
     }
 
+    //조회수 순위 가져오기
     public List<VehicleVo> selhitsLank(){
         return mapper.selhitsLank();
     }

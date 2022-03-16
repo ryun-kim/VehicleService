@@ -32,6 +32,7 @@ public class UserController {
                 rAttr.addFlashAttribute("id", userEntity.getUid());
                 return "redirect:/user/login";
             //addAttribute는 쿼리스트링 이용 ?뒤에 파라미터보임, addFlashAttribute는 세션이용 ?뒤에 파라미터가 안보인다
+            //addAttribute는 값을 지속적으로 사용해야할때 addFlashAttribute는 일회성으로 사용해야할때 사용함
             case 3:
                 rAttr.addFlashAttribute("pwMsg", "비밀번호를 잘못 입력하였습니다.");
                 rAttr.addFlashAttribute("id", userEntity.getUid());
@@ -49,7 +50,7 @@ public class UserController {
     @GetMapping("/find")
     public void find() {}
 
-    @GetMapping("/join") //th:filed에서 에러가났는데 @modelattribue추가해서 해결(값을 담을수있는 통을보내준다고 생각)
+    @GetMapping("/join")
     public void getJoin(@ModelAttribute UserEntity userEntity) {}
 
     @PostMapping("/join")

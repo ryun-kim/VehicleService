@@ -11,6 +11,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 @PropertySource("classpath:application.properties")
 public class EmailConfig {
 
+    //application.properties에서 설정한 값 주입
     @Value("${mail.smtp.port}")
     private int port;
     @Value("${mail.smtp.socketFactory.port}")
@@ -28,7 +29,7 @@ public class EmailConfig {
     @Value("${AdminMail.password}")
     private String password;
 
-    @Bean
+    @Bean//객체 등록
     public JavaMailSender javaMailService() {
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
         javaMailSender.setHost("smtp.gmail.com");

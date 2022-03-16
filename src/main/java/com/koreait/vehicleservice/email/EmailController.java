@@ -41,12 +41,12 @@ public class EmailController {
         String result = "0";
         System.out.println("code : "+code);
         System.out.println("code match : "+ EmailServiceImpl.ePw.equals(code));
-        if(EmailServiceImpl.ePw.equals(code)) {
+        if(EmailServiceImpl.ePw.equals(code)) { //입력한 인증번호와 보내진 인증번호가 일치한지 검사
             UserEntity dbUser = service.getId(email);
             res.put("id", dbUser.getUid());
             result = "1";
         }
-        res.put("result", result);
+        res.put("result", result); //인증번호가 서로 일치하면 result에 1저장, 불일치하면 0저장
         return res;
     }
 }

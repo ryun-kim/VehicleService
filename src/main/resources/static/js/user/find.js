@@ -4,6 +4,7 @@ const modal = document.getElementById("modal");
 const closeBtn = modal.querySelector(".close-area");
 const modalForm = document.querySelector('#modalForm');
 
+/*----------------------------아이디 찾기-----------------------------------*/
 idFindForm.addEventListener('submit', (e) => {
     if(idFindForm.idEmailInput.value === ''){
         alert('이메일을 입력해주세요.')
@@ -21,6 +22,8 @@ idFindForm.addEventListener('submit', (e) => {
                             "Content-Type": "application/json",
                         },
                     })
+
+                    //인증코드 입력창 동적 생성
                     const verifyLabelBox = idFindForm.querySelector('.verifyLabelBox');
                     const verifyInputBox = idFindForm.querySelector('.verifyInputBox');
                     const verifyBox = idFindForm.querySelector('.verifyBox');
@@ -65,6 +68,7 @@ idFindForm.addEventListener('submit', (e) => {
     e.preventDefault();
 })
 
+/*----------------------------비밀번호 찾기-----------------------------------*/
 pasFindForm.addEventListener('submit', (e) => {
     const idVal = pasFindForm.idInput.value;
     const emailVal = pasFindForm.pasEmailInput.value;
@@ -94,6 +98,8 @@ pasFindForm.addEventListener('submit', (e) => {
                                     "Content-Type": "application/json",
                                 },
                             })
+
+                        //인증코드 입력창 동적 생성
                         const verifyLabelBox = pasFindForm.querySelector('.verifyLabelBox');
                         const verifyInputBox = pasFindForm.querySelector('.verifyInputBox');
                         const verifyBox = pasFindForm.querySelector('.verifyBox');
@@ -139,6 +145,7 @@ pasFindForm.addEventListener('submit', (e) => {
     e.preventDefault();
 })
 
+/*----------------------------비밀번호 재설정-----------------------------------*/
 modalForm.addEventListener('submit', (e) => {
     //8~15자 영문자, 숫자, 특수문자 포함
     const pwRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/;
@@ -176,10 +183,12 @@ function modalOff() {
     modal.style.display = "none"
 }
 
+//X버튼을 클릭해서 모달창 끄기
 closeBtn.addEventListener("click", e => {
     modalOff()
 })
 
+//아무곳이나 마우스를 클릭했을때 모달창 끄기
 modal.addEventListener("click", e => {
     const evTarget = e.target
     if(evTarget.classList.contains("modal-overlay")) {
@@ -187,6 +196,7 @@ modal.addEventListener("click", e => {
     }
 })
 
+//아무 글자(ex: esc)를 쳤을때 모달창 끄기
 window.addEventListener("keyup", e => {
     if(isModalOn() && e.key === "Escape") {
         modalOff()

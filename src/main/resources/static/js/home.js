@@ -213,18 +213,6 @@ function input_check(){
 //날씨정보 뿌리기 ---------------------------------------------- [start]
 const API_KEY = "871242005db9771ca1c90b14fd7046bd"; /*회원가입을 하면 자동으로 키발급해준다*/
 
-/*let weatherIcon = {
-    '01' : 'fas fa-sun',
-    '02' : 'fas fa-cloud-sun',
-    '03' : 'fas fa-cloud',
-    '04' : 'fas fa-cloud-meatball',
-    '09' : 'fas fa-cloud-sun-rain',
-    '10' : 'fas fa-cloud-showers-heavy',
-    '11' : 'fas fa-poo-storm',
-    '13' : 'far fa-snowflake',
-    '50' : 'fas fa-smog'
-};*/
-
 function onGeoOk(position){ /*position: 함수의 기본객체 user의 위치를 얻는다*/
     const lat = position.coords.latitude; //위도가져오기
     const lon = position.coords.longitude; //경도가져오기
@@ -247,8 +235,6 @@ function onGeoOk(position){ /*position: 함수의 기본객체 user의 위치를
         temp2.innerText= `${data.main.feels_like} ºC`;
         humidity.innerText = `${data.main.humidity}`;
         city.innerText = `${data.name}`;
-        /*city.innerText = data.name;*/
-        /*icon.className = weatherIcon[(data.weather[0].icon).substr(0,2)];*/
     });
 }
 function onGeoError(){

@@ -17,6 +17,7 @@ public class EmailServiceImpl implements EmailService{
 
     public static final String ePw = createKey();
 
+    //이메일 메세지 만들기
     private MimeMessage createMessage(String to)throws Exception{
         System.out.println("보내는 대상 : "+ to);
         System.out.println("인증 번호 : "+ePw);
@@ -45,6 +46,7 @@ public class EmailServiceImpl implements EmailService{
         return message;
     }
 
+    //인증번호 만들기
     public static String createKey() {
         StringBuffer key = new StringBuffer();
         Random rnd = new Random();
@@ -70,6 +72,8 @@ public class EmailServiceImpl implements EmailService{
 
         return key.toString();
     }
+
+    //입력된 이메일로 메세지(인증번호포함된) 보내기
     @Override
     public String sendSimpleMessage(String to)throws Exception {
         // TODO Auto-generated method stub
@@ -80,6 +84,6 @@ public class EmailServiceImpl implements EmailService{
             es.printStackTrace();
             throw new IllegalArgumentException();
         }
-        return ePw;
+        return ePw; //인증번호 리턴
     }
 }

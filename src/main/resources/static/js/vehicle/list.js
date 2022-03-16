@@ -13,7 +13,7 @@
 
     const iuser = document.querySelector('#iuser');
 
-    if (searchFrmElem) { //검색창에 검색없으면 알람
+    if (searchFrmElem) {
         searchFrmElem.addEventListener('submit', (e) => {
             const allCheckList = document.querySelectorAll('input[type="checkbox"]');
             allCheckList.forEach(item => {

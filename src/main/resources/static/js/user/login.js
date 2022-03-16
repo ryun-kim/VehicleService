@@ -1,5 +1,7 @@
 let form = document.querySelector('form');
 const errMsgList = form.querySelectorAll('.errMsg');
+
+//로그인 수행
 form.addEventListener('submit', (e) => {
     if (form.uid.value === '') {
         e.preventDefault();
