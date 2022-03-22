@@ -39,7 +39,7 @@ public class NaverService {
         String sts = getSession(session);
 
         return "redirect:https://nid.naver.com/oauth2.0/authorize?response_type=code" +
-                "&client_id=FKI5X4pkLPGeuMSpAt6W&redirect_url=http%3a%2f%2flocalhost%3a8090%2fnaver%2fcallback" +
+                "&client_id=FKI5X4pkLPGeuMSpAt6W&redirect_url=http%3a%2f%2f3.39.60.222%3a8080%2fnaver%2fcallback" +
                 "&state="+sts;
     }
 
