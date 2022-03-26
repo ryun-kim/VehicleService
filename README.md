@@ -14,7 +14,7 @@
 * Maria DB
 
 ## 배포 환경
-* AWS (http로 배포 성공, http -> https 적용 구현 중)  
+* AWS  
 
 ## 사용 언어 & 기술
 * HTML5
