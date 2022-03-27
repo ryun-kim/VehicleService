@@ -66,9 +66,8 @@
 * 김민우(Helper) - HTML & CSS 보완
 * 공통부분 - 주제 선정, 페이지 레이아웃 설계, ERD 설계  
 ## 시연 영상
-<video width="100%" height="100%" controls="controls">
-  <source src="/C:/Users/wodhk/OneDrive/바탕 화면/팀프로젝트/[VAP][1080p]프로젝트시연영상.mp4" type="video/mp4">
-</video>
+https://youtu.be/WYdgLBLpYjs
+
 <img src="https://user-images.githubusercontent.com/91525800/160244531-659e3dae-bc96-40a4-b1b1-876681b757b8.png" width="700" height="500" />
 (채팅 부분은 시연 영상에 포함되어 있지 않아 이미지로 대체합니다.)    
 
