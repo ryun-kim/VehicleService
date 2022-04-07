@@ -24,7 +24,7 @@
 * BootStrap
 * JAVA11
 * Mysql
-* SpringBoot
+* SpringBoot(MVC2 패턴)
 * ThymeLeaf
 * Json
 
