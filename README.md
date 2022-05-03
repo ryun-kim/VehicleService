@@ -12,6 +12,9 @@
 * Visual Studio Code
 * Apache Tomcat 9
 * Maria DB
+* JDK 11
+* Window 10
+* Maven
 
 ## 배포 환경
 * AWS (http 배포 성공, https 에러 해결 중)
